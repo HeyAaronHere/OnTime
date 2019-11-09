@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
 
     <head>
-        <title>Reviews</title>
+        <title>Reviews - ONTime</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,19 +37,19 @@ and open the template in the editor.
                 <div class="container" id="productreview">
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                     <!-- w3schools js validation, https://www.w3schools.com/js/js_validation.asp -->
-                    <form name="productreview" action="productsreview.html" method="post" onsubmit="return validateform()">
+                    <form id="productreviews" action="productsreview.php" method="post">
 
                         <div class="row">
                             <div class="col-25">
                                 <label for="review">Review</label>
                             </div>
                             <div class="col-75">
-                                <textarea id="review" name="review" placeholder="Write your reviews.."></textarea>
+                                <textarea id="reviewinput" name="review" placeholder="Write your reviews.." required></textarea>
                             </div>
                         </div>
 
                         <div class="row">
-                            <input type="submit" value="Submit">
+                            <input type="submit" id="btnSubmit" value="Submit">
                         </div>
                     </form>
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->

@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
 
     <head>
-        <title>Customer Service - OnTime</title>
+        <title>Product Details - OnTime</title>
         <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
         <meta name="keywords"
               content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
@@ -109,10 +109,10 @@ and open the template in the editor.
                         <p><b>Condition</b> New </p>
                         <p><b>Brand</b> ABC.Co </p>
                         <label>Quantity </label>
-                        <form name="productdetails" action="productDetails.html" method="post"
-                              onsubmit="return validateform()">
-                            <input id="productdetails" name="productdetails">
-                            <button type="submit" value="Submit"> Add to Cart</button>
+                        <form id="productdetails" action="productdetails.php" method="post">
+                            <input id="productinput" name="productinput" pattern="^[0-9]+$" required>
+                            <button type="submit" id="btnSubmit" value="Submit"> Add to Cart</button>
+                        </form>
                     </div>
                 </section>
             </section>
@@ -122,14 +122,14 @@ and open the template in the editor.
                     <h3>Product Description</h3>
                     <p>This is the Product Description . This is the Product Description .This is the Product
                         Description This is the Product Description
-                        This is the Product Description LOLThis is the Product Description This is the Product
-                        Description This is the Product Description LOLThis is the Product
+                        This is the Product Description This is the Product Description This is the Product
+                        Description This is the Product Description This is the Product
                         Description</p>
 
                     <p>This is the Product Description . This is the Product Description .This is the Product
                         Description This is the Product Description
                         This is the Product Description This is the Product Description This is the Product
-                        Description This is the Product Description LOLThis is the Product
+                        Description This is the Product Description.This is the Product
                         Description </p>
 
                     <hr />

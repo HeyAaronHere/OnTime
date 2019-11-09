@@ -1,12 +1,24 @@
+window.onload = function () {
+  EventListeners();
+};
+function EventListeners() {
+  btnSubmit = document.getElementById("btnSubmit");
+  btnSubmit.addEventListener("click", validateform);
+}
 
 function validateform() {
-    var review = document.forms["productreview"]["review"].value;
+  var form = document.getElementById("productreviews");
+  var reviews = document.getElementById("reviewinput");
+  var txtreviews = reviews.value;
 
-      if (review == "") {
-        alert("Form must be filled out");
-        return false;
-      }
-      else
-        alert("Form Submitted Successfully");
-        return false;
-    }
+
+  if (txtreviews === "") {
+      reviews.style.borderColor = "red";
+      alert("Form must be filled out");
+      return false;
+  } 
+  else {
+      alert("Form Submitted Successfully");
+      form.submit();
+  }
+}
