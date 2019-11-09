@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07.10.2019, 02:29:07
+    Author     : Nico
+*/
+
+body{
+    padding-top: 60px;
+}
+
+.navbar-brand>img{
+    width:150px;
+    height: 80px;
+}
+
+.navbar-brand{  
+    float: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-left: 50px;
+  }
+  
+  .navbar-nav li:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+
+article.thumbnail{
+    position: relative;
+    border-style: none;
+}
+
+figure.popup{
+    visibility: visible;
+    
+}
+
+.thumbnail:hover figure.popup{
+    visibility: visible;
+}
+
+.thumbnail>img{
+    width: 150px;
+}
+
+.textbox{
+    border-style: solid;
+    color: grey;
+    background-color: whitesmoke;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+figure.popup>p{
+    text-align: center;
+}
+
+
+h1.aboutus{
+    font-style: italic;
+    color: #262626;
+    font-family: "Times New Roman";
+    font-weight: bold;
+}
+
+h2{
+    text-align: center;
+}
+
+#storelocation > img{
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.navbar-brand > img{
+    width: 80px;
+    display: inline-block;
+}
+
+.map-container {
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 200px;
+}
+
+.map-container iframe {
+    height: auto;
+    width: 100%;
+    max-width:500px;
+    position: absolute;
+    border-radius: 5px;
+}
+

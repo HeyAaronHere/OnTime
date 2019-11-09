@@ -1,0 +1,202 @@
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.aftnav {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.ONtimelogo {
+    height: 50px;
+    width: 70px;
+}
+
+.navbar-brand {
+    padding-top: 0px;
+}
+
+.imgMaintenance {
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+}
+
+#CustomerInquiries {
+    text-align: justify;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 0px
+}
+
+/*Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form */
+input[type=text],
+input[type=email],
+input[type=tel],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: large;
+}
+
+input[type=submit] {
+    background-color: rgb(43, 40, 224);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(37, 35, 170);
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .col-25,
+    .col-75,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+/*Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form */
+
+#CIquestion {
+    height:200px;
+}
+
+.FAQ {
+    margin-left: 50px;
+}
+
+/* FAQ collapsible - https://bootsnipp.com/snippets/qADDB */
+#accordion .panel-heading {
+    padding: 0;
+}
+
+#accordion .panel-title>a {
+    display: block;
+    padding: 0.4em 0.6em;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#accordion .panel-title>a.accordion-toggle::before,
+#accordion a[data-toggle="collapse"]::before {
+    content: "\e113";
+    float: left;
+    font-family: 'Glyphicons Halflings';
+    margin-right: 1em;
+}
+
+#accordion .panel-title>a.accordion-toggle.collapsed::before,
+#accordion a.collapsed[data-toggle="collapse"]::before {
+    content: "\e114";
+}
+/* FAQ collapsible - https://bootsnipp.com/snippets/qADDB */
+
+/* Google Map - https://mdbootstrap.com/docs/jquery/javascript/google-maps/#regular */
+/*
+.map-container {
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 200px;
+}
+
+.map-container iframe {
+    height: 100%;
+    width: auto;
+    position: absolute;
+}
+*/
+/* Google Map - https://mdbootstrap.com/docs/jquery/javascript/google-maps/#regular */
+
+footer {
+    background-color: #333;
+    color: white;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    bottom: 0px;
+}
+
+.btmnav {
+    color: white;
+}
+
+.btmnav:hover {
+    color: grey;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+  
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+}
+  
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}

@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11 Oct 2019, 2:48:23 AM
+    Author     : Aaron Chua
+*/
+
+/* how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials*/
+.singleProduct
+{
+    margin-top: 150px;
+}
+
+.new-arrival
+{  
+    background: green;
+    width: 50px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.col-md-7
+{
+    color: #555;
+       
+}
+.singleProduct .fa
+
+{
+  color: orange;  
+}
+
+.singleProduct .price
+{
+  color: orange;
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+.singleProduct input
+{
+    border: 1px solid #ccc;
+    font-weight: bold;
+    height: 33px;
+    text-align: center;
+    width: 30px;
+}
+
+button[type=submit] {
+    background: green !important;
+    color: #fff;
+    font-size: 15px;
+    margin-left: 20px;
+    border:none;
+    box-shadow:none !important;
+}
+
+.productDescription h3
+{
+    margin-top: 30px;
+    color: orange;    
+}
+
+.productDescription p
+{
+    margin-top: 30px;
+}
+
+.productDescription hr
+{
+    margin-bottom: 50px;
+}
+
+
+
