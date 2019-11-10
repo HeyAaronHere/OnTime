@@ -56,18 +56,18 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer service<span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="customerservice.html#Maintenance">Maintainence</a></li>
-                        <li><a href="customerservice.html#FAQ">Faq</a></li>
+                        <li><a href="customerservice.php#Maintenance">Maintainence</a></li>
+                        <li><a href="customerservice.php#FAQ">Faq</a></li>
                     </ul>
                 </li>
-                <li><a href="productsreview.html">Reviews</a></li>
-                <li><a href="aboutus.html">About us</a></li>
+                <li><a href="productsreview.php">Reviews</a></li>
+                <li><a href="aboutus.php">About us</a></li>
             </ul>
 
-
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="shoppingcart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="signup.php"><span class="glyphicon glyphicon-registration-mark"></span> Signup</a></li>
             </ul>
         </section>
     </nav>
