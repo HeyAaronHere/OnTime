@@ -87,6 +87,10 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             echo "<h4>Welcome back, $fname</h4>";
             echo "<p>Email: " . $email;
             echo "<p>Password: " . $pwd;
+            //start session if success
+            session_start();
+            //sets $fname to 
+            $_SESSION['firstName'] = $fname;
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
