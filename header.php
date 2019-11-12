@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
     <head>
         <title>Main Page - OnTime</title>
@@ -65,10 +68,25 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="signup.php"><span class="glyphicon glyphicon-registration-mark"></span> Signup</a></li>
+                <?php
+                
+                if(isset($_SESSION['firstName'])){  
+                    echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
+                    echo'<li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
+                }
+                else{
+                    echo'<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
+                    echo '<li><a href="signup.php"><span class="glyphicon glyphicon-pencil"></span> Signup</a></li>';
+                }
+                ?>
             </ul>
+
+            <?php
+            if(isset($_SESSION['firstName'])){
+                echo'<h4 class="navbar-right"> '.$_SESSION['firstName'].'</h4>';
+            }
+            
+            ?>
         </section>
     </nav>
 
