@@ -110,12 +110,12 @@ and open the template in the editor.
                             </div>
                             <!-- Left and right controls -->
                             <a class="left carousel-control" href="#product-slider" data-slide="prev">
-                                <i class="glyphicon glyphicon-chevron-left"></i>
-                                <i class="sr-only">Previous</i>
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
                             </a>
                             <a class="right carousel-control" href="#product-slider" data-slide="next">
-                                <i class="glyphicon glyphicon-chevron-right"></i>
-                                <i class="sr-only">Next</i>
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
                             </a>
                         </div>
                     </div>
