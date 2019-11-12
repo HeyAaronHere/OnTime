@@ -29,7 +29,35 @@ and open the template in the editor.
         <?php
         include "header.php";
         ?>
-        <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp  
+
+        <section id="cart" class="cart">
+        <span id="close" class="glyphicon glyphicon-remove" aria-label="close shopping cart"></span>
+        <h2>Your Shopping Cart</h2>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Quantity</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tr>
+                <td id="qty">1</td>
+                <td>Watch 1</td>
+                <td>40 SGD</td>
+            </tr>
+            <tfoot>
+                <td></td>
+                <td id="pricetotal">Total</td>
+                <td id="amounttotal">40 SGD</td>
+            </tfoot>
+        </table>
+        <button type="button" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
+        <button type="button" class="btn btn-success btn-sm"><a href="shoppingcart.php">Proceed to Checkout</a></button>
+
+    </section>
+
+        <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
             all images source from Cocomi.com URL = https://www.cocomi.com/
             how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
 
@@ -109,9 +137,9 @@ and open the template in the editor.
                         <p><b>Condition</b> New </p>
                         <p><b>Brand</b> ABC.Co </p>
                         <label>Quantity </label>
-                        <form id="productdetails" action="productdetails.php" method="post">
-                            <input id="productinput" name="productinput" pattern="^[0-9]+$" required>
-                            <button type="submit" id="btnSubmit" value="Submit"> Add to Cart</button>
+                        <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
+                          <input id="productinput" name="productinput">
+                          <button type="submit" id="btnSubmit" value="Submit"> Add to Cart</button>
                         </form>
                     </div>
                 </section>
@@ -138,7 +166,7 @@ and open the template in the editor.
         </section>
     </article>
 
-    <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp  
+    <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
         all images source from Cocomi.com URL = https://www.cocomi.com/
         how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
 

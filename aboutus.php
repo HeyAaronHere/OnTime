@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <td><a href="ProductDetails.html" target="_blank">Watch2</a></td>
-                <td>80 SGD</td>
+                <td>8 SGD</td>
             </tr>
         </table>
         <button type="button" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
