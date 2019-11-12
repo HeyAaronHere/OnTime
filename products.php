@@ -88,12 +88,12 @@ and open the template in the editor.
                         <p>Some text about the watch..</p>
 
                         <figure class="overlay-right">
-                            <!--<button class="btn btn-secondary" title="Quick Shop">
+                            <button class="btn btn-secondary" title="Quick Shop">
                                 <i class="fa fa-eye"></i></button>
                             <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>-->
-                            <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                    <i class="fa fa-shopping-cart"></i></button></a>
+                                <i class="fa fa-heart-o"></i></button>
+                            <button class="btn btn-secondary" title="Add to Cart">
+                                <i class="fa fa-shopping-cart"></i></button>
                         </figure>
 
                         <figure class="star-rating">
@@ -113,12 +113,12 @@ and open the template in the editor.
                         <p class="price">$19.99</p>
                         <p>Some text about the watch..</p>
                         <figure class="overlay-right">
-                            <!--<button class="btn btn-secondary" title="Quick Shop">
+                            <button class="btn btn-secondary" title="Quick Shop">
                                 <i class="fa fa-eye"></i></button>
                             <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>-->
-                            <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                    <i class="fa fa-shopping-cart"></i></button></a>
+                                <i class="fa fa-heart-o"></i></button>
+                            <button class="btn btn-secondary" title="Add to Cart">
+                                <i class="fa fa-shopping-cart"></i></button>
                         </figure>
 
                         <figure class="star-rating">
@@ -137,12 +137,12 @@ and open the template in the editor.
                         <p class="price">$19.99</p>
                         <p>Some text about the watch..</p>
                         <figure class="overlay-right">
-                            <!--<button class="btn btn-secondary" title="Quick Shop">
+                            <button class="btn btn-secondary" title="Quick Shop">
                                 <i class="fa fa-eye"></i></button>
                             <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>-->
-                            <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                    <i class="fa fa-shopping-cart"></i></button></a>
+                                <i class="fa fa-heart-o"></i></button>
+                            <button class="btn btn-secondary" title="Add to Cart">
+                                <i class="fa fa-shopping-cart"></i></button>
                         </figure>
 
                         <figure class="star-rating">
@@ -162,12 +162,12 @@ and open the template in the editor.
                         <p class="price">$19.99</p>
                         <p>Some text about the watch..</p>
                         <figure class="overlay-right">
-                            <!--<button class="btn btn-secondary" title="Quick Shop">
-                                 <i class="fa fa-eye"></i></button>
-                             <button class="btn btn-secondary" title="Add to wishlist">
-                                 <i class="fa fa-heart-o"></i></button>-->
-                            <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                    <i class="fa fa-shopping-cart"></i></button></a>
+                            <button class="btn btn-secondary" title="Quick Shop">
+                                <i class="fa fa-eye"></i></button>
+                            <button class="btn btn-secondary" title="Add to wishlist">
+                                <i class="fa fa-heart-o"></i></button>
+                            <button class="btn btn-secondary" title="Add to Cart">
+                                <i class="fa fa-shopping-cart"></i></button>
                         </figure>
 
                         <figure class="star-rating">
@@ -194,12 +194,12 @@ and open the template in the editor.
                     <p class="price">$19.99</p>
                     <p>Some text about the watch..</p>
                     <figure class="overlay-right">
-                        <!--<button class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>-->
-                        <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button></a>
+                        <button class="btn btn-secondary" title="Quick Shop">
+                            <i class="fa fa-eye"></i></button>
+                        <button class="btn btn-secondary" title="Add to wishlist">
+                            <i class="fa fa-heart-o"></i></button>
+                        <a href="shoppingcart.html"><button class="btn btn-secondary" title="Add to Cart"></a>
+                        <i class="fa fa-shopping-cart"></i></button>
                     </figure>
                     <figure class="star-rating">
                         <i class="fa fa-star" data-rating="1"></i>
@@ -218,12 +218,12 @@ and open the template in the editor.
                     <p class="price">$19.99</p>
                     <p>Some text about the watch..</p>
                     <figure class="overlay-right">
-                        <!--<button class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>-->
-                        <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button></a>
+                        <button class="btn btn-secondary" title="Quick Shop">
+                            <i class="fa fa-eye"></i></button>
+                        <button class="btn btn-secondary" title="Add to wishlist">
+                            <i class="fa fa-heart-o"></i></button>
+                        <button class="btn btn-secondary" title="Add to Cart">
+                            <i class="fa fa-shopping-cart"></i></button>
                     </figure>
                     <figure class="star-rating">
                         <i class="fa fa-star" data-rating="1"></i>
@@ -242,12 +242,12 @@ and open the template in the editor.
                     <p class="price">$19.99</p>
                     <p>Some text about the watch..</p>
                     <figure class="overlay-right">
-                        <!--<button class="btn btn-secondary" title="Quick Shop">
-                                 <i class="fa fa-eye"></i></button>
-                             <button class="btn btn-secondary" title="Add to wishlist">
-                                 <i class="fa fa-heart-o"></i></button>-->
-                        <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button></a>
+                        <button class="btn btn-secondary" title="Quick Shop">
+                            <i class="fa fa-eye"></i></button>
+                        <button class="btn btn-secondary" title="Add to wishlist">
+                            <i class="fa fa-heart-o"></i></button>
+                        <button class="btn btn-secondary" title="Add to Cart">
+                            <i class="fa fa-shopping-cart"></i></button>
                     </figure>
                     <figure class="star-rating">
                         <i class="fa fa-star" data-rating="1"></i>
@@ -266,12 +266,12 @@ and open the template in the editor.
                     <p class="price">$19.99</p>
                     <p>Some text about the watch..</p>
                     <figure class="overlay-right">
-                        <!--<button class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>-->
-                        <a href="shoppingcart.php"><button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button></a>
+                        <button class="btn btn-secondary" title="Quick Shop">
+                            <i class="fa fa-eye"></i></button>
+                        <button class="btn btn-secondary" title="Add to wishlist">
+                            <i class="fa fa-heart-o"></i></button>
+                        <button class="btn btn-secondary" title="Add to Cart">
+                            <i class="fa fa-shopping-cart"></i></button>
                     </figure>
                     <figure class="star-rating">
                         <i class="fa fa-star" data-rating="1"></i>

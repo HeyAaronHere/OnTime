@@ -1,9 +1,9 @@
 <?php
 //Constants for accessing our DB:
-define("DBHOST", "161.117.122.252");
-define("DBNAME", "p2_7");
-define("DBUSER", "p2_7");
-define("DBPASS", "7tQeryxcIq");
+define("DBHOST", "localhost");
+define("DBNAME", "travel_photo");
+define("DBUSER", "root");
+define("DBPASS", "");
 $email = $pwd = $fname = "";
 $errorMsg = "";
 $success = true;
