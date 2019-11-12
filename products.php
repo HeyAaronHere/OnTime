@@ -58,8 +58,8 @@ and open the template in the editor.
                         <i class="sr-only">Previous</i>
                     </a>
                     <a class="right carousel-control" href="#slider" data-slide="next">
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                        <i class="sr-only">Next</i>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
                     </a>
                 </div>
             </div>
@@ -97,11 +97,11 @@ and open the template in the editor.
                         </figure>
 
                         <figure class="star-rating">
-                            <i class="fa fa-star" data-rating="1"></i>
-                            <i class="fa fa-star" data-rating="2"></i>
-                            <i class="fa fa-star " data-rating="3"></i>
-                            <i class="fa fa-star" data-rating="4"></i>
-                            <i class="fa fa-star-half-o" data-rating="5"></i>
+                            <span class="fa fa-star" data-rating="1"></span>
+                            <span class="fa fa-star" data-rating="2"></span>
+                            <span class="fa fa-star " data-rating="3"></span>
+                            <span class="fa fa-star" data-rating="4"></span>
+                            <span class="fa fa-star-half-o" data-rating="5"></span>
                         </figure>
                     </figure>
                 </div>
@@ -122,11 +122,11 @@ and open the template in the editor.
                         </figure>
 
                         <figure class="star-rating">
-                            <i class="fa fa-star" data-rating="1"></i>
-                            <i class="fa fa-star" data-rating="2"></i>
-                            <i class="fa fa-star " data-rating="3"></i>
-                            <i class="fa fa-star-o" data-rating="4"></i>
-                            <i class="fa fa-star-o" data-rating="5"></i>
+                            <span class="fa fa-star" data-rating="1"></span>
+                            <span class="fa fa-star" data-rating="2"></span>
+                            <span class="fa fa-star " data-rating="3"></span>
+                            <span class="fa fa-star-o" data-rating="4"></span>
+                            <span class="fa fa-star-o" data-rating="5"></span>
                         </figure>
                     </figure>
                 </div>
@@ -146,11 +146,11 @@ and open the template in the editor.
                         </figure>
 
                         <figure class="star-rating">
-                            <i class="fa fa-star" data-rating="1"></i>
-                            <i class="fa fa-star" data-rating="2"></i>
-                            <i class="fa fa-star " data-rating="3"></i>
-                            <i class="fa fa-star" data-rating="4"></i>
-                            <i class="fa fa-star-half-o" data-rating="5"></i>
+                            <span class="fa fa-star" data-rating="1"></span>
+                            <span class="fa fa-star" data-rating="2"></span>
+                            <span class="fa fa-star " data-rating="3"></span>
+                            <span class="fa fa-star" data-rating="4"></span>
+                            <span class="fa fa-star-half-o" data-rating="5"></span>
                         </figure>
                     </figure>
                 </div>
@@ -171,11 +171,11 @@ and open the template in the editor.
                         </figure>
 
                         <figure class="star-rating">
-                            <i class="fa fa-star" data-rating="1"></i>
-                            <i class="fa fa-star" data-rating="2"></i>
-                            <i class="fa fa-star " data-rating="3"></i>
-                            <i class="fa fa-star" data-rating="4"></i>
-                            <i class="fa fa-star" data-rating="5"></i>
+                            <span class="fa fa-star" data-rating="1"></span>
+                            <span class="fa fa-star" data-rating="2"></span>
+                            <span class="fa fa-star " data-rating="3"></span>
+                            <span class="fa fa-star" data-rating="4"></span>
+                            <span class="fa fa-star" data-rating="5"></span>
                         </figure>
                     </figure>
                 </div>
@@ -202,11 +202,11 @@ and open the template in the editor.
                                 <i class="fa fa-shopping-cart"></i></button></a>
                     </figure>
                     <figure class="star-rating">
-                        <i class="fa fa-star" data-rating="1"></i>
-                        <i class="fa fa-star" data-rating="2"></i>
-                        <i class="fa fa-star " data-rating="3"></i>
-                        <i class="fa fa-star" data-rating="4"></i>
-                        <i class="fa fa-star-o" data-rating="5"></i>
+                        <span class="fa fa-star" data-rating="1"></span>
+                        <span class="fa fa-star" data-rating="2"></span>
+                        <span class="fa fa-star " data-rating="3"></span>
+                        <span class="fa fa-star" data-rating="4"></span>
+                        <span class="fa fa-star-o" data-rating="5"></span>
                     </figure>
                 </figure>
             </div>
@@ -226,11 +226,11 @@ and open the template in the editor.
                                 <i class="fa fa-shopping-cart"></i></button></a>
                     </figure>
                     <figure class="star-rating">
-                        <i class="fa fa-star" data-rating="1"></i>
-                        <i class="fa fa-star" data-rating="2"></i>
-                        <i class="fa fa-star " data-rating="3"></i>
-                        <i class="fa fa-star" data-rating="4"></i>
-                        <i class="fa fa-star-o" data-rating="5"></i>
+                        <span class="fa fa-star" data-rating="1"></span>
+                        <span class="fa fa-star" data-rating="2"></span>
+                        <span class="fa fa-star " data-rating="3"></span>
+                        <span class="fa fa-star" data-rating="4"></span>
+                        <span class="fa fa-star-o" data-rating="5"></span>
                     </figure>
                 </figure>
             </div>
@@ -250,11 +250,11 @@ and open the template in the editor.
                                 <i class="fa fa-shopping-cart"></i></button></a>
                     </figure>
                     <figure class="star-rating">
-                        <i class="fa fa-star" data-rating="1"></i>
-                        <i class="fa fa-star" data-rating="2"></i>
-                        <i class="fa fa-star " data-rating="3"></i>
-                        <i class="fa fa-star-half-o" data-rating="4"></i>
-                        <i class="fa fa-star-o" data-rating="5"></i>
+                        <span class="fa fa-star" data-rating="1"></span>
+                        <span class="fa fa-star" data-rating="2"></span>
+                        <span class="fa fa-star " data-rating="3"></span>
+                        <span class="fa fa-star-half-o" data-rating="4"></span>
+                        <span class="fa fa-star-o" data-rating="5"></span>
                     </figure>
                 </figure>
             </div>
@@ -274,11 +274,11 @@ and open the template in the editor.
                                 <i class="fa fa-shopping-cart"></i></button></a>
                     </figure>
                     <figure class="star-rating">
-                        <i class="fa fa-star" data-rating="1"></i>
-                        <i class="fa fa-star" data-rating="2"></i>
-                        <i class="fa fa-star " data-rating="3"></i>
-                        <i class="fa fa-star" data-rating="4"></i>
-                        <i class="fa fa-star" data-rating="5"></i>
+                        <span class="fa fa-star" data-rating="1"></span>
+                        <span class="fa fa-star" data-rating="2"></span>
+                        <span class="fa fa-star " data-rating="3"></span>
+                        <span class="fa fa-star" data-rating="4"></span>
+                        <span class="fa fa-star" data-rating="5"></span>
                     </figure>
             </div>
             <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp  
