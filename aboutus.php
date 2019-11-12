@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
 
 <head>
@@ -14,10 +8,13 @@ and open the template in the editor.
     <meta name="keywords"
         content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>-->
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/aboutUs.css">
+    <link rel="stylesheet" href="css/shoppingcart.css">
     <link rel="stylesheet" href="css/headerFooter.css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         crossorigin="anonymous"></script>
@@ -28,53 +25,40 @@ and open the template in the editor.
 
 </head>
 
-<body class="container-fluid">
-    <nav class="navbar navbar-custom navbar-fixed-top navbar-inverse">
-        <div id="topnav-centered">
-            <a class="navbar-brand" href="index.html"><img src="images\logo3.png" alt="Ontime logo"
-                    style="width:150px;height:60px;" /></a>
-        </div>
+<body>
+    <div class="container-fluid">
 
-        <section class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </section>
+    <?php
+        include "header.php";
+    ?>
 
-        <section class="collapse navbar-collapse container-fluid" id="myNavbar">
+     <section id="cart" class="cart">
+        <span class="glyphicon glyphicon-remove" aria-label="close shopping cart"></span>
+        <h2>Your Shopping Cart</h2>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tr>
+                <td><a href="ProductDetails.html" target="_blank">Watch1</a></td>
+                <td>40 SGD</td>
+            </tr>
+            <tr>
+                <td><a href="ProductDetails.html" target="_blank">Watch2</a></td>
+                <td>80 SGD</td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
+        <button type="button" class="btn btn-success btn-sm"><a href="shoppingcart.php">Proceed to Checkout</a></button>
 
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="products.html#hot">Top selling</a></li>
-                        <li><a href="products.html#newarr">Newest</a></li>
-                        <li><a href="products.html">All</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer service<span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="customerservice.html#Maintenance">Maintainence</a></li>
-                        <li><a href="customerservice.html#FAQ">Faq</a></li>
-                    </ul>
-                </li>
-                <li><a href="productsreview.html">Reviews</a></li>
-                <li><a href="aboutus.html">About us</a></li>
-            </ul>
-
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="shoppingcart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </section>
-    </nav>
+    </section>
 
     <article class="container">
+
+
         <section class="row">
             <div class="col-lg-5">
                 <img class="img-responsive" id="holzkern" src="images/Holzkern.jpg" alt="ONtime">
@@ -109,7 +93,7 @@ and open the template in the editor.
             data-parent="#ourteam">
             <h2>Aaron</h2>
             <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Aaron">
-            <figure id="aaronstext" class="popup collapse">
+            <figure id="aaronstext" class="popup collapse"> <!--class="popup collapse"-->
                 <article class="textbox">
                     <p>Aaron was born in Singapore.Aaron was born in Singapore.
                         Aaron was born in Singapore.Aaron was born in Singapore.
@@ -172,50 +156,10 @@ and open the template in the editor.
         </div>
     </article>
 
-    <footer class="footer">
-        <section class=container>
-            <section class="row">
-                <section class="col-md-4">
-                    <h1>Company</h1>
-                    <a href="aboutus.html">
-                        <p>About Us</p>
-                    </a>
-                    <a href="aboutus.html">
-                        <p>Contact Us</p>
-                    </a>
-                </section>
-
-                <section class="col-md-4">
-                    <h1>Customer Support</h1>
-                    <a href="customerservice.html#FAQ">
-                        <p>FAQ</p>
-                    </a>
-                    <a href="customerservice.html">
-                        <p>Customer Service</p>
-                    </a>
-                </section>
-
-                <section class="col-md-4">
-                    <h1>Follow Us On</h1>
-                    <a href="https://www.facebook.com/">
-                        <p><i class="fa fa-facebook-official"></i> Facebook</p>
-                    </a>
-                    <a href="https://www.youtube.com/">
-                        <p><i class="fa fa-youtube-play"></i> Youtube</p>
-                    </a>
-                    <a href="https://www.linkedin.com/">
-                        <p><i class="fa fa-linkedin"></i> LinkedIn</p>
-                    </a>
-                    <a href="https://twitter.com/">
-                        <p><i class="fa fa-twitter"></i> Twitter</p>
-                    </a>
-                </section>
-
-            </section>
-            <hr />
-            <p class="copyright">Copyright &copy; 2019 <i class="fa fa-heart-o"></i> ONTime</p>
-        </section>
-    </footer>
+    <?php
+        include "footer.php";
+    ?>
+    </div>
 </body>
 
 </html>
