@@ -33,7 +33,7 @@
                                 <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter your password..." title="Must contain at least 1 uppercase, 1 lowercase and 1 number/special character." required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                                <button type="submit" name="login-submit" class="btn btn-primary btn-block">Log in</button>
                             </div>
                         </form>
                     </div>
@@ -44,5 +44,4 @@
         include "footer.php";
         ?>
     </body>
-
 </html>

@@ -17,15 +17,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
 
-        <style>
-            @font-face {
-                font-family: 'collection';
-                src: url(fonts/CollectionFree.otf);
-                font-style: normal;
-                font-weight: 100;
-            }
-        </style>
-
     </head>
 
     <body>

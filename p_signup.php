@@ -19,10 +19,9 @@ function saveMemberToDB() {
         $errorMsg = "Connection failed: " . $conn->connect_error;
         $success = false;
     } else {
-        //$hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
+        $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
         $sql = "INSERT INTO user (fname, lname, email, HPnumber, password)";
-        $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$pwd')";
-        //$sql .= " VALUES ('$fname', '$lname', '$email', '$hashed_password')";
+        $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$hashed_password')";
 // Execute the query
         if (!$conn->query($sql)) {
             $errorMsg = "Database error: " . $conn->error;
@@ -83,8 +82,8 @@ function saveMemberToDB() {
             } else if (strlen($pwd) < 8 || strlen($cfmpwd) < 8) {
                 $errorMsg .= "Password is less than 8 characters.";
                 $success = false;
-            } else if (strlen($HPnumber) !== 8) {
-                $errorMsg .= "Contact number is not 8 digits.";
+            } else if (strlen($HPnumber) != 8) {
+                $errorMsg .= "Contact number is must be 8 digits.";
                 $success = false;
             }
         }
@@ -94,18 +93,18 @@ function saveMemberToDB() {
             echo "<p>Email: " . $email;
             echo "<p>First Name: " . $fname;
             echo "<p>Last Name: " . $lname;
-            echo "<p>Contact Number: " . $HPnumber;
+            echo "<p>Contact No: " . $HPnumber;
             echo "<p>Password: " . $pwd;
             echo "<p>Confirm Password: " . $cfmpwd;
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
             echo "<p>" . $errorMsg . "</p>";
-            echo "<form action=\"signup.php\" method=\"post\"><button type=\"submit\">Return to Sign Up</button></form>";
+            echo "<form action=\"register.php\" method=\"post\"><button type=\"submit\">Return to Sign Up</button></form>";
         }
         include "footer.php";
 
-//Helper function that checks input for malicious or unwanted content.
+        //Helper function that checks input for malicious or unwanted content.
         function sanitize_input($data) {
             $data = trim($data);
             $data = stripslashes($data);

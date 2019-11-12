@@ -8,11 +8,8 @@ $email = $pwd = $fname = "";
 $errorMsg = "";
 $success = true;
 
-/* Helper function to write the data to the DB */
-
 // Create connection
 $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-// Check connection
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,23 +59,24 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                 $errorMsg = "Connection failed: " . $conn->connect_error;
                 $success = false;
             } else {
-                $sql = "SELECT * FROM travel_photo_members WHERE ";
-                $sql .= "email='$email' AND password='$pwd'";
-// Execute the query
+                $sql = "SELECT * FROM user WHERE ";
+                $sql .= "email='$email'";
+                // Execute the query
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-// Note that email field is unique, so should only have
-// one row in the result set.
+                // Note that email field is unique, so should only have
+                // one row in the result set.
                     $row = $result->fetch_assoc();
-                    $result->free_result();
-                    $fname = $row["fname"];
-                    $lname = $row["lname"];
-                    unset($row);
+                    if (password_verify($pwd, $row['password'])) {
+                        $result->free_result();
+                        $fname = $row["fname"];
+                        $lname = $row["lname"];
+                        unset($row);
+                    }
                 } else {
                     $errorMsg = "Email not found or password doesn't match...";
                     $success = false;
                 }
-                //$result->free_result();
             }
             $conn->close();
         }
@@ -87,6 +85,15 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             echo "<h4>Welcome back, $fname</h4>";
             echo "<p>Email: " . $email;
             echo "<p>Password: " . $pwd;
+            if (!isset($_SESSION)) {
+                //start session if success
+                session_start();
+                //sets $fname to 
+                $_SESSION['firstName'] = $fname;
+            } else {
+                //sets $fname to 
+                $_SESSION['firstName'] = $fname;
+            }            
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
@@ -95,7 +102,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
         }
         include "footer.php";
 
-//Helper function that checks input for malicious or unwanted content.
+        //Helper function that checks input for malicious or unwanted content.
         function sanitize_input($data) {
             $data = trim($data);
             $data = stripslashes($data);
