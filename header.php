@@ -1,5 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
     session_start();
+}
 ?>
 <html>
     <head>
@@ -33,7 +35,7 @@
     <nav class="navbar navbar-custom navbar-fixed-top navbar-inverse">
         <div id="topnav-centered">
             <a class="navbar-brand" href="index.php"><img src="images\logo3.png" alt="Ontime logo"
-                                                           style="width:150px;height:60px;" /></a>
+                                                          style="width:150px;height:60px;" /></a>
         </div>
 
         <section class="navbar-header">
@@ -59,8 +61,8 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer service<span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="customerservice.php#Maintenance">Maintainence</a></li>
-                        <li><a href="customerservice.php#FAQ">Faq</a></li>
+                        <li><a href="customerservice.php#Maintenance">Maintenance</a></li>
+                        <li><a href="customerservice.php#FAQ">FAQ</a></li>
                     </ul>
                 </li>
                 <li><a href="productsreview.php">Reviews</a></li>
@@ -69,24 +71,21 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                
-                if(isset($_SESSION['firstName'])){  
+                if (isset($_SESSION['firstName'])) {
                     echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
                     echo'<li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
-                }
-                else{
+                } else {
                     echo'<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
                     echo '<li><a href="signup.php"><span class="glyphicon glyphicon-pencil"></span> Signup</a></li>';
                 }
                 ?>
             </ul>
 
-            <?php
-            if(isset($_SESSION['firstName'])){
-                echo'<h4 class="navbar-right"> '.$_SESSION['firstName'].'</h4>';
-            }
-            
-            ?>
+                <?php
+                if (isset($_SESSION['firstName'])) {
+                    echo'<h4 class="navbar-right"> ' . $_SESSION['firstName'] . '</h4>';
+                }
+                ?>
         </section>
     </nav>
 

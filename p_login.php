@@ -89,10 +89,13 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             echo "<h4>Welcome back, $fname</h4>";
             echo "<p>Email: " . $email;
             echo "<p>Password: " . $pwd;
-            //start session if success
-            session_start();
-            //sets $fname to 
-            $_SESSION['firstName'] = $fname;
+            if (!isset($_SESSION)) {
+                //start session if success
+                session_start();
+                //sets $fname to 
+                $_SESSION['firstName'] = $fname;
+                echo'<h4 class="navbar-right"> ' . $_SESSION['firstName'] . '</h4>';
+            }
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
@@ -101,7 +104,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
         }
         include "footer.php";
 
-//Helper function that checks input for malicious or unwanted content.
+        //Helper function that checks input for malicious or unwanted content.
         function sanitize_input($data) {
             $data = trim($data);
             $data = stripslashes($data);
