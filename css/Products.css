@@ -63,7 +63,7 @@ img
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .card button:hover {
@@ -107,8 +107,9 @@ img
     width: 35px;
     font-size: 20px;
     padding: 7px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    
 }
 
 .overlay-right .btn-secondary
