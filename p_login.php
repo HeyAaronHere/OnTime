@@ -1,9 +1,9 @@
 <?php
 //Constants for accessing our DB:
-define("DBHOST", "161.117.122.252");
-define("DBNAME", "p2_7");
-define("DBUSER", "p2_7");
-define("DBPASS", "7tQeryxcIq");
+define("DBHOST", "localhost");
+define("DBNAME", "travel_photo");
+define("DBUSER", "root");
+define("DBPASS", "");
 $email = $pwd = $fname = "";
 $errorMsg = "";
 $success = true;
@@ -89,6 +89,10 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             echo "<h4>Welcome back, $fname</h4>";
             echo "<p>Email: " . $email;
             echo "<p>Password: " . $pwd;
+            //start session if success
+            session_start();
+            //sets $fname to 
+            $_SESSION['firstName'] = $fname;
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";

@@ -38,10 +38,6 @@
                                 <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email..." title="E.g johndoe@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$">
                             </div>
                             <div class="form-group">
-                                <label for="HPno">Contact No:</label>
-                                <input type="tel" class="form-control" id="HPnumber" name="HPnumber" placeholder="(+65) E.g: 98765432" maxlength="8" required pattern="[0-9]{8}">
-                            </div>
-                            <div class="form-group">
                                 <label for="Password">Password:</label>
                                 <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter your password..." title="Must contain at least 1 uppercase, 1 lowercase and 1 number/special character" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>

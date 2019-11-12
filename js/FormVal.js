@@ -2,7 +2,6 @@ function validateform() {
   var fname = document.forms["RegForm"]["fname"].value;
   var lname = document.forms["RegForm"]["lname"].value;
   var email = document.forms["RegForm"]["email"].value;
-  var HPnumber = document.forms["RegForm"]["HPnumber"].value;
   var pwd = document.forms["RegForm"]["pwd"].value;
   var cfmpwd = document.forms["RegForm"]["cfmpwd"].value;
 
@@ -12,7 +11,7 @@ function validateform() {
       return false;
   }
 
-  if (fname === "" || lname === "" || email === "" || HPnumber === "" || pwd === "" || cfmpwd === "") {
+  if (fname === "" || lname === "" || email === "" || pwd === "" || cfmpwd === "") {
       alert("Forms can't be blank");
       return false;
   } else if (pwd.length < 8 || cfmpwd.length < 8) {
@@ -32,12 +31,6 @@ function validateform() {
   reEmail = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/;
   if (reEmail.test(email) === false){
       alert("Email is in invalid format.");
-      return false;
-  }
-  
-  reHP = /[0-9]{8}/;
-  if (reHP.test(HPnumber) === false){
-      alert("Contact number is in invalid format.");
       return false;
   }
   
