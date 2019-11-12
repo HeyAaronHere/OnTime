@@ -22,7 +22,6 @@ function saveMemberToDB() {
         $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
         $sql = "INSERT INTO user (fname, lname, email, HPnumber, password)";
         $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$hashed_password')";
-        //$sql .= " VALUES ('$fname', '$lname', '$email', '$hashed_password')";
 // Execute the query
         if (!$conn->query($sql)) {
             $errorMsg = "Database error: " . $conn->error;
