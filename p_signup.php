@@ -82,7 +82,7 @@ function saveMemberToDB() {
             } else if (strlen($pwd) < 8 || strlen($cfmpwd) < 8) {
                 $errorMsg .= "Password is less than 8 characters.";
                 $success = false;
-            } else if (strlen($HPnumber) != 8 ) {
+            } else if (strlen($HPnumber) != 8) {
                 $errorMsg .= "Contact number is must be 8 digits.";
                 $success = false;
             }
@@ -104,7 +104,7 @@ function saveMemberToDB() {
         }
         include "footer.php";
 
-//Helper function that checks input for malicious or unwanted content.
+        //Helper function that checks input for malicious or unwanted content.
         function sanitize_input($data) {
             $data = trim($data);
             $data = stripslashes($data);

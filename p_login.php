@@ -8,11 +8,8 @@ $email = $pwd = $fname = "";
 $errorMsg = "";
 $success = true;
 
-/* Helper function to write the data to the DB */
-
 // Create connection
 $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-// Check connection
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,11 +61,11 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             } else {
                 $sql = "SELECT * FROM user WHERE ";
                 $sql .= "email='$email'";
-// Execute the query
+                // Execute the query
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-// Note that email field is unique, so should only have
-// one row in the result set.
+                // Note that email field is unique, so should only have
+                // one row in the result set.
                     $row = $result->fetch_assoc();
                     if (password_verify($pwd, $row['password'])) {
                         $result->free_result();
@@ -80,7 +77,6 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                     $errorMsg = "Email not found or password doesn't match...";
                     $success = false;
                 }
-                //$result->free_result();
             }
             $conn->close();
         }
@@ -94,8 +90,10 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                 session_start();
                 //sets $fname to 
                 $_SESSION['firstName'] = $fname;
-                echo'<h4 class="navbar-right"> ' . $_SESSION['firstName'] . '</h4>';
-            }
+            } else {
+                //sets $fname to 
+                $_SESSION['firstName'] = $fname;
+            }            
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
