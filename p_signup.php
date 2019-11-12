@@ -69,7 +69,7 @@ function saveMemberToDB() {
             $emailpattern = "/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/";
             $namepattern = "/^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$/";
             $pwdpattern = "/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/";
-            $hpnopattern = "/[0-9]{8}";
+            $hpnopattern = "/[0-9]{8}/";
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !filter_var($fname) || !filter_var($lname) || !filter_var($HPnumber) || !filter_var($pwd) || !filter_var($cfmpwd)) {
                 $errorMsg .= "Invalid entry format.";
