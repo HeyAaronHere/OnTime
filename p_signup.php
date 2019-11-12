@@ -19,9 +19,9 @@ function saveMemberToDB() {
         $errorMsg = "Connection failed: " . $conn->connect_error;
         $success = false;
     } else {
-        //$hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
+        $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
         $sql = "INSERT INTO user (fname, lname, email, HPnumber, password)";
-        $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$pwd')";
+        $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$hashed_password')";
         //$sql .= " VALUES ('$fname', '$lname', '$email', '$hashed_password')";
 // Execute the query
         if (!$conn->query($sql)) {

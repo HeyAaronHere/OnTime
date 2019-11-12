@@ -62,18 +62,20 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                 $errorMsg = "Connection failed: " . $conn->connect_error;
                 $success = false;
             } else {
-                $sql = "SELECT * FROM travel_photo_members WHERE ";
-                $sql .= "email='$email' AND password='$pwd'";
+                $sql = "SELECT * FROM user WHERE ";
+                $sql .= "email='$email'";
 // Execute the query
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
 // Note that email field is unique, so should only have
 // one row in the result set.
                     $row = $result->fetch_assoc();
-                    $result->free_result();
-                    $fname = $row["fname"];
-                    $lname = $row["lname"];
-                    unset($row);
+                    if (password_verify($pwd, $row['password'])) {
+                        $result->free_result();
+                        $fname = $row["fname"];
+                        $lname = $row["lname"];
+                        unset($row);
+                    }
                 } else {
                     $errorMsg = "Email not found or password doesn't match...";
                     $success = false;
