@@ -9,7 +9,6 @@
         content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
 
     <link rel="stylesheet" href="css/aboutUs.css">
-    <link rel="stylesheet" href="css/shoppingcart.css">
     <link rel="stylesheet" href="css/headerFooter.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,29 +28,9 @@
         include "header.php";
     ?>
 
-     <section id="cart" class="cart">
-        <span class="glyphicon glyphicon-remove" aria-label="close shopping cart"></span>
-        <h2>Your Shopping Cart</h2>
-        <table class="table table-striped table-responsive">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tr>
-                <td><a href="ProductDetails.html" target="_blank">Watch1</a></td>
-                <td>40 SGD</td>
-            </tr>
-            <tr>
-                <td><a href="ProductDetails.html" target="_blank">Watch2</a></td>
-                <td>80 SGD</td>
-            </tr>
-        </table>
-        <button type="button" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
-        <button type="button" class="btn btn-success btn-sm"><a href="shoppingcart.php">Proceed to Checkout</a></button>
-
-    </section>
+    <?php
+        include "sideShoppingCart.php";
+    ?>
 
     <article class="container">
 
