@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION)) {
     session_start();
-    
+
 }
 ?>
 <html>
@@ -59,7 +59,7 @@ if (!isset($_SESSION)) {
                         <li><a href="products.php">All</a></li>-->
                         <li><a href="product_database.php#hot">Top selling</a></li>
                         <li><a href="product_database.php#newarr">Newest</a></li>
-                        <li><a href="product_database.php">All</a></li>
+                        <li><a href="productdetails.php">All</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

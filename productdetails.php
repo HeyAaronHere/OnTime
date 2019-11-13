@@ -1,3 +1,16 @@
+<?php
+//Constants for accessing our DB:
+define("DBHOST", "161.117.122.252");
+define("DBNAME", "p2_7");
+define("DBUSER", "p2_7");
+define("DBPASS", "7tQeryxcIq");
+$email = $pwd = $fname = "";
+$errorMsg = "";
+$success = true;
+
+
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -15,7 +28,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/productDetails.css" rel="stylesheet" type="text/css">
         <link href="css/headerFooter.css" rel="stylesheet" type="text/css">
-        <script src="js/productDetails.js"></script>
+<!--        <script src="js/productDetails.js"></script>  -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -114,11 +127,28 @@ and open the template in the editor.
                         <p><b>Availability</b> In Stock </p>
                         <p><b>Condition</b> New </p>
                         <p><b>Brand</b> ABC.Co </p>
-                        <label>Quantity </label>
+
+
+                        <?php
+                          // Create connection
+                          $conn = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+                          $query = "SELECT * FROM product ORDER BY product_id ASC";
+                          $result = mysqli_query($conn, $query);
+                          if(mysqli_num_rows($result) > 0) {
+                          //  while($row = mysqli_fetch_array($result)){ //maybe only first row erstmal
+                          $row = mysqli_fetch_array($result);
+                        ?>
+                        <label for="productdetails">Quantity </label>
                         <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
-                          <input id="productinput" name="productinput">
-                          <button type="submit" id="btnSubmit" value="Submit"> Add to Cart</button>
+                          <input id="productinput" name="productinput" value="1">
+                          <input type="hidden" name="productID" value="<?php echo $row["product_id"]; ?>">
+                          <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                         </form>
+                        <?php
+                          }
+                      //  }
+                        ?>
+
                     </div>
                 </section>
             </section>
