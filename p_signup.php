@@ -100,7 +100,7 @@ function saveMemberToDB() {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
             echo "<p>" . $errorMsg . "</p>";
-            echo "<form action=\"register.php\" method=\"post\"><button type=\"submit\">Return to Sign Up</button></form>";
+            echo "<form action=\"signup.php\" method=\"post\"><button type=\"submit\">Return to Sign Up</button></form>";
         }
         include "footer.php";
 
