@@ -30,7 +30,8 @@ and open the template in the editor.
     <body>
         <?php
         include "header.php";
-        ?>
+        include "sideShoppingCart.php"
+        ?>        
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
         <section>
             <div class="container-fluid">
@@ -45,10 +46,18 @@ and open the template in the editor.
                     <div class="carousel-inner">
                         <div class="item active">
                             <img src="img/carousel1.jpg" alt="Carousel 1" style="width:100%;">
+                            <div class="carousel-caption">
+                                <h1>ONTime</h1>
+                                <p>Your Friendly Watch Shop!</p>
+                            </div>
                         </div>
 
                         <div class="item">
                             <img src="img/carousel2.jpg" alt="Carousel 2" style="width:100%;">
+                            <div class="carousel-caption">
+                                <h1>Awesome Watches!</h1>
+                                <p>Check out more about our watches below</p>
+                            </div>
                         </div>
 
                     </div>
@@ -76,260 +85,40 @@ and open the template in the editor.
 
             <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp  
                 all image sources are from Cocomi.com URL = https://www.cocomi.com/-->
-            <div class="row">
+            <div class="container-fluid">
 
-                <div class="col-md-12">
-                    <?php
-                    $connect = mysqli_connect('161.117.122.252', 'p2_7', '7tQeryxcIq', 'p2_7');
-                    $query = "SELECT * FROM product ORDER BY product_id ASC";
-                    $result = mysqli_query($connect, $query);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($product = mysqli_fetch_assoc($result)) {
-                            ?>
-                            <div class="col-md-8 card">
-                                <form method="post" action="product_database.php?action=add&id=<?php echo $product['product_id']; ?>">
-                                    <div class="products">
-                                        <a href="productdetails.php"><img src="<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
-                                        <h4><?php echo $product['product_name']; ?></h4>
-                                        <h4><?php echo $product['product_desc']; ?></h4>
-                                        <h4><?php echo $product['product_price']; ?></h4>
-                                        <input type="text" name="quantity" class="form-control" value="0"/>
-                                        <input type="hidden" name="product_name" value="<?php echo $product['product_name']; ?>" />
-                                        <input type="hidden" name="product_description" value="<?php echo $product['product_desc']; ?>" />
-                                        <input type="hidden" name="product_price" value="<?php echo $product['product_price']; ?>" />
+                <?php
+                $connect = mysqli_connect('161.117.122.252', 'p2_7', '7tQeryxcIq', 'p2_7');
+                $query = "SELECT * FROM product ORDER BY product_id ASC LIMIT 8";
+                $result = mysqli_query($connect, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($product = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <div class="col-md-2 card">
+                            <form method="post" action="product_database.php?action=add&id=<?php echo $product['product_id']; ?>">
+                                <div class="products">
+                                    <a href="productdetails.php"><img src="img/<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
+                                    <h4><?php echo $product['product_name']; ?></h4>
+                                    <h4><?php echo $product['product_desc']; ?></h4>
+                                    <p class="price"><?php echo $product['product_price']; ?></p>
+                                    <input type="hidden" name="product_name" value="<?php echo $product['product_name']; ?>" />
+                                    <input type="hidden" name="product_description" value="<?php echo $product['product_desc']; ?>" />
+                                    <input type="hidden" name="product_price" value="<?php echo $product['product_price']; ?>" />
 
+                                    <figure class="overlay-right">
+                                        <a href="shoppingcart.php>"<button class="btn btn-secondary" title="Add to Cart">
+                                                <span class="fa fa-shopping-cart"></span></button></a>
+                                    </figure>
 
-                                        <figure class="overlay-right">
-                                            <button class="btn btn-secondary" title="Quick Shop">
-                                                <span class="fa fa-eye"></span></button>
-                                            <button class="btn btn-secondary" title="Add to wishlist">
-                                                <span class="fa fa-heart-o"></span></button>
-                                            <button class="btn btn-secondary" title="Add to Cart">
-                                                <span class="fa fa-shopping-cart"></span></button>
-                                        </figure>
+                                </div>
+                            </form>
+                        </div>
 
-                                        <figure class="star-rating">
-                                            <span class="fa fa-star" data-rating="1"></span>
-                                            <span class="fa fa-star" data-rating="2"></span>
-                                            <span class="fa fa-star " data-rating="3"></span>
-                                            <span class="fa fa-star" data-rating="4"></span>
-                                            <span class="fa fa-star-half-o" data-rating="5"></span>
-                                        </figure>
-                                        
-                                        <input type="submit" name="add_to_cart" style="margin-top:5px;"class="btn btn-info" value="Add to Cart" />
-                                    </div>
-                                </form>
-                            </div>
-
-                            <?php
-                        }
+                        <?php
                     }
-                    ?>
-
-
-
-                    <!--<figure class="card">
-                        <a href="productdetails.php"><img src="<?php echo $row["product_img"]; ?>" alt="Buring Classic Blue Men's Watch"></a>
-                        <h1><?php echo $row["product_name"]; ?></h1>
-                        <p class="price"><?php echo $row["product_price"]; ?></p>
-                        <p><?php echo $row["product_desc"]; ?></p>-->
-
-                    <!--<figure class="overlay-right">
-                        <button class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i></button>
-                        <button class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i></button>
-                        <button class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i></button>
-                    </figure>
-
-                    <figure class="star-rating">
-                        <span class="fa fa-star" data-rating="1"></span>
-                        <span class="fa fa-star" data-rating="2"></span>
-                        <span class="fa fa-star " data-rating="3"></span>
-                        <span class="fa fa-star" data-rating="4"></span>
-                        <span class="fa fa-star-half-o" data-rating="5"></span>
-                    </figure>-->
-                    </figure>
-                </div>
-
-                <!--<div class="col-md-3">
-                    <figure class="card">
-                        <a href="productdetails.php"><img src="img/WatchM2.jpg" alt="Buring Classic White Men's Watch"></a>
-                        <h1>Male Watch 2</h1>
-                        <p class="price">$19.99</p>
-                        <p>Some text about the watch..</p>
-                        <figure class="overlay-right">
-                            <button class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>
-                            <button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button>
-                        </figure>
-
-                        <figure class="star-rating">
-                            <span class="fa fa-star" data-rating="1"></span>
-                            <span class="fa fa-star" data-rating="2"></span>
-                            <span class="fa fa-star " data-rating="3"></span>
-                            <span class="fa fa-star-o" data-rating="4"></span>
-                            <span class="fa fa-star-o" data-rating="5"></span>
-                        </figure>
-                    </figure>
-                </div>
-                <div class="col-md-3">
-                    <figure class="card">
-                        <a href="productdetails.php"><img src="img/WatchM3.jpg" alt="Timberland Ashland Men's Watch"></a>
-                        <h1>Male Watch 3</h1>
-                        <p class="price">$19.99</p>
-                        <p>Some text about the watch..</p>
-                        <figure class="overlay-right">
-                            <button class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>
-                            <button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button>
-                        </figure>
-
-                        <figure class="star-rating">
-                            <span class="fa fa-star" data-rating="1"></span>
-                            <span class="fa fa-star" data-rating="2"></span>
-                            <span class="fa fa-star " data-rating="3"></span>
-                            <span class="fa fa-star" data-rating="4"></span>
-                            <span class="fa fa-star-half-o" data-rating="5"></span>
-                        </figure>
-                    </figure>
-                </div>
-                <div class="col-md-3">
-                    <figure class="card">
-                        <a href="productdetails.php"><img src="img/WatchM4.jpg" alt="Timberland Biddeford Men's Watch"></a>
-
-                        <h1>Male Watch 4</h1>
-                        <p class="price">$19.99</p>
-                        <p>Some text about the watch..</p>
-                        <figure class="overlay-right">
-                            <button class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i></button>
-                            <button class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i></button>
-                        </figure>
-
-                        <figure class="star-rating">
-                            <span class="fa fa-star" data-rating="1"></span>
-                            <span class="fa fa-star" data-rating="2"></span>
-                            <span class="fa fa-star " data-rating="3"></span>
-                            <span class="fa fa-star" data-rating="4"></span>
-                            <span class="fa fa-star" data-rating="5"></span>
-                        </figure>
-                    </figure>
-                </div>
+                }
+                ?>
             </div>
-
-            <div class="container-fluid" id="newarr">
-                <div class="title-box">
-                    <h2> Newest </h2>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <figure class="card">
-                    <a href="productdetails.php"><img src="img/WatchF1.jpg" alt="Olivia Burton British Blooms Rose Women's Watch"></a>
-                    <h1>Female Watch 1</h1>
-                    <p class="price">$19.99</p>
-                    <p>Some text about the watch..</p>
-                    <figure class="overlay-right">
-                        <button class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i></button>
-                        <button class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i></button>
-                        <a href="shoppingcart.html"><button class="btn btn-secondary" title="Add to Cart"></a>
-                        <i class="fa fa-shopping-cart"></i></button>
-                    </figure>
-                    <figure class="star-rating">
-                        <span class="fa fa-star" data-rating="1"></span>
-                        <span class="fa fa-star" data-rating="2"></span>
-                        <span class="fa fa-star " data-rating="3"></span>
-                        <span class="fa fa-star" data-rating="4"></span>
-                        <span class="fa fa-star-o" data-rating="5"></span>
-                    </figure>
-                </figure>
-            </div>
-
-            <div class="col-md-3">
-                <figure class="card">
-                    <a href="productdetails.php"><img src="img/WatchF2.jpg" alt="Olivia Burton British Blooms Silver Women's Watch"></a>
-                    <h1>Female Watch 2</h1>
-                    <p class="price">$19.99</p>
-                    <p>Some text about the watch..</p>
-                    <figure class="overlay-right">
-                        <button class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i></button>
-                        <button class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i></button>
-                        <button class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i></button>
-                    </figure>
-                    <figure class="star-rating">
-                        <span class="fa fa-star" data-rating="1"></span>
-                        <span class="fa fa-star" data-rating="2"></span>
-                        <span class="fa fa-star " data-rating="3"></span>
-                        <span class="fa fa-star" data-rating="4"></span>
-                        <span class="fa fa-star-o" data-rating="5"></span>
-                    </figure>
-                </figure>
-            </div>
-
-            <div class="col-md-3">
-                <figure class="card">
-                    <a href="productdetails.php"><img src="img/WatchF3.jpg" alt="Paul Hewitt Sailor Line Modest Black"></a>
-                    <h1>Female Watch 3</h1>
-                    <p class="price">$19.99</p>
-                    <p>Some text about the watch..</p>
-                    <figure class="overlay-right">
-                        <button class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i></button>
-                        <button class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i></button>
-                        <button class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i></button>
-                    </figure>
-                    <figure class="star-rating">
-                        <span class="fa fa-star" data-rating="1"></span>
-                        <span class="fa fa-star" data-rating="2"></span>
-                        <span class="fa fa-star " data-rating="3"></span>
-                        <span class="fa fa-star-half-o" data-rating="4"></span>
-                        <span class="fa fa-star-o" data-rating="5"></span>
-                    </figure>
-                </figure>
-            </div>
-
-            <div class="col-md-3">
-                <figure class="card">
-                    <a href="productdetails.php"><img src="img/WatchF4.jpg" alt="Paul Hewitt Miss Ocean Line Holo Silver Women's Watch"></a>
-                    <h1>Female Watch 4</h1>
-                    <p class="price">$19.99</p>
-                    <p>Some text about the watch..</p>
-                    <figure class="overlay-right">
-                        <button class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i></button>
-                        <button class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i></button>
-                        <button class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i></button>
-                    </figure>
-                    <figure class="star-rating">
-                        <span class="fa fa-star" data-rating="1"></span>
-                        <span class="fa fa-star" data-rating="2"></span>
-                        <span class="fa fa-star " data-rating="3"></span>
-                        <span class="fa fa-star" data-rating="4"></span>
-                        <span class="fa fa-star" data-rating="5"></span>
-                    </figure>-->
-            </div>
-            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp  
-               all images source from Cocomi.com URL = https://www.cocomi.com/ -->
         </main>
         <hr />
 

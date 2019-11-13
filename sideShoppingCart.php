@@ -26,3 +26,13 @@
 <button type="button" class="btn btn-success btn-sm"><a href="shoppingcart.php">Proceed to Checkout</a></button>
 
 </section>
+
+<!--
+
+ check if there's at least one item in the shopping cart
+ no: your shopping cart is empty
+ yes: print out:
+ sql statement, store quantity and prodID in arrays rowitem, rowquantity while loop  (fetch assoc)
+count for amount of items in Cart, while loop begins
+abfrage query fetchassoc
+store price quantity totalPrice? name from db in variables -->

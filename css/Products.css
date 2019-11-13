@@ -33,6 +33,12 @@ img
     z-index: 1 !important; 
 }
 
+.carouselstyle
+{
+    color: yellow;
+    font-size: 50px;
+}
+
 /*-----product css-----*/
 .card 
 {
@@ -51,7 +57,7 @@ img
 } 
 
 .price {
-  color: grey;
+  color: green;
   font-size: 22px;
 }
 
@@ -85,6 +91,7 @@ img
 {
     margin-bottom: 40px;
 }
+
 
 /*--------overlay-----------------*/
 
