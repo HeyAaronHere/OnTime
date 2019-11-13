@@ -54,9 +54,12 @@ if (!isset($_SESSION)) {
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="products.php#hot">Top selling</a></li>
+                        <!--<li><a href="products.php#hot">Top selling</a></li>
                         <li><a href="products.php#newarr">Newest</a></li>
-                        <li><a href="products.php">All</a></li>
+                        <li><a href="products.php">All</a></li>-->
+                        <li><a href="product_database.php#hot">Top selling</a></li>
+                        <li><a href="product_database.php#newarr">Newest</a></li>
+                        <li><a href="product_database.php">All</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

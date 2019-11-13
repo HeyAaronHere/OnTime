@@ -194,6 +194,12 @@ input[type=submit]:hover {
     width: 100%;
 }
 
+
+#divider {
+    width: 20px;
+    display: inline-block;
+}
+
 /* review URL = https://www.youtube.com/watch?v=qZno3Yk8QKc&t=500s Author = Easy Tutorials*/
 
 @media only screen and (min-width: 600px) {
