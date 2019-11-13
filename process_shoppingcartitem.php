@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($success){
         echo "item has been added";
     } else {
-        echo "Oops, error! ";
+        echo "Oops, error!";
     }
 }
 
