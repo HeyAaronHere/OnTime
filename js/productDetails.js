@@ -10,8 +10,7 @@ function validateform() {
     var form = document.getElementById("productdetails");
     var num = document.getElementById("productinput");
     var txtNum = num.value;
-    var istxtNumValid = false;
-    var isNSPNumValid = false;
+    
 
     if (txtNum === "") {
         num.style.borderColor = "red";
@@ -24,7 +23,7 @@ function validateform() {
         return false;
 
     } else {
-        alert("Submitted Successfully")
+        alert("Submitted Successfully");
         form.submit();
 
     }

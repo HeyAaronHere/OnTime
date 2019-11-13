@@ -28,7 +28,7 @@ and open the template in the editor.
         <?php
         include "header.php";
         ?>
-        <main class="review">
+        <main class="review container-fluid">
 
             <h1>Reviews</h1>
             <p class="text-center">We value every comments you provide!</p>
@@ -37,20 +37,28 @@ and open the template in the editor.
                 <div class="container" id="productreview">
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                     <!-- w3schools js validation, https://www.w3schools.com/js/js_validation.asp -->
-                    <form id="productreviews" action="productsreview.php" method="post">
+                    <form id="productreviews" action="process_review.php" method="post">
 
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="review">Review</label>
-                            </div>
-                            <div class="col-75">
-                                <textarea id="reviewinput" name="review" placeholder="Write your reviews.." required></textarea>
-                            </div>
+                        <div class="col-sm-12 form-group">
+                            <label for="comments">
+                                Reviews:</label>
+                            <textarea type="text" class="form-control" id="reviewinput" name="review" placeholder="Write your reviews.." maxlength="6000" rows="7" required></textarea>
                         </div>
 
-                        <div class="row">
-                            <input type="submit" id="btnSubmit" value="Submit">
+
+                        <div class="col-sm-6 form-group">
+                            <label for="name">
+                                Your Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" required>
                         </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="email">
+                                Email:</label>
+                            <input type="email" class="form-control" id="email" name="email"  pattern="\S+@\S+\.\S+" required>
+                        </div>
+
+                        <input type="submit" id="btnSubmit" value="Submit">
+
                     </form>
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                 </div>
@@ -65,11 +73,11 @@ and open the template in the editor.
                             <img src="img/logo_bg.png" alt="ONTime icon" class="user">
                             <blockquote>Watches in ONtime is just AWESOME!!!!</blockquote>
                             <figure class="star-rating">
-                                <i class="fa fa-star" data-rating="1"></i>
-                                <i class="fa fa-star" data-rating="2"></i>
-                                <i class="fa fa-star" data-rating="3"></i>
-                                <i class="fa fa-star" data-rating="4"></i>
-                                <i class="fa fa-star" data-rating="5"></i>
+                                <span class="fa fa-star" data-rating="1"></span>
+                                <span class="fa fa-star" data-rating="2"></span>
+                                <span class="fa fa-star" data-rating="3"></span>
+                                <span class="fa fa-star" data-rating="4"></span>
+                                <span class="fa fa-star" data-rating="5"></span>
                             </figure>
                             <h2>Aaron <span>Co-Founder of OnTime </span></h2>
                         </figure>
@@ -81,11 +89,11 @@ and open the template in the editor.
                             <img src="img/logo_bg.png" alt="ONTime icon" class="user">
                             <blockquote>Best Watch Shop in Singapore! ONTime! </blockquote>
                             <figure class="star-rating">
-                                <i class="fa fa-star" data-rating="1"></i>
-                                <i class="fa fa-star" data-rating="2"></i>
-                                <i class="fa fa-star" data-rating="3"></i>
-                                <i class="fa fa-star-half-o" data-rating="4"></i>
-                                <i class="fa fa-star-o" data-rating="5"></i>
+                                <span class="fa fa-star" data-rating="1"></span>
+                                <span class="fa fa-star" data-rating="2"></span>
+                                <span class="fa fa-star" data-rating="3"></span>
+                                <span class="fa fa-star-half-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
                             </figure>
                             <h2>Yee Siang <span>Co-Founder of OnTime </span></h2>
                         </figure>
@@ -115,11 +123,11 @@ and open the template in the editor.
                             <img src="img/logo_bg.png" alt="ONTime icon" class="user">
                             <blockquote>Watches in ONtime is just AWESOME!!!!</blockquote>
                             <figure class="star-rating">
-                                <i class="fa fa-star" data-rating="1"></i>
-                                <i class="fa fa-star" data-rating="2"></i>
-                                <i class="fa fa-star" data-rating="3"></i>
-                                <i class="fa fa-star" data-rating="4"></i>
-                                <i class="fa fa-star" data-rating="5"></i>
+                                <span class="fa fa-star" data-rating="1"></span>
+                                <span class="fa fa-star" data-rating="2"></span>
+                                <span class="fa fa-star" data-rating="3"></span>
+                                <span class="fa fa-star" data-rating="4"></span>
+                                <span class="fa fa-star" data-rating="5"></span>
                             </figure>
                             <h2>Nikola <span>Co-Founder of OnTime </span></h2>
                         </figure>
@@ -129,11 +137,11 @@ and open the template in the editor.
                             <img src="img/logo_bg.png" alt="ONTime icon" class="user">
                             <blockquote>Best Watch Shop in Singapore! ONTime! </blockquote>
                             <figure class="star-rating">
-                                <i class="fa fa-star" data-rating="1"></i>
-                                <i class="fa fa-star" data-rating="2"></i>
-                                <i class="fa fa-star" data-rating="3"></i>
-                                <i class="fa fa-star-half-o" data-rating="4"></i>
-                                <i class="fa fa-star-o" data-rating="5"></i>
+                                <span class="fa fa-star" data-rating="1"></span>
+                                <span class="fa fa-star" data-rating="2"></span>
+                                <span class="fa fa-star" data-rating="3"></span>
+                                <span class="fa fa-star-half-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
                             </figure>
 
                             <h2>Aaron <span>Co-Founder of OnTime </span></h2>
@@ -145,11 +153,11 @@ and open the template in the editor.
                             <img src="img/logo_bg.png" alt="ONTime icon" class="user">
                             <blockquote>WATCH watch watch watches, etc............</blockquote>
                             <figure class="star-rating">
-                                <i class="fa fa-star" data-rating="1"></i>
-                                <i class="fa fa-star" data-rating="2"></i>
-                                <i class="fa fa-star" data-rating="3"></i>
-                                <i class="fa fa-star-half-o" data-rating="4"></i>
-                                <i class="fa fa-star-o" data-rating="5"></i>
+                                <span class="fa fa-star" data-rating="1"></span>
+                                <span class="fa fa-star" data-rating="2"></span>
+                                <span class="fa fa-star" data-rating="3"></span>
+                                <span class="fa fa-star-half-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
                             </figure>
                             <h2>Yee Siang <span>Co-Founder of OnTime </span></h2>
                         </figure>
