@@ -31,6 +31,11 @@ and open the template in the editor.
         <?php
         include "header.php";
         ?>
+
+        <?php
+          include "sideShoppingCart.php";
+        ?>
+
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
         <section>
             <div class="container-fluid">
@@ -75,7 +80,7 @@ and open the template in the editor.
                 </section>
             </section>
 
-            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp  
+            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp
                 all image sources are from Cocomi.com URL = https://www.cocomi.com/-->
             <div class="row">
 
@@ -281,7 +286,7 @@ and open the template in the editor.
                         <span class="fa fa-star" data-rating="5"></span>
                     </figure>
             </div>
-            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp  
+            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp
                all images source from Cocomi.com URL = https://www.cocomi.com/ -->
         </main>
         <hr />

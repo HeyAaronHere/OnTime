@@ -24,52 +24,9 @@
 
 <body>
     <section class="container">
-        <nav class="navbar navbar-custom navbar-fixed-top navbar-inverse">
-            <div id="topnav-centered">
-                <a class="navbar-brand" href="index.html"><img src="images\logo3.png" alt="Ontime logo"
-                        style="width:150px;height:60px;" /></a>
-            </div>
-
-            <section class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </section>
-
-            <section class="collapse navbar-collapse container-fluid" id="myNavbar">
-
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="products.html#hot">Top selling</a></li>
-                            <li><a href="products.html#newarr">Newest</a></li>
-                            <li><a href="products.html">All</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer service<span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="customerservice.html#Maintenance">Maintainence</a></li>
-                            <li><a href="customerservice.html#FAQ">Faq</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="productsreview.html">Reviews</a></li>
-                    <li><a href="aboutus.html">About us</a></li>
-                </ul>
-
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="shoppingcart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
-                    </li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </section>
-        </nav>
+        <?php
+          include "header.php";
+         ?>
 
         <header class="page-header">
             <h1>Your shopping cart at ONtime</h1>
@@ -185,50 +142,10 @@
         </div>
     </section>
     <br>
-    <footer class="footer">
-        <section class=container>
-            <section class="row">
-                <section class="col-md-4">
-                    <h1>Company</h1>
-                    <a href="aboutus.html">
-                        <p>About Us</p>
-                    </a>
-                    <a href="aboutus.html">
-                        <p>Contact Us</p>
-                    </a>
-                </section>
 
-                <section class="col-md-4">
-                    <h1>Customer Support</h1>
-                    <a href="customerservice.html#FAQ">
-                        <p>FAQ</p>
-                    </a>
-                    <a href="customerservice.html">
-                        <p>Customer Service</p>
-                    </a>
-                </section>
-
-                <section class="col-md-4">
-                    <h1>Follow Us On</h1>
-                    <a href="https://www.facebook.com/">
-                        <p><i class="fa fa-facebook-official"></i> Facebook</p>
-                    </a>
-                    <a href="https://www.youtube.com/">
-                        <p><i class="fa fa-youtube-play"></i> Youtube</p>
-                    </a>
-                    <a href="https://www.linkedin.com/">
-                        <p><i class="fa fa-linkedin"></i> LinkedIn</p>
-                    </a>
-                    <a href="https://twitter.com/">
-                        <p><i class="fa fa-twitter"></i> Twitter</p>
-                    </a>
-                </section>
-
-            </section>
-            <hr />
-            <p class="copyright">Copyright &copy; 2019 <i class="fa fa-heart-o"></i> ONTime</p>
-        </section>
-    </footer>
+    <?php
+    include "footer.php";
+     ?>
 
 </body>
 

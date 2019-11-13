@@ -28,6 +28,7 @@ and open the template in the editor.
         <?php
         include "header.php";
         ?>
+
         <main class="review container-fluid">
 
             <h1>Reviews</h1>
