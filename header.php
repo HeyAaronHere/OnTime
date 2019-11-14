@@ -57,8 +57,8 @@ if (!isset($_SESSION)) {
                         <!--<li><a href="products.php#hot">Top selling</a></li>
                         <li><a href="products.php#newarr">Newest</a></li>
                         <li><a href="products.php">All</a></li>-->
-                        <li><a href="product.php#hot">Top selling</a></li>
-                        <li><a href="product.php#newarr">Newest</a></li>
+                        <li><a href="product_database.php#hot">Top selling</a></li>
+                        <li><a href="product_database.php#newarr">Newest</a></li>
                         <li><a href="product_database.php">All</a></li>
                     </ul>
                 </li>
@@ -88,7 +88,8 @@ if (!isset($_SESSION)) {
 
                 <?php
                 if (isset($_SESSION['firstName'])) {
-                    echo'<h4 class="navbar-right"> ' . $_SESSION['firstName'] . '</h4>';
+                    $firstName = $_SESSION['firstName'];
+                    echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
                 }
                 ?>
         </section>
