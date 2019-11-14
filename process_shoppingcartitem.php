@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+
+}
 
 define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
@@ -6,18 +10,25 @@ define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
 
 $success = $errorMsg = $userID = $productID = $quantity = "";
+$success = true;
 //$quantity = $quantityError = $productID = "";
-if(isset($_POST["productID"])){
+if(isset($_POST["productID"])){ //user can't influence it -> no need to validate
   $productID = $_POST["productID"];
 }else{
   $errorMsg .= "<p>no productID found</p>";
 }
-//$userID = $_SESSION['email'];
-$userID="2"; //test purpose
-$success = true;
+print_r($_SESSION);
+$userID = $_SESSION['userID'];
+//$userID="9"; //test purpose
 
+
+//check if user is logged in
+if(!isset($_SESSION['firstName'])){
+  echo "<p>You must log in before adding an item to the shopping cart</p>";
+  echo "<button><a href='login.php'>Log In</a></button>";
+}else{
 //php validation of input and initialize shopping cart change
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["productinput"])) {
         $quantityError = "<p>Quantity is required.</p>";
         $success = false;
@@ -38,21 +49,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($success){
         echo "item has been added";
+        echo "<button><a href='product_database.php'>Go on shopping</a></button>";
     } else {
         echo "Oops, error!";
         echo $errorMsg;
     }
+
+  }
 }
 //end php validation of input
-
 function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
 
-//get current user over session?
+
+//get current user over session variable
 
 function updateShoppingCart(){
 //  $userID = $_SESSION["email"];
@@ -92,5 +106,6 @@ function updateShoppingCart(){
         }
       }
   }
-}
+  }
+
 ?>

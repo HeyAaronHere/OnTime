@@ -58,7 +58,7 @@ if (!isset($_SESSION)) {
                         <li><a href="products.php">All</a></li>-->
                         <li><a href="product_database.php#hot">Top selling</a></li>
                         <li><a href="product_database.php#newarr">Newest</a></li>
-                        <li><a href="productdetails.php">All</a></li>
+                        <li><a href="product_database.php">All</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -71,6 +71,7 @@ if (!isset($_SESSION)) {
                 </li>
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
+                <li><a href="profile_edit.php">Change account details</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -85,12 +86,21 @@ if (!isset($_SESSION)) {
                 ?>
             </ul>
 
+<<<<<<< HEAD
             <?php
             if (isset($_SESSION['email'])) {
                 $email = $_SESSION['email'];
                 echo'<h4 class="navbar-right"> ' . $email . '</h4>';
             }
             ?>
+=======
+                <?php
+                if (isset($_SESSION['firstName'])) {
+                    $firstName = $_SESSION['firstName'];
+                    echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
+                }
+                ?>
+>>>>>>> c2a8cd2452b449826aa728bb7686feef915b7009
         </section>
     </nav>
 
