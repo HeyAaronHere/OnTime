@@ -72,6 +72,7 @@ if (!isset($_SESSION)) {
                 </li>
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
+                <li><a href="profile_edit.php">Change account details</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
