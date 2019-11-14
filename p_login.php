@@ -4,7 +4,7 @@ define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
-$email = $pwd = $fname = "";
+$email = $pwd = $fname = $userID = "";
 $errorMsg = "";
 $success = true;
 
@@ -69,8 +69,10 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                     $row = $result->fetch_assoc();
                     if (password_verify($pwd, $row['password'])) {
                         $result->free_result();
+                        global $fname, $userID;
                         $fname = $row["fname"];
                         $lname = $row["lname"];
+                        $userID = $row["user_id"];
                         unset($row);
                     }
                 } else {
@@ -85,15 +87,18 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             echo "<h4>Welcome back, $fname</h4>";
             echo "<p>Email: " . $email;
             echo "<p>Password: " . $pwd;
+            echo "<p>UserID: " . $userID;
             if (!isset($_SESSION)) {
                 //start session if success
                 session_start();
-                //sets $fname to 
+                //sets $fname to
                 $_SESSION['firstName'] = $fname;
+                $_SESSION['userID'] = $userID;
             } else {
-                //sets $fname to 
+                //sets $fname to
                 $_SESSION['firstName'] = $fname;
-            }            
+                $_SESSION['userID'] = $userID;
+            }
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";

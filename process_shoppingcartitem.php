@@ -6,18 +6,24 @@ define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
 
 $success = $errorMsg = $userID = $productID = $quantity = "";
+$success = true;
 //$quantity = $quantityError = $productID = "";
 if(isset($_POST["productID"])){
   $productID = $_POST["productID"];
 }else{
   $errorMsg .= "<p>no productID found</p>";
 }
-//$userID = $_SESSION['email'];
-$userID="2"; //test purpose
-$success = true;
+//$userID = $_SESSION['userID'];
+$userID="9"; //test purpose
 
+
+//check if user is logged in
+if(!isset($_SESSION['firstName'])){
+  echo "<p>You must log in before adding an item to the shopping cart</p>";
+  echo "<button><a href='login.php'>Log In</a></button>";
+}else{
 //php validation of input and initialize shopping cart change
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["productinput"])) {
         $quantityError = "<p>Quantity is required.</p>";
         $success = false;
@@ -42,19 +48,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Oops, error!";
         echo $errorMsg;
     }
-}
+  }
 //end php validation of input
 
-function test_input($data) {
+  function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-}
+  }
 
-//get current user over session?
+//get current user over session variable
 
-function updateShoppingCart(){
+  function updateShoppingCart(){
 //  $userID = $_SESSION["email"];
 
   // Create connection
@@ -91,6 +97,7 @@ function updateShoppingCart(){
           $success = false;
         }
       }
+  }
   }
 }
 ?>
