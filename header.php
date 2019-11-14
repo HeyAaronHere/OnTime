@@ -88,8 +88,9 @@ if (!isset($_SESSION)) {
 
                 <?php
                 if (isset($_SESSION['firstName'])) {
-                    $firstName = $_SESSION['firstName']
-                    echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
+                    $firstName = $_SESSION['firstName'];
+                    echo $firstName;
+                    echo'<h4 class="navbar-right"> name </h4>';
                 }
                 ?>
         </section>
