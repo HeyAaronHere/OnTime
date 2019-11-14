@@ -4,7 +4,7 @@ define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
-$email = $pwd = $fname = "";
+$email = $pwd = $fname = $userID = "";
 $errorMsg = "";
 $success = true;
 
@@ -62,16 +62,18 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                 $sql = "SELECT * FROM user WHERE ";
                 $sql .= "email='$email'";
                 // Execute the query
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
                 // Note that email field is unique, so should only have
                 // one row in the result set.
-                    $row = $result->fetch_assoc();
+                    $row = mysqli_fetch_assoc($result);
                     if (password_verify($pwd, $row['password'])) {
                         $result->free_result();
+                        global $fname, $userID;
                         $fname = $row["fname"];
                         $lname = $row["lname"];
-                        unset($row);
+                        $userID = $row["user_id"];
+                        //unset($row); to be undone, but apparently nothing is stored in fname or userID
                     }
                 } else {
                     $errorMsg = "Email not found or password doesn't match...";
@@ -82,18 +84,23 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
         }
         if ($success) {
             echo "<h2>Login successful!</h2>";
-            echo "<h4>Welcome back, $fname</h4>";
+            echo "<h4>Welcome back, " . $row["fname"] . "</h4>"; //now name and userID can be  displayed
             echo "<p>Email: " . $email;
             echo "<p>Password: " . $pwd;
+            echo "<p>UserID: " . $row["user_id"];
+            echo $row["fname"] . $row["user_id"];
+
             if (!isset($_SESSION)) {
                 //start session if success
                 session_start();
-                //sets $fname to 
-                $_SESSION['firstName'] = $fname;
+                //sets $fname to
+                $_SESSION['firstName'] = $row["fname"]; //fname actually
+                $_SESSION['userID'] = $row["user_id"]; // userID actually
             } else {
-                //sets $fname to 
-                $_SESSION['firstName'] = $fname;
-            }            
+                //sets $fname to
+                $_SESSION['firstName'] = $row["fname"];
+                $_SESSION['userID'] = $row["user_id"];
+            }
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";
