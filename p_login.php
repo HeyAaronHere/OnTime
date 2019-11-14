@@ -1,4 +1,8 @@
 <?php
+if (isset($_SESSION['fname'])) {
+    header("Location: index.php");
+    exit();
+}
 //Constants for accessing our DB:
 define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
@@ -6,7 +10,7 @@ define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
 $email = $pwd = $fname = "";
 $errorMsg = "";
-$success = true;
+$success = false;
 
 // Create connection
 $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
@@ -30,9 +34,6 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     <body>
         <?php
         include "header.php";
-
-        $email = $errorMsg = "";
-        $success = true;
 
         if (empty($_POST["email"]) || empty($_POST["pwd"])) {
             $errorMsg .= "Empty blanks detected. Please fill them up.";
@@ -64,14 +65,15 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                 // Execute the query
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-                // Note that email field is unique, so should only have
-                // one row in the result set.
+                    // Note that email field is unique, so should only have
+                    // one row in the result set.
                     $row = $result->fetch_assoc();
                     if (password_verify($pwd, $row['password'])) {
                         $result->free_result();
                         $fname = $row["fname"];
                         $lname = $row["lname"];
                         unset($row);
+                        $success = true;
                     }
                 } else {
                     $errorMsg = "Email not found or password doesn't match...";
@@ -89,11 +91,11 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                 //start session if success
                 session_start();
                 //sets $fname to 
-                $_SESSION['firstName'] = $fname;
+                $_SESSION['email'] = $email;
             } else {
                 //sets $fname to 
-                $_SESSION['firstName'] = $fname;
-            }            
+                $_SESSION['email'] = $email;
+            }
         } else {
             echo "<h1>OI!</h1>";
             echo "<h4>The following input errors were detected:</h4>";

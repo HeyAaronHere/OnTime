@@ -1,7 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
     session_start();
-
 }
 ?>
 <html>
@@ -86,12 +85,12 @@ if (!isset($_SESSION)) {
                 ?>
             </ul>
 
-                <?php
-                if (isset($_SESSION['firstName'])) {
-                    $firstName = $_SESSION['firstName']
-                    echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
-                }
-                ?>
+            <?php
+            if (isset($_SESSION['email'])) {
+                $email = $_SESSION['email'];
+                echo'<h4 class="navbar-right"> ' . $email . '</h4>';
+            }
+            ?>
         </section>
     </nav>
 
