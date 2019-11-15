@@ -8,11 +8,12 @@ define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
 
-$success = $errorMsg = $userID = $productID = $quantity = "";
+$success = $errorMsg = $userID = $productID = $quantity = $productPrice = "";
 $success = true;
 //$quantity = $quantityError = $productID = "";
 if(isset($_POST["productID"])){ //user can't influence it -> no need to validate
   $productID = $_POST["productID"];
+  $productPrice = $_POST["productPrice"];
 }else{
   $errorMsg .= "<p>no productID found</p>";
 }
@@ -78,7 +79,7 @@ function updateShoppingCart(){
     $errorMsg .= "<p>Connection failed: " . $conn->connect_error . "</p>";
     $success = false;
   }else{
-      global $success, $errorMsg, $userID, $productID, $quantity;
+      global $success, $errorMsg, $userID, $productID, $quantity, $productPrice;
       //execute the query
       //$user = mysqli_real_escape_string ($conn, $userID );
       $result = "SELECT * FROM shoppingCart WHERE userID = $userID AND productID = $productID";
@@ -98,7 +99,7 @@ function updateShoppingCart(){
           $success = false;
         }
       }else{ //this product is not in the shopping cart
-        $sql = "INSERT INTO shoppingCart(userID, productID, quantity) VALUES ($userID, $productID, $quantity)";
+        $sql = "INSERT INTO shoppingCart(userID, productID, quantity, productPrice) VALUES ($userID, $productID, $quantity, $productPrice)";
         //execute query
         if (!$conn->query($sql)){
           $errorMsg .= "<p>Database error: " . $conn->error . "</p>";

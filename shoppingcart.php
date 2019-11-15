@@ -45,7 +45,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         <header class="page-header">
             <h1>Your shopping cart at ONtime</h1>
         </header>
-        <?php
+<?php
         if ($con->connect_error){
           $errorMsg .= "<p>Connection failed: " . $con->connect_error . "</p>";
           $success = false;
@@ -59,7 +59,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             $success = false;
           }else if(mysqli_num_rows($checkResult) > 0){
             //there are products in the shopping cart, get all products incl details
-        ?>
+?>
         <section class="row">
             <div class="col-md-12">
                 <h2>Your Shopping Cart contains:</h2>
@@ -72,7 +72,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                             <th></th>
                         </tr>
                     </thead>
-                    <?php
+<?php
                         while($row = mysqli_fetch_array($result)){
 
                   //<!-- id='qty'--> for first td line
@@ -82,7 +82,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                               <td><?php echo" . $row['product_price'] . "?></td>
                           </tr>");
                         }
-                    ?>
+?>
                     <tfoot>
                         <tr class="tfooter">
 
@@ -167,17 +167,12 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                         class="glyphicon glyphicon-arrow-right"></span></a>
             </button>
         </div>
-    <?php
-  } else{
-    echo "<p>Your shopping cart is empty, add an item to your shopping cart!</p>";
-  }
-    ?>
-    <button type="button" class="btn btn-success btn-lg">
-        <a id="checkbutton" href="product_database.php">Go on shopping <span
-                class="glyphicon glyphicon-arrow-left"></span></a>
-    </button>
-    </section>
-    <br>
+<?php
+    } else{
+        echo "<p>Your shopping cart is empty, add an item to your shopping cart!</p>";
+      }
+    }
+?>
 
     <?php
     include "footer.php";

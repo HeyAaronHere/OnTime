@@ -23,6 +23,11 @@ body {
     color: rgb(212, 212, 212);
     margin: 0 0 15px;
 }
+
+.login-form p {
+    color: rgb(212, 212, 212);
+}
+
 .form-control, .btn {
     min-height: 38px;
     border-radius: 2px;
