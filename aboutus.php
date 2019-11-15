@@ -29,7 +29,7 @@
     ?>
 
     <?php
-        include "sideShoppingCart.php";
+        //include "sideShoppingCart.php";
     ?>
 
     <article class="container">

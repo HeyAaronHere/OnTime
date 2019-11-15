@@ -30,8 +30,8 @@ and open the template in the editor.
     <body>
         <?php
         include "header.php";
-        include "sideShoppingCart.php"
-        ?>        
+      //  include "sideShoppingCart.php"
+        ?>
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
         <section>
             <div class="container-fluid">
@@ -83,7 +83,7 @@ and open the template in the editor.
                 </section>
             </section>
 
-            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp  
+            <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp
                 all image sources are from Cocomi.com URL = https://www.cocomi.com/-->
             <div class="container-fluid">
 
@@ -95,16 +95,17 @@ and open the template in the editor.
                     while ($product = mysqli_fetch_assoc($result)) {
                         ?>
                         <div class="col-md-2 card">
-                            <form method="post" action="product_database.php?action=add&id=<?php echo $product['product_id']; ?>">
+                            <form method="post" action="productdetails.php"> <!--product_database.php?action=add&id=<?php //echo $product['product_id']; ?>-->
                                 <div class="products">
-                                    <a href="productdetails.php"><img src="img/<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
+                                    <a href="productdetails.php"><img src="img/<?php echo $product['product_img']; ?>" class="img-responsive"></a>
                                     <h4><?php echo $product['product_name']; ?></h4>
                                     <h4><?php echo $product['product_desc']; ?></h4>
                                     <p class="price"><?php echo $product['product_price']; ?></p>
-                                    <input type="hidden" name="product_name" value="<?php echo $product['product_name']; ?>" />
-                                    <input type="hidden" name="product_description" value="<?php echo $product['product_desc']; ?>" />
-                                    <input type="hidden" name="product_price" value="<?php echo $product['product_price']; ?>" />
-
+                                    <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>"> <!--session variable to transport product id?-->
+                                    <input type="hidden" name="product_name" value="<?php echo $product['product_name']; ?>">
+                                    <input type="hidden" name="product_description" value="<?php echo $product['product_desc']; ?>">
+                                    <input type="hidden" name="product_price" value="<?php echo $product['product_price']; ?>">
+                                    <input type="submit" name="submitbutton" value="anschauen">
                                     <figure class="overlay-right">
                                         <a href="shoppingcart.php>"<button class="btn btn-secondary" title="Add to Cart">
                                                 <span class="fa fa-shopping-cart"></span></button></a>
