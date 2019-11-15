@@ -16,7 +16,6 @@ if (!isset($_SESSION)) {
         <link href="css/login.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/headerFooter.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="js/login.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -50,5 +49,6 @@ if (!isset($_SESSION)) {
         <?php
         include "footer.php";
         ?>
+        <script src="js/login.js"></script>
     </body>
 </html>

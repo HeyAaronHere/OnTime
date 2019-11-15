@@ -84,12 +84,26 @@ if (mysqli_num_rows($sql) > 0) {
                                 <p><b>Condition:</b> New </p>
                                 <p><b>Brand:</b> <?php echo $productDetails['product_brand'] ?></p>
 
+                                <?php
+                                  // Create connection
+                                  $conn = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+                                  $query = "SELECT * FROM product ORDER BY product_id ASC";
+                                  $result = mysqli_query($conn, $query);
+                                  if(mysqli_num_rows($result) > 0) {
+                                  //  while($row = mysqli_fetch_array($result)){ //maybe only first row erstmal
+                                  $row = mysqli_fetch_array($result);
+                                ?>
                                 <label for="productdetails">Quantity </label>
                                 <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
-                                    <input type ="number" id="productinput" name="productinput" value="1">
-                                    <input type="hidden" name="productID" value="<?php echo $productDetails["product_id"]; ?>">
-                                    <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
+                                  <input id="productinput" name="productinput" value="1">
+                                  <input type="hidden" name="productPrice" value="<?php echo $_POST['product_price'] ?>">
+                                  <input type="hidden" name="productID" value="<?php echo $_POST['product_id'] ?>">  <!--echo $row["product_id"]; -->
+                                  <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                                 </form>
+                                <?php
+                                  }
+                              //  }
+                                ?>
 
                             </div>
 
