@@ -1,9 +1,4 @@
 <?php
-//start session
-if (!isset($_SESSION)) {
-                session_start();
-}
-
 if (isset($_POST['signup-submit'])) {
 //Constants for accessing our DB:
     define("DBHOST", "161.117.122.252");
@@ -81,7 +76,7 @@ if (isset($_POST['signup-submit'])) {
                         $errorMsg .= "Contact number is must be 8 digits.";
                         $success = false;
                     }
-                    
+
                     $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                     $result = "SELECT * FROM user where email = '$email'";
                     $checkResult = mysqli_query($conn, $result);
@@ -92,7 +87,7 @@ if (isset($_POST['signup-submit'])) {
                     $conn->close();
                 }
 
-                
+
                 if ($success) {
                     saveMemberToDB();
                     echo "<script type='text/javascript'>alert('Registration successful!');"
@@ -110,6 +105,11 @@ if (isset($_POST['signup-submit'])) {
     </html>
     <?php
 } else {
+    session_start();
+    if (isset($_SESSION['firstName'])) {
+        header("Location: index.php");
+        exit();
+    }
     header("Location: index.php");
     exit();
 }
