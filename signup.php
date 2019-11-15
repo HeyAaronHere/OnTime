@@ -1,3 +1,10 @@
+<?php
+//start session
+if (!isset($_SESSION)) {
+                session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +16,6 @@
         <link href="css/signup.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/headerFooter.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="js/FormVal.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,7 +28,7 @@
             <div class=container>
                 <div class="row">
                     <div class="login-form">
-                        <form name="RegForm" action="p_signup.php" method="post" onsubmit="return validateform()">
+                        <form name="RegForm" action="p_signup.php" method="post">
                             <h2 class="text-center">Create An Account</h2>
                             <p>For existing members, please go to the <a href="login.php">login page</a>.</p>
                             <div class="form-group">
@@ -63,5 +69,6 @@
         <?php
         include 'footer.php';
         ?>
+        <script src="js/FormVal.js"></script>
     </body>
 </html>

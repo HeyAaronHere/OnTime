@@ -26,7 +26,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
     while ($sub_row = mysqli_fetch_array($product_result)) {
         $tab_content .= '
             <div class="col-md-2 card " >
-                <a href="test.php?id=' . $sub_row['product_id'] . '"><img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" /></a>
+                <a href="productdetails.php?id=' . $sub_row['product_id'] . '"><img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" /></a>
                 <h1>' . $sub_row["product_name"] . '</h1>   
                 <h4>Click for more info</h4>
                 <p class="price">' . $sub_row["product_price"] . '</p>
@@ -56,7 +56,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
     <body>
         <?php
         include "header.php";
-        include "sideShoppingCart.php";
+        //include "sideShoppingCart.php";
         ?>
 
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
