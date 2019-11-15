@@ -1,4 +1,9 @@
 <?php
+//start session
+if (!isset($_SESSION)) {
+                session_start();
+}
+
 if (isset($_POST['signup-submit'])) {
 //Constants for accessing our DB:
     define("DBHOST", "161.117.122.252");
