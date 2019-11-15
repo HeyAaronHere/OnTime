@@ -37,7 +37,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 </head>
 
 <body>
-    <section class="container"> <!--necessary?-->
+    <section class="container">
         <?php
           include "header.php";
          ?>
@@ -73,7 +73,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                         </tr>
                     </thead>
 <?php
-                        while($row = mysqli_fetch_array($result)){
+                        while($row = mysqli_fetch_array($checkResult)){
 
                   //<!-- id='qty'--> for first td line
                     echo ("<tr>
@@ -158,10 +158,6 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         </section>
 
         <div id="checkoutbutton" class="row">
-          <button type="button" class="btn btn-success btn-lg">
-              <a id="checkbutton" href="product_database.php">Go on shopping <span
-                      class="glyphicon glyphicon-arrow-left"></span></a>
-          </button>
             <button type="button" class="btn btn-success btn-lg">
                 <a id="checkbutton" href="checkout.php">Purchase <span
                         class="glyphicon glyphicon-arrow-right"></span></a>
@@ -173,7 +169,11 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
       }
     }
 ?>
-
+    <button type="button" class="btn btn-success btn-lg">
+        <a id="checkbutton" href="product_database.php">Go on shopping <span
+            class="glyphicon glyphicon-arrow-left"></span></a>
+    </button>
+</section>
     <?php
     include "footer.php";
      ?>
