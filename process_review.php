@@ -1,4 +1,9 @@
 <?php
+//start session
+if (!isset($_SESSION)) {
+                session_start();
+}
+
 define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");

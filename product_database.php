@@ -1,3 +1,10 @@
+<?php
+//start session
+if (!isset($_SESSION)) {
+                session_start();
+}
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

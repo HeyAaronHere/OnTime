@@ -1,5 +1,18 @@
 <?php
-$connect = mysqli_connect('161.117.122.252', 'p2_7', '7tQeryxcIq', 'p2_7') or die("Databaee Error");
+
+//start session
+if (!isset($_SESSION)) {
+                session_start();
+}
+
+//Constants for accessing our DB:
+define("DBHOST", "161.117.122.252");
+define("DBNAME", "p2_7");
+define("DBUSER", "p2_7");
+define("DBPASS", "7tQeryxcIq");
+$email = $pwd = $fname = "";
+$errorMsg = "";
+$success = true;
 
 if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
     $errors[] = 'You must select a product in order to see its details!';
