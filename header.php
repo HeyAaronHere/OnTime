@@ -1,8 +1,3 @@
-<?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-?>
 <html>
     <head>
         <title>Main Page - OnTime</title>
@@ -76,7 +71,7 @@ if (!isset($_SESSION)) {
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                if (isset($_SESSION['firstName'])) {
+                if (isset($_SESSION)) {
                     echo'<li><a id="cart-info" class="cart-info"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
                     echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
                 } else {
@@ -85,13 +80,12 @@ if (!isset($_SESSION)) {
                 }
                 ?>
             </ul>
-
-                <?php
-                if (isset($_SESSION['firstName'])) {
-                    $firstName = $_SESSION['firstName'];
-                    echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
-                }
-                ?>
+            <?php
+            if (isset($_SESSION)) {
+                $firstName = $_SESSION['firstName'];
+                echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
+            }
+            ?>
         </section>
     </nav>
 
