@@ -47,12 +47,9 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <!--<li><a href="products.php#hot">Top selling</a></li>
-                        <li><a href="products.php#newarr">Newest</a></li>
-                        <li><a href="products.php">All</a></li>-->
                         <li><a href="product_database.php#hot">Top selling</a></li>
                         <li><a href="product_database.php#newarr">Newest</a></li>
-                        <li><a href="product_database.php">All</a></li>
+                        <li><a href="product.php">All</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -70,8 +67,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 if (isset($_SESSION['firstName'])) {
-                    echo'<li><a href="profile_edit.php">' . $_SESSION['firstName'] . '</a></li>';
-                    echo'<li><a id="cart-info" class="cart-info"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
+                    echo'<li><a href="profile_edit.php"><span class="glyphicon glyphicon-user"></span>  ' . $_SESSION['firstName'] . '</a></li>';
+                    echo'<li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
                     echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
                 } else {
                     echo'<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
