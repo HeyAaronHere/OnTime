@@ -63,6 +63,7 @@ if (isset($_POST['login-submit'])) {
                         // Note that email field is unique, so should only have
                         // one row in the result set.
                         $row = $result->fetch_assoc();
+                        $result->free_result();
                         if (password_verify($pwd, $row['password'])) {
                             $result->free_result();
                             global $fname, $userID;
@@ -84,6 +85,7 @@ if (isset($_POST['login-submit'])) {
                 //sets $fname to
                 $_SESSION['firstName'] = $row["fname"]; //fname actually
                 $_SESSION['userID'] = $row["user_id"]; // userID actually
+                unset($row);
                 if (isset($_SESSION)) {
                     echo "<h1>session started</h1>";
                     echo $_SESSION['firstName'];
