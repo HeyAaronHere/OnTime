@@ -8,11 +8,16 @@ and open the template in the editor.
     Author     : Aaron Chua
 */
 
-/* how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials*/
 .singleProduct
 {
     margin-top: 150px;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 
 .new-arrival
 {  
@@ -29,26 +34,22 @@ and open the template in the editor.
     color: #555;
        
 }
-.singleProduct .fa
 
-{
-  color: orange;  
-}
-
-.singleProduct .price
+#price
 {
   color: orange;
   font-size: 26px;
   font-weight: bold;
-  padding-top: 20px;
+ 
 }
+
 .singleProduct input
 {
     border: 1px solid #ccc;
     font-weight: bold;
     height: 33px;
     text-align: center;
-    width: 30px;
+    width: 50px;
 }
 
 button[type=submit] {

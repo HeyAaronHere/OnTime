@@ -81,7 +81,18 @@ if (isset($_POST['signup-submit'])) {
                         $errorMsg .= "Contact number is must be 8 digits.";
                         $success = false;
                     }
+                    
+                    $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+                    $result = "SELECT * FROM user where email = '$email'";
+                    $checkResult = mysqli_query($conn, $result);
+                    if (mysqli_num_rows($checkResult) > 0) {
+                        $errorMsg .= "Email exist already.";
+                        $success = false;
+                    }
+                    $conn->close();
                 }
+
+                
                 if ($success) {
                     saveMemberToDB();
                     echo "<script type='text/javascript'>alert('Registration successful!');"
