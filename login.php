@@ -1,10 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-    if (isset($_SESSION['firstName'])) {
-        header("Location: index.php");
-        exit();
-    }
+session_start();
+if (isset($_SESSION['firstName'])) {
+    header("Location: index.php");
+    exit();
 } else {
     ?>
     <!DOCTYPE html>
