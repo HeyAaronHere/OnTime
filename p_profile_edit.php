@@ -1,4 +1,11 @@
 <?php
+//start session
+if (!isset($_SESSION)) {
+                session_start();
+}
+?>
+
+<?php
 // Constants for accessing our DB:
 define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
