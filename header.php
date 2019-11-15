@@ -44,14 +44,8 @@
         <section class="collapse navbar-collapse container-fluid" id="myNavbar">
 
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="product_database.php#hot">Top selling</a></li>
-                        <li><a href="product_database.php#newarr">Newest</a></li>
-                        <li><a href="product.php">All</a></li>
-                    </ul>
-                </li>
+                
+            <li><a href="product.php">Products</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer service<span
                             class="caret"></span></a>
@@ -60,6 +54,7 @@
                         <li><a href="customerservice.php#FAQ">FAQ</a></li>
                     </ul>
                 </li>
+                <li><a href="product.php">Products</a></li>
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
             </ul>
