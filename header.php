@@ -71,18 +71,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-<<<<<<< HEAD
                 if (isset($_SESSION)) {
                     echo'<li><a id="cart-info" class="cart-info"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
-=======
-
-                if (isset($_SESSION['firstName'])) { //id="cart-info" class="cart-info"
-                    echo'<li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
-
-                }if (isset($_SESSION)) {
-                    echo'<li><a id="cart-info" class="cart-info"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
-
->>>>>>> a7abe5aad3447f444a5fd0d104f6462350d58810
                     echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
                 } else {
                     echo'<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
