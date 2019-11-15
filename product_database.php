@@ -101,18 +101,20 @@ and open the template in the editor.
                 if (mysqli_num_rows($result) > 0) {
                     while ($product = mysqli_fetch_assoc($result)) {
                         ?>
-                        <div class="col-md-2 card">
+                        <div class="col-md-2 card"> <!--<a href="productdetails.php?id=' . $sub_row['product_id'] . '"> -->
                             <form method="post" action="productdetails.php"> <!--product_database.php?action=add&id=<?php //echo $product['product_id']; ?>-->
                                 <div class="products">
                                     <a href="productdetails.php"><img src="<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
                                     <h4><?php echo $product['product_name']; ?></h4>
                                     <h4><?php echo $product['product_desc']; ?></h4>
                                     <p class="price"><?php echo $product['product_price']; ?></p>
+
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>"> <!--session variable to transport product id?-->
                                     <input type="hidden" name="product_name" value="<?php echo $product['product_name']; ?>">
                                     <input type="hidden" name="product_description" value="<?php echo $product['product_desc']; ?>">
                                     <input type="hidden" name="product_price" value="<?php echo $product['product_price']; ?>">
-                                    <input type="submit" name="submitbutton" value="anschauen">
+                                    <input type="submit" name="submitbutton" value="click for more info">
+
                                     <figure class="overlay-right">
                                         <a href="shoppingcart.php>"<button class="btn btn-secondary" title="Add to Cart">
                                                 <span class="fa fa-shopping-cart"></span></button></a>
