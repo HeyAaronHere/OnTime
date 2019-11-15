@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8141f8ad76d44caea09bd1b37998a149e216f96b
 <html>
     <head>
         <title>Main Page - OnTime</title>
@@ -80,12 +84,22 @@
                 }
                 ?>
             </ul>
+<<<<<<< HEAD
             <?php
             if (isset($_SESSION)) {
                 $firstName = $_SESSION['firstName'];
                 echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
             }
             ?>
+=======
+
+                <?php
+                if (isset($_SESSION)) {
+                    $firstName = $_SESSION['firstName'];
+                    echo'<h4 id="nameForNavbar" class="navbar-right"> ' . $firstName . '</h4>';
+                }
+                ?>
+>>>>>>> 8141f8ad76d44caea09bd1b37998a149e216f96b
         </section>
     </nav>
 
