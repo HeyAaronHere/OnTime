@@ -1,5 +1,10 @@
 <!--how to create dynamic tabs with database src -https://www.webslesson.info/2017/03/create-dynamic-tabs-by-using-bootstrap-in-php.html-->
 <?php
+//start session
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 $connect = mysqli_connect('161.117.122.252', 'p2_7', '7tQeryxcIq', 'p2_7');
 $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
 $tab_result = mysqli_query($connect, $tab_query);
