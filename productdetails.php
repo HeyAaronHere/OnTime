@@ -141,6 +141,7 @@ and open the template in the editor.
                         <label for="productdetails">Quantity </label>
                         <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
                           <input id="productinput" name="productinput" value="1">
+                          <input type="hidden" name="productPrice" value="<?php echo $_POST['product_price'] ?>">
                           <input type="hidden" name="productID" value="<?php echo $_POST['product_id'] ?>">  <!--echo $row["product_id"]; -->
                           <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                         </form>
