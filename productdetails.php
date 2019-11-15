@@ -14,6 +14,8 @@ $email = $pwd = $fname = "";
 $errorMsg = "";
 $success = true;
 
+$conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+
 if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
     $errors[] = 'You must select a product in order to see its details!';
 } else {
@@ -23,7 +25,7 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
 // if(isset( $_GET['product_id'])) $id = $_GET['product_id'];
 //else echo " no product id";
 $IDquery = "SELECT * FROM product WHERE product_id = " . $productId;
-$sql = mysqli_query($connect, $IDquery);
+$sql = mysqli_query($conn, $IDquery);
 if (mysqli_num_rows($sql) > 0) {
     while ($productDetails = mysqli_fetch_assoc($sql)) {
         ?>
