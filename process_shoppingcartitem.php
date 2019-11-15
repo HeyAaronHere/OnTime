@@ -1,7 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
     session_start();
-
 }
 
 define("DBHOST", "161.117.122.252");
@@ -18,12 +17,13 @@ if(isset($_POST["productID"])){ //user can't influence it -> no need to validate
   $errorMsg .= "<p>no productID found</p>";
 }
 print_r($_SESSION);
-$userID = $_SESSION['userID'];
-//$userID="9"; //test purpose
+if(isset($_SESSION['email'])){
+  $userID = $_SESSION['userID'];
+}
 
 
 //check if user is logged in
-if(!isset($_SESSION['firstName'])){
+if(!isset($_SESSION['email'])){
   echo "<p>You must log in before adding an item to the shopping cart</p>";
   echo "<button><a href='login.php'>Log In</a></button>";
 }else{
