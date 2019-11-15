@@ -26,7 +26,7 @@
     ?>
 
     <main>
-    <form novalidate= name="myForm" action="p_profile_edit.php" method="post" onsubmit="return validateForm()" autocomplete="off">
+    <form name="pEditForm" action="p_profile_edit.php" method="post" onsubmit="return validateProfileEditForm()" autocomplete="off">
         <div class="container">
             <h2>Edit Particulars</h2>
             <div class="panel-group" id="accordion">
@@ -67,7 +67,7 @@
 
                             <div class="form-group">
                                 <label for="FirstName">Handphone no.:</label>
-                                <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber" >
+                                <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber" required>
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chkpno" name="chkpno" >select to change phone number</label>
@@ -110,19 +110,19 @@
 
                             <div class="form-group">
                                 <label for="pwd1">Old Password:</label>
-                                <input type="password" class="form-control" id="opwd" placeholder="Enter password" required name="opwd">
+                                <input type="password" class="form-control" id="opwd" placeholder="Enter password" required name="opwd"required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             <div class="form-group">
                                 <label for="pwd1">New Password:</label>
-                                <input type="password" class="form-control" id="npwd1" placeholder="Enter password" required name="npwd1">
+                                <input type="password" class="form-control" id="npwd1" placeholder="Enter password" required name="npwd1"required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             <div class="form-group">
                                 <label for="pwd1">Confirm New Password:</label>
-                                <input type="password" class="form-control" id="npwd2" placeholder="Enter password" required name="npwd2">
+                                <input type="password" class="form-control" id="npwd2" placeholder="Enter password" required name="npwd2"required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
 
                             <div class="checkbox">
-                                <label><input type="checkbox" id="chkpno" name="chkpno" >select to change phone number</label>
+                                <label><input type="checkbox" id="chkpwd" name="chkpwd" >select to change phone number</label>
                             </div>
                         </div>
                     </div>

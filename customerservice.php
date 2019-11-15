@@ -19,6 +19,7 @@ function saveCIToDB() {
         $errorMsg = "Connection failed: " . $conn->connect_error;
         $success = false;
     } else {
+        $CIquestion = mysqli_escape_string($conn, $CIquestion);
         $sql = "INSERT INTO customer_inquiries (CIname, CIemail, CInumber, CIquestion) VALUES ('$CIname', '$CIemail', '$CInumber', '$CIquestion')";
         //Execute the query
         $conn->query($sql);
