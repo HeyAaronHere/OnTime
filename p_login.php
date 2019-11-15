@@ -100,15 +100,22 @@ if (isset($_POST['login-submit'])) {
             ?>
         </body>
     </html>
-<?php
+    <?php
 } else {
+    session_start();
+    if (isset($_SESSION['firstName'])) {
+        header("Location: index.php");
+        exit();
+    }
     header("Location: index.php");
     exit();
 }
+
 //Helper function that checks input for malicious or unwanted content.
 function sanitize_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-}?>
+}
+?>
