@@ -97,7 +97,7 @@ and open the template in the editor.
                         <div class="col-md-2 card">
                             <form method="post" action="product_database.php?action=add&id=<?php echo $product['product_id']; ?>">
                                 <div class="products">
-                                    <a href="productdetails.php"><img src="img/<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
+                                    <a href="productdetails.php"><img src="<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
                                     <h4><?php echo $product['product_name']; ?></h4>
                                     <h4><?php echo $product['product_desc']; ?></h4>
                                     <p class="price"><?php echo $product['product_price']; ?></p>
