@@ -1,8 +1,4 @@
-<?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-?>
+
 <html>
     <head>
         <title>Main Page - OnTime</title>
@@ -87,9 +83,9 @@ if (!isset($_SESSION)) {
             </ul>
 
                 <?php
-                if (isset($_SESSION['firstName'])) {
+                if (isset($_SESSION)) {
                     $firstName = $_SESSION['firstName'];
-                    echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
+                    echo'<h4 id="nameForNavbar" class="navbar-right"> ' . $firstName . '</h4>';
                 }
                 ?>
         </section>
