@@ -84,11 +84,9 @@ if (isset($_POST['login-submit'])) {
                 //sets $fname to
                 $_SESSION['firstName'] = $row["fname"]; //fname actually
                 $_SESSION['userID'] = $row["user_id"]; // userID actually
-                //sets $fname to
-                $_SESSION['firstName'] = $row["fname"];
-                $_SESSION['userID'] = $row["user_id"];
                 if (isset($_SESSION)) {
                     echo "<h1>session started</h1>";
+                    echo $_SESSION['firstName'];
                 }
 
                 echo "<script>alert('Login successful!');window.location.href='index.php';</script>";
