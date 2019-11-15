@@ -30,17 +30,17 @@ if(!isset($_SESSION['email'])){
 }else{
 //php validation of input and initialize shopping cart change
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["productinput"])) {
+    if (empty($_POST["productAmount"])) {
         $quantityError = "<p>Quantity is required.</p>";
         $success = false;
-    }else if($_POST["productinput"] < 1){
+    }else if($_POST["productAmount"] < 1){
         $quantityError = "<p>Quantity must be at least 1.</p>";
         $success = false;
-    }else if(!preg_match("^[0-9]+$^",$_POST["productinput"])){
+    }else if(!preg_match("^[0-9]+$^",$_POST["productAmount"])){
         $quantityError = "<p>Quantity must be numeric value.</p>";
         $success = false;
     }else{
-        $quantity = test_input($_POST["productinput"]);
+        $quantity = test_input($_POST["productAmount"]);
     }
 
     if($success){

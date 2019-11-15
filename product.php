@@ -26,15 +26,21 @@ while ($row = mysqli_fetch_array($tab_result)) {
     while ($sub_row = mysqli_fetch_array($product_result)) {
         $tab_content .= '
             <div class="col-md-2 card " >
-                <a href="productdetails.php?id=' . $sub_row['product_id'] . '"><img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" /></a>
-                <h1>' . $sub_row["product_name"] . '</h1>   
-                <h4>Click for more info</h4>
+                <form method="post" action="productdetails.php">
+                <img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" />
+                <h1>' . $sub_row["product_name"] . '</h1>
+                <input type="hidden" name="product_id" value="<?php echo' . $sub_row['product_id'] .'; ?>"> <!--session variable to transport product id?-->
+                <input type="hidden" name="product_price" value="<?php echo' . $sub_row['product_price'] .'; ?>">
+                <input type="submit" name="submitbutton" value="click for more info">
                 <p class="price">' . $sub_row["product_price"] . '</p>
+
+
                 <figure class = "overlay-right">
                     <a href = "shoppingcart.php>"<button class = "btn btn-secondary" title = "Add to Cart">
                     <span class = "fa fa-shopping-cart"></span></button></a>
                 </figure>
-            </div> 
+                </form>
+            </div>
             ';
     }
     $tab_content .= '<div style="clear:both"></div></div>';
@@ -102,7 +108,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <div class="container-fluid">
 
 
-            <br />
+            <br>
             <ul class="nav nav-tabs">
                 <?php
                 echo $tab_menu;
@@ -111,7 +117,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
             </ul>
             <div class="tab-content">
-                <br />
+                <br>
 
 
                 <?php
@@ -122,7 +128,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
 
         </div>
-        <hr />
+        <hr>
 
         <?php
         include "footer.php";
@@ -130,4 +136,3 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
     </body>
 </html>
-
