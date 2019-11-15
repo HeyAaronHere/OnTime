@@ -15,7 +15,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
-        <script defer src="js\showCart.js"></script>
+        <!--<script defer src="js\showCart.js"></script>-->
 
         <style>
             @font-face {
@@ -71,8 +71,13 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
+<<<<<<< HEAD
+                if (isset($_SESSION['firstName'])) { //id="cart-info" class="cart-info"
+                    echo'<li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
+=======
                 if (isset($_SESSION)) {
                     echo'<li><a id="cart-info" class="cart-info"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
+>>>>>>> 3fa78938212111c057334b1a8a86f33d0b4ac974
                     echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
                 } else {
                     echo'<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
