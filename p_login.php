@@ -65,7 +65,6 @@ if (isset($_POST['login-submit'])) {
                         $row = $result->fetch_assoc();
                         $result->free_result();
                         if (password_verify($pwd, $row['password'])) {
-                            $result->free_result();
                             global $fname, $userID;
                             $fname = $row["fname"];
                             $lname = $row["lname"];
