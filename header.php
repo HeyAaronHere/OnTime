@@ -6,7 +6,6 @@
         <meta name="keywords"
               content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" type="text/css" href="css/headerFooter.css" />
         <script src="js/mainPage.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -66,12 +65,12 @@
                 </li>
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
-                <li><a href="profile_edit.php">Change account details</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                if (isset($_SESSION)) {
+                if (isset($_SESSION['firstName'])) {
+                    echo'<li><a href="profile_edit.php">' . $_SESSION['firstName'] . '</a></li>';
                     echo'<li><a id="cart-info" class="cart-info"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>';
                     echo'<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
                 } else {
@@ -80,12 +79,7 @@
                 }
                 ?>
             </ul>
-            <?php
-            if (isset($_SESSION)) {
-                $firstName = $_SESSION['firstName'];
-                echo'<h4 class="navbar-right"> ' . $firstName . '</h4>';
-            }
-            ?>
+
         </section>
     </nav>
 
