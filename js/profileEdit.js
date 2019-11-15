@@ -10,12 +10,23 @@ function validateProfileEditForm() {
 
     
 
-if (document.getElementById('xxx').checked) 
+if (document.getElementById('chkname').checked) 
 {
-    document.getElementById('totalCost').value = 10;
-} else {
-    calculate();
-}
+
+
+}if (document.getElementById('chkpno').checked) 
+{
+
+
+}if (document.getElementById('chke').checked) 
+{
+
+}if (document.getElementById('chkpwd').checked) 
+{
+    
+
+} 
+
 //chkname
 //chkpno
 //chke

@@ -55,7 +55,7 @@ if (!isset($_SESSION)) {
                                 <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" required pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
                             </div>
                             <div class="checkbox">
-                                <label><input type="checkbox" id="chkname" name="chkname" >select to change name</label>
+                                <label><input type="checkbox" id="chkname" name="chkname" value="Yes" >select to change name</label>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@ if (!isset($_SESSION)) {
                                 <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber" required>
                             </div>
                             <div class="checkbox">
-                                <label><input type="checkbox" id="chkpno" name="chkpno" >select to change phone number</label>
+                                <label><input type="checkbox" id="chkpno" name="chkpno" value="Yes" >select to change phone number</label>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ if (!isset($_SESSION)) {
                             </div>
 
                             <div class="checkbox">
-                                <label><input type="checkbox" id="chke" name="chke" >select to change email</label>
+                                <label><input type="checkbox" id="chke" name="chke" value="Yes" >select to change email</label>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@ if (!isset($_SESSION)) {
                             </div>
 
                             <div class="checkbox">
-                                <label><input type="checkbox" id="chkpwd" name="chkpwd" >select to change phone number</label>
+                                <label><input type="checkbox" id="chkpwd" name="chkpwd" value="Yes" >select to change phone number</label>
                             </div>
                         </div>
                     </div>
