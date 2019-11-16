@@ -9,7 +9,7 @@ define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
-$email = $pwd = $fname = $productId = "";
+$productId = "";
 $errorMsg = "";
 $success = true;
 
@@ -44,20 +44,20 @@ and open the template in the editor.
     </head>
 
     <body>
-        
         <?php
+        include "header.php";
+        //include "sideShoppingCart.php";
+
         if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
             $errors[] = 'You must select a product in order to see its details!';
         } else {
             $productId = $_POST['product_id'];
         }
-        //$id = isset($_GET['product_id']) ? (int) $_GET['product_id'] : 0;
-        // if(isset( $_GET['product_id'])) $id = $_GET['product_id'];
-        //else echo " no product id";
-        $IDquery = "SELECT * FROM product WHERE product_id ='$product_Id'"; 
+
+        $IDquery = "SELECT * FROM product WHERE product_id ='" . $productId . "'";
         $sql = mysqli_query($conn, $IDquery);
         if (!$sql) {
-        //  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
+            //  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
             echo "error: " . $conn->error;
             $success = false;
         } else if (mysqli_num_rows($sql) > 0) {
@@ -87,34 +87,32 @@ and open the template in the editor.
                                 <label for="productdetails">Quantity </label>
                                 <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
                                     <input type="number" min="1" name="productAmount" value="1">
-                                    <input type="hidden" name="productPrice" value="<?php echo $_POST['product_price'] ?>">
-                                    <input type="hidden" name="productID" value="<?php echo $_POST['product_id'] ?>">  <!--echo $row["product_id"]; -->
-                                    <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
+                                    <input type="hidden" name="productPrice" value="<?php echo $productDetails['product_price'] ?>"
+                                           <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>" <!--echo $row["product_id"]; -->
+                                           <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                                 </form>
-                                <?php
-                            }
-                            ?>
 
-                        </div>
+                            </div>
 
+                        </section>
                     </section>
-                </section>
 
-                <section class="productDescription">
-                    <section class="container">
-                        <h3>Product Description</h3>
-                        <p><?php echo $productDetails['product_desc'] ?></p>
+                    <section class="productDescription">
+                        <section class="container">
+                            <h3>Product Description</h3>
+                            <p><?php echo $productDetails['product_desc'] ?></p>
 
-                        <p>This is the Product Description . This is the Product Description .This is the Product
-                            Description This is the Product Description
-                            This is the Product Description This is the Product Description This is the Product
-                            Description This is the Product Description.This is the Product
-                            Description </p>
+                            <p>This is the Product Description . This is the Product Description .This is the Product
+                                Description This is the Product Description
+                                This is the Product Description This is the Product Description This is the Product
+                                Description This is the Product Description.This is the Product
+                                Description </p>
 
-                        <hr />
+                            <hr />
+                        </section>
                     </section>
-                </section>
-                <?php
+                    <?php
+                }
             }
             ?>
         </article>
