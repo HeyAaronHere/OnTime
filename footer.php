@@ -19,25 +19,26 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
 
-    <footer class="footer">
-        <section class=container>
+    <footer class=" container-fluid footer">
+
+        <nav class=container >
             <section class="row">
                 <section class="col-md-4">
                     <h1>Company</h1>
-                    <a href="aboutus.html">
+                    <a href="aboutus.php">
                         <p>About Us</p>
                     </a>
-                    <a href="aboutus.html">
+                    <a href="aboutus.php">
                         <p>Contact Us</p>
                     </a>
                 </section>
 
                 <section class="col-md-4">
                     <h1>Customer Support</h1>
-                    <a href="customerservice.html#FAQ">
+                    <a href="customerservice.php#FAQ">
                         <p>FAQ</p>
                     </a>
-                    <a href="customerservice.html">
+                    <a href="customerservice.php">
                         <p>Customer Service</p>
                     </a>
                 </section>
@@ -45,22 +46,22 @@
                 <section class="col-md-4">
                     <h1>Follow Us On</h1>
                     <a href="https://www.facebook.com/">
-                        <p><i class="fa fa-facebook-official"></i> Facebook</p>
+                        <p><span class="fa fa-facebook-official"></span> Facebook</p>
                     </a>
                     <a href="https://www.youtube.com/">
-                        <p><i class="fa fa-youtube-play"></i> Youtube</p>
+                        <p><span class="fa fa-youtube-play"></span> Youtube</p>
                     </a>
                     <a href="https://www.linkedin.com/">
-                        <p><i class="fa fa-linkedin"></i> LinkedIn</p>
+                        <p><span class="fa fa-linkedin"></span> LinkedIn</p>
                     </a>
                     <a href="https://twitter.com/">
-                        <p><i class="fa fa-twitter"></i> Twitter</p>
+                        <p><span class="fa fa-twitter"></span> Twitter</p>
                     </a>
                 </section>
 
             </section>
             <hr />
-            <p class="copyright">Copyright &copy; 2019 <i class="fa fa-heart-o"></i> ONTime</p>
-        </section>
+            <p class="copyright">Copyright &copy; 2019 <span class="fa fa-heart-o"></span> ONTime</p>
+        </nav>
     </footer>
 </html>

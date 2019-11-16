@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                 <input type="hidden" name="product_id" value="<?php echo' . $sub_row['product_id'] .'; ?>"> <!--session variable to transport product id?-->
                 <input type="hidden" name="product_price" value="<?php echo' . $sub_row['product_price'] .'; ?>">
                 <input type="submit" name="submitbutton" value="click for more info">
-                <p class="price">' . $sub_row["product_price"] . '</p>
+                <p class="price">$' . $sub_row["product_price"] . '</p>
 
 
                 <figure class = "overlay-right">

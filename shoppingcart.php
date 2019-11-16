@@ -15,26 +15,26 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 
 <html>
 
-<head>
-    <title>Shopping Cart - OnTime</title>
-    <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
-    <meta name="keywords"
-        content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/shoppingcart.css">
-    <link rel="stylesheet" href="css/headerFooter.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+    <head>
+        <title>Shopping Cart - OnTime</title>
+        <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
+        <meta name="keywords"
+              content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/shoppingcart.css">
+        <link rel="stylesheet" href="css/headerFooter.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
-    <script defer src="js\shoppingcartcheck.js"></script>
-</head>
+        <script defer src="js\shoppingcartcheck.js"></script>
+    </head>
 
 <body>
     <section class="container">
@@ -75,87 +75,26 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 <?php
                         while($row = mysqli_fetch_array($checkResult)){
 
-                  //<!-- id='qty'--> for first td line
-                    echo ("<tr>
+                                    //<!-- id='qty'--> for first td line
+                                    echo ("<tr>
                               <td><?php echo" . $row['quantity'] . "?></td>
                               <td><?php echo" . $row['product_name'] . "?></td>
                               <td><?php echo" . $row['product_price'] . "?></td>
                           </tr>");
-                        }
-?>
-                    <tfoot>
-                        <tr class="tfooter">
+                                }
+                                ?>
+                                <tfoot>
+                                    <tr class="tfooter">
 
-                            <td></td>
-                            <td id="pricetotal">Price total: </td>
-                            <td id="amounttotal">120 SGD</td>
+                                        <td></td>
+                                        <td id="pricetotal">Price total: </td>
+                                        <td id="amounttotal">120 SGD</td>
 
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </section>
-
-        <section class="well well-sm row">
-            <h2>Delivery Address</h2>
-            <form id="deliveryinfo">
-                <section class="form-group row">
-                    <div class="col-sm-4">
-                        <label for="ex1">Full Name</label>
-                        <input class="form-control" id="fname" type="text">
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="ex2">Email Address</label>
-                        <input class="form-control" id="email" type="text">
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="ex3">Phone number</label>
-                        <input class="form-control" id="phone" type="text">
-                    </div>
-                </section>
-                <section class="form-group row">
-                    <div class="col-sm-4">
-                        <label for="ex1">Street</label>
-                        <input class="form-control" id="street" type="text">
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="ex2">Country Code</label>
-                        <input class="form-control" id="countrycode" type="text">
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="ex3">Country</label>
-                        <input class="form-control" id="country" type="text">
-                    </div>
-                </section>
-            </form>
-
-            <h2>Select Payment Type</h2>
-            <form>
-                <input type="radio" name="payment-type" value="Cash" checked> Cash (Note: Cash must have the exact
-                change!)<br>
-                <input id="cashradio" type="radio" name="payment-type" value="Credit/DebitCard"> Credit/Debit Card
-                <form id="billinginfo">
-                    <section class="form-group row">
-                        <div class="col-sm-4">
-                            <label for="ex1">Name on Card</label>
-                            <input class="form-control" id="cardname" type="text">
-                        </div>
-                        <div class="col-sm-4">
-                            <label for="ex2">Card Number</label>
-                            <input class="form-control" id="cardnumber" type="text">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="ex3">Expiry Data</label>
-                            <input class="form-control" id="expdate" type="text">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="ex4">cvv</label>
-                            <input class="form-control" id="cvv" type="text">
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </section>
-                </form>
-            </form>
-        </section>
 
         <div id="checkoutbutton" class="row">
             <button type="button" class="btn btn-success btn-lg">
@@ -170,7 +109,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
     }
 ?>
     <button type="button" class="btn btn-success btn-lg">
-        <a id="checkbutton" href="product_database.php">Go on shopping <span
+        <a id="checkbutton" href="product.php">Go on shopping <span
             class="glyphicon glyphicon-arrow-left"></span></a>
     </button>
 </section>
@@ -178,6 +117,5 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
     include "footer.php";
      ?>
 
-</body>
 
 </html>

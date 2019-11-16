@@ -33,6 +33,7 @@ function validateform() {
         isNameValid = false;
     } else {
         if (!chkNameSyntax(txtName)) {
+            name.style.borderColor = "red";
             name.setCustomValidity("Please enter a proper first name!");
             isNameValid = false;
         } else {
