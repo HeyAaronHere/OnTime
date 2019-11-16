@@ -42,38 +42,38 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             include "header.php";
             ?>
 
-            <header class="page-header">
-                <h1>Your shopping cart at ONtime</h1>
-            </header>
-            <?php
-            if ($con->connect_error) {
-                $errorMsg .= "<p>Connection failed: " . $con->connect_error . "</p>";
-                $success = false;
-            } else {
-                //execute the query
-                $result = "SELECT quantity, product_name, product_price "
-                        . "FROM shoppingCart, product WHERE userID = $userID AND productID = product_id";
-                $checkResult = mysqli_query($con, $result);
-                if (!$checkResult) {
-                    $errorMsg .= "<p>Database error: " . $con->error . "</p>";
-                    $success = false;
-                } else if (mysqli_num_rows($checkResult) > 0) {
-                    //there are products in the shopping cart, get all products incl details
-                    ?>
-                    <section class="row">
-                        <div class="col-md-12">
-                            <h2>Your Shopping Cart contains:</h2>
-                            <table class="table table-striped table-responsive">
-                                <thead>
-                                    <tr>
-                                        <th>Quantity</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <?php
-                                while ($row = mysqli_fetch_array($result)) {
+        <header class="page-header">
+            <h1>Your shopping cart at ONtime</h1>
+        </header>
+<?php
+        if ($con->connect_error){
+          $errorMsg .= "<p>Connection failed: " . $con->connect_error . "</p>";
+          $success = false;
+        }else{
+          //execute the query
+          $result = "SELECT quantity, product_name, product_price "
+                  . "FROM shoppingCart, product WHERE userID = $userID AND productID = product_id";
+          $checkResult = mysqli_query($con, $result);
+          if (!$checkResult){
+            $errorMsg .= "<p>Database error: " . $con->error . "</p>";
+            $success = false;
+          }else if(mysqli_num_rows($checkResult) > 0){
+            //there are products in the shopping cart, get all products incl details
+?>
+        <section class="row">
+            <div class="col-md-12">
+                <h2>Your Shopping Cart contains:</h2>
+                <table class="table table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+<?php
+                        while($row = mysqli_fetch_array($checkResult)){
 
                                     //<!-- id='qty'--> for first td line
                                     echo ("<tr>
@@ -178,6 +178,5 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         include "footer.php";
         ?>
 
-    </body>
 
 </html>
