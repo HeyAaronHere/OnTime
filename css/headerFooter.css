@@ -5,32 +5,31 @@
     left: 50%;
     top: 5px;
     transform: translate(-50%, -50%);
-  }
-  
-  .navbar-nav li:hover {
+}
+
+.navbar-nav li:hover {
     background-color: rgb(80, 80, 80);
     transition: transform .5s, background-color 1.5s ease-in-out;
     transform: scale(1.05);
-  }
-  .navbar-right{
+}
+.navbar-right{
     padding-right: 10px;
-  }
-  nav{
+}
+nav{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 120%;
-  }
+}
 
 
-  /*-------footer css-------*/
+/*-------footer css-------*/
 .footer 
 {   
     background-color: #2f2f2f;
     color: #ffffff;
-    margin: 0px;
-    padding: 10px 10px;
     font-family: Arial;
     position: relative;
-    padding-bottom: 0;
+    width: 100%;
+    bottom: 0;
 }
 
 .foot a
@@ -41,11 +40,16 @@
 .footer .row .fa
 {
     padding-right: 10px;
-       
-}
 
+}
+/*
 #footer {
-  position: absolute; bottom: 0px; left: 0;
-  width: 100%;
-  height:auto;
-  }
+    position: absolute; bottom: 0px; left: 0;
+    width: 100%;
+    height:auto;
+}*/
+
+#testingContainer{
+    margin-right: auto;
+    margin-left: auto;
+}
