@@ -1,7 +1,7 @@
 <?php
 //start session
 if (!isset($_SESSION)) {
-                session_start();
+    session_start();
 }
 ?>
 
@@ -45,14 +45,14 @@ and open the template in the editor.
                 <div class="container" id="productreview">
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                     <!-- w3schools js validation, https://www.w3schools.com/js/js_validation.asp -->
+                  
                     <form id="productreviews" action="process_review.php" method="post">
 
                         <div class="col-sm-12 form-group">
-                            <label for="comments">
+                            <label for="review">
                                 Reviews:</label>
                             <textarea type="text" class="form-control" id="reviewinput" name="review" placeholder="Write your reviews.." maxlength="6000" rows="7" required></textarea>
                         </div>
-
 
                         <div class="col-sm-6 form-group">
                             <label for="name">
