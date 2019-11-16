@@ -86,10 +86,10 @@ and open the template in the editor.
 
                                 <label for="productdetails">Quantity </label>
                                 <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
-                                    <input type="number" min="1" name="productAmount" value="1">
-                                    <input type="hidden" name="productPrice" value="<?php echo $productDetails['product_price'] ?>"
-                                           <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>" <!--echo $row["product_id"]; -->
-                                           <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
+                                    <input type="number" id ="productinput" min="1" name="productAmount" value="">
+                                    <input type="hidden"  name="productPrice" value="<?php echo $productDetails['product_price'] ?>"
+                                    <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>" <!--echo $row["product_id"]; -->
+                                    <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                                 </form>
 
                             </div>
