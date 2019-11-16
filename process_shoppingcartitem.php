@@ -24,7 +24,7 @@ if(isset($_SESSION['email'])){
 
 
 //check if user is logged in
-if(!isset($_SESSION['email'])){
+if(!isset($_SESSION['firstName'])){
   echo "<p>You must log in before adding an item to the shopping cart</p>";
   echo "<button><a href='login.php'>Log In</a></button>";
 }else{
