@@ -109,7 +109,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
     }
 ?>
     <button type="button" class="btn btn-success btn-lg">
-        <a id="checkbutton" href="product_database.php">Go on shopping <span
+        <a id="checkbutton" href="product.php">Go on shopping <span
             class="glyphicon glyphicon-arrow-left"></span></a>
     </button>
 </section>
