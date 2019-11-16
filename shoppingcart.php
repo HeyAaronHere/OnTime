@@ -36,11 +36,11 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         <script defer src="js\shoppingcartcheck.js"></script>
     </head>
 
-    <body>
-        <section  class="container"> <!--necessary?-->
-            <?php
-            include "header.php";
-            ?>
+<body>
+    <section class="container">
+        <?php
+          include "header.php";
+         ?>
 
         <header class="page-header">
             <h1>Your shopping cart at ONtime</h1>
@@ -96,87 +96,26 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                         </div>
                     </section>
 
-                    <section class="well well-sm row">
-                        <h2>Delivery Address</h2>
-                        <form id="deliveryinfo">
-                            <section class="form-group row">
-                                <div class="col-sm-4">
-                                    <label for="ex1">Full Name</label>
-                                    <input class="form-control" id="fname" type="text">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="ex2">Email Address</label>
-                                    <input class="form-control" id="email" type="text">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="ex3">Phone number</label>
-                                    <input class="form-control" id="phone" type="text">
-                                </div>
-                            </section>
-                            <section class="form-group row">
-                                <div class="col-sm-4">
-                                    <label for="ex1">Street</label>
-                                    <input class="form-control" id="street" type="text">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="ex2">Country Code</label>
-                                    <input class="form-control" id="countrycode" type="text">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="ex3">Country</label>
-                                    <input class="form-control" id="country" type="text">
-                                </div>
-                            </section>
-                        </form>
-
-                        <h2>Select Payment Type</h2>
-                        <form>
-                            <input type="radio" name="payment-type" value="Cash" checked> Cash (Note: Cash must have the exact
-                            change!)<br>
-                            <input id="cashradio" type="radio" name="payment-type" value="Credit/DebitCard"> Credit/Debit Card
-                            <form id="billinginfo">
-                                <section class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="ex1">Name on Card</label>
-                                        <input class="form-control" id="cardname" type="text">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="ex2">Card Number</label>
-                                        <input class="form-control" id="cardnumber" type="text">
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <label for="ex3">Expiry Data</label>
-                                        <input class="form-control" id="expdate" type="text">
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <label for="ex4">cvv</label>
-                                        <input class="form-control" id="cvv" type="text">
-                                    </div>
-                                </section>
-                            </form>
-                        </form>
-                    </section>
-
-                    <div id="checkoutbutton" class="row">
-                        <button type="button" class="btn btn-success btn-lg">
-                            <a id="checkbutton" href="product_database.php">Go on shopping <span
-                                    class="glyphicon glyphicon-arrow-left"></span></a>
-                        </button>
-                        <button type="button" class="btn btn-success btn-lg">
-                            <a id="checkbutton" href="checkout.php">Purchase <span
-                                    class="glyphicon glyphicon-arrow-right"></span></a>
-                        </button>
-                    </div>
-                    <?php
-                } else {
-                    echo "<p>Your shopping cart is empty, add an item to your shopping cart!</p>";
-                }
-            }
-            ?>
-        </section>
-        <?php
-        include "footer.php";
-        ?>
+        <div id="checkoutbutton" class="row">
+            <button type="button" class="btn btn-success btn-lg">
+                <a id="checkbutton" href="checkout.php">Purchase <span
+                        class="glyphicon glyphicon-arrow-right"></span></a>
+            </button>
+        </div>
+<?php
+    } else{
+        echo "<p>Your shopping cart is empty, add an item to your shopping cart!</p>";
+      }
+    }
+?>
+    <button type="button" class="btn btn-success btn-lg">
+        <a id="checkbutton" href="product_database.php">Go on shopping <span
+            class="glyphicon glyphicon-arrow-left"></span></a>
+    </button>
+</section>
+    <?php
+    include "footer.php";
+     ?>
 
 
 </html>
