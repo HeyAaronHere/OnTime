@@ -34,8 +34,8 @@ while ($row = mysqli_fetch_array($tab_result)) {
                 <form method="post" action="productdetails.php">
                 <img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" />
                 <h1>' . $sub_row["product_name"] . '</h1>
-                <input type="hidden" name="product_id" value="<?php echo' . $sub_row['product_id'] .'; ?>"> <!--session variable to transport product id?-->
-                <input type="hidden" name="product_price" value="<?php echo' . $sub_row['product_price'] .'; ?>">
+                <input type="hidden" name="product_id" value="' . $sub_row['product_id'] .'"> <!--session variable to transport product id?-->
+                <input type="hidden" name="product_price" value="<' . $sub_row['product_price'] .'">
                 <input type="submit" name="submitbutton" value="click for more info">
                 <p class="price">$' . $sub_row["product_price"] . '</p>
 
