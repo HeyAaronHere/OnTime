@@ -79,7 +79,7 @@ and open the template in the editor.
                                 <p class = "new-arrival text-center">NEW</p>
                                 <h2><?php echo $productDetails['product_name'] ?></h2>
                                 <p><b>Product Code:</b> <?php echo $productDetails['product_code'] ?></p>
-                                <p id="price"><?php echo $productDetails['product_price'] ?></p>
+                                <p id="price">$<?php echo $productDetails['product_price'] ?></p>
                                 <p><b>Availability:</b> <?php echo $productDetails['product_stock'] ?> </p>
                                 <p><b>Condition:</b> New </p>
                                 <p><b>Brand:</b> <?php echo $productDetails['product_brand'] ?></p>
