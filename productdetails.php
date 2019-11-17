@@ -58,15 +58,15 @@ if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($
    $productId = $_POST['product_id'];
 }
 $productId = $_POST['product_id'];
-echo "$productId";
+
 //$id = isset($_GET['product_id']) ? (int) $_GET['product_id'] : 0;
 // if(isset( $_GET['product_id'])) $id = $_GET['product_id'];
 //else echo " no product id";
-$IDquery = "SELECT * FROM product WHERE product_id = '1'";
+$IDquery = "SELECT * FROM product WHERE product_id = '$productId'";
 $sql = mysqli_query($conn, $IDquery);
 if (!$sql){
-//  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
-echo "error: " . $conn->error;
+  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
+  echo "error: " . $conn->error;
   $success = false;
 }else if (mysqli_num_rows($sql) > 0) {
     while ($productDetails = mysqli_fetch_assoc($sql)) {
