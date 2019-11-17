@@ -1,7 +1,7 @@
 <?php
 //start session
 if (!isset($_SESSION)) {
-                session_start();
+    session_start();
 }
 
 define("DBHOST", "161.117.122.252");
@@ -38,21 +38,34 @@ $success = true;
             <?php
             include "header.php";
 
+            $namepat = "/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/";
+            $emailpat = "/\S+@\S+\.\S+/";
+
             if (empty($_POST["email"])) {
-                $errorMsg .= "Email required.<br>";
+                $errorMsg .= "Email required, please fill up.<br>";
                 $success = false;
             } else {
                 $email = sanitize_input($_POST["email"]); // Additional check to make sure e-mail address is well-formed.     
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $errorMsg .= "Invalid email format.";
+                    $errorMsg .= "Invalid email format, please try again!<br>";
+                    $success = false;
+                } else if (preg_match($emailpat, $email) == False) {
+                    $errorMsg .= "Invalid email format, please try again!<br>";
                     $success = false;
                 }
             }
             if (empty($_POST["name"])) {
-                $errorMsg .= "Please input name.<br>";
+                $errorMsg .= "Name Required, please fill up.<br>";
                 $success = false;
             } else {
                 $name = sanitize_input($_POST["name"]);
+                if (!filter_var($name)) {
+                    $errorMsg .= "Please input name.<br>";
+                    $success = false;
+                } else if (preg_match($namepat, $name) == False) {
+                    $errorMsg .= "Please input name.<br>";
+                    $success = false;
+                }
             }
 
             if (empty($_POST["review"])) {
@@ -60,9 +73,14 @@ $success = true;
                 $success = false;
             } else {
                 $review = sanitize_input($_POST["review"]);
+                if (!filter_var($review)) {
+                    $errorMsg .= "Please fill form.<br>";
+                    $success = false;
+                }
             }
+
             if ($success) {
-                echo "<h2>Form Submitted successful!</h2>";
+                echo "<h2>Form Submitted successfully!</h2>";
                 echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
                 echo "<section id='divider'></section>";
                 echo "<a id='btnHome' href='index.php' class='btn btn-default'>Return to Home</a>";

@@ -19,14 +19,15 @@ if (isset($_SESSION['firstName'])) {
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="js/FormVal.js"></script>
         </head>
         <body>
             <main>
                 <?php
                 include 'header.php';
                 ?>
-                <div class=container>
-                    <div class="row">
+                <section class=container>
+                    <section class="row">
                         <div class="login-form">
                             <form name="RegForm" action="p_signup.php" method="post">
                                 <h2 class="text-center">Create An Account</h2>
@@ -63,13 +64,12 @@ if (isset($_SESSION['firstName'])) {
                                 </div>
                             </form>
                         </div>
-                    </div>
-                </div>
+                    </section>
+                </section>
             </main>
-            <?php
-            include 'footer.php';
-            ?>
-            <script src="js/FormVal.js"></script>
+                <?php
+                include 'footer.php';
+                ?>
         </body>
     </html>
     <?php

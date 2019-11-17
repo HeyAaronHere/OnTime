@@ -1,10 +1,9 @@
 <?php
 //start session
-if (isset($_POST['signup-submit'])) {
 
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+
+if (!isset($_SESSION)) {
+    session_start();
     // Constants for accessing our DB:
     define("DBHOST", "161.117.122.252");
     define("DBNAME", "p2_7");
@@ -15,23 +14,23 @@ if (isset($_POST['signup-submit'])) {
 //chkname chkpno chke chkpwd
 if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
     {
-
+        echo'<p>name has been checked</p>';
     }
 if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
     {
-        
+        echo'<p>name has been checked</p>';
     }
 if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
     {
-
+        echo'<p>name has been checked</p>';
     }
 if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
     {
-
+        echo'<p>name has been checked</p>';
     }
 if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
     {
-
+        echo'<p>name has been checked</p>';
     }
 
     $success = true;
@@ -48,4 +47,6 @@ if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes')
         </head>
 
     </html>
+<?php
 }
+?>
