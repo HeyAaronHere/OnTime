@@ -9,7 +9,7 @@ define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
-$productId = "";
+$productID = "";
 $errorMsg = "";
 $success = true;
 
@@ -47,50 +47,23 @@ and open the template in the editor.
         <?php
         include "header.php";
         //include "sideShoppingCart.php";
-<<<<<<< HEAD
-        ?>
-
-<?php
-
-if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
-  $errors[] = 'You must select a product in order to see its details!';
-} else {
-   $productId = $_POST['product_id'];
-}
-$productId = $_POST['product_id'];
-
-//$id = isset($_GET['product_id']) ? (int) $_GET['product_id'] : 0;
-// if(isset( $_GET['product_id'])) $id = $_GET['product_id'];
-//else echo " no product id";
-$IDquery = "SELECT * FROM product WHERE product_id = '$productId'";
-$sql = mysqli_query($conn, $IDquery);
-if (!$sql){
-  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
-  echo "error: " . $conn->error;
-  $success = false;
-}else if (mysqli_num_rows($sql) > 0) {
-    while ($productDetails = mysqli_fetch_assoc($sql)) {
-        ?>
-
-
-=======
->>>>>>> 87a0f59aa5c98b1aeb73ec7d6eb74efc55acd7f8
 
         if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
             $errors[] = 'You must select a product in order to see its details!';
         } else {
-            $productId = $_POST['product_id'];
+            $productID = $_POST['product_id'];
         }
 
-        $IDquery = "SELECT * FROM product WHERE product_id ='" . $productId . "'";
+        $IDquery = "SELECT * FROM product WHERE product_id ='$productID'";
         $sql = mysqli_query($conn, $IDquery);
+
         if (!$sql) {
             //  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
             echo "error: " . $conn->error;
             $success = false;
         } else if (mysqli_num_rows($sql) > 0) {
             while ($productDetails = mysqli_fetch_assoc($sql)) {
-                ?>       
+                ?>
 
                 <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
                     all images source from Cocomi.com URL = https://www.cocomi.com/
@@ -114,9 +87,9 @@ if (!$sql){
 
                                 <label for="productdetails">Quantity </label>
                                 <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
-                                    <input type="number" id ="productinput" min="1" name="productAmount" value="">
-                                    <input type="hidden"  name="productPrice" value="<?php echo $productDetails['product_price'] ?>"
-                                    <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>" <!--echo $row["product_id"]; -->
+                                    <input type="number" id ="productinput" min="1" name="productAmount" value="1">
+                                    <input type="hidden"  name="productPrice" value="<?php echo $productDetails['product_price'] ?>">
+                                    <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>">
                                     <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                                 </form>
 
@@ -141,6 +114,8 @@ if (!$sql){
                     </section>
                     <?php
                 }
+                $sql->free();
+                $conn.close();
             }
             ?>
         </article>
