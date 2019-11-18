@@ -34,7 +34,7 @@ function validateform() {
     } else {
         if (!chkNameSyntax(txtName)) {
             name.style.borderColor = "red";
-            name.setCustomValidity("Please enter a proper first name!");
+            name.setCustomValidity("Please enter name with alphabet only!");
             isNameValid = false;
         } else {
             name.style.borderColor = "green";

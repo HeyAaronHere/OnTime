@@ -6,7 +6,7 @@ if (isset($_SESSION['firstName'])) {
 } else {
     ?>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
         <head>
             <title>Signup - OnTime</title>
             <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -24,7 +24,7 @@ if (isset($_SESSION['firstName'])) {
         <body>
             <main>
                 <?php
-                include 'header.php';
+                include 'header.inc.php';
                 ?>
                 <section class=container>
                     <section class="row">
@@ -67,9 +67,9 @@ if (isset($_SESSION['firstName'])) {
                     </section>
                 </section>
             </main>
-                <?php
-                include 'footer.php';
-                ?>
+            <?php
+            include 'footer.inc.php';
+            ?>
         </body>
     </html>
     <?php

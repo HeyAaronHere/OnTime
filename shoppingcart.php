@@ -1,20 +1,13 @@
-<!DOCTYPE html>
 <?php
 if (!isset($_SESSION)) {
     session_start();
 }
-define("DBHOST", "161.117.122.252");
-define("DBNAME", "p2_7");
-define("DBUSER", "p2_7");
-define("DBPASS", "7tQeryxcIq");
-$con = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-$userID = "";
+include "connection.inc.php";
+$userID = $priceTotal = $errorMsg = "";
 $userID = $_SESSION['userID']; //only visible when logged in, no need to if statement
 ?>
-
-
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Shopping Cart - OnTime</title>
         <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -35,87 +28,164 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         crossorigin="anonymous"></script>
         <script defer src="js\shoppingcartcheck.js"></script>
     </head>
-
-<body>
-    <section class="container">
-        <?php
-          include "header.php";
-         ?>
-
-        <header class="page-header">
-            <h1>Your shopping cart at ONtime</h1>
-        </header>
+    <body>
+      <?php
+          include "header.inc.php";
+      ?>
+        <section class="container">
+            <header class="page-header">
+                <h1>Your shopping cart at ONtime</h1>
+            </header>
 <?php
-        if ($con->connect_error){
-          $errorMsg .= "<p>Connection failed: " . $con->connect_error . "</p>";
-          $success = false;
-        }else{
-          //execute the query
-          $result = "SELECT quantity, product_name, product_price "
-                  . "FROM shoppingCart, product WHERE userID = $userID AND productID = product_id";
-          $checkResult = mysqli_query($con, $result);
-          if (!$checkResult){
-            $errorMsg .= "<p>Database error: " . $con->error . "</p>";
-            $success = false;
-          }else if(mysqli_num_rows($checkResult) > 0){
-            //there are products in the shopping cart, get all products incl details
+            //execute the query
+            $result = "SELECT s.product_id, quantity, product_name, product_price, quantity * product_price as 'total' "
+                    . "FROM shoppingcart s, product p WHERE s.user_id = '$userID' AND s.product_id = p.product_id";
+            $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = '$userID' AND P.product_id = S.product_id";
+            $checkResult = mysqli_query($conn, $result);
+            $checkRes = mysqli_query($conn, $res);
+            if (!$checkResult || !$checkRes) {
+                $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
+                $success = false;
+            } else if (mysqli_num_rows($checkResult) > 0) {
+                //there are products in the shopping cart, get all products incl details
+                global $priceTotal;
+                $record = mysqli_fetch_row($checkRes);
+                $priceTotal = $record[0];
+
 ?>
-        <section class="row">
-            <div class="col-md-12">
-                <h2>Your Shopping Cart contains:</h2>
-                <table class="table table-striped table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Quantity</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+            <section class="row">
+                <div class="col-md-12">
+                    <h2>Your Shopping Cart contains:</h2>
+                        <table class="table table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Quantity</th>
+                                    <th>Name</th>
+                                    <th>Price/piece</th>
+                                    <th>Total</th>
+                                    <form method = "POST" action="clearShoppingCart.php">
+                                        <th><input type="submit" value="clear shoppingcart"></th> <!-- <button type="button" class="btn btn-danger btn-sm">Clear Shoppingcart</button> -->
+                                    </form>
+                                </tr>
+                            </thead>
 <?php
-                        while($row = mysqli_fetch_array($checkResult)){
+            while($row = mysqli_fetch_array($checkResult)){
+?>
+                    <tr>
+                      <td><?php echo $row['quantity']?></td>
+                      <td><?php echo $row['product_name']?></td>
+                      <td><?php echo $row['product_price']?></td>
+                      <td><?php echo $row['total']?></td>
+                      <form method = "POST" action="removeItem.php">
+                        <td>
+                          <input type="hidden" name="product" value="<?php echo $row['product_id']?>">
+                          <input type="submit" value="remove item">
+                        </td> <!-- <td><button type="button" class="btn btn-danger btn-sm">Remove</button></td> -->
+                      </form>
 
-                                    //<!-- id='qty'--> for first td line
-                                    echo ("<tr>
-                              <td><?php echo" . $row['quantity'] . "?></td>
-                              <td><?php echo" . $row['product_name'] . "?></td>
-                              <td><?php echo" . $row['product_price'] . "?></td>
-                          </tr>");
-                                }
-                                ?>
-                                <tfoot>
-                                    <tr class="tfooter">
+                    </tr>
+<?php
+                  }
+?>
+                      <tfoot>
+                        <tr class="tfooter">
+                          <td></td>
+                          <td></td>
+                          <td id="pricetotal">Price total: </td>
+                          <td id="amounttotal"><?php echo $priceTotal ?></td>
+                          <td></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </section>
 
-                                        <td></td>
-                                        <td id="pricetotal">Price total: </td>
-                                        <td id="amounttotal">120 SGD</td>
 
-                                    </tr>
-                                </tfoot>
-                            </table>
+<?php
+                } else {
+                    echo "<p>Your shopping cart is empty, add an item to your shopping cart!</p>";
+                }
+
+?>
+<button type="button" class="btn btn-success btn-lg">
+  <a id="checkbutton" href="product.php"><span
+              class="glyphicon glyphicon-arrow-left"> Go on shopping</span></a>
+</button>
+<?php
+      if (mysqli_num_rows($checkResult) > 0){
+?>
+          <section class="well well-sm row">
+            <form id="orderform"> <!--method="post" action="checkout.php"-->
+            <h2>Delivery Address</h2>
+
+                <section class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="fname">Full Name</label>
+                        <input class="form-control" name="fname" type="text" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="email">Email Address</label>
+                        <input class="form-control" name="email" type="text" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="phone">Phone number</label>
+                        <input class="form-control" name="phone" type="text" required>
+                    </div>
+                </section>
+                <section class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="street">Street</label>
+                        <input class="form-control" name="street" type="text" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="countrycode">Country Code</label>
+                        <input class="form-control" name="countrycode" type="text" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="country">Country</label>
+                        <input class="form-control" name="country" type="text" required>
+                    </div>
+                </section>
+
+            <h2>Select Payment Type</h2>
+                <input type="radio" name="payment-type" value="Cash" checked> Cash (Note: Cash must have the exact
+                change!)<br>
+                <input id="cashradio" type="radio" name="payment-type" value="Credit/DebitCard"> Credit/Debit Card
+
+                    <section class="form-group row">
+                        <div class="col-sm-4">
+                            <label for="cardname">Name on Card</label>
+                            <input class="form-control" name="cardname" type="text" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="cardnumber">Card Number</label>
+                            <input class="form-control" name="cardnumber" type="text" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="expdate">Expiry Data</label>
+                            <input class="form-control" name="expdate" type="text" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="cvv">cvv</label>
+                            <input class="form-control" name="cvv" type="text" required>
                         </div>
                     </section>
 
         <div id="checkoutbutton" class="row">
-            <button type="button" class="btn btn-success btn-lg">
-                <a id="checkbutton" href="checkout.php">Purchase <span
-                        class="glyphicon glyphicon-arrow-right"></span></a>
-            </button>
+          <input type="submit" id="checkbutton" class="btn btn-success btn-lg"
+                  value="Purchase">
         </div>
+
+      </form>
+    </section>
+
 <?php
-    } else{
-        echo "<p>Your shopping cart is empty, add an item to your shopping cart!</p>";
-      }
     }
-?>
-    <button type="button" class="btn btn-success btn-lg">
-        <a id="checkbutton" href="product.php">Go on shopping <span
-            class="glyphicon glyphicon-arrow-left"></span></a>
-    </button>
-</section>
-    <?php
-    include "footer.php";
-     ?>
+ ?>
 
-
+    </section>
+        <?php
+        include "footer.inc.php";
+        ?>
+  </body>
 </html>

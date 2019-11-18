@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>ONTime</title>
         <meta charset="UTF-8">
@@ -10,7 +11,6 @@
         <link rel="stylesheet" href="css/headerFooter.css" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
         </script>
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
@@ -18,9 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
-
     <footer class=" container-fluid footer">
-
         <nav class=container >
             <section class="row">
                 <section class="col-md-4">
@@ -32,7 +30,6 @@
                         <p>Contact Us</p>
                     </a>
                 </section>
-
                 <section class="col-md-4">
                     <h1>Customer Support</h1>
                     <a href="customerservice.php#FAQ">
@@ -42,7 +39,6 @@
                         <p>Customer Service</p>
                     </a>
                 </section>
-
                 <section class="col-md-4">
                     <h1>Follow Us On</h1>
                     <a href="https://www.facebook.com/">
@@ -58,9 +54,8 @@
                         <p><span class="fa fa-twitter"></span> Twitter</p>
                     </a>
                 </section>
-
             </section>
-            <hr />
+            <hr>
             <p class="copyright">Copyright &copy; 2019 <span class="fa fa-heart-o"></span> ONTime</p>
         </nav>
     </footer>

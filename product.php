@@ -10,7 +10,7 @@ $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
 $tab_result = mysqli_query($connect, $tab_query);
 $tab_menu = '';
 $tab_content = '';
-$dropdownlist = '';
+
 $i = 0;
 while ($row = mysqli_fetch_array($tab_result)) {
     if ($i == 0) {
@@ -18,13 +18,11 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <li class="active"><a href="#' . $row["category_id"] . '" data-toggle="tab">' . $row["category_name"] . '</a></li>';
         $tab_content .= '
         <div id="' . $row["category_id"] . '" class="tab-pane fade in active">';
-        $dropdownlist .= '<option value="' . $row["category_name"] . '">' . $row["category_name"] . '</option>';
     } else {
         $tab_menu .= '
             <li><a href="#' . $row["category_id"] . '" data-toggle="tab">' . $row["category_name"] . '</a></li>';
         $tab_content .= '
             <div id="' . $row["category_id"] . '" class="tab-pane fade">';
-        $dropdownlist .= '<option value="' . $row["category_name"] . '">' . $row["category_name"] . '</option>';
     }
     $product_query = "SELECT * FROM product WHERE category_id = '" . $row["category_id"] . "'";
     $product_result = mysqli_query($connect, $product_query);
@@ -34,8 +32,8 @@ while ($row = mysqli_fetch_array($tab_result)) {
                 <form method="post" action="productdetails.php">
                 <img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" />
                 <h1>' . $sub_row["product_name"] . '</h1>
-                <input type="hidden" name="product_id" value="<?php echo' . $sub_row['product_id'] .'; ?>"> <!--session variable to transport product id?-->
-                <input type="hidden" name="product_price" value="<?php echo' . $sub_row['product_price'] .'; ?>">
+                <input type="hidden" name="product_id" value="' . $sub_row['product_id'] . '"> <!--session variable to transport product id?-->
+                <input type="hidden" name="product_price" value="<' . $sub_row['product_price'] . '">
                 <input type="submit" name="submitbutton" value="click for more info">
                 <p class="price">$' . $sub_row["product_price"] . '</p>
 
@@ -66,8 +64,8 @@ while ($row = mysqli_fetch_array($tab_result)) {
     </head>
     <body>
         <?php
-        include "header.php";
-        //include "sideShoppingCart.php";
+        include "header.inc.php";
+//include "sideShoppingCart.php";
         ?>
 
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
@@ -118,7 +116,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                 <?php
                 echo $tab_menu;
                 ?>
-                <select><?php echo $dropdownlist; ?></select>
+
 
             </ul>
             <div class="tab-content">
@@ -136,7 +134,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <hr>
 
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
 
     </body>

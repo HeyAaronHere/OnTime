@@ -1,10 +1,6 @@
 <?php
 if (isset($_POST['signup-submit'])) {
-//Constants for accessing our DB:
-    define("DBHOST", "161.117.122.252");
-    define("DBNAME", "p2_7");
-    define("DBUSER", "p2_7");
-    define("DBPASS", "7tQeryxcIq");
+    include "connection.inc.php";
     $fname = $lname = $email = $pwd = $HPnumber = "";
     $errorMsg = "";
     $success = true;
@@ -19,7 +15,7 @@ if (isset($_POST['signup-submit'])) {
             $success = false;
         } else {
             $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO user (fname, lname, email, HPnumber, password)";
+            $sql = "INSERT INTO account (fname, lname, email, HPnumber, password)";
             $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$hashed_password')";
             // Execute the query
             if (!$conn->query($sql)) {
@@ -31,7 +27,7 @@ if (isset($_POST['signup-submit'])) {
     }
     ?>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
         <head>
             <title>Signup - OnTime</title>
             <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -76,9 +72,8 @@ if (isset($_POST['signup-submit'])) {
                         $errorMsg .= "Contact number is must be 8 digits.";
                         $success = false;
                     }
-
                     $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-                    $result = "SELECT * FROM user where email = '$email'";
+                    $result = "SELECT * FROM account where email = '$email'";
                     $checkResult = mysqli_query($conn, $result);
                     if (mysqli_num_rows($checkResult) > 0) {
                         $errorMsg .= "Email exist already.";
@@ -86,12 +81,11 @@ if (isset($_POST['signup-submit'])) {
                     }
                     $conn->close();
                 }
-
-
                 if ($success) {
                     saveMemberToDB();
                     echo "<script type='text/javascript'>alert('Registration successful!');"
                     . "window.location.href='login.php';</script>";
+                    echo "<a href='login.php'>Go to Login Page</a>";
                 } else {
                     echo "<h1>OI!</h1>";
                     echo "<h4>The following input errors were detected:</h4>";

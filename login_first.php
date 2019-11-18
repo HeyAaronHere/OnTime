@@ -1,11 +1,11 @@
 <?php
 //start session
 if (!isset($_SESSION)) {
-                session_start();
+    session_start();
 }
 ?>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Main Page - OnTime</title>
         <meta charset="utf-8">
@@ -22,27 +22,24 @@ if (!isset($_SESSION)) {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
-
     </head>    
     <body>
-
         <?php
-            include "header.php";   
+        include "header.inc.php";
         ?>
-            <section class="jumbotron" id="login_first_msg">
-                <h1>SORRY</h1>
-                <div class="container-fluid">
+        <section class="jumbotron" id="login_first_msg">
+            <h1>SORRY</h1>
+            <div class="container-fluid">
                 <div class="col-md-4"></div>
                 <h2 class="col-md-4">You must Log in first to access this page <a href="login.php">
                         <p><i class="loginLink"></i> Login Page</p>
                     </a>
                 </h2>
                 <div class="col-md-4"></div>
-                </div>
-            </section>
+            </div>
+        </section>
         <?php
-            include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
-
 </html>

@@ -1,12 +1,11 @@
 <?php
 //start session
 if (!isset($_SESSION)) {
-                session_start();
+    session_start();
 }
 ?>
-
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Main Page - OnTime</title>
         <meta charset="utf-8">
@@ -23,27 +22,18 @@ if (!isset($_SESSION)) {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
-
     </head>
-
     <body>
-
         <?php
-        include "header.php";
+        include "header.inc.php";
         ?>
-
-
         <section class="container">
             <div class="row">
                 <div class="col-xs-12">
-
                     <div id="imageCarousel" class="carousel slide" data-interval="5000" data-ride="carousel"
                          data-pause="hover" data-wrap="true">
-
-
                         <p id="carouselheard">Current Collection</p>
                         <div class="carousel-inner">
-
                             <div class="item active">
                                 <div class="row">
                                     <div class="col-xs-4 img-zoom imghover">
@@ -82,7 +72,6 @@ if (!isset($_SESSION)) {
                                     </div>
                                 </div>
                             </div>
-
                             <a href="#imageCarousel" class="carousel-control left" data-slide="prev"
                                style="background:none !important">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -92,16 +81,13 @@ if (!isset($_SESSION)) {
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
-
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-
                     <div id="imageCarousel1" class="carousel slide" data-interval="5000" data-ride="carousel"
                          data-pause="hover" data-wrap="true">
                         <p id="carouselheard">Best Collection</p>
@@ -144,7 +130,6 @@ if (!isset($_SESSION)) {
                                     </div>
                                 </div>
                             </div>
-
                             <a href="#imageCarousel1" class="carousel-control left" data-slide="prev"
                                style="background:none !important">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -154,14 +139,10 @@ if (!isset($_SESSION)) {
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
-
         <section class="jumbotron" id="abit-abt-us">
             <h1>WATCH US</h1>
             <div class="container-fluid">
@@ -171,10 +152,8 @@ if (!isset($_SESSION)) {
                 <div class="col-md-4"></div>
             </div>
         </section>
-
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
-
 </html>
