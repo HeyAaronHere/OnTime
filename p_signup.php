@@ -1,10 +1,6 @@
 <?php
 if (isset($_POST['signup-submit'])) {
-//Constants for accessing our DB:
-    define("DBHOST", "161.117.122.252");
-    define("DBNAME", "p2_7");
-    define("DBUSER", "p2_7");
-    define("DBPASS", "7tQeryxcIq");
+    include "connection.inc.php";
     $fname = $lname = $email = $pwd = $HPnumber = "";
     $errorMsg = "";
     $success = true;
@@ -19,7 +15,7 @@ if (isset($_POST['signup-submit'])) {
             $success = false;
         } else {
             $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO user (fname, lname, email, HPnumber, password)";
+            $sql = "INSERT INTO account (fname, lname, email, HPnumber, password)";
             $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$hashed_password')";
             // Execute the query
             if (!$conn->query($sql)) {
