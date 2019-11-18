@@ -54,7 +54,6 @@
                         <li><a href="customerservice.php#FAQ">FAQ</a></li>
                     </ul>
                 </li>
-                <li><a href="product.php">Products</a></li>
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
             </ul>

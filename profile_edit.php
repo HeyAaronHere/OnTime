@@ -48,7 +48,7 @@ if (!isset($_SESSION)) {
 
                             <div class="form-group">
                                 <label for="FirstName">First Name:</label>
-                                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required="false" disabled="true" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
+                                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required="false" disabled="true" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$>
                             </div>
                             <div class="form-group">
                                 <label for="LastName">Last Name:</label>
@@ -73,7 +73,7 @@ if (!isset($_SESSION)) {
 
                             <div class="form-group">
                                 <label for="FirstName">Handphone no.:</label>
-                                <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber"  required="false" disabled="true" >
+                                <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber"  required="false" disabled="true" pattern="[0-9]{8}" >
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chkpno" name="chkpno" value="Yes" >select to change phone number</label>
@@ -94,7 +94,7 @@ if (!isset($_SESSION)) {
 
                             <div class="form-group">
                                 <label for="email">Email address:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="false" disabled="true" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="false" disabled="true" name="email" pattern="/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/">
                             </div>
 
                             <div class="checkbox">
