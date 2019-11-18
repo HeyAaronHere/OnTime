@@ -24,7 +24,7 @@ if (!isset($_SESSION)) {
     <body>
         <div class="container-fluid">
             <?php
-            include "header.php";
+            include "header.inc.php";
             ?>
             <?php
             //include "sideShoppingCart.php";
@@ -121,7 +121,7 @@ if (!isset($_SESSION)) {
                 </div>
             </article>
             <?php
-            include "footer.php";
+            include "footer.inc.php";
             ?>
         </div>
     </body>
