@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 if (!isset($_SESSION)) {
     session_start();
@@ -12,7 +11,7 @@ $userID = "";
 $userID = $_SESSION['userID']; //only visible when logged in, no need to if statement
 ?>
 
-
+<!DOCTYPE html>
 <html>
 
     <head>
@@ -38,9 +37,9 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 
 <body>
     <section class="container">
-        <?php
-          include "header.php";
-         ?>
+<?php
+        include "header.php";
+?>
 
         <header class="page-header">
             <h1>Your shopping cart at ONtime</h1>
@@ -52,7 +51,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         }else{
           //execute the query
           $result = "SELECT quantity, product_name, product_price "
-                  . "FROM shoppingCart, product WHERE userID = $userID AND productID = product_id";
+                  . "FROM shoppingCart, product WHERE userID = '$userID' AND productID = product_id";
           $checkResult = mysqli_query($con, $result);
           if (!$checkResult){
             $errorMsg .= "<p>Database error: " . $con->error . "</p>";
@@ -61,40 +60,36 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             //there are products in the shopping cart, get all products incl details
 ?>
         <section class="row">
-            <div class="col-md-12">
-                <h2>Your Shopping Cart contains:</h2>
-                <table class="table table-striped table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Quantity</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+          <div class="col-md-12">
+            <h2>Your Shopping Cart contains:</h2>
+            <table class="table table-striped table-responsive">
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th></th>
+                </tr>
+              </thead>
 <?php
-                        while($row = mysqli_fetch_array($checkResult)){
-
-                                    //<!-- id='qty'--> for first td line
-                                    echo ("<tr>
-                              <td><?php echo" . $row['quantity'] . "?></td>
-                              <td><?php echo" . $row['product_name'] . "?></td>
-                              <td><?php echo" . $row['product_price'] . "?></td>
-                          </tr>");
-                                }
-                                ?>
-                                <tfoot>
-                                    <tr class="tfooter">
-
-                                        <td></td>
-                                        <td id="pricetotal">Price total: </td>
-                                        <td id="amounttotal">120 SGD</td>
-
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </section>
+              while($row = mysqli_fetch_array($checkResult)){
+                echo ("<tr>
+                        <td><?php echo" . $row['quantity'] . "?></td>
+                        <td><?php echo" . $row['product_name'] . "?></td>
+                        <td><?php echo" . $row['product_price'] . "?></td>
+                        </tr>");
+              }
+?>
+              <tfoot>
+                <tr class="tfooter">
+                  <td></td>
+                  <td id="pricetotal">Price total: </td>
+                  <td id="amounttotal">120 SGD</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
 
         <div id="checkoutbutton" class="row">
             <button type="button" class="btn btn-success btn-lg">
@@ -109,8 +104,8 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
     }
 ?>
     <button type="button" class="btn btn-success btn-lg">
-        <a id="checkbutton" href="product.php">Go on shopping <span
-            class="glyphicon glyphicon-arrow-left"></span></a>
+        <a id="checkbutton" href="product.php"><span
+            class="glyphicon glyphicon-arrow-left"> Go on shopping</span></a>
     </button>
 </section>
     <?php
