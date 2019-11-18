@@ -1,9 +1,12 @@
 <?php
 //start session
+if(isset($_POST['submit'])){
+    header("Location: index.php");
+    exit;
+    }
 if (!isset($_SESSION)) {
     session_start();
-<<<<<<< HEAD
-    include "connection.php";
+    include "connection.inc.php";
     
     $success = true;
     
@@ -191,7 +194,7 @@ if (!isset($_SESSION)) {
                                 }else{     
                                     echo'<p>new password added</p>';
                                     $hashedPwd = password_hash($nPwd1, PASSWORD_DEFAULT);
-                                    $sqlUpdate .= "fname='$hashedPwd', ";
+                                    $sqlUpdate .= "password='$hashedPwd', ";
                                 }
                                 
                             }
@@ -211,8 +214,8 @@ if (!isset($_SESSION)) {
     if($success){
         saveMemberToDB();
         $conn->close();
-
-            //echo "<script type='text/javascript'>alert('Details updated successfuly!') window.location.href='index.php';</script>";
+        echo '<form name="processProfileForm" action="'. htmlspecialchars($_SERVER["PHP_SELF"]). '" method="POST">';
+        echo '<button type="submit" name="submit" value="return">Return to Homepage<button></form>';
     }else{
         
     $conn->close();
@@ -233,42 +236,6 @@ if (!isset($_SESSION)) {
         </html>
     <?php
     
-=======
-    // Constants for accessing our DB:
-    define("DBHOST", "161.117.122.252");
-    define("DBNAME", "p2_7");
-    define("DBUSER", "p2_7");
-    define("DBPASS", "7tQeryxcIq");
-    $email = $pwd = $fname = $errorMsg = "";
-//chkname chkpno chke chkpwd
-    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
-        echo'<p>name has been checked</p>';
-    }
-    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
-        echo'<p>name has been checked</p>';
-    }
-    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
-        echo'<p>name has been checked</p>';
-    }
-    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
-        echo'<p>name has been checked</p>';
-    }
-    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
-        echo'<p>name has been checked</p>';
-    }
-    $success = true;
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-
-
-
-        </head>
-
-    </html>
-    <?php
->>>>>>> 45f43d30ddd5e6088d02af7058dbb708b95f71b4
 }
 
 ?>
