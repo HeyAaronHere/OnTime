@@ -64,7 +64,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
     </head>
     <body>
         <?php
-        include "header.php";
+        include "header.inc.php";
 //include "sideShoppingCart.php";
         ?>
 
@@ -134,7 +134,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <hr>
 
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
 
     </body>

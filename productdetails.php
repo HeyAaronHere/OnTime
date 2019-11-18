@@ -35,7 +35,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     </head>
     <body>
         <?php
-        include "header.php";
+        include "header.inc.php";
         //include "sideShoppingCart.php";
         if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
             $errors[] = 'You must select a product in order to see its details!';
@@ -101,7 +101,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
             all images source from Cocomi.com URL = https://www.cocomi.com/
             how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
 </html>

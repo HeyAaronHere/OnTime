@@ -35,7 +35,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
     <body>
         <section class="container">
             <?php
-            include "header.php";
+            include "header.inc.php";
             ?>
             <header class="page-header">
                 <h1>Your shopping cart at ONtime</h1>
@@ -104,6 +104,6 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             </button>
         </section>
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
 </html>

@@ -27,7 +27,7 @@ if (!isset($_SESSION)) {
     </head>
     <body>
         <?php
-        include "header.php";
+        include "header.inc.php";
         //  include "sideShoppingCart.php"
         ?>
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
@@ -112,7 +112,7 @@ if (!isset($_SESSION)) {
         </main>
         <hr>
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
 </html>
