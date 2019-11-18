@@ -1,7 +1,5 @@
 <?php
 //start session
-
-
 if (!isset($_SESSION)) {
     session_start();
     // Constants for accessing our DB:
@@ -10,43 +8,33 @@ if (!isset($_SESSION)) {
     define("DBUSER", "p2_7");
     define("DBPASS", "7tQeryxcIq");
     $email = $pwd = $fname = $errorMsg = "";
-
 //chkname chkpno chke chkpwd
-if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
-    {
+    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
         echo'<p>name has been checked</p>';
     }
-if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
-    {
+    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
         echo'<p>name has been checked</p>';
     }
-if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
-    {
+    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
         echo'<p>name has been checked</p>';
     }
-if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
-    {
+    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
         echo'<p>name has been checked</p>';
     }
-if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
-    {
+    if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') {
         echo'<p>name has been checked</p>';
     }
-
     $success = true;
     ?>
-
     <!DOCTYPE html>
-
     <html lang="en">
-
         <head>
 
 
-        
+
         </head>
 
     </html>
-<?php
+    <?php
 }
 ?>

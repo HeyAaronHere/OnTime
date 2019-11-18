@@ -1,7 +1,7 @@
 <?php
 //start session
 if (!isset($_SESSION)) {
-                session_start();
+    session_start();
 }
 
 //Constants for accessing our DB:
@@ -33,8 +33,7 @@ function saveCIToDB() {
 }
 ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
         <title>Customer Service - OnTime</title>
         <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -44,15 +43,14 @@ function saveCIToDB() {
         <link href="css/customerservice.css" rel="stylesheet" type="text/css">
         <link href="css/headerFooter.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="js/customerservice.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/customerservice.js"></script>
     </head>
-
     <body>
         <section>
             <?php
@@ -91,7 +89,7 @@ function saveCIToDB() {
                 </article>
                 <div class="container" id="CustomerInquiries">
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
-                    <form name="CustomerInquiries" action="customerservice.php" method="post" onsubmit="return validateform()">
+                    <form name="CustomerInquiries" action="customerservice.php" method="post">
                         <h1>Customer Inquiries</h1>
                         <div class="row">
                             <div class="col-25">
@@ -241,5 +239,4 @@ function saveCIToDB() {
             }
             ?>
     </body>
-
 </html>

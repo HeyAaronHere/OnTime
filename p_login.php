@@ -13,7 +13,7 @@ if (isset($_POST['login-submit'])) {
     $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     ?>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
         <head>
             <title>Login - OnTime</title>
             <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">

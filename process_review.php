@@ -3,7 +3,6 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-
 define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
@@ -12,9 +11,8 @@ $email = $name = $review = "";
 $errorMsg = "";
 $success = true;
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Reviews - ONTime</title>
         <meta charset="UTF-8">
@@ -32,15 +30,12 @@ $success = true;
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-
     <body>
         <main>
             <?php
             include "header.php";
-
             $namepat = "/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/";
             $emailpat = "/\S+@\S+\.\S+/";
-
             if (empty($_POST["email"])) {
                 $errorMsg .= "Email required, please fill up.<br>";
                 $success = false;
@@ -67,7 +62,6 @@ $success = true;
                     $success = false;
                 }
             }
-
             if (empty($_POST["review"])) {
                 $errorMsg .= "Please fill form.<br>";
                 $success = false;
@@ -78,7 +72,6 @@ $success = true;
                     $success = false;
                 }
             }
-
             if ($success) {
                 echo "<h2>Form Submitted successfully!</h2>";
                 echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
@@ -119,9 +112,7 @@ $success = true;
                 }
                 $conn->close();
             }
-            ?>
 
-            <?php
             include "footer.php";
             ?> 
     </body>
