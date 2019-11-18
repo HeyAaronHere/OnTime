@@ -89,8 +89,8 @@ if (isset($_POST['login-submit'])) {
                     echo "<h1>session started</h1>";
                     echo $_SESSION['firstName'];
                 }
-
                 echo "<script>alert('Login successful!');window.location.href='index.php';</script>";
+                echo "<a href='index.php'>Go to Main Page</a>";
             } else {
                 echo "<h1>OI!</h1>";
                 echo "<h4>The following input errors were detected:</h4>";

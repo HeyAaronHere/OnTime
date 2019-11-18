@@ -76,7 +76,6 @@ if (isset($_POST['signup-submit'])) {
                         $errorMsg .= "Contact number is must be 8 digits.";
                         $success = false;
                     }
-
                     $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                     $result = "SELECT * FROM user where email = '$email'";
                     $checkResult = mysqli_query($conn, $result);
@@ -86,12 +85,11 @@ if (isset($_POST['signup-submit'])) {
                     }
                     $conn->close();
                 }
-
-
                 if ($success) {
                     saveMemberToDB();
                     echo "<script type='text/javascript'>alert('Registration successful!');"
                     . "window.location.href='login.php';</script>";
+                    echo "<a href='login.php'>Go to Login Page</a>";
                 } else {
                     echo "<h1>OI!</h1>";
                     echo "<h4>The following input errors were detected:</h4>";
