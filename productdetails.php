@@ -3,7 +3,6 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-
 //Constants for accessing our DB:
 define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
@@ -12,18 +11,10 @@ define("DBPASS", "7tQeryxcIq");
 $productID = "";
 $errorMsg = "";
 $success = true;
-
 $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
 ?>
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-
+<html lang="en">
     <head>
         <title>Product Details - OnTime</title>
         <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -42,21 +33,17 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </head>
-
     <body>
         <?php
         include "header.php";
         //include "sideShoppingCart.php";
-
         if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
             $errors[] = 'You must select a product in order to see its details!';
         } else {
             $productID = $_POST['product_id'];
         }
-
         $IDquery = "SELECT * FROM product WHERE product_id ='$productID'";
         $sql = mysqli_query($conn, $IDquery);
-
         if (!$sql) {
             //  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
             echo "error: " . $conn->error;
@@ -64,18 +51,15 @@ and open the template in the editor.
         } else if (mysqli_num_rows($sql) > 0) {
             while ($productDetails = mysqli_fetch_assoc($sql)) {
                 ?>
-
                 <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
                     all images source from Cocomi.com URL = https://www.cocomi.com/
                     how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
-
                 <article class="singleProduct">
                     <section class="container">
                         <section class=row>
                             <div class = "col-md-5">
                                 <img src = "<?php echo $productDetails['product_img'] ?>">
                             </div>
-
                             <div class = "col-md-7">
                                 <p class = "new-arrival text-center">NEW</p>
                                 <h2><?php echo $productDetails['product_name'] ?></h2>
@@ -84,7 +68,6 @@ and open the template in the editor.
                                 <p><b>Availability:</b> <?php echo $productDetails['product_stock'] ?> </p>
                                 <p><b>Condition:</b> New </p>
                                 <p><b>Brand:</b> <?php echo $productDetails['product_brand'] ?></p>
-
                                 <label for="productdetails">Quantity </label>
                                 <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
                                     <input type="number" id ="productinput" min="1" name="productAmount" value="1">
@@ -92,38 +75,31 @@ and open the template in the editor.
                                     <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>">
                                     <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                                 </form>
-
                             </div>
-
                         </section>
                     </section>
-
                     <section class="productDescription">
                         <section class="container">
                             <h3>Product Description</h3>
                             <p><?php echo $productDetails['product_desc'] ?></p>
-
                             <p>This is the Product Description . This is the Product Description .This is the Product
                                 Description This is the Product Description
                                 This is the Product Description This is the Product Description This is the Product
                                 Description This is the Product Description.This is the Product
                                 Description </p>
-
-                            <hr />
+                            <hr>
                         </section>
                     </section>
                     <?php
                 }
                 $sql->free();
-                $conn.close();
+                $conn . close();
             }
             ?>
         </article>
-
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
             all images source from Cocomi.com URL = https://www.cocomi.com/
             how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
-
         <?php
         include "footer.php";
         ?>

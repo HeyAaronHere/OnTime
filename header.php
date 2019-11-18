@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Main Page - OnTime</title>
         <meta charset="utf-8">
@@ -15,7 +16,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
         <!--<script defer src="js\showCart.js"></script>-->
-
         <style>
             @font-face {
                 font-family: 'collection';
@@ -24,15 +24,12 @@
                 font-weight: 100;
             }
         </style>
-
     </head>
-
     <nav class="navbar navbar-custom navbar-fixed-top navbar-inverse">
         <div id="topnav-centered">
             <a class="navbar-brand" href="index.php"><img src="images\logo3.png" alt="Ontime logo"
                                                           style="width:150px;height:60px;" /></a>
         </div>
-
         <section class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
@@ -40,12 +37,9 @@
                 <span class="icon-bar"></span>
             </button>
         </section>
-
         <section class="collapse navbar-collapse container-fluid" id="myNavbar">
-
             <ul class="nav navbar-nav">
-                
-            <li><a href="product.php">Products</a></li>
+                <li><a href="product.php">Products</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer service<span
                             class="caret"></span></a>
@@ -58,7 +52,6 @@
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 if (isset($_SESSION['firstName'])) {
@@ -71,8 +64,6 @@
                 }
                 ?>
             </ul>
-
         </section>
     </nav>
-
 </html>

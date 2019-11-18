@@ -1,18 +1,11 @@
 <?php
 //start session
 if (!isset($_SESSION)) {
-                session_start();
+    session_start();
 }
 ?>
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-
     <head>
         <title>ONTime</title>
         <meta charset="UTF-8">
@@ -25,7 +18,6 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/headerFooter.css" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
         </script>
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
@@ -33,11 +25,10 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
-
     <body>
         <?php
         include "header.php";
-      //  include "sideShoppingCart.php"
+        //  include "sideShoppingCart.php"
         ?>
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
         <section>
@@ -48,7 +39,6 @@ and open the template in the editor.
                         <li data-target="#slider" data-slide-to="0" class="active"></li>
                         <li data-target="#slider" data-slide-to="1"></li>
                     </ol>
-
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
@@ -58,7 +48,6 @@ and open the template in the editor.
                                 <p>Your Friendly Watch Shop!</p>
                             </div>
                         </div>
-
                         <div class="item">
                             <img src="img/carousel2.jpg" alt="Carousel 2" style="width:100%;">
                             <div class="carousel-caption">
@@ -66,7 +55,6 @@ and open the template in the editor.
                                 <p>Check out more about our watches below</p>
                             </div>
                         </div>
-
                     </div>
                     <!-- Left and right controls -->
                     <a class="left carousel-control" href="#slider" data-slide="prev">
@@ -80,20 +68,16 @@ and open the template in the editor.
                 </div>
             </div>
         </section>
-
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp -->
-
         <main class="container-fluid" id="hot">
             <section class="container-fluid">
                 <section class="title-box">
                     <h2> Top Selling </h2>
                 </section>
             </section>
-
             <!--Product Card  W3school URL https://www.w3schools.com/howto/howto_css_product_card.asp
                 all image sources are from Cocomi.com URL = https://www.cocomi.com/-->
             <div class="container-fluid">
-
                 <?php
                 $connect = mysqli_connect('161.117.122.252', 'p2_7', '7tQeryxcIq', 'p2_7');
                 $query = "SELECT * FROM product ORDER BY product_id ASC LIMIT 8";
@@ -102,39 +86,33 @@ and open the template in the editor.
                     while ($product = mysqli_fetch_assoc($result)) {
                         ?>
                         <div class="col-md-2 card"> <!--<a href="productdetails.php?id=' . $sub_row['product_id'] . '"> -->
-                            <form method="post" action="productdetails.php"> <!--product_database.php?action=add&id=<?php //echo $product['product_id']; ?>-->
+                            <form method="post" action="productdetails.php"> <!--product_database.php?action=add&id=<?php //echo $product['product_id'];   ?>-->
                                 <div class="products">
                                     <a href="productdetails.php"><img src="<?php echo $product['product_img']; ?>" class="img-responsive" /></a>
                                     <h4><?php echo $product['product_name']; ?></h4>
                                     <h4><?php echo $product['product_desc']; ?></h4>
                                     <p class="price"><?php echo $product['product_price']; ?></p>
-
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>"> <!--session variable to transport product id?-->
                                     <input type="hidden" name="product_name" value="<?php echo $product['product_name']; ?>">
                                     <input type="hidden" name="product_description" value="<?php echo $product['product_desc']; ?>">
                                     <input type="hidden" name="product_price" value="<?php echo $product['product_price']; ?>">
                                     <input type="submit" name="submitbutton" value="click for more info">
-
                                     <figure class="overlay-right">
                                         <a href="shoppingcart.php>"<button class="btn btn-secondary" title="Add to Cart">
                                                 <span class="fa fa-shopping-cart"></span></button></a>
                                     </figure>
-
                                 </div>
                             </form>
                         </div>
-
                         <?php
                     }
                 }
                 ?>
             </div>
         </main>
-        <hr />
-
+        <hr>
         <?php
         include "footer.php";
         ?>
     </body>
-
 </html>

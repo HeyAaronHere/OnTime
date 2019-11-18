@@ -31,7 +31,7 @@ if (isset($_POST['signup-submit'])) {
     }
     ?>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
         <head>
             <title>Signup - OnTime</title>
             <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">

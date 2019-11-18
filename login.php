@@ -6,7 +6,7 @@ if (isset($_SESSION['firstName'])) {
 } else {
     ?>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
         <head>
             <title>Login - OnTime</title>
             <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -19,6 +19,7 @@ if (isset($_SESSION['firstName'])) {
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="js/login.js"></script>
         </head>
         <body>
             <main>
@@ -49,7 +50,6 @@ if (isset($_SESSION['firstName'])) {
             <?php
             include "footer.php";
             ?>
-            <script src="js/login.js"></script>
         </body>
     </html>
 <?php } ?>
