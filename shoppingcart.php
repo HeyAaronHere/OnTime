@@ -7,7 +7,7 @@ define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
 $con = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-$userID = "";
+$userID = $priceTotal = $errorMsg = "";
 $userID = $_SESSION['userID']; //only visible when logged in, no need to if statement
 ?>
 
@@ -47,6 +47,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 <?php
         if ($con->connect_error){
           $errorMsg .= "<p>Connection failed: " . $con->connect_error . "</p>";
+        echo ($errorMsg);
           $success = false;
         }else{
           //execute the query
@@ -73,18 +74,21 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
               </thead>
 <?php
               while($row = mysqli_fetch_array($checkResult)){
-                echo ("<tr>
-                        <td><?php echo" . $row['quantity'] . "?></td>
-                        <td><?php echo" . $row['product_name'] . "?></td>
-                        <td><?php echo" . $row['product_price'] . "?></td>
-                        </tr>");
+                global $priceTotal;
+                $priceTotal = $priceTotal + $row['product_price'];
+?>                      <tr>
+                        <td><?php echo $row['quantity']?></td>
+                        <td><?php echo $row['product_name']?></td>
+                        <td><?php echo $row['product_price']?></td>
+                        </tr>
+<?php
               }
 ?>
               <tfoot>
                 <tr class="tfooter">
                   <td></td>
                   <td id="pricetotal">Price total: </td>
-                  <td id="amounttotal">120 SGD</td>
+                  <td id="amounttotal"><?php echo $priceTotal ?></td>
                 </tr>
               </tfoot>
             </table>
