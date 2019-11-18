@@ -77,7 +77,7 @@ if (isset($_POST['signup-submit'])) {
                         $success = false;
                     }
                     $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-                    $result = "SELECT * FROM user where email = '$email'";
+                    $result = "SELECT * FROM account where email = '$email'";
                     $checkResult = mysqli_query($conn, $result);
                     if (mysqli_num_rows($checkResult) > 0) {
                         $errorMsg .= "Email exist already.";
