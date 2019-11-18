@@ -46,14 +46,20 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                 $success = false;
             } else {
                 //execute the query
-                $result = "SELECT quantity, product_name, product_price "
-                        . "FROM shoppingCart, product WHERE userID = '$userID' AND productID = product_id";
+                $result = "SELECT quantity, product_name, product_price, quantity * product_price as 'total' "
+                        . "FROM shoppingcart s, product p WHERE s.user_id = '$userID' AND s.product_id = p.product_id";
+                $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = '$userID' AND P.product_id = S.product_id";
                 $checkResult = mysqli_query($con, $result);
-                if (!$checkResult) {
-                    $errorMsg .= "<p>Database error: " . $con->error . "</p>";
+                $checkRes = mysqli_query($con, $res);
+                if (!$checkResult || !$checkRes) {
+                    $errorMsg .= "<p>Database error1: " . $con->error . "</p>";
                     $success = false;
                 } else if (mysqli_num_rows($checkResult) > 0) {
                     //there are products in the shopping cart, get all products incl details
+                    global $priceTotal;
+                    $record = mysqli_fetch_row($checkRes);
+                    $priceTotal = $record[0];
+
 ?>
                   <section class="row">
                     <div class="col-md-12">
@@ -63,25 +69,26 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                           <tr>
                             <th>Quantity</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th></th>
+                            <th>Price/piece</th>
+                            <th>Total</th>
                           </tr>
                         </thead>
 <?php
                   while($row = mysqli_fetch_array($checkResult)){
-                    global $priceTotal;
-                    $priceTotal = $priceTotal + $row['product_price'];
+                    //$priceTotal = $priceTotal + $row['product_price'];
 ?>
                     <tr>
                       <td><?php echo $row['quantity']?></td>
                       <td><?php echo $row['product_name']?></td>
                       <td><?php echo $row['product_price']?></td>
+                      <td><?php echo $row['total']?></td>
                     </tr>
 <?php
                   }
 ?>
                       <tfoot>
                         <tr class="tfooter">
+                          <td></td>
                           <td></td>
                           <td id="pricetotal">Price total: </td>
                           <td id="amounttotal"><?php echo $priceTotal ?></td>
@@ -111,4 +118,5 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 <?php
         include "footer.php";
 ?>
+</body>
 </html>
