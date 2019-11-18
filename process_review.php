@@ -33,7 +33,7 @@ $success = true;
     <body>
         <main>
             <?php
-            include "header.php";
+            include "header.inc.php";
             $namepat = "/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/";
             $emailpat = "/\S+@\S+\.\S+/";
             if (empty($_POST["email"])) {
@@ -113,7 +113,7 @@ $success = true;
                 $conn->close();
             }
 
-            include "footer.php";
+            include "footer.inc.php";
             ?> 
     </body>
 </html>

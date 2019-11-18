@@ -25,7 +25,7 @@ if (!isset($_SESSION)) {
     </head>    
     <body>
         <?php
-        include "header.php";
+        include "header.inc.php";
         ?>
         <section class="jumbotron" id="login_first_msg">
             <h1>SORRY</h1>
@@ -39,7 +39,7 @@ if (!isset($_SESSION)) {
             </div>
         </section>
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
 </html>

@@ -25,7 +25,7 @@ if (!isset($_SESSION)) {
     </head>
     <body>
         <?php
-        include "header.php";
+        include "header.inc.php";
         ?>
         <main class="review container-fluid">
             <h1>Reviews</h1>
@@ -148,7 +148,7 @@ if (!isset($_SESSION)) {
         </main>
         <!-- review URL = https://www.youtube.com/watch?v=qZno3Yk8QKc&t=500s Author = Easy Tutorials -->
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
 

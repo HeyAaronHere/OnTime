@@ -25,7 +25,7 @@ if (!isset($_SESSION)) {
     </head>    
     <body>
         <?php
-        include "header.php";
+        include "header.inc.php";
         ?>
         <main>
             <form novalidate name="pEditForm" action="p_profile_edit.php" method="post" onsubmit="return validateProfileEditForm()" autocomplete="off">
@@ -127,7 +127,7 @@ if (!isset($_SESSION)) {
             </form>
         </main>
         <?php
-        include "footer.php";
+        include "footer.inc.php";
         ?>
     </body>
 </html>

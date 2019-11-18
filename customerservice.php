@@ -54,7 +54,7 @@ function saveCIToDB() {
     <body>
         <section>
             <?php
-            include "header.php";
+            include "header.inc.php";
             ?>
             <main class="aftnav">
                 <article>
@@ -228,7 +228,7 @@ function saveCIToDB() {
                 </article>
             </main>
             <?php
-            include "footer.php";
+            include "footer.inc.php";
 
             //Helper function that checks input for malicious or unwanted content.
             function sanitize_input($data) {
