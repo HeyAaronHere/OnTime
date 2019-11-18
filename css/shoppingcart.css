@@ -14,6 +14,8 @@ body{
 
 #checkoutbutton{
     text-align: right;
+    float: right;
+    overflow: hidden;
 }
 
 button a{
@@ -36,7 +38,7 @@ button a:hover{
     font-size: larger;
 }
 
-.cart{
+/* .cart{
     position: fixed;
     display: none;
     top: 0;
@@ -50,4 +52,4 @@ button a:hover{
     z-index: 110;
     padding-top: 50px;
     padding-left: 5px;
-}
+} */
