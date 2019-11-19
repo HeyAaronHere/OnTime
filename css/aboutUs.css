@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 07.10.2019, 02:29:07
     Author     : Nico
 */
@@ -17,14 +17,14 @@ body{
     height: 80px;
 }
 
-.navbar-brand{  
+.navbar-brand{
     float: none;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     padding-left: 50px;
   }
-  
+
   .navbar-nav li:hover {
     background-color: #ddd;
     color: black;
@@ -36,14 +36,14 @@ article.thumbnail{
     border-style: none;
 }
 
-figure.popup{
+/* figure.popup{
     visibility: visible;
-    
-}
 
-.thumbnail:hover figure.popup{
+} */
+
+/* .thumbnail:hover figure.popup{
     visibility: visible;
-}
+} */
 
 .thumbnail>img{
     width: 150px;
@@ -100,4 +100,3 @@ h2{
     position: absolute;
     border-radius: 5px;
 }
-

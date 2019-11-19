@@ -156,7 +156,42 @@ function saveCIToDB() {
                         }
                         if ($success) {
                             saveCIToDB();
-                            echo "<script type='text/javascript'>alert('You have successfully submitted your response!');</script>";
+                            require("phpmailer.inc.php");
+                            require("smtp.inc.php");
+
+                            $mail = new PHPMailer();
+                            $mail->SMTPDebug = 1;
+                            $mail->IsSMTP();
+                            $mail->Host = "smtp.gmail.com";
+                            $mail->Port = 587;
+                            $mail->SMTPAuth = true;
+                            $mail->Username = "clementoys@gmail.com";
+                            $mail->Password = "9617390c";
+                            $mail->From = "clementoys@gmail.com";
+                            $mail->FromName = "ONtime";
+                            $mail->AddAddress($CIemail);
+                            $mail->WordWrap = 50;
+                            $mail->IsHTML(true);
+                            $mail->SMTPSecure = 'tls';
+                            $mail->Subject = "Customer Inquiries";
+                            $mail->Body = "Dear $CIname, <br><br>
+                                        We have currently received the following feedback:<br>
+                                        \"$CIquestion\"<br><br>
+                                        We will respond back to you shortly at your following contact details:<br><br>
+                                        Email: $CIemail <br>
+                                        Contact No: $CInumber <br><br>
+                                        Thank you.<br>
+                                        ONtime @ SIT";
+                            $mail->AltBody = "Dear $CIname, <br><br>
+                                        We have currently received the following feedback:<br>
+                                        \"$CIquestion\"<br><br>
+                                        We will respond back to you shortly at your following contact details:<br><br>
+                                        Email: $CIemail <br>
+                                        Contact No: $CInumber <br><br>
+                                        Thank you.<br>
+                                        ONtime @ SIT";
+                            $mail->Send();
+                            echo "<script type='text/javascript'>alert('You have successfully submitted your response! An email is sent to you. Thank you " . $CIname . ", we will contact you shortly.');</script>";
                         } else {
                             echo "<script type='text/javascript'>alert('Failed to submit your response!');</script>";
                         }
