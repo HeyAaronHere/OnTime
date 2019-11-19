@@ -93,7 +93,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                     <?php
                 }
                 $sql->free();
-                $conn . close();
+                $conn->close();
             }
             ?>
         </article>
