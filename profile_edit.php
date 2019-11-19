@@ -3,6 +3,10 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+if (!isset($_SESSION['firstName'])) {
+    header("Location: login_first.php");
+    exit();
+}else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,8 +76,11 @@ if (!isset($_SESSION)) {
                             <h2 class="text-center">Change Handphone No.</h2>
 
                             <div class="form-group">
-                                <label for="FirstName">Handphone no.:</label>
+                                <label for="handphoneNo">Handphone no.:</label>
                                 <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber"  required="false" disabled="true" pattern="[0-9]{8}" >
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="chkpno" name="chkpno" value="Yes" >select to change phone number</label>
                             </div>
                         </div>
                     </div>
@@ -91,6 +98,9 @@ if (!isset($_SESSION)) {
                             <div class="form-group">
                                 <label for="email">Email address:</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter email" required="false" disabled="true" name="email" pattern="/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="chke" name="chke" value="Yes" >select to change email</label>
                             </div>
                         </div>
                     </div>
@@ -133,3 +143,6 @@ if (!isset($_SESSION)) {
         ?>
     </body>
 </html>
+<?php
+}
+?>

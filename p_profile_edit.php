@@ -1,11 +1,19 @@
 <?php
 //start session
-if(isset($_POST['submit'])){
-    header("Location: index.php");
-    exit;
-    }
 if (!isset($_SESSION)) {
     session_start();
+    //check to see if button to return to home was set or if not logged in yet
+    if(isset($_POST['submitPPE']) || !isset($_SESSION['firstName'])){
+        
+        header("Location: login_first.php");
+        exit;
+    }elseif(isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) {
+        header("Location: profile_edit.php");
+        $_SESSION['ppeLoadedBefore'] = false;
+        exit;
+    }else{//check if refreshed the page after changing details
+        $loadedBefore = true;
+    }
     include "connection.inc.php";
     
     $success = true;
@@ -56,7 +64,6 @@ if (!isset($_SESSION)) {
                 echo'<p>name is empty</p>';
             }else
             {
-                echo'<p>first name is not empty</p>';
                 $fName = sanitize_input($_POST["fname"]);
                 $lName = sanitize_input($_POST["lname"]);
                 if(!filter_var($fName))
@@ -77,17 +84,14 @@ if (!isset($_SESSION)) {
                 }
             }
         }
-    echo'<p>gone through the FIRST if statement</p>';
 
     //validate phone number
     if (isset($_POST['chkpno']) && $_POST['chkpno'] == 'Yes') 
         {
-            echo'<p>phone number has been checked</p>';
             if(empty($_POST["pnumber"])){
                 echo'<p>phone number is empty</p>';
             }else
             {
-                echo'<p>phone number is not empty</p>';
                 $hpNo = sanitize_input($_POST["pnumber"]);
                 if(!filter_var($hpNo))
                 {
@@ -101,17 +105,14 @@ if (!isset($_SESSION)) {
                 }
             }
         }
-    echo'<p>gone through the SECOND if statement</p>';
 
     //validate email
     if (isset($_POST['chke']) && $_POST['chke'] == 'Yes') 
         {
-            echo'<p>email has been checked</p>';
             if(empty($_POST["email"])){
                 echo'<p>email is empty</p>';
             }else
             {
-                echo'<p>email is not empty</p>';
                 $email = sanitize_input($_POST["email"]);
                 if(!filter_var($email))
                 {
@@ -140,16 +141,13 @@ if (!isset($_SESSION)) {
                 }
             }
         }
-    echo'<p>gone through the THIRD if statement</p>';
     //vallidate password
     if (isset($_POST['chkpwd']) && $_POST['chkpwd'] == 'Yes') 
         {
-            echo'<p>name has been checked</p>';
             if(empty($_POST["opwd"]) || empty($_POST["npwd1"]) || empty($_POST["npwd2"])){
                 echo'<p>password is empty</p>';
             }else
             {
-                echo'<p>password is not empty</p>';
                 $oPwd = sanitize_input($_POST["opwd"]);
                 $nPwd1 = sanitize_input($_POST["npwd1"]);
                 $nPwd2 = sanitize_input($_POST["npwd2"]);
@@ -174,7 +172,6 @@ if (!isset($_SESSION)) {
                             $result->free_result();
                             //check that old password was entered correctly
                             if (password_verify($oPwd, $row['password'])) {
-                                echo'<p>password matches with database</p>';
                                 if(!filter_var($nPwd1)){
                                     echo'<p>new password is not a valid format</p>';
                                     $success = false;
@@ -207,18 +204,19 @@ if (!isset($_SESSION)) {
                 }
             }
         }
-    
-    echo'<p>gone through the LAST if statement</p>';
 
     //if no sucessful then call method to save to database
     if($success){
         saveMemberToDB();
         $conn->close();
+        $_SESSION['ppeLoadedBefore'] = true;
         echo '<form name="processProfileForm" action="'. htmlspecialchars($_SERVER["PHP_SELF"]). '" method="POST">';
-        echo '<button type="submit" name="submit" value="return">Return to Homepage<button></form>';
+        echo '<button type="submit" name="submitPPE" value="return">Return to Homepage</button></form>';
     }else{
-        
-    $conn->close();
+        $conn->close();
+        $_SESSION['ppeLoadedBefore'] = true;
+        echo '<form name="processProfileForm" action="'. htmlspecialchars($_SERVER["PHP_SELF"]). '" method="POST">';
+        echo '<button type="submit" name="submitPPE" value="return">Return to Homepage</button></form>';
     }
 
         ?>
