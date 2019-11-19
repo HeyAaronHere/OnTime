@@ -39,9 +39,7 @@
         <section class="collapse navbar-collapse container-fluid" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="product.php">Products</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="customerservice.php">Customer service</a>
-                </li>
+                <li><a href="customerservice.php">Customer Service</a></li>
                 <li><a href="productsreview.php">Reviews</a></li>
                 <li><a href="aboutus.php">About us</a></li>
             </ul>

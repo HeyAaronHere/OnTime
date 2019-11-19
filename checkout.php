@@ -4,7 +4,197 @@ if (!isset($_SESSION)) {
 }
 include "connection.inc.php";
 $userID = $_SESSION['userID']; //only visible when logged in, no need to if statement
+$success = $fname = $lname = $email = $phone = $street = $appartment ="";
+$countrycode = $postalcode = $city = $errorMsg = "";
+$cardname = $cardnumber = $expdate = $cvv = "";
+$success = true;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  //validate firstname: letters, whitespace
+  $namepattern = //;
+  if(empty($_POST['fname'])){
+    $errorMsg .= "<p>First name is missing.</p>"
+    $success = false;
+  }else if(!preg_match($namepattern, $_POST['fname'])){
+    $errorMsg .= "<p>First name is wrong.</p>"
+    $success = false;
+  }else{
+    $fname = test_input($_POST['fname']);
+  }
+  //validate lastname: letters, whitespaces
+  if(empty($_POST['lname'])){
+    $errorMsg .= "<p>Last name is missing.</p>"
+    $success = false;
+  }else{
+    $fname = test_input($_POST['lname']);
+    if(!preg_match($namepattern, $_POST['fname'])){
+      $errorMsg .= "<p>Last name is wrong.</p>"
+      $success = false;
+    }
+  }
+  //validate email: correct format
+  if (empty($_POST["email"])) {
+        $errorMsg .= "<p>Email is missing.</p>";
+        $success = false;
+    }else{
+        $email = test_input($_POST["email"]);
+        // check if e-mail address is well-formed
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $errorMsg = "<p>Invalid email format.</p>";
+        }
+    }
+  //validate phone: only numbers and plus at the beginning
+  if(empty($_POST['phone'])){
+    $errorMsg .= "<p>Phone number is missing.</p>"
+    $success = false;
+  }else{
+    $phone = test_input($_POST['phone']);
+    if(!preg_match($numberpattern, $_POST['phone'])){
+      $errorMsg .= "<p>Phone number is wrong.</p>"
+      $success = false;
+    }
+  }
+  //validate street: letters and numbers
+  if(empty($_POST['street'])){
+    $errorMsg .= "<p>Street is missing.</p>"
+    $success = false;
+  }else{
+    $street = test_input($_POST['street']);
+    if(!preg_match($streetpattern, $_POST['street'])){
+      $errorMsg .= "<p>Street is wrong.</p>"
+      $success = false;
+    }
+  }
+  //validate appartment: #01-001 /#\d{2}-\d{2,3}/
+
+  if(empty($_POST['appartment'])){
+    $errorMsg .= "<p>Appartment is missing.</p>"
+    $success = false;
+  }else{
+    $appartment = test_input($_POST['appartment']);
+    if(!preg_match($appartmentpattern, $_POST['appartment'])){
+      $errorMsg .= "<p>Appartment is wrong.</p>"
+      $success = false;
+    }
+  }
+  //validate countrycode: two letters (eg SG)
+  if(empty($_POST['countrycode'])){
+    $errorMsg .= "<p>Country code is missing.</p>"
+    $success = false;
+  }else{
+    $countrycode = test_input($_POST['countrycode']);
+    if(!preg_match($countrycodepattern, $_POST['countrycode'])){
+      $errorMsg .= "<p>country code is wrong.</p>"
+      $success = false;
+    }
+  }
+  //validate postalcode: only numbers
+  if(empty($_POST['postalcode'])){
+    $errorMsg .= "<p>Postal code is missing.</p>"
+    $success = false;
+  }else{
+    $postalcode = test_input($_POST['postalcode']);
+    if(!preg_match($postalcodepattern, $_POST['postalcode'])){
+      $errorMsg .= "<p>Postal code is wrong.</p>"
+      $success = false;
+    }
+  }
+  //validate city: letters and whitespace
+  if(empty($_POST['city'])){
+    $errorMsg .= "<p>City is missing.</p>"
+    $success = false;
+  }else{
+    $city = test_input($_POST['city']);
+    if(!preg_match($namepattern, $_POST['city'])){
+      $errorMsg .= "<p>City is wrong.</p>"
+      $success = false;
+    }
+  }
+  //one payment type must be selected
+  if(empty($_POST['payment-type'])){
+    $errorMsg .= "<p>One Payment Type must be selected.</p>"
+    $success = false;
+  }
+
+//if creditcard checked:
+  if($_POST['payment-type'] === 'card'){
+    //validate cardname: letters and whitespace
+    if(empty($_POST['cardname'])){
+      $errorMsg .= "<p>Card name is missing.</p>"
+      $success = false;
+    }else{
+      $cardname = test_input($_POST['cardname']);
+      if(!preg_match($namepattern, $_POST['cardname'])){
+        $errorMsg .= "<p>Card name is wrong.</p>"
+        $success = false;
+      }
+    }
+    //validate cardnumber: 16 digits
+    if(empty($_POST['cardnumber'])){
+      $errorMsg .= "<p>Card number is missing.</p>"
+      $success = false;
+    }else{
+      $cardnumber = test_input($_POST['cardnumber']);
+      if(!preg_match($cardnumberpattern, $_POST['cardnumber'])){
+        $errorMsg .= "<p>Card number is wrong.</p>"
+        $success = false;
+      }
+    }
+    //validate expdate: 00-00 and check with current date
+    if(empty($_POST['expdate'])){
+      $errorMsg .= "<p>Expiry date is missing.</p>"
+      $success = false;
+    }else{
+      $expdate = test_input($_POST['expdate']);
+      if(!preg_match($cardnumberpattern, $_POST['cardnumber'])){
+        $errorMsg .= "<p>Expiry Date is wrong.</p>"
+        $success = false;
+      }else if(expdate in the past){
+        $errorMsg .= "<p>Expiry Date is in the past.</p>"
+        $success = false;
+      }
+    }
+    //validate cvv: 3 digits
+    if(empty($_POST['cvv'])){
+      $errorMsg .= "<p>CVV is missing.</p>"
+      $success = false;
+    }else{
+      $cardnumber = test_input($_POST['cvv']);
+      if(!preg_match($cvvpattern, $_POST['cvv'])){
+        $errorMsg .= "<p>CVV is wrong.</p>"
+        $success = false;
+      }
+    }
+  }
+
+  if($success){
+    saveTransactionToDB();
+  }
+
+  if($success){
+    echo "window.location.href='checkout.php';</script>"; //is that possible?
+  }else{
+    echo "OOPS, something went wrong!";
+    echo $errorMsg;
+  }
+
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+function saveTransactionToDB(){
+  echo "<script type='text/javascript'>alert('Registration successful!');"
+}
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>

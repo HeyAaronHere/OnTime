@@ -18,6 +18,7 @@ if (!isset($_SESSION)) {
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/aboutUs.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
@@ -25,9 +26,6 @@ if (!isset($_SESSION)) {
         <div class="container-fluid">
             <?php
             include "header.inc.php";
-            ?>
-            <?php
-            //include "sideShoppingCart.php";
             ?>
             <article class="container">
                 <section class="row">
@@ -49,7 +47,7 @@ if (!isset($_SESSION)) {
                          data-parent="#ourteam">
                     <h2>Yee Siang</h2>
                     <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Yee Siang">
-                    <figure id="yeesiangstext" class="popup collapse">
+                    <figure id="yeesiangstext" class="popup">
                         <article class="textbox">
                             <p>Yee Siang was born in Singapore. Yee Siang was born in Singapore. Yee Siang was born in
                                 Singapore.
@@ -62,7 +60,7 @@ if (!isset($_SESSION)) {
                          data-parent="#ourteam">
                     <h2>Aaron</h2>
                     <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Aaron">
-                    <figure id="aaronstext" class="popup collapse"> <!--class="popup collapse"-->
+                    <figure id="aaronstext" class="popup"> <!--class="popup collapse"-->
                         <article class="textbox">
                             <p>Aaron was born in Singapore.Aaron was born in Singapore.
                                 Aaron was born in Singapore.Aaron was born in Singapore.
@@ -78,7 +76,7 @@ if (!isset($_SESSION)) {
                          data-parent="#ourteam">
                     <h2>Daniel</h2>
                     <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Daniel">
-                    <figure id="danielstext" class="popup collapse">
+                    <figure id="danielstext" class="popup">
                         <article class="textbox">
                             <p>Daniel was born in Singapore. Daniel was born in Singapore.
                                 Daniel was born in Singapore. Daniel was born in Singapore.
@@ -92,7 +90,7 @@ if (!isset($_SESSION)) {
                          data-parent="#ourteam">
                     <h2>Nikola</h2>
                     <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Nikola">
-                    <figure id="nikostext" class="popup collapse">
+                    <figure id="nikostext" class="popup">
                         <article class="textbox">
                             <p>Nikola was born in Germany. Nikola was born in Germany.
                                 Nikola was born in Germany. Nikola was born in Germany.

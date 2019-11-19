@@ -30,7 +30,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
         $tab_content .= '
             <div class="col-md-2 card " >
                 <form method="post" action="productdetails.php">
-                <img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail" />
+                <img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail">
                 <h1>' . $sub_row["product_name"] . '</h1>
                 <input type="hidden" name="product_id" value="' . $sub_row['product_id'] . '"> <!--session variable to transport product id?-->
                 <input type="hidden" name="product_price" value="<' . $sub_row['product_price'] . '">
@@ -109,30 +109,21 @@ while ($row = mysqli_fetch_array($tab_result)) {
         </section>
 
         <div class="container-fluid">
-
-
             <br>
             <ul class="nav nav-tabs">
                 <?php
                 echo $tab_menu;
                 ?>
-
-
             </ul>
             <div class="tab-content">
                 <br>
-
-
                 <?php
                 echo $tab_content;
                 ?>
             </div>
-
-
-
         </div>
         <hr>
-
+        
         <?php
         include "footer.inc.php";
         ?>
