@@ -28,7 +28,7 @@ if (!isset($_SESSION)) {
         include "header.inc.php";
         ?>
         <section class="jumbotron" id="login_first_msg">
-            <h1>SORRY</h1>
+            <h1>SORRY :(</h1>
             <div class="container-fluid">
                 <div class="col-md-4"></div>
                 <h2 class="col-md-4">You must Log in first to access this page <a href="login.php">

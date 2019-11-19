@@ -39,7 +39,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
 
                 <figure class = "overlay-right">
-                    <a href = "shoppingcart.php>"<button class = "btn btn-secondary" title = "Add to Cart">
+                    <a href = "shoppingcart.php"<button class = "btn btn-secondary" title = "Add to Cart">
                     <span class = "fa fa-shopping-cart"></span></button></a>
                 </figure>
                 </form>
