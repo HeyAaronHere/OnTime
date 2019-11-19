@@ -69,7 +69,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                                 <p><b>Condition:</b> New </p>
                                 <p><b>Brand:</b> <?php echo $productDetails['product_brand'] ?></p>
                                 <label for="productdetails">Quantity </label>
-                                <form id="productdetails" action="process_shoppingcartitem.php" method="post"> <!-- action="productdetails.php" method="post"-->
+                                <form id="productdetails" action="process_shoppingcartitem.php" method="post">
                                     <input type="number" id ="productinput" min="1" name="productAmount" value="1">
                                     <input type="hidden"  name="productPrice" value="<?php echo $productDetails['product_price'] ?>">
                                     <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>">
@@ -82,11 +82,7 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                         <section class="container">
                             <h3>Product Description</h3>
                             <p><?php echo $productDetails['product_desc'] ?></p>
-                            <p>This is the Product Description . This is the Product Description .This is the Product
-                                Description This is the Product Description
-                                This is the Product Description This is the Product Description This is the Product
-                                Description This is the Product Description.This is the Product
-                                Description </p>
+                            <p><?php echo $productDetails['product_desc'] ?></p>
                             <hr>
                         </section>
                     </section>

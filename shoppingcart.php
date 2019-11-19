@@ -26,7 +26,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
-        <script defer src="js\shoppingcartcheck.js"></script>
+        <script defer src="js/shoppingcartcheck.js"></script>
     </head>
     <body>
       <?php
@@ -64,7 +64,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                                     <th>Price/piece</th>
                                     <th>Total</th>
                                     <form method = "POST" action="clearShoppingCart.php">
-                                        <th><input type="submit" value="clear shoppingcart"></th> <!-- <button type="button" class="btn btn-danger btn-sm">Clear Shoppingcart</button> -->
+                                        <th><input type="submit" value="clear shoppingcart"></th>
                                     </form>
                                 </tr>
                             </thead>
@@ -74,8 +74,8 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                     <tr>
                       <td><?php echo $row['quantity']?></td>
                       <td><?php echo $row['product_name']?></td>
-                      <td><?php echo $row['product_price']?></td>
-                      <td><?php echo $row['total']?></td>
+                      <td><?php echo "SGD " . $row['product_price']?></td>
+                      <td><?php echo "SGD " . $row['total']?></td>
                       <form method = "POST" action="removeItem.php">
                         <td>
                           <input type="hidden" name="product" value="<?php echo $row['product_id']?>">
@@ -92,7 +92,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                           <td></td>
                           <td></td>
                           <td id="pricetotal">Price total: </td>
-                          <td id="amounttotal"><?php echo $priceTotal ?></td>
+                          <td id="amounttotal"><?php echo "SGD " . $priceTotal ?></td>
                           <td></td>
                         </tr>
                       </tfoot>
@@ -119,55 +119,67 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             <h2>Delivery Address</h2>
 
                 <section class="form-group row">
-                    <div class="col-sm-4">
-                        <label for="fname">Full Name</label>
+                    <div class="col-sm-3">
+                        <label for="fname">First Name</label>
                         <input class="form-control" name="fname" type="text" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="lname">Last Name</label>
+                        <input class="form-control" name="lname" type="text" required>
                     </div>
                     <div class="col-sm-4">
                         <label for="email">Email Address</label>
-                        <input class="form-control" name="email" type="text" required>
+                        <input class="form-control" name="email" type="email" required>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <label for="phone">Phone number</label>
                         <input class="form-control" name="phone" type="text" required>
                     </div>
                 </section>
                 <section class="form-group row">
                     <div class="col-sm-4">
-                        <label for="street">Street</label>
+                        <label for="street">Street and House number</label>
                         <input class="form-control" name="street" type="text" required>
                     </div>
-                    <div class="col-sm-4">
-                        <label for="countrycode">Country Code</label>
+                    <div class="col-sm-2">
+                        <label for="street">Appartment</label>
+                        <input class="form-control" name="appartment" type="text">
+                    </div>
+                    <div class="col-sm-1">
+                        <label for="countrycode">Country</label>
                         <input class="form-control" name="countrycode" type="text" required>
                     </div>
-                    <div class="col-sm-4">
-                        <label for="country">Country</label>
-                        <input class="form-control" name="country" type="text" required>
+                    <div class="col-sm-2">
+                        <label for="countrycode">Postal Code</label>
+                        <input class="form-control" name="postalcode" type="text" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="country">City</label>
+                        <input class="form-control" name="city" type="text" required>
                     </div>
                 </section>
 
             <h2>Select Payment Type</h2>
-                <input type="radio" name="payment-type" value="Cash" checked> Cash (Note: Cash must have the exact
+                <input id="cash" type="radio" name="payment-type" value="cash"> Cash (Note: Cash must have the exact
                 change!)<br>
-                <input id="cashradio" type="radio" name="payment-type" value="Credit/DebitCard"> Credit/Debit Card
+                <input id="card" type="radio" name="payment-type" value="card"> Credit/Debit Card
 
-                    <section class="form-group row">
+                    <section id="cardpayment" class="form-group row">
                         <div class="col-sm-4">
                             <label for="cardname">Name on Card</label>
-                            <input class="form-control" name="cardname" type="text" required>
+                            <input class="form-control" name="cardname" type="text">
                         </div>
                         <div class="col-sm-4">
                             <label for="cardnumber">Card Number</label>
-                            <input class="form-control" name="cardnumber" type="text" required>
+                            <input class="form-control" name="cardnumber" type="text">
                         </div>
                         <div class="col-sm-2">
                             <label for="expdate">Expiry Data</label>
-                            <input class="form-control" name="expdate" type="text" required>
+                            <input class="form-control" name="expdate" type="text">
                         </div>
                         <div class="col-sm-2">
                             <label for="cvv">cvv</label>
-                            <input class="form-control" name="cvv" type="text" required>
+                            <input class="form-control" name="cvv" type="text">
                         </div>
                     </section>
 
