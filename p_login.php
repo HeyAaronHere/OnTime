@@ -1,16 +1,6 @@
 <?php
 if (isset($_POST['login-submit'])) {
-//Constants for accessing our DB:
-    define("DBHOST", "161.117.122.252");
-    define("DBNAME", "p2_7");
-    define("DBUSER", "p2_7");
-    define("DBPASS", "7tQeryxcIq");
-    $email = $pwd = $fname = $userID = "";
-    $errorMsg = "";
-    $success = false;
-
-// Create connection
-    $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+    include "connection.inc.php";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -55,7 +45,7 @@ if (isset($_POST['login-submit'])) {
                     $errorMsg = "Connection failed: " . $conn->connect_error;
                     $success = false;
                 } else {
-                    $sql = "SELECT * FROM user WHERE ";
+                    $sql = "SELECT * FROM account WHERE ";
                     $sql .= "email='$email'";
                     // Execute the query
                     $result = $conn->query($sql);
@@ -85,12 +75,8 @@ if (isset($_POST['login-submit'])) {
                 $_SESSION['firstName'] = $row["fname"]; //fname actually
                 $_SESSION['userID'] = $row["user_id"]; // userID actually
                 unset($row);
-                if (isset($_SESSION)) {
-                    echo "<h1>session started</h1>";
-                    echo $_SESSION['firstName'];
-                }
-
                 echo "<script>alert('Login successful!');window.location.href='index.php';</script>";
+                echo "<a href='index.php'>Go to Main Page</a>";
             } else {
                 echo "<h1>OI!</h1>";
                 echo "<h4>The following input errors were detected:</h4>";

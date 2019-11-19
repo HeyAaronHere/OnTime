@@ -1,25 +1,18 @@
 <?php
-
 if (!isset($_SESSION)) {
     session_start();
 }
-
-define("DBHOST", "161.117.122.252");
-define("DBNAME", "p2_7");
-define("DBUSER", "p2_7");
-define("DBPASS", "7tQeryxcIq");
-
+include "connection.inc.php";
 $success = $errorMsg = $userID = $productID = $quantity = $productPrice = "";
 $success = true;
 if (isset($_POST["productID"])) { //user can't influence it -> no need to validate
     $productID = $_POST["productID"];
     $productPrice = $_POST["productPrice"];
-    echo $productID . "   ";
 } else {
     $errorMsg .= "<p>no productID found</p>";
 }
 print_r($_SESSION);
-if (isset($_SESSION['userID'])) {
+if (isset($_SESSION['userID'])) { //could write this in else line 25ff
     $userID = $_SESSION['userID'];
 }
 
@@ -50,8 +43,9 @@ if (!isset($_SESSION['firstName'])) {
         }
 
         if ($success) {
-            echo "item has been added";
-            echo "<button><a href='product.php'>Go on shopping</a></button>";
+            //echo "item has been added";
+            //echo "<button><a href='product.php'>Go on shopping</a></button>";
+            echo '<script>alert("item has been added to shoppingcart"); window.location="product.php"</script>';
         } else {
             echo "Oops, error!";
             echo $errorMsg;
@@ -70,26 +64,18 @@ function test_input($data) {
 //get current user over session variable
 
 function updateShoppingCart() {
-//  $userID = $_SESSION["email"];
-    // Create connection
-    $conn = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-    // Check connection
-    if ($conn->connect_error) {
-        $errorMsg .= "<p>Connection failed: " . $conn->connect_error . "</p>";
-        $success = false;
-    } else {
-        global $success, $errorMsg, $userID, $productID, $quantity, $productPrice;
+        global $success, $errorMsg, $userID, $productID, $quantity, $productPrice, $conn;
         //execute the query
-        $result = "SELECT * FROM shoppingCart WHERE userID = '$userID' AND productID = '$productID'";
+        $result = "SELECT * FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
         $checkResult = mysqli_query($conn, $result);
         if (!$checkResult) {
             $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
             $success = false;
         } else if (mysqli_num_rows($checkResult) > 0) {
             //this product is in the shopping cart already
-            $sql = "UPDATE shoppingCart SET quantity = '$quantity' "; //+ is missing for nested query
+            $sql = "UPDATE shoppingcart SET quantity = '$quantity' "; //+ is missing for nested query
             //$sql .= "(SELECT quantity FROM shoppingCart WHERE userID = $userID AND productID = $productID) ";
-            $sql .= "WHERE userID = '$userID' AND productID = '$productID'";
+            $sql .= "WHERE user_id = '$userID' AND product_id = '$productID'";
             //execute query
             $query = mysqli_query($conn, $sql);
             if (!$query) {
@@ -97,15 +83,16 @@ function updateShoppingCart() {
                 $success = false;
             }
         } else { //this product is not in the shopping cart
-            $sql = "INSERT INTO shoppingCart(userID, productID, quantity, productPrice) ";
-            $sql .= "VALUES ('$userID', '$productID', '$quantity', '$productPrice')";
+            $sql = "INSERT INTO shoppingcart(user_id, product_id, quantity) ";
+            $sql .= "VALUES ('$userID', '$productID', '$quantity')";
             //execute query
             if (!$conn->query($sql)) {
                 $errorMsg .= "<p>Database error 3: " . $conn->error . "</p>";
                 $success = false;
             }
         }
-    }
+        //free result, $checkRes, $checkResult, sql, query
 }
 
 ?>
+<!DOCTYPE html>

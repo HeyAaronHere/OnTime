@@ -12,7 +12,6 @@ checkboxListenerPwd.addEventListener("change", checkedFucntion);
 checkboxListenerName.addEventListener("change", checkedFucntion);
 checkboxListenerEmail.addEventListener("change", checkedFucntion);
 checkboxListenerPno.addEventListener("change", checkedFucntion);
-
 }
 
 function checkedFucntion() {
@@ -92,8 +91,9 @@ function validateProfileEditForm() {
     var lName = document.forms["pEditForm"]["lname"].value;
     var pNo = document.forms["pEditForm"]["pnumber"].value;
     var emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var pwdR = /^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/;
+    var pwdR = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     var nameR = /^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$/;
+    var pNoR = /[0-9]{8}/;
 
     
     //if none of check boxes checked
@@ -124,6 +124,9 @@ function validateProfileEditForm() {
     {        
         if(pNo === null || pNo === "") {
             alert("phone number cannot be empty");
+            return false;
+        }else if(pNoR.test(pNo) === false){
+            alert("phone number must only contain numbers");
             return false;
         }
     }
@@ -162,9 +165,5 @@ function validateProfileEditForm() {
             alert("New password and old password cannot be the same");
             return false;
         }
-
-
-} 
-
-
+    } 
 }
