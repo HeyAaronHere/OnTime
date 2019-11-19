@@ -52,7 +52,7 @@ if (!isset($_SESSION['firstName'])) {
 
                             <div class="form-group">
                                 <label for="FirstName">First Name:</label>
-                                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required="false" disabled="true" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$>
+                                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required="false" disabled="true" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
                             </div>
                             <div class="form-group">
                                 <label for="LastName">Last Name:</label>
