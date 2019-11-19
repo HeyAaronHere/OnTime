@@ -12,6 +12,6 @@ $result = mysqli_query($conn, $query);
 if (!$result) {
     echo "<p>Database error 1: " . $conn->error . "</p>";
 } else {
-  echo "<script>alert('Shoppingcart was cleared!');window.location.href='shoppingcart.php';</script>";
+  echo "<script>alert('Item was removed!');window.location.href='shoppingcart.php';</script>";
 }
  ?>

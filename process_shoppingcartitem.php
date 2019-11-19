@@ -11,7 +11,7 @@ if (isset($_POST["productID"])) { //user can't influence it -> no need to valida
 } else {
     $errorMsg .= "<p>no productID found</p>";
 }
-print_r($_SESSION);
+//print_r($_SESSION);
 if (isset($_SESSION['userID'])) { //could write this in else line 25ff
     $userID = $_SESSION['userID'];
 }
@@ -46,6 +46,7 @@ if (!isset($_SESSION['firstName'])) {
             //echo "item has been added";
             //echo "<button><a href='product.php'>Go on shopping</a></button>";
             echo '<script>alert("item has been added to shoppingcart"); window.location="product.php"</script>';
+            header("Location: product.php");
         } else {
             echo "Oops, error!";
             echo $errorMsg;
@@ -73,8 +74,9 @@ function updateShoppingCart() {
             $success = false;
         } else if (mysqli_num_rows($checkResult) > 0) {
             //this product is in the shopping cart already
-            $sql = "UPDATE shoppingcart SET quantity = '$quantity' "; //+ is missing for nested query
-            //$sql .= "(SELECT quantity FROM shoppingCart WHERE userID = $userID AND productID = $productID) ";
+            // $row = mysqli_fetch_array($checkResult);
+            // $currentQuantity = $row['quantity'];
+            $sql = "UPDATE shoppingcart SET quantity = '$quantity'"; // + '$currentQuantity' for nested query
             $sql .= "WHERE user_id = '$userID' AND product_id = '$productID'";
             //execute query
             $query = mysqli_query($conn, $sql);
