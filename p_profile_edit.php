@@ -2,12 +2,39 @@
 //start session
 if (!isset($_SESSION)) {
     session_start();
+    ?>
+
+    <!DOCTYPE html>
+
+    <html lang="en">
+
+        <head>
+            <title>Profile page result - OnTime</title>
+            <meta charset="utf-8">
+            <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
+            <meta name="keywords"
+                content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css" href="css/main.css" />
+            <link rel="stylesheet" type="text/css" href="css/headerFooter.css" />
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="js/bootstrap.min.js"></script>
+        </head>
+        <body>
+            <section class="jumbotron" id="login_first_msg">
+                <h1>Update result</h1>
+                <div class="container-fluid">
+        <?php
     //check to see if button to return to home was set or if not logged in yet
-    if(isset($_POST['submitPPE']) || !isset($_SESSION['firstName'])){
+    if(!isset($_SESSION['firstName'])){
         
         header("Location: login_first.php");
         exit;
-    }elseif(isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) {
+    }elseif((isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) || isset($_POST['submitPPE'])) {
         header("Location: profile_edit.php");
         $_SESSION['ppeLoadedBefore'] = false;
         exit;
@@ -25,7 +52,6 @@ if (!isset($_SESSION)) {
     $hpnopattern = "/[0-9]{8}/";
     $sqlUpdate = "UPDATE account SET ";
     $userID = $_SESSION['userID'];
-    //$sql = "UPDATE user set dod='$dod', mod='$mod',yod='$yod' where id='$id'";
 
     //Helper function that checks input for malicious or unwanted content.
     function sanitize_input($data) {
@@ -36,25 +62,22 @@ if (!isset($_SESSION)) {
     }
     //Yee Siang's function to save to DB
     function saveMemberToDB() {
-        global $email , $nPwd1 , $nPwd2 , $oPwd , $fName , $hpNo , $lName , $errorMsg, $sqlUpdate, $userID, $conn;
+        global $fName , $errorMsg, $sqlUpdate, $userID, $conn;
 
         // remove comma from last statement
         $sqlUpdate = substr($sqlUpdate, 0, -2);
         $sqlUpdate .= " WHERE user_id='$userID'";
-        echo "<br><br><p>". $sqlUpdate ."</p>";
         if (!$conn->query($sqlUpdate)){
-            echo'<h1>could not update!</h1>';
+            echo'<h2>could not update!</h2>';
             $errorMsg = "Database error: " . $conn->error;
             $success = false;
         }else{
-            echo'<h1>profile updated!</h1>';
+            echo'<h2>profile updated successfully!</h2>';
             //if name was updated, update the session first name for header
             if(isset($_POST['chkname']) && $_POST['chkname'] == 'Yes'){
-                $_SESSION['firstName'] = $fName; //fname actually
+                $_SESSION['firstName'] = $fName;
             }
         }
-
-        
         
     }
     //vallidate name
@@ -145,7 +168,8 @@ if (!isset($_SESSION)) {
     if (isset($_POST['chkpwd']) && $_POST['chkpwd'] == 'Yes') 
         {
             if(empty($_POST["opwd"]) || empty($_POST["npwd1"]) || empty($_POST["npwd2"])){
-                echo'<p>password is empty</p>';
+                $errorMsg .= "password is empty";
+                $success = false;
             }else
             {
                 $oPwd = sanitize_input($_POST["opwd"]);
@@ -153,10 +177,10 @@ if (!isset($_SESSION)) {
                 $nPwd2 = sanitize_input($_POST["npwd2"]);
                 if(!filter_var($oPwd))
                 {
-                    echo'<p>old password is not a valid format</p>';
+                    $errorMsg .= "old password is not a valid format.";
                     $success = false;
                 }elseif(preg_match($pwdpattern, $oPwd) == False){
-                    echo'<p>old password is not in a valid format</p>';
+                    $errorMsg .= "old password is not a valid format.";
                     $success = false;
                 }elseif(preg_match($pwdpattern, $oPwd)){
                     if($conn->connect_error){
@@ -173,30 +197,30 @@ if (!isset($_SESSION)) {
                             //check that old password was entered correctly
                             if (password_verify($oPwd, $row['password'])) {
                                 if(!filter_var($nPwd1)){
-                                    echo'<p>new password is not a valid format</p>';
+                                    $errorMsg .= "new password is not a valid format.";
                                     $success = false;
                                 }elseif(preg_match($pwdpattern, $nPwd1) == False){
-                                    echo'<p>new password is not a valid format</p>';
+                                    echo'<p></p>';
+                                    $errorMsg .= "new password is not a valid format.";
                                     $success = false;
                                 }else if(!filter_var($nPwd2)){
-                                    echo'<p>new password is not a valid format</p>';
+                                    $errorMsg .= "new password is not a valid format.";
                                     $success = false;
                                 }elseif(preg_match($pwdpattern, $nPwd2) == False){
-                                    echo'<p>new password is not a valid format</p>';
+                                    $errorMsg .= "new password is not a valid format.";
                                     $success = false;
                                 }elseif($nPwd1 != $nPwd2){
                                     $hashedPwd = password_hash($nPwd1, PASSWORD_DEFAULT);
-                                    echo'<p>new passwords do not match</p>';
+                                    $errorMsg .= "new passwords do not match.";
                                     $success = false;
                                 }else{     
-                                    echo'<p>new password added</p>';
                                     $hashedPwd = password_hash($nPwd1, PASSWORD_DEFAULT);
                                     $sqlUpdate .= "password='$hashedPwd', ";
                                 }
                                 
                             }
                             else{
-                                echo'<p>old password entered does not match old password</p>';
+                                $errorMsg .= "old password entered does not match old password.";
                                 $success = false;
                             }
                         }
@@ -205,32 +229,34 @@ if (!isset($_SESSION)) {
             }
         }
 
-    //if no sucessful then call method to save to database
+    //if not sucessful then call method to save to database
     if($success){
         saveMemberToDB();
         $conn->close();
         $_SESSION['ppeLoadedBefore'] = true;
         echo '<form name="processProfileForm" action="'. htmlspecialchars($_SERVER["PHP_SELF"]). '" method="POST">';
-        echo '<button type="submit" name="submitPPE" value="return">Return to Homepage</button></form>';
+        echo '<button type="submit" name="submitPPE" value="return">Return to Homepage</button></form>';?>
+        </div>
+    </section>
+</body>
+<?php
     }else{
         $conn->close();
         $_SESSION['ppeLoadedBefore'] = true;
+        
+        echo '<header class="header1"><h1>Oops!</h1></header>';
+        echo '<h4>The following input errors were detected:</h4>';
+        echo '<p>" . $errorMsg . "</p>'; 
+
         echo '<form name="processProfileForm" action="'. htmlspecialchars($_SERVER["PHP_SELF"]). '" method="POST">';
         echo '<button type="submit" name="submitPPE" value="return">Return to Homepage</button></form>';
-    }
-
         ?>
-
-        <!DOCTYPE html>
-
-        <html lang="en">
-
-            <head>
-
-
-            
-            </head>
-
+        </div>
+    </section>
+</body>
+<?php
+    }
+            ?>
         </html>
     <?php
     
