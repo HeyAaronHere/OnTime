@@ -82,18 +82,14 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
                         <section class="container">
                             <h3>Product Description</h3>
                             <p><?php echo $productDetails['product_desc'] ?></p>
-                            <p>This is the Product Description . This is the Product Description .This is the Product
-                                Description This is the Product Description
-                                This is the Product Description This is the Product Description This is the Product
-                                Description This is the Product Description.This is the Product
-                                Description </p>
+                            <p><?php echo $productDetails['product_desc'] ?></p>
                             <hr>
                         </section>
                     </section>
                     <?php
                 }
                 $sql->free();
-                $conn . close();
+                $conn->close();
             }
             ?>
         </article>

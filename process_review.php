@@ -73,16 +73,18 @@ $success = true;
                 }
             }
             if ($success) {
-                echo "<h2>Form Submitted successfully!</h2>";
+                echo "<h2 id= 'h2'>Form Submitted successfully!</h2>";
                 echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
                 echo "<section id='divider'></section>";
                 echo "<a id='btnHome' href='index.php' class='btn btn-default'>Return to Home</a>";
                 saveMemberToDB();
+                exit();
             } else {
                 echo "<h1>Oops!</h1>";
                 echo "<h4>The following input errors were detected:</h4>";
                 echo "<p>" . $errorMsg . "</p>";
                 echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Return to Sign Up</a>";
+                exit();
             }
 
             //Helper function that checks input for malicious or unwanted content. 
@@ -113,7 +115,6 @@ $success = true;
                 $conn->close();
             }
 
-            include "footer.inc.php";
             ?> 
     </body>
 </html>
