@@ -9,7 +9,7 @@ define("DBHOST", "161.117.122.252");
 define("DBNAME", "p2_7");
 define("DBUSER", "p2_7");
 define("DBPASS", "7tQeryxcIq");
-$CIname = $CIemail = $CInumber = $CIquestion = "";
+$CIname = $CIemail = $CInumber = $CIquestion = $sql = "";
 $errorMsg = "";
 $success = true;
 
@@ -89,7 +89,7 @@ function saveCIToDB() {
                 </article>
                 <div class="container" id="CustomerInquiries">
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
-                    <form name="CustomerInquiries" action="customerservice.php" method="post">
+                    <form name="CustomerInquiries" action="p_customerservice.php" method="post">
                         <h1>Customer Inquiries</h1>
                         <div class="row">
                             <div class="col-25">
@@ -127,76 +127,6 @@ function saveCIToDB() {
                             <input type="submit" name="CI-submit" value="Submit">
                         </div>
                     </form>
-
-                    <?php
-                    if (isset($_POST['CI-submit'])) {
-                        if (empty($_POST["CIemail"]) || empty($_POST["CIname"]) || empty($_POST["CInumber"]) || empty($_POST["CIquestion"])) {
-                            $errorMsg .= "Empty blanks detected. Please fill them up.";
-                            $success = false;
-                        } else {
-                            $CIemail = sanitize_input($_POST["CIemail"]);
-                            $CIname = sanitize_input($_POST["CIname"]);
-                            $CInumber = sanitize_input($_POST["CInumber"]);
-                            $CIquestion = sanitize_input($_POST["CIquestion"]);
-
-                            $emailpattern = "/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/";
-                            $namepattern = "/^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$/";
-                            $hpnopattern = "/[0-9]{8}/";
-
-                            if (!filter_var($CIemail, FILTER_VALIDATE_EMAIL) || !filter_var($CIname) || !filter_var($CInumber) || !filter_var($CIquestion)) {
-                                $errorMsg .= "Invalid entry format.";
-                                $success = false;
-                            } else if (preg_match($emailpattern, $CIemail) == False || preg_match($namepattern, $CIname) == False || preg_match($hpnopattern, $CInumber) == False) {
-                                $errorMsg .= "Invalid entry format!";
-                                $success = false;
-                            } else if (strlen($CInumber) != 8) {
-                                $errorMsg .= "Contact number is must be 8 digits.";
-                                $success = false;
-                            }
-                        }
-                        if ($success) {
-                            saveCIToDB();
-                            require("phpmailer.inc.php");
-                            require("smtp.inc.php");
-
-                            $mail = new PHPMailer();
-                            $mail->SMTPDebug = 1;
-                            $mail->IsSMTP();
-                            $mail->Host = "smtp.gmail.com";
-                            $mail->Port = 587;
-                            $mail->SMTPAuth = true;
-                            $mail->Username = "clementoys@gmail.com";
-                            $mail->Password = "9617390c";
-                            $mail->From = "clementoys@gmail.com";
-                            $mail->FromName = "ONtime";
-                            $mail->AddAddress($CIemail);
-                            $mail->WordWrap = 50;
-                            $mail->IsHTML(true);
-                            $mail->SMTPSecure = 'tls';
-                            $mail->Subject = "Customer Inquiries";
-                            $mail->Body = "Dear $CIname, <br><br>
-                                        We have currently received the following feedback:<br>
-                                        \"$CIquestion\"<br><br>
-                                        We will respond back to you shortly at your following contact details:<br><br>
-                                        Email: $CIemail <br>
-                                        Contact No: $CInumber <br><br>
-                                        Thank you.<br>
-                                        ONtime @ SIT";
-                            $mail->AltBody = "Dear $CIname, <br><br>
-                                        We have currently received the following feedback:<br>
-                                        \"$CIquestion\"<br><br>
-                                        We will respond back to you shortly at your following contact details:<br><br>
-                                        Email: $CIemail <br>
-                                        Contact No: $CInumber <br><br>
-                                        Thank you.<br>
-                                        ONtime @ SIT";
-                            $mail->Send();
-                            echo "<script type='text/javascript'>alert('You have successfully submitted your response! An email is sent to you. Thank you " . $CIname . ", we will contact you shortly.');</script>";
-                        } else {
-                            echo "<script type='text/javascript'>alert('Failed to submit your response!');</script>";
-                        }
-                    }
-                    ?>
                     <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                 </div>
                 <article>
@@ -264,14 +194,6 @@ function saveCIToDB() {
             </main>
             <?php
             include "footer.inc.php";
-
-            //Helper function that checks input for malicious or unwanted content.
-            function sanitize_input($data) {
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-            }
             ?>
     </body>
 </html>
