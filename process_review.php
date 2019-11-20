@@ -3,13 +3,15 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-define("DBHOST", "161.117.122.252");
-define("DBNAME", "p2_7");
-define("DBUSER", "p2_7");
-define("DBPASS", "7tQeryxcIq");
+/* define("DBHOST", "161.117.122.252");
+  define("DBNAME", "p2_7");
+  define("DBUSER", "p2_7");
+  define("DBPASS", "7tQeryxcIq"); */
 $email = $name = $review = "";
 $errorMsg = "";
 $success = true;
+
+include "connection.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,17 +75,19 @@ $success = true;
                 }
             }
             if ($success) {
-                echo "<h2 id= 'h2'>Form Submitted successfully!</h2>";
-                echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
-                echo "<section id='divider'></section>";
-                echo "<a id='btnHome' href='index.php' class='btn btn-default'>Return to Home</a>";
+                /* echo "<h2 id= 'h2'>Form Submitted successfully!</h2>";
+                  echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
+                  echo "<section id='divider'></section>";
+                  echo "<a id='btnHome' href='index.php' class='btn btn-default'>Return to Home</a>"; */
+                $_SESSION['msg'] = "Form Submitted Successfully";
+                header("location:productsreview.php");
                 saveMemberToDB();
-                exit();
+                
             } else {
                 echo "<h1>Oops!</h1>";
                 echo "<h4>The following input errors were detected:</h4>";
                 echo "<p>" . $errorMsg . "</p>";
-                echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Return to Sign Up</a>";
+                echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
                 exit();
             }
 
@@ -104,17 +108,31 @@ $success = true;
                     $errorMsg = "Connection failed: " . $conn->connect_error;
                     $success = false;
                 } else {
+
+                    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+                    $name = mysqli_real_escape_string($conn, $_POST["name"]);
+                    $review = mysqli_real_escape_string($conn, $_POST["review"]);
+
+
                     $sql = "INSERT INTO review (email, name, review_desc)";
-                    $sql .= " VALUES ('$email', '$name', '$review')";
+                    $sql .= " VALUES (?,?,?);";
                     // Execute the query
-                    if (!$conn->query($sql)) {
+                    $stmt = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($stmt, $sql)) {
+                        echo "SQL error";
+                    } else {
+                        mysqli_stmt_bind_param($stmt, "sss", $email, $name, $review);
+                        mysqli_stmt_execute($stmt);
+                    }
+
+
+                   /* if (!$conn->query($sql)) {
                         $errorMsg = "Database error: " . $conn->error;
                         $success = false;
-                    }
+                    }*/
                 }
                 $conn->close();
             }
-
             ?> 
     </body>
 </html>

@@ -99,11 +99,6 @@ if (isset($_POST['signup-submit'])) {
     </html>
     <?php
 } else {
-    session_start();
-    if (isset($_SESSION['firstName'])) {
-        header("Location: index.php");
-        exit();
-    }
     header("Location: index.php");
     exit();
 }

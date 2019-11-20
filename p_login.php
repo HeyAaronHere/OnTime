@@ -10,13 +10,6 @@ if (isset($_POST['login-submit'])) {
             <meta name="keywords" content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="css/p_login.css" rel="stylesheet" type="text/css">
-            <link rel="stylesheet" href="css/headerFooter.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <script src="js/login.js"></script>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         </head>
         <body>
             <?php
@@ -88,11 +81,6 @@ if (isset($_POST['login-submit'])) {
     </html>
     <?php
 } else {
-    session_start();
-    if (isset($_SESSION['firstName'])) {
-        header("Location: index.php");
-        exit();
-    }
     header("Location: index.php");
     exit();
 }

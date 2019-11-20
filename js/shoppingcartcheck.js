@@ -18,15 +18,15 @@ x.addEventListener("submit", validateForm);
 function validateForm(e) {
   //first name must be filled out
   var fname = document.forms["orderform"]["fname"].value;
-  var onlyLetters = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
+  var properName = /[^A-Za-z\s-]/;
   //var onlyLetters = /^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$/;
   //onlyLetters.test(fname);
   if (fname === "") {
     alert("First Name must be filled out");
     e.preventDefault();
     return false;
-  }else if (!onlyLetters.test(fname)) {
-    alert("First Name must contain only letters and whitespace.");
+  }else if (properName.test(fname)) {
+    alert("First Name must contain only letters, whitespaces and dashes.");
     e.preventDefault();
     return false;
   }
@@ -36,21 +36,20 @@ function validateForm(e) {
     alert("Last Name must be filled out");
     e.preventDefault();
     return false;
-  }else if (!onlyLetters.test(lname)) {
-    alert("Last Name must contain only letters and whitespace.");
+  }else if (properName.test(lname)) {
+    alert("Last Name must contain only letters, dashes and whitespaces.");
     e.preventDefault();
     return false;
   }
 
   //Email Address must be valid
   var email = document.forms["orderform"]["email"].value;
-  var properForm = /\S+@\S+\.\S+/;
-  properForm.test(email);
+  var properEmail = /^\S+@\S+\.\S{2,3}$/;
   if (email === "") {
     alert("Email must be filled out");
     e.preventDefault();
     return false;
-  }else if(!properForm.test(email)){
+  }else if(!properEmail.test(email)){
       alert("Please enter a valid email address");
       e.preventDefault();
       return false;
@@ -58,7 +57,7 @@ function validateForm(e) {
 
   //phone number must be validate
   var phone = document.forms["orderform"]["phone"].value;
-  var properPhone = /^[0-9]*$/;
+  var properPhone = /^[0-9]{8,13}$/;
   if (phone === "") {
     alert("Phone number must be filled out");
     e.preventDefault();
@@ -71,78 +70,122 @@ function validateForm(e) {
 
   //Street must be filled out
   var street = document.forms["orderform"]["street"].value;
-  var onlyLetters = /^[0-9a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])+[0-9]*$/;
-  onlyLetters.test(street);
+  var properStreet = /[^A-Za-z\s0-9-]/;
   if (street === "") {
     alert("Street must be filled out");
     e.preventDefault();
     return false;
-  }else if (!onlyLetters.test(street)) {
+  }else if (properStreet.test(street)) {
     alert("Street must contain only letters, whitespaces, and numbers.");
+    e.preventDefault();
+    return false;
+  }
+
+  //Appartment must be filled out
+  var appartment = document.forms["orderform"]["appartment"].value;
+  var properAppartment = /^\d{2}[-]\d{2,3}$/;
+  if (countrycode == "") {
+    alert("Appartment must be filled out");
+    e.preventDefault();
+    return false;
+  }else if (!properAppartment.test(appartment)){
+    alert("Appartment must be in this format: ss-nn or ss-nnn");
     e.preventDefault();
     return false;
   }
 
   //Country Code must be filled out
   var countrycode = document.forms["orderform"]["countrycode"].value;
-  var onlyNumbers = /^[A-Z]*$/;
+  var properCountry = /^[A-Z]{2}$/;
   if (countrycode == "") {
     alert("Country Code must be filled out");
     e.preventDefault();
     return false;
-  }else if (!onlyNumbers.test(countrycode)){
-    alert("Country Code must contain only numbers.");
-  }
-
-  //Country must be filled out (and valid?)
-  var country = document.forms["orderform"]["country"].value;
-  var onlyLetters = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
-  onlyLetters.test(country);
-  if (fname === "") {
-    alert("Country must be filled out");
-    e.preventDefault();
-    return false;
-  }else if (!onlyLetters.test(country)) {
-    alert("Country must contain only letters and whitespaces.");
+  }else if (!properCountry.test(countrycode)){
+    alert("Country Code must contain of two capital letters.");
     e.preventDefault();
     return false;
   }
 
-  //if card payment checked:
-  if (document.getElementById("cashradio").checked = true) {
+  //Postal Code must be filled out (and valid?)
+  var postalcode = document.forms["orderform"]["postalcode"].value;
+  var properPost = /^\d{4,10}$/;
+  if (postalcode === "") {
+    alert("Postal Code must be filled out");
+    e.preventDefault();
+    return false;
+  }else if (!properPost.test(postalcode)) {
+    alert("Postal Code must contain only 4-10 numbers.");
+    e.preventDefault();
+    return false;
+  }
 
+  var city = document.forms["orderform"]["city"].value;
+  if (city === "") {
+    alert("City must be filled out");
+    e.preventDefault();
+    return false;
+  }else if (properName.test(city)) {
+    alert("City must contain only letters, dashes and whitespaces.");
+    e.preventDefault();
+    return false;
+  }
+
+  //if payment checked and if card payment checked
+  if(!document.getElementById("card").checked && !document.getElementById("cash").checked){
+    alert("Payment Method must be selected.");
+    e.preventDefault();
+    return false;
+  }else if (document.getElementById("card").checked) {
     //Name on Card filled out
     var cardname = document.forms["orderform"]["cardname"].value;
     if (cardname == "") {
       alert("Name on Card must be filled out");
       e.preventDefault();
       return false;
+    }else if (properName.test(cardname)){
+      alert("Card Name must contain only letters, dashes and whitespaces.");
+      e.preventDefault();
+      return false;
     }
 
     //Card number must have 16 digits
     var cardnumber = document.forms["orderform"]["cardnumber"].value;
-    var onlyNumbers = /^[0-9]{16}*$/;
+    var onlyNumbers = /^[0-9]{16}$/;
     if (cardnumber == "") {
       alert("Card Number must be filled out");
       e.preventDefault();
       return false;
     }else if (!onlyNumbers.test(cardnumber)){
       alert("Card Number must contain exactly 16 digits.");
-    }else{
-    return true;
+      e.preventDefault();
+      return false;
+    }
+
+    //expiry date must have mm-yy format
+    var expdate = document.forms["orderform"]["expdate"].value;
+    var properExpDate = /^([1][0-2]|[0][1-9])[-]\d{2}$/;
+    if (expdate == "") {
+      alert("Expiry Date must be filled out");
+      e.preventDefault();
+      return false;
+    }else if (!properExpDate.test(expdate)){
+      alert("Expiry Date must be in this format: mm-yy.");
+      e.preventDefault();
+      return false;
     }
 
     //CVV must have 3 digits
     var cvv = document.forms["orderform"]["cvv"].value;
-    var onlyNumbers = /^[0-9]{3}*$/;
+    var onlyNumbers = /^[0-9]{3}$/;
     if (cvv == "") {
       alert("CVV must be filled out");
       e.preventDefault();
       return false;
     }else if (!onlyNumbers.test(cvv)){
       alert("CVV must contain exactly 3 digits.");
-    }else{
-    return true;
+      e.preventDefault();
+      return false;
     }
   }
 }
