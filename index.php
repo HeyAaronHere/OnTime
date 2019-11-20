@@ -13,8 +13,8 @@ if (!isset($_SESSION)) {
         <meta name="keywords"
               content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" type="text/css" href="css/headerFooter.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
         <script src="js/mainPage.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -22,8 +22,10 @@ if (!isset($_SESSION)) {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/bootstrap.min.js"></script>
+        <style>@font-face { font-family: 'collection'; src: url(fonts/CollectionFree.otf); font-style: normal; font-weight: 100; }</style>
     </head>
     <body>
+        <main>
         <?php
         include "header.inc.php";
         ?>
@@ -32,23 +34,23 @@ if (!isset($_SESSION)) {
                 <div class="col-xs-12">
                     <div id="imageCarousel" class="carousel slide" data-interval="5000" data-ride="carousel"
                          data-pause="hover" data-wrap="true">
-                        <p id="carouselheard">Current Collection</p>
+                        <p id="carouselheadCC">Current Collection</p>
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="row">
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchF1.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchF2.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchF3.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                 </div>
@@ -57,17 +59,17 @@ if (!isset($_SESSION)) {
                                 <div class="row">
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchF4.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchM1.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
-                                        <a href=productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                        <a href="productdetails.php">
+                                            <img src="img/WatchM2.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                 </div>
@@ -90,13 +92,13 @@ if (!isset($_SESSION)) {
                 <div class="col-xs-12">
                     <div id="imageCarousel1" class="carousel slide" data-interval="5000" data-ride="carousel"
                          data-pause="hover" data-wrap="true">
-                        <p id="carouselheard">Best Collection</p>
+                        <p id="carouselheadBC">Best Collection</p>
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="row">
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchF1.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
@@ -106,7 +108,7 @@ if (!isset($_SESSION)) {
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchM1.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                 </div>
@@ -115,17 +117,17 @@ if (!isset($_SESSION)) {
                                 <div class="row">
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchM2.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchM3.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchM4.jpg" class="img-responsive" alt="Fossil townsman">
                                         </a>
                                     </div>
                                 </div>
@@ -152,8 +154,6 @@ if (!isset($_SESSION)) {
                 <div class="col-md-4"></div>
             </div>
         </section>
-        <?php
-        include "footer.inc.php";
-        ?>
+        </main>
     </body>
 </html>

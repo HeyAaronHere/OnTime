@@ -34,13 +34,13 @@ if (!isset($_SESSION)) {
         
         header("Location: login_first.php");
         exit;
-    }elseif((isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) || isset($_POST['submitPPE'])) {
-        header("Location: profile_edit.php");
+    }elseif(isset($_POST['submitPPE']) && $_POST['submitPPE'] == "goto"){
         $_SESSION['ppeLoadedBefore'] = false;
+    }elseif((isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) || (isset($_POST['submitPPE']) && $_POST['submitPPE'] == "return")) {
+        header("Location: profile_edit.php");
         exit;
-    }else{//check if refreshed the page after changing details
-        $loadedBefore = true;
     }
+
     include "connection.inc.php";
     
     $success = true;

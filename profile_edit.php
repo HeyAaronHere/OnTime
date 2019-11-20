@@ -134,7 +134,7 @@ if (!isset($_SESSION['firstName'])) {
                     </div>
                 </div>
             </div> 
-            <input type="submit" class="btn btn-default"></input>
+            <input type="submit" name="submitPPE" value="goto" class="btn btn-default"></input>
         </div>
     </form>
         </main>
