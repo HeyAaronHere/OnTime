@@ -19,6 +19,7 @@ if (isset($_SESSION['userID'])) { //could write this in else line 25ff
 
 //check if user is logged in
 if (!isset($_SESSION['firstName'])) {
+  //Hello Daniel, here's the hidden corner for the redirect, have a nice day/evening/night :-)
     echo "<p>You must log in before adding an item to the shopping cart</p>";
     echo "<button><a href='login.php'>Log In</a></button>";
 } else {
@@ -45,8 +46,8 @@ if (!isset($_SESSION['firstName'])) {
         if ($success) {
             //echo "item has been added";
             //echo "<button><a href='product.php'>Go on shopping</a></button>";
-            echo '<script>alert("item has been added to shoppingcart"); window.location="product.php"</script>';
-            header("Location: product.php");
+            echo '<script>alert("item has been added to shoppingcart"); window.location="shoppingcart.php"</script>';
+            header("Location: shoppingcart.php");
         } else {
             echo "Oops, error!";
             echo $errorMsg;
@@ -97,4 +98,3 @@ function updateShoppingCart() {
 }
 
 ?>
-<!DOCTYPE html>

@@ -1,5 +1,5 @@
 /*------------header css------------*/
-.navbar-brand{  
+.navbar-brand{
     float: none;
     position: absolute;
     left: 50%;
@@ -22,8 +22,8 @@ nav{
 
 
 /*-------footer css-------*/
-.footer 
-{   
+.footer
+{
     background-color: #2f2f2f;
     color: #ffffff;
     font-family: Arial;

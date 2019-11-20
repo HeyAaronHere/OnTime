@@ -20,8 +20,8 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         <script src="js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/shoppingcart.css">
         <link rel="stylesheet" href="css/headerFooter.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
@@ -108,78 +108,78 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 
 ?>
 <button type="button" class="btn btn-success btn-lg">
-  <a id="checkbutton" href="product.php"><span
-              class="glyphicon glyphicon-arrow-left"> Go on shopping</span></a>
+  <a href="product.php"><span class="glyphicon glyphicon-arrow-left"> Go on shopping</span></a>
 </button>
 <?php
       if (mysqli_num_rows($checkResult) > 0){
 ?>
           <section class="well well-sm row">
-            <form id="orderform"> <!--method="post" action="checkout.php"-->
+            <form id="orderform" method="post" action="checkout.php"> <!--method="post" action="checkout.php"-->
             <h2>Delivery Address</h2>
 
                 <section class="form-group row">
                     <div class="col-sm-3">
                         <label for="fname">First Name</label>
-                        <input class="form-control" name="fname" type="text" required>
+                          <input class="form-control" id="fname" name="fname" type="text" required>
                     </div>
                     <div class="col-sm-3">
                         <label for="lname">Last Name</label>
-                        <input class="form-control" name="lname" type="text" required>
+                          <input class="form-control" id="lname" name="lname" type="text" required>
                     </div>
                     <div class="col-sm-4">
                         <label for="email">Email Address</label>
-                        <input class="form-control" name="email" type="email" required>
+                          <input class="form-control" id="email" name="email" type="email" required>
                     </div>
                     <div class="col-sm-2">
                         <label for="phone">Phone number</label>
-                        <input class="form-control" name="phone" type="text" required>
+                          <input class="form-control" id="phone" name="phone" type="text" required>
                     </div>
                 </section>
                 <section class="form-group row">
                     <div class="col-sm-4">
                         <label for="street">Street and House number</label>
-                        <input class="form-control" name="street" type="text" required>
+                          <input class="form-control" id="street" name="street" type="text" required>
                     </div>
                     <div class="col-sm-2">
-                        <label for="street">Appartment</label>
-                        <input class="form-control" name="appartment" type="text">
+                        <label for="appartment">Appartment</label>
+                          <input class="form-control" id="appartment" name="appartment" type="text" placeholder="21-07" required>
                     </div>
                     <div class="col-sm-1">
                         <label for="countrycode">Country</label>
-                        <input class="form-control" name="countrycode" type="text" required>
+                          <input class="form-control" id="countrycode" name="countrycode" type="text" required>
                     </div>
                     <div class="col-sm-2">
-                        <label for="countrycode">Postal Code</label>
-                        <input class="form-control" name="postalcode" type="text" required>
+                        <label for="postalcode">Postal Code</label>
+                          <input class="form-control" id="postalcode" name="postalcode" type="text" required>
                     </div>
                     <div class="col-sm-3">
                         <label for="country">City</label>
-                        <input class="form-control" name="city" type="text" required>
+                          <input class="form-control" id="country" name="city" type="text" required>
                     </div>
                 </section>
 
             <h2>Select Payment Type</h2>
-                <input id="cash" type="radio" name="payment-type" value="cash"> Cash (Note: Cash must have the exact
-                change!)<br>
-                <input id="card" type="radio" name="payment-type" value="card"> Credit/Debit Card
+                <label for="cash"></label>
+                <input id="cash" type="radio" name="paymenttype" value="cash" required> Cash<br>
+                <label for="card"></label>
+                <input id="card" type="radio" name="paymenttype" value="card" required> Credit/Debit Card
 
                     <section id="cardpayment" class="form-group row">
                         <div class="col-sm-4">
                             <label for="cardname">Name on Card</label>
-                            <input class="form-control" name="cardname" type="text">
+                              <input class="form-control" id="cardname" name="cardname" type="text">
                         </div>
                         <div class="col-sm-4">
                             <label for="cardnumber">Card Number</label>
-                            <input class="form-control" name="cardnumber" type="text">
+                              <input class="form-control" id="cardnumber" name="cardnumber" type="text">
                         </div>
                         <div class="col-sm-2">
                             <label for="expdate">Expiry Data</label>
-                            <input class="form-control" name="expdate" type="text">
+                              <input class="form-control" id="expdate" name="expdate" type="text" placeholder="02-22">
                         </div>
                         <div class="col-sm-2">
                             <label for="cvv">cvv</label>
-                            <input class="form-control" name="cvv" type="text">
+                              <input class="form-control" id="cvv" name="cvv" type="text">
                         </div>
                     </section>
 

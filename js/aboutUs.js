@@ -1,5 +1,7 @@
 //js file for aboutUs.php
-
-$("img-circle").click(function(){
-  $("popup").toggle();
+$(document).ready(function(){
+  $(".textbox").hide();
+  $(".img-circle").click(function(){
+    $(".textbox").toggle();
+  });
 });
