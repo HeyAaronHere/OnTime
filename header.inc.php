@@ -1,10 +1,6 @@
 <nav class="navbar navbar-custom navbar-fixed-top navbar-inverse">
     <div id="topnav-centered">
-<<<<<<< HEAD
         <a class="navbar-brand" href="index.php" title="Link to HomePage" ><img src="images/logo3.png" alt="Ontime logo"></a>
-=======
-        <a class="navbar-brand" href="index.php" title="Link to HomePage" ><img id="navbarstyle" src="images/logo3.png" alt="Ontime logo"></a>
->>>>>>> 5c544de4a2f97898bdd623708169224f6f84cf96
     </div>
     <section class="navbar-header" id="myNavBarLeft">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

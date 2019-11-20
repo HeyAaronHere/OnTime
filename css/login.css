@@ -24,7 +24,7 @@ body {
     margin: 0 0 15px;
 }
 
-.login-form p {
+.login-form p, .login-form label {
     color: rgb(212, 212, 212);
 }
 
