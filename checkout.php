@@ -206,7 +206,7 @@ function test_input($data) {
 function saveTransactionToDB(){
 
     //for connection and insertion into order table
-    global $conn, $errorMsg, $userID, $paymentType;
+    global $conn, $success, $errorMsg, $userID, $paymentType;
     //for intertion into order_item table
     global $productID, $quantity, $orderID;
     //for insertion into deliveryAddress table
@@ -214,7 +214,8 @@ function saveTransactionToDB(){
 
     //insertIntoOrder generates order_id which is necessary for the next queries
     //$time = date('YYYY-MM-DD HH:MM:SS');
-    $insertIntoOrder = "INSERT INTO order(user_id, purchase_datetime, payment_type) VALUES('$userID', NOW(), '$paymentType')";
+    $insertIntoOrder = "INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) "
+                      . "VALUES('$userID', NOW(), '$paymentType')";
     $insertIntoOrder_query = mysqli_query($conn, $insertIntoOrder);
     if (!$insertIntoOrder_query) {
         $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
