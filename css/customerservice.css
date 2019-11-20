@@ -130,24 +130,6 @@ input[type=submit]:hover {
     content: "\e114";
 }
 /* FAQ collapsible - https://bootsnipp.com/snippets/qADDB */
-
-/* Google Map - https://mdbootstrap.com/docs/jquery/javascript/google-maps/#regular */
-/*
-.map-container {
-    overflow: hidden;
-    position: relative;
-    height: 0;
-    padding-bottom: 200px;
-}
-
-.map-container iframe {
-    height: 100%;
-    width: auto;
-    position: absolute;
-}
-*/
-/* Google Map - https://mdbootstrap.com/docs/jquery/javascript/google-maps/#regular */
-
 footer {
     background-color: #333;
     color: white;
