@@ -33,15 +33,15 @@ if (isset($_POST['login-submit'])) {
                     $errorMsg .= "Password is less than 8 characters.";
                     $success = false;
                 }
-
                 if ($conn->connect_error) {
                     $errorMsg = "Connection failed: " . $conn->connect_error;
                     $success = false;
                 } else {
-                    $sql = "SELECT * FROM account WHERE ";
-                    $sql .= "email='$email'";
+                    $sql = $conn->prepare("SELECT * FROM account WHERE email= ?");
+                    $sql->bind_param("s", $email);
+                    $sql->execute();
                     // Execute the query
-                    $result = $conn->query($sql);
+                    $result = $sql->get_result();
                     if ($result->num_rows > 0) {
                         // Note that email field is unique, so should only have
                         // one row in the result set.

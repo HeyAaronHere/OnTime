@@ -15,8 +15,9 @@ if (isset($_POST['signup-submit'])) {
             $success = false;
         } else {
             $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO account (fname, lname, email, HPnumber, password)";
-            $sql .= " VALUES ('$fname', '$lname', '$email', '$HPnumber', '$hashed_password')";
+            $sql = $conn->prepare("INSERT INTO account (fname, lname, email, HPnumber, password) VALUES (?,?,?,?,?)");
+            $sql->bind_param("sssis", $fname, $lname, $email, $HPnumber, $hashed_password);
+            $sql->execute();
             // Execute the query
             if (!$conn->query($sql)) {
                 $errorMsg = "Database error: " . $conn->error;
