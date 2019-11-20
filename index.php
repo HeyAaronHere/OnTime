@@ -154,6 +154,9 @@ if (!isset($_SESSION)) {
                 <div class="col-md-4"></div>
             </div>
         </section>
+        <?php
+        include "footer.inc.php";
+        ?>
         </main>
     </body>
 </html>
