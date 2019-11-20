@@ -187,12 +187,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         saveTransactionToDB();
     }
 
-    if($success){
-         echo "mission completed";
+    if(!$success){
          echo $errorMsg;
-    }else{
-        echo "OOPS, something went wrong!";
-        echo $errorMsg;
     }
 }
 
@@ -213,17 +209,16 @@ function saveTransactionToDB(){
     global $fname, $lname, $email, $phone, $street, $appartment, $countrycode, $postalcode, $city;
 
     //insertIntoOrder generates order_id which is necessary for the next queries
-    //$time = date('YYYY-MM-DD HH:MM:SS');
     $insertIntoOrder = "INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) "
                       . "VALUES('$userID', NOW(), '$paymentType')";
     $insertIntoOrder_query = mysqli_query($conn, $insertIntoOrder);
     if (!$insertIntoOrder_query) {
-        $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
+        $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
         $success = false;
     }
 
     //retrieve newly generated order_id to go on with the process | last generated order id is the maximum because of auto increment
-    $getFromOrder = "SELECT MAX(order_id) FROM order WHERE user_id = '$userID'";
+    $getFromOrder = "SELECT MAX(order_id) as order_id FROM p2_7.order WHERE user_id = '$userID'";
     $getFromOrder_query = mysqli_query($conn, $getFromOrder);
     if (!$getFromOrder_query) {
         $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
@@ -233,27 +228,36 @@ function saveTransactionToDB(){
       $orderID = $row['order_id'];
     }
 
-    //insert items from shoppingcart into order items WHILE LOOP
-    $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
+
     //we need shoppingcart details first before adding anything to order
     $getFromShoppingCart = "SELECT product_id, quantity FROM shoppingcart WHERE user_id = '$userID'";
+    //insert items from shoppingcart into order items WHILE LOOP
+    $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
     //delete items in shoppingcart after they've been added to the order item table
     $deleteFromShoppingCart = "DELETE FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
     $getFromShoppingCart_query = mysqli_query($conn, $getFromShoppingCart);
-    while ($row = mysqli_fetch_array($getFromShoppingCart_query)){
-        $productID = $row['product_id'];
+    if (!$getFromShoppingCart_query) {
+        $errorMsg .= "<p>Database error 3: " . $conn->error . "</p>";
+        $success = false;
+    }else{
+      while ($row = mysqli_fetch_array($getFromShoppingCart_query)){
+        $productID = $row['product_id']; //$row['product_id']
         $quantity = $row['quantity'];
+        $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
         $insertIntoOrderItem_query = mysqli_query($conn, $insertIntoOrderItem);
         if (!$insertIntoOrderItem_query) {
-            $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
+            $errorMsg .= "<p>Database error 4: " . $conn->error . "</p>";
             $success = false;
         }else{
+          //delete shoppingcart
+            $deleteFromShoppingCart = "DELETE FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
             $deleteFromShoppingCart_query = mysqli_query($conn, $deleteFromShoppingCart);
             if (!$insertIntoOrderItem_query) {
-                $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
+                $errorMsg .= "<p>Database error 5: " . $conn->error . "</p>";
                 $success = false;
             }
         }
+      }
     }
 
 
@@ -264,7 +268,7 @@ function saveTransactionToDB(){
       . "'$street', '$appartment', '$countrycode', '$postalcode', '$city', '$orderID')";
     $insertIntoDeliveryAddress_query = mysqli_query($conn, $insertIntoDeliveryAddress);
     if (!$insertIntoDeliveryAddress_query) {
-        $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
+        $errorMsg .= "<p>Database error 6: " . $conn->error . "</p>";
         $success = false;
     }
 }
@@ -314,13 +318,13 @@ function saveTransactionToDB(){
 <?php
         //execute the query
         $result = "SELECT quantity, product_name, product_price, quantity * product_price as 'total' "
-                    . "FROM shoppingcart s, product p WHERE s.user_id = '$userID' AND s.product_id = p.product_id";
-        $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = '$userID' AND P.product_id = S.product_id";
-        $orderPlacement = "INSERT INTO order ()";
+                    . "FROM order_items s, p2_7.order o, product p WHERE o.user_id = '$userID' AND o.order_id = s.order_id AND s.product_id = p.product_id";
+        $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = '$userID' AND O.order_id = S.order_id AND P.product_id = S.product_id";
+        //$orderPlacement = "INSERT INTO order ()";
         $checkResult = mysqli_query($conn, $result);
         $checkRes = mysqli_query($conn, $res);
         if (!$checkResult || !$checkRes) {
-            $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
+            echo "<p>Database error 1: " . $conn->error . "</p>";
             $success = false;
         } else {
           //get all products incl details and price
