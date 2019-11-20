@@ -33,27 +33,27 @@ if (isset($_SESSION['firstName'])) {
                                 <h2 class="text-center">Create An Account</h2>
                                 <p>For existing members, please go to the <a href="login.php">login page</a>.</p>
                                 <div class="form-group">
-                                    <label for="FirstName">First Name:</label>
+                                    <label for="fname">First Name: </label>
                                     <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
                                 </div>
                                 <div class="form-group">
-                                    <label for="LastName">Last Name:</label>
+                                    <label for="lname">Last Name: </label>
                                     <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" required pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Email">Email:</label>
+                                    <label for="email">Email: </label>
                                     <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email..." title="E.g johndoe@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$">
                                 </div>
                                 <div class="form-group">
-                                    <label for="HPno">Contact No:</label>
+                                    <label for="HPnumber">Contact No: </label>
                                     <input type="tel" class="form-control" id="HPnumber" name="HPnumber" placeholder="(+65) E.g: 98765432" maxlength="8" required pattern="[0-9]{8}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Password">Password:</label>
+                                    <label for="pwd">Password: </label>
                                     <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter your password..." title="Must contain at least 1 uppercase, 1 lowercase and 1 number/special character" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ConfirmPassword">Confirm Password:</label>
+                                    <label for="cfmpwd">Confirm Password: </label>
                                     <input type="password" class="form-control" name="cfmpwd" id="cfmpwd" placeholder="Confirm your password..." title="Input your password again" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                                 </div>
                                 <div class="checkbox">
