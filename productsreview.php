@@ -7,9 +7,10 @@ if (!isset($_SESSION)) {
 $reviewID = "";
 $errorMsg = "";
 $success = true;
+$result = "";
+
 
 include "connection.inc.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +35,6 @@ include "connection.inc.php";
         <?php
         include "header.inc.php";
         ?>
-
-
         <main class="review container-fluid">
             <?php if (isset($_SESSION['msg'])): ?>
                 <div class="msg" id="h2">
@@ -45,6 +44,7 @@ include "connection.inc.php";
                     ?>
                 </div>
             <?php endif ?>
+
 
             <h1>Reviews</h1>
             <p class="text-center">We value every comments you provide!</p>
@@ -67,49 +67,54 @@ include "connection.inc.php";
                             Email:</label>
                         <input type="email" class="form-control" id="email" name="email"  pattern="\S+@\S+\.\S+" required>
                     </div>
-                    <input type="hidden" name="review_id" value="<?php echo (isset($reviewID['review_id'])) ? $reviewID['review_id'] : ''; ?>">
+
                     <input type="submit" id="btnSubmit" name ="submitbutton" value="Submit">
                 </form>
+                <?php
+                ?>
             </div>
 
             <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
 
             <!-- review URL = https://www.youtube.com/watch?v=qZno3Yk8QKc&t=500s Author = Easy Tutorials -->
             <?php
-            if (!isset($_POST['review_id']) || empty($_POST['review_id']) || !is_numeric($_POST['review_id'])) {
-                $errors[] = 'Error msg, try again';
-            } else {
-                $reviewID = $_POST['review_id'];
-            }
-            $IDquery = "SELECT * FROM review WHERE review_id ='$reviewID'";
-            $sql = mysqli_query($conn, $IDquery);
+            $query = "SELECT MAX(review_id) as MAX_REVIEW FROM review";
+            $sql = mysqli_query($conn, $query);
             if (!$sql) {
                 $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
                 $success = false;
             } else if (mysqli_num_rows($sql) > 0) {
-                while ($reviewDetails = mysqli_fetch_assoc($sql)) {
-                    ?>
-                    <section class="container">
-                        <div class="row review_box" >
-                            <div class = "col-md-4">
-                                <div class ="review_img"> 
-                                    <img src="img/logo_bg.png" alt="ONTime icon">
-                                </div>
-                            </div>
-                            <div class="col-md-8">    
-                                <div class="review_desc">
-                                    <h2><?php $reviewDetails['name'] ?></h2>
-                                    <p><?php $reviewDetails['review_desc'] ?> ></p>
-                                </div>
-                            </div>
-                            <div class = "clear"></div>
-                        </div>
+                $row = mysqli_fetch_assoc($sql);
+                $reviewID = $row['MAX_REVIEW'];
+            }
 
-                        <?php
-                    }
-                    $sql->free();
-                    $conn->close();
+            $IDquery = "SELECT * FROM review WHERE review_id ='$reviewID'";
+            $IDsql = mysqli_query($conn, $IDquery);
+            if (!$IDsql) {
+                $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
+                $success = false;
+            } else if (mysqli_num_rows($IDsql) > 0) {
+
+                $reviewDetails = mysqli_fetch_assoc($IDsql);
+                ?>
+                <section class="container">
+                    <div class="row review_box" >
+                        <div class="col-sm-3">
+                            <div class="review_img"> 
+                                <img class="review_img" src="img/logo_bg.png" alt="ONTime icon">
+                            </div>
+                        </div>
+                        <div class="col-md-9 review_desc ">
+                            <h1><?php echo $reviewDetails['name'] ?></h1>
+                            <h2><?php echo $reviewDetails['review_desc'] ?></h2>
+                        </div>
+                        <div class = "clear"></div>
+                    </div>
+
+                    <?php
                 }
+                $sql->free();
+                $conn->close();
                 ?>
             </section>                   
 
