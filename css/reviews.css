@@ -72,7 +72,7 @@ input[type=submit]:hover {
 #productreview
 {
     margin: 10px auto;
-    
+
 }
 
 /* review URL = https://www.youtube.com/watch?v=qZno3Yk8QKc&t=500s Author = Easy Tutorials*/
@@ -99,27 +99,27 @@ input[type=submit]:hover {
     height: 3px;
     width: 400px;
     margin: 20px auto 5px;
-    
+
 }
 
 .review .row
 {
     margin-top: 100px;
     z-index: 1;
-   
+
 }
 
 .col-md-4
 {
     padding: 30px;   
-   
+
 }
 
 .profile
 {
     padding: 80px 20px 20px;
     background-color: #efefef;
-    
+
 }
 .profile img
 {
@@ -127,7 +127,7 @@ input[type=submit]:hover {
     position: absolute;
     left: calc(50% - 70px);
     border: 2px solid white;
-    
+
 }
 
 .user
@@ -135,7 +135,7 @@ input[type=submit]:hover {
     width: 140px;
     height: 130px;
     border-radius: 60%;
-        
+
 }
 
 .profile h2
@@ -144,39 +144,39 @@ input[type=submit]:hover {
     margin-top: 15px;
     color: #ff9800;
 }
- span
- {
-     font-size: 12px;
-     color: #333;
- }
+span
+{
+    font-size: 12px;
+    color: #333;
+}
 
- blockquote
- {
-     font-size: 16px;
-     line-height: 30px;
- }
- 
- blockquote::before
- {
-     content: '\201C';
-     font-size: 70px;
-     position: relative;
-     color: #ff9800;
-     line-height: 20px;
-     bottom: -15px;
-     right: 5px;     
- }
- 
- blockquote::after
- {
-     content: '\201C';
-     font-size: 70px;
-     position: relative;
-     color: #ff9800;
-     line-height: 10px;
-     bottom: -15px;
-     left: 5px;     
- }
+blockquote
+{
+    font-size: 16px;
+    line-height: 30px;
+}
+
+blockquote::before
+{
+    content: '\201C';
+    font-size: 70px;
+    position: relative;
+    color: #ff9800;
+    line-height: 20px;
+    bottom: -15px;
+    right: 5px;     
+}
+
+blockquote::after
+{
+    content: '\201C';
+    font-size: 70px;
+    position: relative;
+    color: #ff9800;
+    line-height: 10px;
+    bottom: -15px;
+    left: 5px;     
+}
 
 .profile:hover
 {
@@ -198,10 +198,68 @@ input[type=submit]:hover {
 #h2
 {
     margin-top: 80px;
+
+}
+/*review result css*/
+
+.review_box .row
+{
+    margin-top: 100px;
+    z-index: 1;
+
+}
+
+.review_box
+{
+    border:1px solid #e2e2e2;
+    border-radius: 4px;
+    padding: 80px 20px 20px;
+    background:#f1f1f1;
+    font-family: open sans;
    
 }
 
+.review_box:hover
+{
+    box-shadow: 0 0 15px 5px;
+    cursor: pointer;    
+    transition: 0.5s; 
+} 
 
+.review_img
+{
+    width:120px;
+    float:left;
+    
+}
+
+.review_img img 
+{
+    border-radius: 50%;
+    width:200px;
+    margin-top: -20px;
+    
+    
+}
+
+.msg
+{
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 5px;
+    color:#3c763d;
+    background:#dff0d8;
+    border: 1px solid #3c763d;
+    width: 50%;
+    text-align: center;
+    
+}
+.clear
+{
+    clear:both;
+}
+
+/*divider for process_review.php*/
 #divider {
     width: 20px;
     display: inline-block;
@@ -224,7 +282,7 @@ input[type=submit]:hover {
     .col-s-11 {width: 91.66%;}
     .col-s-12 {width: 100%;}
 }
-  
+
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .col-1 {width: 8.33%;}
@@ -240,6 +298,6 @@ input[type=submit]:hover {
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
 }
-  
+
 
 

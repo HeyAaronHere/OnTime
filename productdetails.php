@@ -45,8 +45,8 @@ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
         $IDquery = "SELECT * FROM product WHERE product_id ='$productID'";
         $sql = mysqli_query($conn, $IDquery);
         if (!$sql) {
-            //  $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
-            echo "error: " . $conn->error;
+            $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
+            //echo "error: " . $conn->error;
             $success = false;
         } else if (mysqli_num_rows($sql) > 0) {
             while ($productDetails = mysqli_fetch_assoc($sql)) {
