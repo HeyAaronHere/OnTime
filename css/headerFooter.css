@@ -58,3 +58,8 @@ nav{
     margin-right: auto;
     margin-left: auto;
 }
+
+#navbarstyle{
+    width:150px;
+    height:60px;
+}

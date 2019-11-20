@@ -40,7 +40,7 @@ if (!isset($_SESSION)) {
                                 <div class="row">
                                     <div class="col-xs-4 img-zoom imghover">
                                         <a href="productdetails.php">
-                                            <img src="img/WatchF1.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <img src="img/WatchF1.jpg" class="img-responsive" alt="Olivia Burton P  ink">
                                         </a>
                                     </div>
                                     <div class="col-xs-4 img-zoom imghover">
@@ -74,11 +74,11 @@ if (!isset($_SESSION)) {
                                     </div>
                                 </div>
                             </div>
-                            <a href="#imageCarousel" class="carousel-control left" data-slide="prev"
+                            <a href="#imageCarousel" title="previous slide" class="carousel-control left" data-slide="prev"
                                style="background:none !important">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
-                            <a href="#imageCarousel" class="carousel-control right" data-slide="next"
+                            <a href="#imageCarousel" title="next slide" class="carousel-control right" data-slide="next"
                                style="background:none !important">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
@@ -132,11 +132,11 @@ if (!isset($_SESSION)) {
                                     </div>
                                 </div>
                             </div>
-                            <a href="#imageCarousel1" class="carousel-control left" data-slide="prev"
+                            <a href="#imageCarousel1" title="previous slide" class="carousel-control left" data-slide="prev"
                                style="background:none !important">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
-                            <a href="#imageCarousel1" class="carousel-control right" data-slide="next"
+                            <a href="#imageCarousel1" title="next slide" class="carousel-control right" data-slide="next"
                                style="background:none !important">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
@@ -154,6 +154,9 @@ if (!isset($_SESSION)) {
                 <div class="col-md-4"></div>
             </div>
         </section>
+        <?php
+        include "footer.inc.php";
+        ?>
         </main>
     </body>
 </html>
