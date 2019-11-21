@@ -146,10 +146,10 @@ if (!isset($_SESSION)) {
             </div>
         </div>
         <section class="jumbotron" id="abit-abt-us">
-            <h1>WATCH US</h1>
+            <h1 id="heading">WATCH US</h1>
             <div class="container-fluid">
                 <div class="col-md-4"></div>
-                <h2 class="col-md-4">Watch us as we bring you amazing watches with stunning designs. We try our best at
+                <h2 id="abtus" class="col-md-4">Watch us as we bring you amazing watches with stunning designs. We try our best at
                     bringing you watches that you will love wearing all the time so that you can always be ONtime</h2>
                 <div class="col-md-4"></div>
             </div>

@@ -50,6 +50,13 @@ header{
   
 }
 
+.jumbotron #abtus{
+font-size:8vw;
+}
+
+.jumbotron #heading{
+  font-size:10vw;
+  }
 
 .icon{
   height:60px;

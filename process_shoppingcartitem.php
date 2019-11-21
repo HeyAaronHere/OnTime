@@ -21,7 +21,7 @@ if (isset($_SESSION['userID'])) { //could write this in else line 25ff
 if (!isset($_SESSION['firstName'])) {
   //Hello Daniel, here's the hidden corner for the redirect, have a nice day/evening/night :-)
     echo "<p>You must log in before adding an item to the shopping cart</p>";
-    echo "<button><a href='login.php'>Log In</a></button>";
+    echo "<button><a href='login_first.php'>Log In</a></button>";
 } else {
 //php validation of input and initialize shopping cart change
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
