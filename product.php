@@ -39,8 +39,8 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
 
                 <figure class = "overlay-right">
-                    <a href = "shoppingcart.php"<button class = "btn btn-secondary" title = "Add to Cart">
-                    <span class = "fa fa-shopping-cart"></span></button></a>
+                    <a href = "shoppingcart.php"<input type="submit title = "Add to Cart">
+                    <span class = "fa fa-shopping-cart"></span></a>
                 </figure>
                 </form>
             </div>

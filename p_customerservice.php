@@ -9,9 +9,9 @@ if (isset($_POST['CI-submit'])) {
     function saveCIToDB() {
         global $conn, $CIname, $CIemail, $CInumber, $CIquestion, $errorMsg, $success;
         $CIquestion = mysqli_escape_string($conn, $CIquestion);
-        $sql = "INSERT INTO customer_inquiries (CIname, CIemail, CInumber, CIquestion) VALUES ('$CIname', '$CIemail', '$CInumber', '$CIquestion')";
-//Execute the query
-        $conn->query($sql);
+        $sql = $conn->prepare("INSERT INTO customer_inquiries (CIname, CIemail, CInumber, CIquestion) VALUES (?,?,?,?)");
+        $sql->bind_param("ssis", $CIname, $CIemail, $CInumber, $CIquestion);
+        $sql->execute();
         if (!$conn->query($sql)) {
             $errorMsg = "Database error: " . $conn->error;
             $success = false;
