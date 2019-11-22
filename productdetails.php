@@ -1,30 +1,29 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+
+    <?php
 //start session
-if (!isset($_SESSION)) {
-    session_start();
-}
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 // accessing our DB:
-include "connection.inc.php";
-include "header.inc.php";
+    include "connection.inc.php";
 
+    if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
+        $errors[] = 'You must select a product in order to see its details!';
+    } else {
+        $productID = $_POST['product_id'];
+    }
+    $IDquery = "SELECT * FROM product WHERE product_id ='$productID'";
+    $sql = mysqli_query($conn, $IDquery);
+    if (!$sql) {
+        $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
+        //echo "error: " . $conn->error;
+        $success = false;
+    } else if (mysqli_num_rows($sql) > 0) {
+        while ($productDetails = mysqli_fetch_assoc($sql)) {
+            ?>
 
-if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
-    $errors[] = 'You must select a product in order to see its details!';
-} else {
-    $productID = $_POST['product_id'];
-}
-$IDquery = "SELECT * FROM product WHERE product_id ='$productID'";
-$sql = mysqli_query($conn, $IDquery);
-if (!$sql) {
-    $errorMsg .= "<p>Database error: " . $conn->error . "</p>";
-    //echo "error: " . $conn->error;
-    $success = false;
-} else if (mysqli_num_rows($sql) > 0) {
-    while ($productDetails = mysqli_fetch_assoc($sql)) {
-        ?>
-
-        <!DOCTYPE html>
-        <html lang="en">
             <head>
                 <title>Product Details - OnTime</title>
                 <meta name="description" content="ONtime - Top Seller & Best Quality Services on watches">
@@ -43,7 +42,11 @@ if (!$sql) {
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
             </head>
+
             <body>
+                <?php 
+                include "header.inc.php"; 
+                ?>
 
                 <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
                     all images source from Cocomi.com URL = https://www.cocomi.com/
@@ -52,7 +55,7 @@ if (!$sql) {
                     <section class="container">
                         <section class=row>
                             <div class = "col-md-5">
-                                <img src = "<?php echo $productDetails['product_img'] ?>">
+                                <img src="<?php echo $productDetails['product_img'] ?>" alt="<?php echo $productDetails['product_alt']?> ">
                             </div>
                             <div class = "col-md-7">
                                 <p class = "new-arrival text-center">NEW</p>

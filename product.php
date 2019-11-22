@@ -5,9 +5,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-$connect = mysqli_connect('161.117.122.252', 'p2_7', '7tQeryxcIq', 'p2_7');
+include "connection.inc.php";
+
 $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
-$tab_result = mysqli_query($connect, $tab_query);
+$tab_result = mysqli_query($conn, $tab_query);
 $tab_menu = '';
 $tab_content = '';
 
@@ -15,31 +16,30 @@ $i = 0;
 while ($row = mysqli_fetch_array($tab_result)) {
     if ($i == 0) {
         $tab_menu .= '
-        <li class="active"><a href="#' . $row["category_id"] . '" data-toggle="tab">' . $row["category_name"] . '</a></li>';
+        <li class="active"><a href="#' . $row['category_id'] . '" data-toggle="tab">' . $row['category_name'] . '</a></li>';
         $tab_content .= '
-        <div id="' . $row["category_id"] . '" class="tab-pane fade in active">';
+        <div id="' . $row['category_id'] . '" class="tab-pane fade in active">';
     } else {
         $tab_menu .= '
-            <li><a href="#' . $row["category_id"] . '" data-toggle="tab">' . $row["category_name"] . '</a></li>';
+            <li><a href="#' . $row['category_id'] . '" data-toggle="tab">' . $row['category_name'] . '</a></li>';
         $tab_content .= '
-            <div id="' . $row["category_id"] . '" class="tab-pane fade">';
+            <div id="' . $row['category_id'] . '" class="tab-pane fade">';
     }
-    $product_query = "SELECT * FROM product WHERE category_id = '" . $row["category_id"] . "'";
-    $product_result = mysqli_query($connect, $product_query);
+    $product_query = "SELECT * FROM product WHERE category_id = '" . $row['category_id'] . "'";
+    $product_result = mysqli_query($conn, $product_query);
     while ($sub_row = mysqli_fetch_array($product_result)) {
         $tab_content .= '
             <div class="col-md-2 card " >
                 <form method="post" action="productdetails.php">
-                <img src="' . $sub_row["product_img"] . '"class="img-responsive img-thumbnail">
+                <img src="' . $sub_row['product_img'] . '" alt= "' . $sub_row['product_alt'] . '" class="img-responsive img-thumbnail">
                 <h1>' . $sub_row["product_name"] . '</h1>
                 <input type="hidden" name="product_id" value="' . $sub_row['product_id'] . '"> <!--session variable to transport product id?-->
                 <input type="hidden" name="product_price" value="<' . $sub_row['product_price'] . '">
                 <input type="submit" name="submitbutton" value="click for more info">
                 <p class="price">$' . $sub_row["product_price"] . '</p>
 
-
                 <figure class = "overlay-right">
-                    <a href = "shoppingcart.php"<input type="submit title = "Add to Cart">
+                    <a href="shoppingcart.php" title="Add to Cart">
                     <span class = "fa fa-shopping-cart"></span></a>
                 </figure>
                 </form>
@@ -83,7 +83,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                         <div class="item active">
                             <img src="img/carousel1.jpg" alt="Carousel 1" style="width:100%;">
                             <div class="carousel-caption carouselstyle">
-                                <h1>ONTime</h1>
+                                <h2>ONTime</h2>
                                 <p>Your Friendly Watch Shop!</p>
                             </div>
                         </div>
@@ -91,7 +91,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                         <div class="item">
                             <img src="img/carousel2.jpg" alt="Carousel 2" style="width:100%;">
                             <div class="carousel-caption carouselstyle">
-                                <h1>Awesome Watches!</h1>
+                                <h2>Awesome Watches!</h2>
                                 <p>Check out more about our watches below</p>
                             </div>
                         </div>
@@ -104,26 +104,29 @@ while ($row = mysqli_fetch_array($tab_result)) {
                             <span class="glyphicon glyphicon-chevron-right"></span>
                             <span class="sr-only">Next</span>
                         </a>
+
+
                     </div>
                 </div>
+            </div>
         </section>
 
         <div class="container-fluid">
             <br>
             <ul class="nav nav-tabs">
                 <?php
+
                 echo $tab_menu;
                 ?>
             </ul>
             <div class="tab-content">
-                <br>
                 <?php
                 echo $tab_content;
                 ?>
             </div>
         </div>
         <hr>
-        
+
         <?php
         include "footer.inc.php";
         ?>
