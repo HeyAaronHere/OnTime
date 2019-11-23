@@ -3,9 +3,11 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-if (isset($_SESSION['userID'])) {
-    //show all the review page
-} else {
+if (!isset($_POST[''])) {
+    header("Location: productsreview");
+    exit();
+}
+if (!isset($_SESSION['userID'])) {
   header("Location: login_first");
   exit();
 }
