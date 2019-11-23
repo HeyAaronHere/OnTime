@@ -3,19 +3,19 @@
        
             <section class="col-md-4">
                 <h2>Company</h2>
-                <a href="aboutus.php">
+                <a href="aboutus">
                     <p>About Us</p>
                 </a>
-                <a href="aboutus.php">
+                <a href="aboutus">
                     <p>Contact Us</p>
                 </a>
             </section>
             <section class="col-md-4">
                 <h2>Customer Support</h2>
-                <a href="customerservice.php#FAQ">
+                <a href="customerservice">
                     <p>FAQ</p>
                 </a>
-                <a href="customerservice.php">
+                <a href="customerservice">
                     <p>Customer Service</p>
                 </a>
             </section>
