@@ -42,6 +42,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             $result->bind_param("i", $userID);
             $checkResult = $result->execute();
             $getResult = $result->get_result();
+            $result->close();
             if (!$checkResult) {
                 $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
                 $success = false;
