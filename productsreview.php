@@ -73,7 +73,7 @@ if (!$IDsql) {
                     <!-- w3schools js validation, https://www.w3schools.com/js/js_validation.asp -->
                     <form id="productreviews" action="process_review.php" method="post">
                         <div class="col-sm-12 form-group">
-                            <label for="review">
+                            <label for="reviewinput">
                                 Reviews:</label>
                             <textarea class="form-control" id="reviewinput" name="review" placeholder="Write your reviews.." maxlength="6000" rows="7" required></textarea>
                         </div>
@@ -106,8 +106,8 @@ if (!$IDsql) {
                             </div>
                         </div>
                         <div class="col-md-9 review_desc ">
-                            <h1><?php echo $reviewDetails['name'] ?></h1>
-                            <h2><?php echo $reviewDetails['review_desc'] ?></h2>
+                            <h2>Name: <?php echo $reviewDetails['name'] ?></h2>
+                            <h3><?php echo $reviewDetails['review_desc'] ?></h3>
                         </div>
                         <div class = "clear"></div>
                     </div>

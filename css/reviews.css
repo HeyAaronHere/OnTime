@@ -209,13 +209,11 @@ blockquote::after
 
 }
 
-
-
 .review_box
 {
     border:1px solid #e2e2e2;
     border-radius: 4px;
-    padding: 60px;
+    padding: 50px;
     background:#f1f1f1;
     font-family: open sans;
     max-width:100%;
@@ -232,7 +230,7 @@ blockquote::after
 
 .review_img
 {
-    width:120px;
+    max-width: 100%;
     float:left;
 
 }
@@ -242,6 +240,7 @@ blockquote::after
     border-radius: 50%;
     width:200px;
     margin-top: -20px;
+    margin-left: -10px;
 
 
 }
@@ -254,12 +253,14 @@ blockquote::after
     word-break: break-all;
 }
 
-.review_desc h1
+.review_desc h2
 {
-
+    font-weight: bold;
+    color: #ff9800;
+    padding-bottom: 10px;
+    text-transform: uppercase;
     margin-top: -20px;
     font-size: 30px;
-    text-align: center;
     max-width: 100%;
 }
 
