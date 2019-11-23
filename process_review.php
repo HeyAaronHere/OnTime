@@ -3,6 +3,14 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+if (!isset($_POST['submitbutton'])) {
+    header("Location: productsreview");
+    exit();
+}
+if (!isset($_SESSION['userID'])) {
+  header("Location: login_first");
+  exit();
+}
 /* define("DBHOST", "161.117.122.252");
   define("DBNAME", "p2_7");
   define("DBUSER", "p2_7");
@@ -33,7 +41,6 @@ include "connection.inc.php";
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <main>
             <?php
             include "header.inc.php";
             $namepat = "/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/";
