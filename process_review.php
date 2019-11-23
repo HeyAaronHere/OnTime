@@ -3,7 +3,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-if (!isset($_POST[''])) {
+if (!isset($_POST['submitbutton'])) {
     header("Location: productsreview");
     exit();
 }
