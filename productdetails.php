@@ -51,8 +51,7 @@
                 <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
                     all images source from Cocomi.com URL = https://www.cocomi.com/
                     how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
-                <article class="singleProduct">
-                    <section class="container">
+                    <article class="container singleProduct">
                         <section class=row>
                             <div class = "col-md-5">
                                 <img src="<?php echo $productDetails['product_img'] ?>" alt="<?php echo $productDetails['product_alt']?> ">
@@ -65,7 +64,7 @@
                                 <p><b>Availability:</b> <?php echo $productDetails['product_stock'] ?> </p>
                                 <p><b>Condition:</b> New </p>
                                 <p><b>Brand:</b> <?php echo $productDetails['product_brand'] ?></p>
-                                <label for="productdetails">Quantity </label>
+                                <label for="productinput">Quantity </label>
                                 <form id="productdetails" action="process_shoppingcartitem.php" method="post">
                                     <input type="number" id ="productinput" min="1" name="productAmount" value="1">
                                     <input type="hidden"  name="productPrice" value="<?php echo $productDetails['product_price'] ?>">
@@ -74,15 +73,12 @@
                                 </form>
                             </div>
                         </section>
-                    </section>
-                    <section class="productDescription">
-                        <section class="container">
+                        <section class="container productDescription">
                             <h3>Product Description</h3>
                             <p><?php echo $productDetails['product_desc'] ?></p>
                             <p><?php echo $productDetails['product_desc'] ?></p>
                             <hr>
                         </section>
-                    </section>
                     <?php
                 }
                 $sql->free();
