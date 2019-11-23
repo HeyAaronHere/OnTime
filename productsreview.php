@@ -91,7 +91,7 @@ if (!$IDsql) {
 
                         <input type="submit" id="btnSubmit" name ="submitbutton" value="Submit">
                     </form>
-                    
+
                 </div>
 
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
@@ -107,7 +107,7 @@ if (!$IDsql) {
                         </div>
                         <div class="col-md-9 review_desc ">
                             <h2>Name: <?php echo $reviewDetails['name'] ?></h2>
-                            
+
                             <h3><?php echo $reviewDetails['review_desc'] ?></h3>
                         </div>
                         <div class = "clear"></div>
