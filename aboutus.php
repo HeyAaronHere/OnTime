@@ -15,11 +15,11 @@ if (!isset($_SESSION)) {
               content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
         <link rel="stylesheet" href="css/aboutUs.css">
         <link rel="stylesheet" href="css/headerFooter.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/aboutUs.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
     <body>
@@ -31,7 +31,8 @@ if (!isset($_SESSION)) {
                 <section class="row">
                     <div class="col-lg-5">
                         <img class="img-responsive" id="holzkern" src="images/Holzkern.jpg" alt="ONtime">
-                        <!--Holzkern, 2019: Model 'Manhattan', last retrieved on 09/10/19 from https://www.bing.com/images/search?view=detailV2&ccid=%2BOFJ2a1a&id=745B387D8D27486FE1AD47FACA9E20C67C547165&thid=OIP.-OFJ2a1aZFcHIk0KkxyJ_AHaE7&mediaurl=https%3A%2F%2Fstatic.escdn.nl%2Fimages%2Fresized%2F975421%3A1059%3A705%3Acontain.jpg&exph=705&expw=1059&q=holzkern+watches&simid=607998756429302204&selectedindex=31&ajaxhist=0&vt=0&sim=11-->
+                        <!--Holzkern, 2019: Model 'Manhattan', last retrieved on 09/10/19 from
+                        https://www.bing.com/images/search?view=detailV2&ccid=%2BOFJ2a1a&id=745B387D8D27486FE1AD47FACA9E20C67C547165&thid=OIP.-OFJ2a1aZFcHIk0KkxyJ_AHaE7&mediaurl=https%3A%2F%2Fstatic.escdn.nl%2Fimages%2Fresized%2F975421%3A1059%3A705%3Acontain.jpg&exph=705&expw=1059&q=holzkern+watches&simid=607998756429302204&selectedindex=31&ajaxhist=0&vt=0&sim=11-->
                     </div>
                     <div class="col-lg-7" id="ourmission">
                         <h1 class="aboutus">Our Mission</h1>
@@ -43,10 +44,10 @@ if (!isset($_SESSION)) {
                 <h1 class="aboutus">Our Team</h1>
                 <p>Our current team consists of 4 highly motivated watch makers.
                     If you'd like to know more about our members, click on the respective picture.</p>
-                <article id="yeesiang" class="thumbnail col-md-3 col-sm-6" data-toggle="collapse" data-target="#yeesiangstext"
-                         data-parent="#ourteam">
+                <article id="yeesiang" class="thumbnail col-md-3 col-sm-6" data-target="#yeesiangstext" data-parent="#ourteam">
+                   <!-- data-toggle="collapse" data-target="#yeesiangstext" data-parent="#ourteam" -->
                     <h2>Yee Siang</h2>
-                    <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Yee Siang">
+                    <img id="yeesiangs" class="img-circle img-responsive" src="images/logo_bg.png" alt="Yee Siang">
                     <figure id="yeesiangstext" class="popup">
                         <article class="textbox">
                             <p>Yee Siang was born in Singapore. Yee Siang was born in Singapore. Yee Siang was born in
@@ -56,10 +57,9 @@ if (!isset($_SESSION)) {
                         </article>
                     </figure>
                 </article>
-                <article id="aaron" class="thumbnail col-md-3 col-sm-6" data-toggle="collapse" data-target="#aaronstext"
-                         data-parent="#ourteam">
+                <article id="aaron" class="thumbnail col-md-3 col-sm-6" data-target="#aaronstext" data-parent="#ourteam">
                     <h2>Aaron</h2>
-                    <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Aaron">
+                    <img  id="aarons" class="img-circle img-responsive" src="images/logo_bg.png" alt="Aaron">
                     <figure id="aaronstext" class="popup"> <!--class="popup collapse"-->
                         <article class="textbox">
                             <p>Aaron was born in Singapore.Aaron was born in Singapore.
@@ -72,10 +72,9 @@ if (!isset($_SESSION)) {
                         </article>
                     </figure>
                 </article>
-                <article id="daniel" class="thumbnail col-md-3 col-sm-6" data-toggle="collapse" data-target="#danielstext"
-                         data-parent="#ourteam">
+                <article id="daniel" class="thumbnail col-md-3 col-sm-6" data-target="#danielstext" data-parent="#ourteam">
                     <h2>Daniel</h2>
-                    <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Daniel">
+                    <img id="daniels" class="img-circle img-responsive" src="images/logo_bg.png" alt="Daniel">
                     <figure id="danielstext" class="popup">
                         <article class="textbox">
                             <p>Daniel was born in Singapore. Daniel was born in Singapore.
@@ -86,11 +85,10 @@ if (!isset($_SESSION)) {
                         </article>
                     </figure>
                 </article>
-                <article id="nikola" class="thumbnail col-md-3 col-sm-6" data-toggle="collapse" data-target="#nikostext"
-                         data-parent="#ourteam">
+                <article id="nikola" class="thumbnail col-md-3 col-sm-6" data-target="#nioklastext" data-parent="#ourteam">
                     <h2>Nikola</h2>
-                    <img class="img-circle img-responsive" src="images/logo_bg.png" alt="Nikola">
-                    <figure id="nikostext" class="popup">
+                    <img id="nikolas" class="img-circle img-responsive" src="images/logo_bg.png" alt="Nikola">
+                    <figure id="nikolastext" class="popup">
                         <article class="textbox">
                             <p>Nikola was born in Germany. Nikola was born in Germany.
                                 Nikola was born in Germany. Nikola was born in Germany.

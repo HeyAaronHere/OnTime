@@ -38,19 +38,27 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             </header>
 <?php
             //execute the query
-            $result = "SELECT s.product_id, quantity, product_name, product_price, quantity * product_price as 'total' "
-                    . "FROM shoppingcart s, product p WHERE s.user_id = '$userID' AND s.product_id = p.product_id";
-            $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = '$userID' AND P.product_id = S.product_id";
-            $checkResult = mysqli_query($conn, $result);
-            $checkRes = mysqli_query($conn, $res);
-            if (!$checkResult || !$checkRes) {
+            $result = $conn->prepare("SELECT s.product_id, quantity, product_name, product_price, quantity * product_price as 'total' FROM shoppingcart s, product p WHERE s.user_id = ? AND s.product_id = p.product_id");
+            $result->bind_param("i", $userID);
+            $checkResult = $result->execute();
+            $getResult = $result->get_result();
+            if (!$checkResult) {
                 $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
                 $success = false;
-            } else if (mysqli_num_rows($checkResult) > 0) {
+            } else if ($getResult->num_rows > 0) {
                 //there are products in the shopping cart, get all products incl details
                 global $priceTotal;
-                $record = mysqli_fetch_row($checkRes);
+                $res = $conn->prepare("SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = ? AND P.product_id = S.product_id");
+                $res->bind_param("i", $userID);
+                $checkRes = $res->execute();
+                $getRes = $res->get_result();
+                if(!$checkRes){
+                  $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
+                  $success = false;
+                }
+                $record = mysqli_fetch_row($getRes);
                 $priceTotal = $record[0];
+                $res->close();
 
 ?>
             <section class="row">
@@ -69,7 +77,8 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                                 </tr>
                             </thead>
 <?php
-            while($row = mysqli_fetch_array($checkResult)){
+
+            while($row = mysqli_fetch_array($getResult)){
 ?>
                     <tr>
                       <td><?php echo $row['quantity']?></td>
@@ -111,7 +120,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
   <a href="product.php"><span class="glyphicon glyphicon-arrow-left"> Go on shopping</span></a>
 </button>
 <?php
-      if (mysqli_num_rows($checkResult) > 0){
+      if ($getResult->num_rows > 0){
 ?>
           <section class="well well-sm row">
             <form id="orderform" method="post" action="checkout.php"> <!--method="post" action="checkout.php"-->

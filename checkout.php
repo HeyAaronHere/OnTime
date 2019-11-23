@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if(!$success){
-         echo $errorMsg;
+         echo "<p></p><p></p><p></p>" . $errorMsg;
     }
 }
 
@@ -209,68 +209,110 @@ function saveTransactionToDB(){
     global $fname, $lname, $email, $phone, $street, $appartment, $countrycode, $postalcode, $city;
 
     //insertIntoOrder generates order_id which is necessary for the next queries
-    $insertIntoOrder = "INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) "
-                      . "VALUES('$userID', NOW(), '$paymentType')";
-    $insertIntoOrder_query = mysqli_query($conn, $insertIntoOrder);
+    // $stmt = $mysqli->prepare("INSERT INTO myTable (name, age) VALUES (?, ?)");
+    // $stmt->bind_param("si", $_POST['name'], $_POST['age']);
+    // $stmt->execute();
+    // $stmt->close();
+    $insertIntoOrder = $conn->prepare("INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) VALUES(?, NOW(), ?)");
+    // $time = date("Y-m-d G:i:s");
+    $insertIntoOrder->bind_param("is", $userID, $paymentType);
+    $insertIntoOrder_query = $insertIntoOrder->execute();
+    // $insertIntoOrder->store_result();
+
+    // $insertIntoOrder->execute();
+    // $insertIntoOrder_query = mysqli_query($conn, $insertIntoOrder);
     if (!$insertIntoOrder_query) {
         $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
         $success = false;
     }
+    $insertIntoOrder->close();
+    // $insertIntoOrder_query->free();
 
     //retrieve newly generated order_id to go on with the process | last generated order id is the maximum because of auto increment
-    $getFromOrder = "SELECT MAX(order_id) as order_id FROM p2_7.order WHERE user_id = '$userID'";
-    $getFromOrder_query = mysqli_query($conn, $getFromOrder);
+
+    $getFromOrder = $conn->prepare("SELECT MAX(order_id) as order_id FROM p2_7.order WHERE user_id = ?");
+    $getFromOrder->bind_param("i", $userID);
+    $getFromOrder_query = $getFromOrder->execute();
+    // $getFromOrder->execute();
     if (!$getFromOrder_query) {
         $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
         $success = false;
     }else{
-      $row = mysqli_fetch_array($getFromOrder_query);
+      $row = $getFromOrder->get_result()->fetch_assoc();
+      // $row = mysqli_fetch_array($getFromOrder_query);
       $orderID = $row['order_id'];
+      // $row->close();
     }
+    $getFromOrder->close();
+    // $getFromOrder_query->free();
+    // $row->free();
 
 
     //we need shoppingcart details first before adding anything to order
-    $getFromShoppingCart = "SELECT product_id, quantity FROM shoppingcart WHERE user_id = '$userID'";
+    $getFromShoppingCart = $conn->prepare("SELECT product_id, quantity FROM shoppingcart WHERE user_id = ?");
+    $getFromShoppingCart->bind_param("i", $userID);
+
     //insert items from shoppingcart into order items WHILE LOOP
-    $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
+    // $insertIntoOrderItem = $conn->prepare("INSERT INTO order_items(order_id, product_id, quantity) VALUES(?, ?, ?)");
+    // $insertIntoOrderItem->bind_param("iii", $orderID, $productID, $quantity);
+
     //delete items in shoppingcart after they've been added to the order item table
-    $deleteFromShoppingCart = "DELETE FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
-    $getFromShoppingCart_query = mysqli_query($conn, $getFromShoppingCart);
+    // $deleteFromShoppingCart = $conn->prepare("DELETE FROM shoppingcart WHERE user_id = ? AND product_id = ?");
+    // $deleteFromShoppingCart->bind_param("ii", $userID, $productID);
+
+    // $getFromShoppingCart_query = mysqli_query($conn, $getFromShoppingCart);
+    $getFromShoppingCart_query = $getFromShoppingCart->execute();
+    // $getFromShoppingCart->execute();
     if (!$getFromShoppingCart_query) {
         $errorMsg .= "<p>Database error 3: " . $conn->error . "</p>";
         $success = false;
     }else{
-      while ($row = mysqli_fetch_array($getFromShoppingCart_query)){
-        $productID = $row['product_id']; //$row['product_id']
-        $quantity = $row['quantity'];
-        $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
-        $insertIntoOrderItem_query = mysqli_query($conn, $insertIntoOrderItem);
+      $row = $getFromShoppingCart->get_result();
+      // $getFromShoppingCart->close();
+      while ($stmt = $row->fetch_assoc()){
+        $productID = $stmt['product_id']; //$row['product_id']
+        $quantity = $stmt['quantity'];
+        $insertIntoOrderItem = $conn->prepare("INSERT INTO order_items(order_id, product_id, quantity) VALUES(?, ?, ?)");
+        $insertIntoOrderItem->bind_param("iii", $orderID, $productID, $quantity);
+        $insertIntoOrderItem_query = $insertIntoOrderItem->execute();
+        // $insertIntoOrderItem->execute();
         if (!$insertIntoOrderItem_query) {
             $errorMsg .= "<p>Database error 4: " . $conn->error . "</p>";
             $success = false;
         }else{
           //delete shoppingcart
-            $deleteFromShoppingCart = "DELETE FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
-            $deleteFromShoppingCart_query = mysqli_query($conn, $deleteFromShoppingCart);
-            if (!$insertIntoOrderItem_query) {
+            $deleteFromShoppingCart = $conn->prepare("DELETE FROM shoppingcart WHERE user_id = ? AND product_id = ?");
+            $deleteFromShoppingCart->bind_param("ii", $orderID, $productID);
+            $deleteFromShoppingCart_query = $deleteFromShoppingCart->execute();
+            // $deleteFromShoppingCart->execute();
+            if (!$deleteFromShoppingCart_query) {
                 $errorMsg .= "<p>Database error 5: " . $conn->error . "</p>";
                 $success = false;
             }
         }
       }
     }
+    $getFromShoppingCart->close();
+    // $getFromShoppingCart_query->free();
+    $insertIntoOrderItem->close();
+    // $insertIntoOrderItem_query->free();
+    $deleteFromShoppingCart->close();
+    // $deleteFromShoppingCart_query->free();
+
 
 
     //insert delivery address into database
-    $insertIntoDeliveryAddress = "INSERT INTO delivery_address(first_name, last_name, email, "
-      . "phone_number, street_house_no, apt, country, post_cd, city, order_id) ";
-    $insertIntoDeliveryAddress .= "VALUES('$fname', '$lname', '$email', '$phone', "
-      . "'$street', '$appartment', '$countrycode', '$postalcode', '$city', '$orderID')";
-    $insertIntoDeliveryAddress_query = mysqli_query($conn, $insertIntoDeliveryAddress);
+    $insertIntoDeliveryAddress = $conn->prepare("INSERT INTO delivery_address(order_id, email, first_name, last_name, phone_number, street_house_no, apt, country, post_cd, city) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    $insertIntoDeliveryAddress->bind_param("isssssssss", $orderID, $email, $fname, $lname, $phone, $street, $appartment, $countrycode, $postalcode, $city);
+    $insertIntoDeliveryAddress_query = $insertIntoDeliveryAddress->execute();
+    // $insertIntoDeliveryAddress->execute();
     if (!$insertIntoDeliveryAddress_query) {
         $errorMsg .= "<p>Database error 6: " . $conn->error . "</p>";
         $success = false;
     }
+    $insertIntoDeliveryAddress->close();
+    // $insertIntoDeliveryAddress_query->free();
 }
 
 ?>
@@ -317,20 +359,26 @@ function saveTransactionToDB(){
 
 <?php
         //execute the query
-        $result = "SELECT quantity, product_name, product_price, quantity * product_price as 'total' "
-                    . "FROM order_items s, p2_7.order o, product p WHERE o.user_id = '$userID' AND o.order_id = s.order_id AND s.product_id = p.product_id";
-        $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = '$userID' AND O.order_id = S.order_id AND P.product_id = S.product_id";
+        $result = $conn->prepare("SELECT DISTINCT quantity, product_name, product_price, quantity * product_price as 'total' FROM order_items s, p2_7.order o, product p WHERE o.user_id = ? AND o.order_id = s.order_id AND s.product_id = p.product_id");
+        $result->bind_param("i", $userID);
+        $res = $conn->prepare("SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = ? AND O.order_id = S.order_id AND P.product_id = S.product_id");
+        $res->bind_param("i", $userID);
         //$orderPlacement = "INSERT INTO order ()";
-        $checkResult = mysqli_query($conn, $result);
-        $checkRes = mysqli_query($conn, $res);
+        $checkResult = $result->execute();
+        $getResult = $result->get_result();
+        // $result->execute();
+        $checkRes = $res->execute();
+        $getRes = $res->get_result();
         if (!$checkResult || !$checkRes) {
-            echo "<p>Database error 1: " . $conn->error . "</p>";
+            echo "<p>Database error 7: " . $conn->error . "</p>";
             $success = false;
         } else {
           //get all products incl details and price
           global $priceTotal;
-          $record = mysqli_fetch_row($checkRes);
-          $priceTotal = $record[0];
+          $record = $res->get_result();
+          $rec = mysqli_fetch_row($getRes);
+          $priceTotal = $rec[0];
+          // $record->free();
 ?>
           <section class="row">
               <div class="col-md-12">
@@ -345,7 +393,7 @@ function saveTransactionToDB(){
                     </tr>
                   </thead>
             <?php
-                while($row = mysqli_fetch_array($checkResult)){
+                while($row = mysqli_fetch_array($getResult)){
             ?>
                 <tr>
                   <td><?php echo $row['quantity']?></td>
@@ -376,6 +424,13 @@ function saveTransactionToDB(){
     </section>
 <?php
       }
+      // $checkRes->free();
+      // $checkResult->free();
+      $res->close();
+      $result->close();
+      // $record->free();
+      // $row->free();
+
     }
 ?>
 
