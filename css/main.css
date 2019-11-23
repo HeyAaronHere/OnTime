@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'collection';
+    src: url(../fonts/CollectionFree.otf);
+    font-style: normal;
+    font-weight: 100;
+}
+
 body {
     padding-top:60px;
     background-color: white;
@@ -9,7 +16,6 @@ header{
     padding: 30px;
     text-align: center;
 }
-
 
 #carouselheadBC, #carouselheadCC{
     font-family: collection;
