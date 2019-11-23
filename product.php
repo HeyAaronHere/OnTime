@@ -11,8 +11,8 @@ $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
 $tab_result = mysqli_query($conn, $tab_query);
 $tab_menu = '';
 $tab_content = '';
-
 $i = 0;
+
 while ($row = mysqli_fetch_array($tab_result)) {
     if ($i == 0) {
         $tab_menu .= '
@@ -21,17 +21,28 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <div id="' . $row['category_id'] . '" class="tab-pane fade in active">';
     } else {
         $tab_menu .= '
-            <li><a href="#' . $row['category_id'] . '" data-toggle="tab">' . $row['category_name'] . '</a></li>';
+        <li><a href="#' . $row['category_id'] . '" data-toggle="tab">' . $row['category_name'] . '</a></li>';
         $tab_content .= '
             <div id="' . $row['category_id'] . '" class="tab-pane fade">';
     }
-    $product_query = "SELECT * FROM product WHERE category_id = '" . $row['category_id'] . "'";
-    $product_result = mysqli_query($conn, $product_query);
-    while ($sub_row = mysqli_fetch_array($product_result)) {
-        $tab_content .= '
+    $product_query = "SELECT * FROM product WHERE category_id = ?;";
+    //create prepared statement
+    $productId = $row['category_id'];
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $product_query)) {
+        echo "SQL statement failed";
+    } else {
+        //Bind parameters to the placeholder
+        mysqli_stmt_bind_param($stmt, "i", $productId);
+        //Run parameters inside database
+        mysqli_stmt_execute($stmt);
+        $product_result = mysqli_stmt_get_result($stmt);
+
+        while ($sub_row = mysqli_fetch_array($product_result)) {
+            $tab_content .= '
             <div class="col-md-2 card " >
                 <form method="post" action="productdetails.php">
-                <img src="' . $sub_row['product_img'] . '" alt= "' . $sub_row['product_alt'] . '" class="img-responsive img-thumbnail">
+             <img src="' . $sub_row['product_img'] . '" alt= "' . $sub_row['product_alt'] . '" class="img-responsive img-thumbnail">
                 <h1>' . $sub_row["product_name"] . '</h1>
                 <input type="hidden" name="product_id" value="' . $sub_row['product_id'] . '"> <!--session variable to transport product id?-->
                 <input type="hidden" name="product_price" value="<' . $sub_row['product_price'] . '">
@@ -45,6 +56,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                 </form>
             </div>
             ';
+        }
     }
     $tab_content .= '<div style="clear:both"></div></div>';
     $i++;
@@ -53,19 +65,20 @@ while ($row = mysqli_fetch_array($tab_result)) {
 <!--how to create dynamic tabs with database src -https://www.webslesson.info/2017/03/create-dynamic-tabs-by-using-bootstrap-in-php.html-->
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-        <title>Product - ONTime</title>        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">        
+        <title>Product - ONTime</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/products.css" type="text/css">
         <link rel="stylesheet" href="css/headerFooter.css" type="text/css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
+
     <body>
         <?php
         include "header.inc.php";
-//include "sideShoppingCart.php";
         ?>
 
         <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
@@ -115,7 +128,6 @@ while ($row = mysqli_fetch_array($tab_result)) {
             <br>
             <ul class="nav nav-tabs">
                 <?php
-
                 echo $tab_menu;
                 ?>
             </ul>
@@ -132,4 +144,5 @@ while ($row = mysqli_fetch_array($tab_result)) {
         ?>
 
     </body>
+
 </html>

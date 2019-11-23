@@ -8,8 +8,8 @@ if (!isset($_POST['submitbutton'])) {
     exit();
 }
 if (!isset($_SESSION['userID'])) {
-  header("Location: login_first");
-  exit();
+    header("Location: login_first");
+    exit();
 }
 /* define("DBHOST", "161.117.122.252");
   define("DBNAME", "p2_7");
