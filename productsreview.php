@@ -4,6 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+
 $reviewID = "";
 $errorMsg = "";
 $success = true;
