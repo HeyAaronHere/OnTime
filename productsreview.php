@@ -90,8 +90,7 @@ if (!$IDsql) {
 
                         <input type="submit" id="btnSubmit" name ="submitbutton" value="Submit">
                     </form>
-                    <?php
-                    ?>
+                    
                 </div>
 
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
