@@ -102,7 +102,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                         </div>
 
                         <div class="item">
-                            <img src="img/carousel2.jpg" alt="Carousel 2" style="width:100%;">
+                            <img src="img/carousel2.png" alt="Carousel 2" style="width:100%;">
                             <div class="carousel-caption carouselstyle">
                                 <h2>Awesome Watches!</h2>
                                 <p>Check out more about our watches below</p>
