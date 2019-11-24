@@ -31,7 +31,7 @@ if (!isset($_SESSION)) {
             <h1>SORRY :(</h1>
             <div class="container-fluid">
                 <div class="col-md-4"></div>
-                <h2 class="col-md-4">You must Log in first to access this page <a href="login.php">
+                <h2 class="col-md-4">You must Log in first to access this page <a href="login">
                         <p><i class="loginLink"></i> Login Page</p>
                     </a>
                 </h2>

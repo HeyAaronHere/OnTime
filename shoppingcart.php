@@ -73,7 +73,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                                     <th>Price/piece</th>
                                     <th>Total</th>
                                     <th>
-                                      <form method = "POST" action="clearShoppingCart.php">
+                                      <form method = "POST" action="clearShoppingCart">
                                         <input type="submit" value="clear shoppingcart">
                                       </form>
                                     </th>
@@ -89,7 +89,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                       <td><?php echo "SGD " . $row['product_price']?></td>
                       <td><?php echo "SGD " . $row['total']?></td>
                         <td>
-                          <form method = "POST" action="removeItem.php">
+                          <form method = "POST" action="removeItem">
                             <input type="hidden" name="product" value="<?php echo $row['product_id']?>">
                             <input type="submit" value="remove item">
                           </form>
@@ -123,13 +123,13 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
       <span class="glyphicon glyphicon-arrow-left"> Go on shopping</span>
     </button>
   </a> -->
-  <a href="product.php" class="btn btn-success btn-lg">Go on shopping</a>
+  <a href="product" class="btn btn-success btn-lg">Go on shopping</a>
 
 <?php
       if ($getResult->num_rows > 0){
 ?>
           <section class="well well-sm row">
-            <form id="orderform" method="post" action="checkout.php"> <!--method="post" action="checkout.php"-->
+            <form id="orderform" method="post" action="checkout"> <!--method="post" action="checkout.php"-->
             <h2>Delivery Address</h2>
 
                 <div class="form-group row">

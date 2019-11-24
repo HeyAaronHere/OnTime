@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
         </button>
     </section>
-    <section class="collapse navbar-collapse container-fluid" id="myNavbar">
+    <section class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
             <li><a href="product">Products</a></li>
             <li><a href="customerservice">Customer Service</a></li>

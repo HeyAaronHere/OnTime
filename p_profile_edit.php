@@ -32,12 +32,12 @@ if (!isset($_SESSION)) {
     //check to see if button to return to home was set or if not logged in yet
     if(!isset($_SESSION['firstName'])){
         
-        header("Location: login_first.php");
+        header("Location: login_first");
         exit;
     }elseif(isset($_POST['submitPPE']) && $_POST['submitPPE'] == "goto"){
         $_SESSION['ppeLoadedBefore'] = false;
     }elseif((isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) || (isset($_POST['submitPPE']) && $_POST['submitPPE'] == "return")) {
-        header("Location: profile_edit.php");
+        header("Location: profile_edit");
         exit;
     }
 

@@ -26,7 +26,7 @@ if (isset($_SESSION['userID'])) {
                 <?php
                 include "header.inc.php";
                 ?>
-                <section class=container>
+                <section class="container">
                     <section class="row">
                         <!-- w3schools, https://www.w3schools.com/js/js_validation.asp -->
                         <section class="login-form">

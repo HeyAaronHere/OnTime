@@ -386,7 +386,7 @@ function saveTransactionToDB(){
                 Back to the main page
             </a>
         </button> -->
-        <a href="index.php" class="btn btn-info btn-sm">Back to the main page</a>
+        <a href="index" class="btn btn-info btn-sm">Back to the main page</a>
         <br>
 <?php
       }

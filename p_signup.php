@@ -39,7 +39,7 @@ if (isset($_POST['signup-submit'])) {
         <body>
             <?php
             if (isset($_SESSION['email'])) {
-                header("Location: signup.php");
+                header("Location: signup");
                 exit();
             } else {
                 //include "header.php";

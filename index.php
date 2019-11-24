@@ -38,18 +38,18 @@ if (!isset($_SESSION)) {
                                 <div class="item active">
                                     <div class="row">
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchF1.jpg" class="img-responsive" alt="Olivia Burton P  ink">
+                                            <a href="productdetails">
+                                                <img src="img/WatchF1.png" class="img-responsive" alt="Olivia Burton P  ink">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchF2.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchF2.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchF3.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchF3.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                     </div>
@@ -57,18 +57,18 @@ if (!isset($_SESSION)) {
                                 <div class="item">
                                     <div class="row">
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchF4.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchF4.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchM1.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchM1.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchM2.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchM2.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                     </div>
@@ -96,18 +96,18 @@ if (!isset($_SESSION)) {
                                 <div class="item active">
                                     <div class="row">
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchF1.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchF1.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
+                                            <a href="productdetails">
                                                 <img src="images/watch1.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchM1.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchM1.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                     </div>
@@ -115,18 +115,18 @@ if (!isset($_SESSION)) {
                                 <div class="item">
                                     <div class="row">
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchM2.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchM2.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchM3.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchM3.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                         <div class="col-xs-4 img-zoom imghover">
-                                            <a href="productdetails.php">
-                                                <img src="img/WatchM4.jpg" class="img-responsive" alt="Fossil townsman">
+                                            <a href="productdetails">
+                                                <img src="img/WatchM4.png" class="img-responsive" alt="Fossil townsman">
                                             </a>
                                         </div>
                                     </div>

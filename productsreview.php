@@ -73,7 +73,7 @@ if (!$IDsql) {
             <div class="container" id="productreview">
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                 <!-- w3schools js validation, https://www.w3schools.com/js/js_validation.asp -->
-                <form id="productreviews" action="process_review.php" method="post">
+                <form id="productreviews" action="process_review" method="post">
                     <div class="col-sm-12 form-group">
                         <label for="reviewinput">
                             Reviews:</label>

@@ -46,7 +46,7 @@ if (!isset($_SESSION['userID'])) {
             //echo "item has been added";
             //echo "<button><a href='product.php'>Go on shopping</a></button>";
             echo '<script>alert("item has been added to shoppingcart"); window.location="shoppingcart.php"</script>';
-            header("Location: shoppingcart.php");
+            header("Location: shoppingcart");
         } else {
             echo "Oops, error!";
             echo $errorMsg;

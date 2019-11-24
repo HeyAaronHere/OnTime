@@ -59,7 +59,7 @@ if (!isset($_SESSION)) {
             </article>
             <article class="container" id="CustomerInquiries">
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
-                <form name="CustomerInquiries" action="p_customerservice.php" method="post">
+                <form name="CustomerInquiries" action="p_customerservice" method="post">
                     <h1>Customer Inquiries</h1>
                     <section class="row">
                         <section class="col-25">
@@ -115,7 +115,7 @@ if (!isset($_SESSION)) {
                         <section id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                             <section class="panel-body">
                                 Yes! You can contact us at
-                                <a href="tel:+651234-5678">+65 1234 5678</a> or come to our store @ <address>Ang Mo Kio Avenue 8, Singapore 567739</address>
+                                <a href="tel:+658765-4321">+65 8765 4321</a> or come to our store @ <address>Ang Mo Kio Avenue 8, Singapore 567739</address>
                             </section>
                         </section>
                     </section>

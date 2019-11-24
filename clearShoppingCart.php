@@ -15,6 +15,6 @@ if (!$result) {
 } else {
   //doesnt execute JS
   echo "<script>alert('Shoppingcart was cleared!');window.location.href='shoppingcart.php';</script>";
-  header("Location: shoppingcart.php");
+  header("Location: shoppingcart");
 }
  ?>

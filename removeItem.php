@@ -14,7 +14,7 @@ $query->close();
 if (!$result) {
     echo "<p>Database error 1: " . $conn->error . "</p>";
 } else {
-  echo "<script>alert('Item was removed!');window.location.href='shoppingcart.php';</script>";
-  header("Location: shoppingcart.php");
+  echo "<script>alert('Item was removed!');window.location.href='shoppingcart';</script>";
+  header("Location: shoppingcart");
 }
  ?>

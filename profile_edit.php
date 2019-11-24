@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (!isset($_SESSION['firstName'])) {
-    header("Location: login_first.php");
+    header("Location: login_first");
     exit();
 }else {
 ?>
@@ -36,7 +36,7 @@ if (!isset($_SESSION['firstName'])) {
     ?>
 
     <main>
-    <form novalidate name="pEditForm" action="p_profile_edit.php" method="post" onsubmit="return validateProfileEditForm()" autocomplete="off">
+    <form novalidate name="pEditForm" action="p_profile_edit" method="post" onsubmit="return validateProfileEditForm()" autocomplete="off">
         <div class="container">
             <h2>Edit Particulars</h2>
             <div class="panel-group" id="accordion">

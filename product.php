@@ -94,7 +94,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner carouselstyle">
                         <div class="item active">
-                            <img src="img/carousel1.jpg" alt="Carousel 1" style="width:100%;">
+                            <img src="img/carousel1.png" alt="Carousel 1" style="width:100%;">
                             <div class="carousel-caption carouselstyle">
                                 <h2>ONTime</h2>
                                 <p>Your Friendly Watch Shop!</p>

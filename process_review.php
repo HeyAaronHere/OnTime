@@ -87,7 +87,7 @@ include "connection.inc.php";
                   echo "<section id='divider'></section>";
                   echo "<a id='btnHome' href='index.php' class='btn btn-default'>Return to Home</a>"; */
                 $_SESSION['msg'] = "Form Submitted Successfully";
-                header("location:productsreview.php");
+                header("Location: productsreview");
                 saveMemberToDB();
                 
             } else {
