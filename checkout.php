@@ -285,7 +285,7 @@ function saveTransactionToDB(){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Shopping Cart - OnTime</title>
@@ -295,7 +295,7 @@ function saveTransactionToDB(){
     <meta name="keywords"
         content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css\headerFooter.css" rel="stylesheet">
+    <link href="css/headerFooter.css" rel="stylesheet">
     <link href="css/shoppingcart.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -309,7 +309,7 @@ function saveTransactionToDB(){
 </head>
 
 <body>
-    <section class="container">
+    <main class="container">
         <?php
           include "header.inc.php";
 
@@ -381,18 +381,18 @@ function saveTransactionToDB(){
               </table>
             </div>
         </section>
-        <button type="button" class="btn btn-info btn-sm">
+        <!-- <button type="button" class="btn btn-info btn-sm">
             <a href="index.php">
                 Back to the main page
             </a>
-        </button>
+        </button> -->
+        <a href="index.php" class="btn btn-info btn-sm">Back to the main page</a>
         <br>
-    </section>
 <?php
       }
     }
 ?>
-
+    </main>
     <?php
       include "footer.inc.php";
     ?>

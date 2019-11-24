@@ -64,14 +64,14 @@ figure.popup>p{
 }
 
 
-h1.aboutus{
+h2.aboutus{
     font-style: italic;
     color: #262626;
     font-family: "Times New Roman";
     font-weight: bold;
 }
 
-h2{
+h3{
     text-align: center;
 }
 
