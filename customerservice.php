@@ -36,8 +36,8 @@ if (!isset($_SESSION)) {
                         <cite>maintenance-complete-overhaul-service. (n.d.). [image] Available at: https://allwatches.com.sg/maintenance-complete-overhaul-service/ [Accessed 11 Oct. 2019].</cite>
                     </figure>
                     <section class="col-sm-7" id="Maintenance">
-                        <h1>Maintenance</h1>
-                        <h2>In case your watch needs some fixing...</h2>
+                        <h2>Maintenance</h2>
+                        <h3>In case your watch needs some fixing...</h3>
                         <section>
                             <p>Regular maintenance is essential to ensure that your watch functions correctly. The
                                 lubrication in the movement parts will deteriorates and eventually dries up after
@@ -60,7 +60,7 @@ if (!isset($_SESSION)) {
             <article class="container" id="CustomerInquiries">
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
                 <form name="CustomerInquiries" action="p_customerservice" method="post">
-                    <h1>Customer Inquiries</h1>
+                    <h2>Customer Inquiries</h2>
                     <section class="row">
                         <section class="col-25">
                             <label for="CIname">Name</label>
@@ -100,19 +100,19 @@ if (!isset($_SESSION)) {
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
             </article>
             <article>
-                <h1 class="FAQ">FAQ</h1>
+                <h2 class="FAQ">FAQ</h2>
                 <hr>
                 <!-- FAQ collapsible - https://bootsnipp.com/snippets/qADDB -->
-                <section class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <section class="panel-group" id="accordion">
                     <section class="panel panel-default">
-                        <section class="panel-heading" role="tab" id="headingOne">
+                        <section class="panel-heading" id="headingOne">
                             <h2 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     Do you provide watch repair and servicing?
                                 </a>
                             </h2>
                         </section>
-                        <section id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <section id="collapseOne" class="panel-collapse collapse" aria-labelledby="headingOne">
                             <section class="panel-body">
                                 Yes! You can contact us at
                                 <a href="tel:+658765-4321">+65 8765 4321</a> or come to our store @ <address>Ang Mo Kio Avenue 8, Singapore 567739</address>
@@ -120,14 +120,14 @@ if (!isset($_SESSION)) {
                         </section>
                     </section>
                     <section class="panel panel-default">
-                        <section class="panel-heading" role="tab" id="headingTwo">
+                        <section class="panel-heading" id="headingTwo">
                             <h2 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseThree">
                                     How long does it takes to repair a watch?
                                 </a>
                             </h2>
                         </section>
-                        <section id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <section id="collapseTwo" class="panel-collapse collapse" aria-labelledby="headingTwo">
                             <section class="panel-body">
                                 2 – 3 months, depending on the brand and complexity of the repair. We will contact
                                 you for the collection of your watch once it
@@ -135,14 +135,14 @@ if (!isset($_SESSION)) {
                         </section>
                     </section>
                     <section class="panel panel-default">
-                        <section class="panel-heading" role="tab" id="headingThree">
+                        <section class="panel-heading" id="headingThree">
                             <h2 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     I bought a watch oversea, can I send to you for repair?
                                 </a>
                             </h2>
                         </section>
-                        <section id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <section id="collapseThree" class="panel-collapse collapse" aria-labelledby="headingThree">
                             <section class="panel-body">
                                 Yes. We service all kinds of watches!
                             </section>
