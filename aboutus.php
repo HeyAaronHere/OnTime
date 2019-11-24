@@ -30,7 +30,7 @@ if (!isset($_SESSION)) {
             <!-- <article class="container"> -->
                 <section class="row">
                     <div class="col-lg-5">
-                        <img class="img-responsive" id="holzkern" src="images/Holzkern.jpg" alt="ONtime">
+                        <img class="img-responsive" id="holzkern" src="images/Holzkern.png" alt="ONtime">
                         <cite>Holzkern, 2019: Model 'Manhattan', last retrieved on 09/10/19 from
                         https://www.bing.com/images/search?view=detailV2&ccid=%2BOFJ2a1a&id=745B387D8D27486FE1AD47FACA9E20C67C547165&thid=OIP.-OFJ2a1aZFcHIk0KkxyJ_AHaE7&mediaurl=https%3A%2F%2Fstatic.escdn.nl%2Fimages%2Fresized%2F975421%3A1059%3A705%3Acontain.jpg&exph=705&expw=1059&q=holzkern+watches&simid=607998756429302204&selectedindex=31&ajaxhist=0&vt=0&sim=11</cite>
                     </div>
@@ -116,8 +116,8 @@ if (!isset($_SESSION)) {
                         <!-- frameborder="1" style="border:1;" -->
                     </div>
                     <div id="storelocation" class="col-md-6">
+                    <cite>SIT NYP Building. (2017). [image] Available at: https://commons.wikimedia.org/wiki/File:SIT_NYP_Building.jpg [Accessed 11 Oct. 2019].</cite>
                         <img class="img-rounded" alt="SIT@NYP building" src="images/SIT_NYP_Building.png">
-                        <cite>SIT NYP Building. (2017). [image] Available at: https://commons.wikimedia.org/wiki/File:SIT_NYP_Building.jpg [Accessed 11 Oct. 2019].</cite>
                     </div>
                 </section>
             <!-- </article> -->
