@@ -16,11 +16,11 @@ body {
     padding: 30px;
 }
 
-.login-form h1 {
+.login-form h2 {
     margin: 0 0 15px;
 }
 
-.login-form p, .login-form label, .login-form h1 {
+.login-form p, .login-form label, .login-form h2 {
     color: rgb(212, 212, 212);
 }
 

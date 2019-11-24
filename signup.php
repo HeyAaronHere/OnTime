@@ -30,7 +30,7 @@ if (isset($_SESSION['firstName'])) {
                     <section class="row">
                         <section class="login-form">
                             <form name="RegForm" action="p_signup" method="post">
-                                <h1 class="text-center">Create An Account</h1>
+                                <h2 class="text-center">Create An Account</h2>
                                 <p>For existing members, please go to the <a href="login">login page</a>.</p>
                                 <section class="form-group">
                                     <label for="fname">First Name: </label>

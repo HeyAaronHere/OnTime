@@ -31,7 +31,7 @@ if (isset($_SESSION['userID'])) {
                         <!-- w3schools, https://www.w3schools.com/js/js_validation.asp -->
                         <section class="login-form">
                             <form name="LoginForm" action="p_login" method="post">
-                                <h1 class="text-center">Login</h1>
+                                <h2 class="text-center">Login</h2>
                                 <p>For new members, please go to the <a href="signup">Sign Up page</a>.</p>
                                 <section class="form-group">
                                     <label for="email">Email: </label>
