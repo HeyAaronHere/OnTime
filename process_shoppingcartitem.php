@@ -18,9 +18,9 @@ if (isset($_SESSION['userID'])) {
 
 
 //check if user is logged in
-if (!isset($_SESSION['firstName'])) {
-    echo "<p>You must log in before adding an item to the shopping cart</p>";
-    echo "<button><a href='login_first.php'>Log In</a></button>";
+if (!isset($_SESSION['userID'])) {
+    header("Location: login_first");
+    exit();
 } else {
 //php validation of input and initialize shopping cart change
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
