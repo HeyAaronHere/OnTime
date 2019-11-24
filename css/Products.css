@@ -55,6 +55,11 @@ img
     transition: 0.5s; 
 } 
 
+.card h1
+{
+    font-size: 30px;
+}
+
 .price {
   color: green;
   font-size: 22px;
@@ -73,17 +78,6 @@ img
 
 .card button:hover {
     opacity: 0.7;
-}
-
-
-.star-rating {
-    line-height:32px;
-    font-size:1.25em;
-}
-
-.star-rating .fa
-{
-    color: orange;
 }
 
 .container-fluid hr
@@ -134,36 +128,7 @@ img
     transition: 0.5s;
 }
 
-/*New arrival and Hot*/
 
-.title-box
-{
-    background:orange;
-    color: #fff;
-    width: 200px;
-    padding: 6px 10px;
-    height: auto;
-    
-   
-    display: block;
-}
-
-.title-box h2
-{
-    font-size: 24px;
-    text-align: center;
-}
-
-.title-box::after
-{
-    content:'';
-    border-top:  40px solid orange;
-    border-right: 50px solid transparent;
-    position:absolute;
-    display:flex;
-    margin-top: -62px;
-    margin-left: 180px;
-}
 
   
 @media only screen and (min-width: 600px) {

@@ -43,6 +43,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
             <div class="col-md-2 card " >
                 <form method="post" action="productdetails.php">
              <img src="' . $sub_row['product_img'] . '" alt= "' . $sub_row['product_alt'] . '" class="img-responsive img-thumbnail">
+             <cite>'. $sub_row['product_cite']. '</cite>
                 <h1>' . $sub_row["product_name"] . '</h1>
                 <input type="hidden" name="product_id" value="' . $sub_row['product_id'] . '"> <!--session variable to transport product id?-->
                 <input type="hidden" name="product_price" value="<' . $sub_row['product_price'] . '">
@@ -121,6 +122,9 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
                     </div>
                 </div>
+                <cite>Cocomi.com Men Section Jumbotron, Retrieved October 11, 2019 from https://i.shgcdn.com/a1b79457-8515-40bc-85c0-f119583abaa6/-/format/auto/-/preview/3000x3000/-/quality/lighter/</cite>
+                <br>
+                <cite>Cocomi.com Women Section Jumbotron, Retrieved October 11, 2019 from https://i.shgcdn.com/ae0f7351-ae89-4acf-8051-a1b2bc5b60f8/-/format/auto/-/preview/3000x3000/-/quality/lighter/</cite>
             </div>
         </section>
 
