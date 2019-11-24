@@ -39,6 +39,7 @@ img
 }
 
 /*-----product css-----*/
+
 .card 
 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -86,7 +87,7 @@ img
 }
 
 .container-fluid{
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 
