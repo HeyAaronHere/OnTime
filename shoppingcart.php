@@ -38,19 +38,28 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
             </header>
 <?php
             //execute the query
-            $result = "SELECT s.product_id, quantity, product_name, product_price, quantity * product_price as 'total' "
-                    . "FROM shoppingcart s, product p WHERE s.user_id = '$userID' AND s.product_id = p.product_id";
-            $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = '$userID' AND P.product_id = S.product_id";
-            $checkResult = mysqli_query($conn, $result);
-            $checkRes = mysqli_query($conn, $res);
-            if (!$checkResult || !$checkRes) {
+            $result = $conn->prepare("SELECT s.product_id, quantity, product_name, product_price, quantity * product_price as 'total' FROM shoppingcart s, product p WHERE s.user_id = ? AND s.product_id = p.product_id");
+            $result->bind_param("i", $userID);
+            $checkResult = $result->execute();
+            $getResult = $result->get_result();
+            $result->close();
+            if (!$checkResult) {
                 $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
                 $success = false;
-            } else if (mysqli_num_rows($checkResult) > 0) {
+            } else if ($getResult->num_rows > 0) {
                 //there are products in the shopping cart, get all products incl details
                 global $priceTotal;
-                $record = mysqli_fetch_row($checkRes);
+                $res = $conn->prepare("SELECT SUM(P.product_price*S.quantity) AS sum FROM shoppingcart S, product P WHERE S.user_id = ? AND P.product_id = S.product_id");
+                $res->bind_param("i", $userID);
+                $checkRes = $res->execute();
+                $getRes = $res->get_result();
+                if(!$checkRes){
+                  $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
+                  $success = false;
+                }
+                $record = mysqli_fetch_row($getRes);
                 $priceTotal = $record[0];
+                $res->close();
 
 ?>
             <section class="row">
@@ -63,26 +72,28 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                                     <th>Name</th>
                                     <th>Price/piece</th>
                                     <th>Total</th>
-                                    <form method = "POST" action="clearShoppingCart.php">
-                                        <th><input type="submit" value="clear shoppingcart"></th>
-                                    </form>
+                                    <th>
+                                      <form method = "POST" action="clearShoppingCart.php">
+                                        <input type="submit" value="clear shoppingcart">
+                                      </form>
+                                    </th>
                                 </tr>
                             </thead>
 <?php
-            while($row = mysqli_fetch_array($checkResult)){
+
+            while($row = mysqli_fetch_array($getResult)){
 ?>
                     <tr>
                       <td><?php echo $row['quantity']?></td>
                       <td><?php echo $row['product_name']?></td>
                       <td><?php echo "SGD " . $row['product_price']?></td>
                       <td><?php echo "SGD " . $row['total']?></td>
-                      <form method = "POST" action="removeItem.php">
                         <td>
-                          <input type="hidden" name="product" value="<?php echo $row['product_id']?>">
-                          <input type="submit" value="remove item">
-                        </td> <!-- <td><button type="button" class="btn btn-danger btn-sm">Remove</button></td> -->
-                      </form>
-
+                          <form method = "POST" action="removeItem.php">
+                            <input type="hidden" name="product" value="<?php echo $row['product_id']?>">
+                            <input type="submit" value="remove item">
+                          </form>
+                        </td>
                     </tr>
 <?php
                   }
@@ -107,17 +118,21 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                 }
 
 ?>
-<button type="button" class="btn btn-success btn-lg">
-  <a href="product.php"><span class="glyphicon glyphicon-arrow-left"> Go on shopping</span></a>
-</button>
+  <!-- <a href="product.php">
+    <button type="button" class="btn btn-success btn-lg">
+      <span class="glyphicon glyphicon-arrow-left"> Go on shopping</span>
+    </button>
+  </a> -->
+  <a href="product.php" class="btn btn-success btn-lg">Go on shopping</a>
+
 <?php
-      if (mysqli_num_rows($checkResult) > 0){
+      if ($getResult->num_rows > 0){
 ?>
           <section class="well well-sm row">
             <form id="orderform" method="post" action="checkout.php"> <!--method="post" action="checkout.php"-->
             <h2>Delivery Address</h2>
 
-                <section class="form-group row">
+                <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="fname">First Name</label>
                           <input class="form-control" id="fname" name="fname" type="text" required>
@@ -134,8 +149,8 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                         <label for="phone">Phone number</label>
                           <input class="form-control" id="phone" name="phone" type="text" required>
                     </div>
-                </section>
-                <section class="form-group row">
+                </div>
+                <div class="form-group row">
                     <div class="col-sm-4">
                         <label for="street">Street and House number</label>
                           <input class="form-control" id="street" name="street" type="text" required>
@@ -153,18 +168,18 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                           <input class="form-control" id="postalcode" name="postalcode" type="text" required>
                     </div>
                     <div class="col-sm-3">
-                        <label for="country">City</label>
-                          <input class="form-control" id="country" name="city" type="text" required>
+                        <label for="city">City</label>
+                          <input class="form-control" id="city" name="city" type="text" required>
                     </div>
-                </section>
+                </div>
 
             <h2>Select Payment Type</h2>
-                <label for="cash"></label>
-                <input id="cash" type="radio" name="paymenttype" value="cash" required> Cash<br>
-                <label for="card"></label>
-                <input id="card" type="radio" name="paymenttype" value="card" required> Credit/Debit Card
+                <label for="cash">
+                <input id="cash" type="radio" name="paymenttype" value="cash" required> Cash</label><br>
+                <label for="card">
+                <input id="card" type="radio" name="paymenttype" value="card" required> Credit/Debit Card</label>
 
-                    <section id="cardpayment" class="form-group row">
+                    <div id="cardpayment" class="form-group row">
                         <div class="col-sm-4">
                             <label for="cardname">Name on Card</label>
                               <input class="form-control" id="cardname" name="cardname" type="text">
@@ -181,7 +196,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                             <label for="cvv">cvv</label>
                               <input class="form-control" id="cvv" name="cvv" type="text">
                         </div>
-                    </section>
+                    </div>
 
         <div id="checkoutbutton" class="row">
           <input type="submit" id="checkbutton" class="btn btn-success btn-lg"

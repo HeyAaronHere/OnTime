@@ -68,20 +68,20 @@ if (isset($_POST['login-submit'])) {
                 $_SESSION['firstName'] = $row["fname"]; //fname actually
                 $_SESSION['userID'] = $row["user_id"]; // userID actually
                 unset($row);
-                echo "<script>alert('Login successful!');window.location.href='index.php';</script>";
-                echo "<a href='index.php'>Go to Main Page</a>";
+                echo "<script>alert('Login successful!');window.location.href='index';</script>";
+                echo "<a href='index'>Go to Main Page</a>";
             } else {
                 echo "<h1>OI!</h1>";
                 echo "<h4>The following input errors were detected:</h4>";
                 echo "<p>" . $errorMsg . "</p>";
-                echo "<form action=\"login.php\" method=\"post\"><button type=\"submit\">Return to Login</button></form>";
+                echo "<form action=\"login\" method=\"post\"><button type=\"submit\">Return to Login</button></form>";
             }
             ?>
         </body>
     </html>
     <?php
 } else {
-    header("Location: index.php");
+    header("Location: index");
     exit();
 }
 

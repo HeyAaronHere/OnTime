@@ -85,22 +85,21 @@ if (isset($_POST['signup-submit'])) {
                 if ($success) {
                     saveMemberToDB();
                     echo "<script type='text/javascript'>alert('Registration successful!');"
-                    . "window.location.href='login.php';</script>";
-                    echo "<a href='login.php'>Go to Login Page</a>";
+                    . "window.location.href='login';</script>";
+                    echo "<a href='login'>Go to Login Page</a>";
                 } else {
                     echo "<h1>OI!</h1>";
                     echo "<h4>The following input errors were detected:</h4>";
                     echo "<p>" . $errorMsg . "</p>";
-                    echo "<form action=\"signup.php\" method=\"post\"><button type=\"submit\">Return to Sign Up</button></form>";
+                    echo "<form action=\"signup\" method=\"post\"><button type=\"submit\">Return to Sign Up</button></form>";
                 }
             }
-            //include "footer.php";
             ?>
         </body>
     </html>
     <?php
 } else {
-    header("Location: index.php");
+    header("Location: index");
     exit();
 }
 

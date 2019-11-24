@@ -59,10 +59,10 @@ if (isset($_POST['CI-submit'])) {
                     saveCIToDB();
                     sendMail();
                     echo "<script type='text/javascript'>alert('You have successfully submitted your response! An email is sent to you. Thank you " . $CIname . ", we will contact you shortly.');window.location.href='customerservice.php';</script>";
-                    echo "<a href='customerservice.php'>Go to Customer Service Page</a>";
+                    echo "<a href='customerservice'>Go to Customer Service Page</a>";
                 } else {
                     echo "<script type='text/javascript'>alert('Failed to submit your response!');</script>";
-                    echo "<a href='customerservice.php'>Go to Customer Service Page</a>";
+                    echo "<a href='customerservice'>Go to Customer Service Page</a>";
                 }
             }
             ?>
@@ -70,7 +70,7 @@ if (isset($_POST['CI-submit'])) {
     </html>
     <?php
 } else {
-    header("Location: customerservice.php");
+    header("Location: customerservice");
     exit();
 }
 
@@ -85,9 +85,9 @@ function sendMail() {
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 587;
     $mail->SMTPAuth = true;
-    $mail->Username = "clementoys@gmail.com";
-    $mail->Password = "9617390c";
-    $mail->From = "clementoys@gmail.com";
+    $mail->Username = "oysoys96@gmail.com";
+    $mail->Password = "Yeesiang9696!";
+    $mail->From = "oysoys96@gmail.com";
     $mail->FromName = "ONtime";
     $mail->AddAddress($CIemail);
     $mail->WordWrap = 50;

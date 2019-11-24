@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 include "connection.inc.php";
-$userID = $_SESSION['userID']; //only visible when logged in, no need to if statement
+$userID = $_SESSION['userID'];
 $success = $fname = $lname = $email = $phone = $street = $appartment ="";
 $countrycode = $postalcode = $city = $errorMsg = "";
 $cardname = $cardnumber = $expdate = $cvv = "";
@@ -209,64 +209,73 @@ function saveTransactionToDB(){
     global $fname, $lname, $email, $phone, $street, $appartment, $countrycode, $postalcode, $city;
 
     //insertIntoOrder generates order_id which is necessary for the next queries
-    $insertIntoOrder = "INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) "
-                      . "VALUES('$userID', NOW(), '$paymentType')";
-    $insertIntoOrder_query = mysqli_query($conn, $insertIntoOrder);
+    $insertIntoOrder = $conn->prepare("INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) VALUES(?, NOW(), ?)");
+    $insertIntoOrder->bind_param("is", $userID, $paymentType);
+    $insertIntoOrder_query = $insertIntoOrder->execute();
+    $insertIntoOrder->close();
     if (!$insertIntoOrder_query) {
         $errorMsg .= "<p>Database error 1: " . $conn->error . "</p>";
         $success = false;
     }
 
     //retrieve newly generated order_id to go on with the process | last generated order id is the maximum because of auto increment
-    $getFromOrder = "SELECT MAX(order_id) as order_id FROM p2_7.order WHERE user_id = '$userID'";
-    $getFromOrder_query = mysqli_query($conn, $getFromOrder);
+    $getFromOrder = $conn->prepare("SELECT MAX(order_id) as order_id FROM p2_7.order WHERE user_id = ?");
+    $getFromOrder->bind_param("i", $userID);
+    $getFromOrder_query = $getFromOrder->execute();
+    $getOrder = $getFromOrder->get_result();
+    $getFromOrder->close();
     if (!$getFromOrder_query) {
         $errorMsg .= "<p>Database error 2: " . $conn->error . "</p>";
         $success = false;
     }else{
-      $row = mysqli_fetch_array($getFromOrder_query);
+      $row = $getOrder->fetch_assoc();
       $orderID = $row['order_id'];
     }
 
-
     //we need shoppingcart details first before adding anything to order
-    $getFromShoppingCart = "SELECT product_id, quantity FROM shoppingcart WHERE user_id = '$userID'";
+    $getFromShoppingCart = $conn->prepare("SELECT product_id, quantity FROM shoppingcart WHERE user_id = ?");
+    $getFromShoppingCart->bind_param("i", $userID);
+    $getFromShoppingCart_query = $getFromShoppingCart->execute();
+    $getShoppingCart = $getFromShoppingCart->get_result();
+    $getFromShoppingCart->close();
+
     //insert items from shoppingcart into order items WHILE LOOP
-    $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
+    $insertIntoOrderItem = $conn->prepare("INSERT INTO order_items(order_id, product_id, quantity) VALUES(?, ?, ?)");
+    $insertIntoOrderItem->bind_param("iii", $orderID, $productID, $quantity);
+
     //delete items in shoppingcart after they've been added to the order item table
-    $deleteFromShoppingCart = "DELETE FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
-    $getFromShoppingCart_query = mysqli_query($conn, $getFromShoppingCart);
+    $deleteFromShoppingCart = $conn->prepare("DELETE FROM shoppingcart WHERE user_id = ? AND product_id = ? ");
+    $deleteFromShoppingCart->bind_param("ii", $userID, $productID);
+
     if (!$getFromShoppingCart_query) {
         $errorMsg .= "<p>Database error 3: " . $conn->error . "</p>";
         $success = false;
     }else{
-      while ($row = mysqli_fetch_array($getFromShoppingCart_query)){
+      while ($row = $getShoppingCart->fetch_assoc()){
         $productID = $row['product_id']; //$row['product_id']
         $quantity = $row['quantity'];
-        $insertIntoOrderItem = "INSERT INTO order_items(order_id, product_id, quantity) VALUES('$orderID', '$productID', '$quantity')";
-        $insertIntoOrderItem_query = mysqli_query($conn, $insertIntoOrderItem);
+        $insertIntoOrderItem_query = $insertIntoOrderItem->execute();
         if (!$insertIntoOrderItem_query) {
             $errorMsg .= "<p>Database error 4: " . $conn->error . "</p>";
             $success = false;
         }else{
-          //delete shoppingcart
-            $deleteFromShoppingCart = "DELETE FROM shoppingcart WHERE user_id = '$userID' AND product_id = '$productID'";
-            $deleteFromShoppingCart_query = mysqli_query($conn, $deleteFromShoppingCart);
-            if (!$insertIntoOrderItem_query) {
+            //delete shoppingcart
+            $deleteFromShoppingCart_query = $deleteFromShoppingCart->execute();
+            if (!$deleteFromShoppingCart_query) {
                 $errorMsg .= "<p>Database error 5: " . $conn->error . "</p>";
                 $success = false;
             }
         }
       }
+      $insertIntoOrderItem->close();
+      $deleteFromShoppingCart->close();
     }
 
-
     //insert delivery address into database
-    $insertIntoDeliveryAddress = "INSERT INTO delivery_address(first_name, last_name, email, "
-      . "phone_number, street_house_no, apt, country, post_cd, city, order_id) ";
-    $insertIntoDeliveryAddress .= "VALUES('$fname', '$lname', '$email', '$phone', "
-      . "'$street', '$appartment', '$countrycode', '$postalcode', '$city', '$orderID')";
-    $insertIntoDeliveryAddress_query = mysqli_query($conn, $insertIntoDeliveryAddress);
+    $insertIntoDeliveryAddress = $conn->prepare("INSERT INTO delivery_address(order_id, email, first_name, last_name, phone_number, street_house_no, apt, country, post_cd, city) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $insertIntoDeliveryAddress->bind_param("isssssssss", $orderID, $email, $fname, $lname, $phone, $street, $appartment, $countrycode, $postalcode, $city);
+    $insertIntoDeliveryAddress_query = $insertIntoDeliveryAddress->execute();
+    $insertIntoDeliveryAddress->close();
     if (!$insertIntoDeliveryAddress_query) {
         $errorMsg .= "<p>Database error 6: " . $conn->error . "</p>";
         $success = false;
@@ -276,7 +285,7 @@ function saveTransactionToDB(){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Shopping Cart - OnTime</title>
@@ -286,7 +295,7 @@ function saveTransactionToDB(){
     <meta name="keywords"
         content="Watches, Watch, Strap, Minute, Second, Buying, Selling, Discount, Offer, Fix, Repair, Maintenance, New Arrivals, Gshock, Fossil, Tag Heuer, Fashion, Hand Accessory, Second Hand, Time, Time Keeper, Pocket Watch, Rolex">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css\headerFooter.css" rel="stylesheet">
+    <link href="css/headerFooter.css" rel="stylesheet">
     <link href="css/shoppingcart.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -300,7 +309,7 @@ function saveTransactionToDB(){
 </head>
 
 <body>
-    <section class="container">
+    <main class="container">
         <?php
           include "header.inc.php";
 
@@ -316,21 +325,26 @@ function saveTransactionToDB(){
             if you have any questions.</p>
 
 <?php
+        global $userID, $orderID;
         //execute the query
-        $result = "SELECT quantity, product_name, product_price, quantity * product_price as 'total' "
-                    . "FROM order_items s, p2_7.order o, product p WHERE o.user_id = '$userID' AND o.order_id = s.order_id AND s.product_id = p.product_id";
-        $res = "SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = '$userID' AND O.order_id = S.order_id AND P.product_id = S.product_id";
-        //$orderPlacement = "INSERT INTO order ()";
-        $checkResult = mysqli_query($conn, $result);
-        $checkRes = mysqli_query($conn, $res);
+        $result = $conn->prepare("SELECT quantity, product_name, product_price, quantity * product_price as 'total' FROM order_items s, p2_7.order o, product p WHERE o.user_id = ? AND o.order_id = ? AND o.order_id = s.order_id AND s.product_id = p.product_id");
+        $result->bind_param("ii", $userID, $orderID);
+        $checkResult = $result->execute();
+        $getResult = $result->get_result();
+        $result->close();
+        $res = $conn->prepare("SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = ? AND O.order_id = ? AND O.order_id = S.order_id AND P.product_id = S.product_id");
+        $res->bind_param("ii", $userID, $orderID);
+        $checkRes = $res->execute();
+        $getRes = $res->get_result();
+        $res->close();
         if (!$checkResult || !$checkRes) {
-            echo "<p>Database error 1: " . $conn->error . "</p>";
+            echo "<p>Database error 7: " . $conn->error . "</p>";
             $success = false;
         } else {
           //get all products incl details and price
           global $priceTotal;
-          $record = mysqli_fetch_row($checkRes);
-          $priceTotal = $record[0];
+          $rec = mysqli_fetch_row($getRes);
+          $priceTotal = $rec[0];
 ?>
           <section class="row">
               <div class="col-md-12">
@@ -345,7 +359,7 @@ function saveTransactionToDB(){
                     </tr>
                   </thead>
             <?php
-                while($row = mysqli_fetch_array($checkResult)){
+                while($row = mysqli_fetch_array($getResult)){
             ?>
                 <tr>
                   <td><?php echo $row['quantity']?></td>
@@ -367,18 +381,18 @@ function saveTransactionToDB(){
               </table>
             </div>
         </section>
-        <button type="button" class="btn btn-info btn-sm">
+        <!-- <button type="button" class="btn btn-info btn-sm">
             <a href="index.php">
                 Back to the main page
             </a>
-        </button>
+        </button> -->
+        <a href="index.php" class="btn btn-info btn-sm">Back to the main page</a>
         <br>
-    </section>
 <?php
       }
     }
 ?>
-
+    </main>
     <?php
       include "footer.inc.php";
     ?>

@@ -8,15 +8,6 @@ body {
     padding-bottom: 20px;
 }
 
-.ONtimelogo {
-    height: 50px;
-    width: 70px;
-}
-
-.navbar-brand {
-    padding-top: 0px;
-}
-
 .imgMaintenance {
     margin-top: 20px;
     height: auto;
@@ -130,21 +121,6 @@ input[type=submit]:hover {
     content: "\e114";
 }
 /* FAQ collapsible - https://bootsnipp.com/snippets/qADDB */
-footer {
-    background-color: #333;
-    color: white;
-    padding-bottom: 15px;
-    padding-top: 10px;
-    bottom: 0px;
-}
-
-.btmnav {
-    color: white;
-}
-
-.btmnav:hover {
-    color: grey;
-}
 
 /* For mobile phones: */
 [class*="col-"] {
