@@ -60,9 +60,12 @@ if (!isset($_SESSION)) {
         $data = htmlspecialchars($data);
         return $data;
     }
-    //Yee Siang's function to save to DB
+
     function saveMemberToDB() {
         global $fName , $errorMsg, $sqlUpdate, $userID, $conn;
+
+        //prepared statements 
+        
 
         // remove comma from last statement
         $sqlUpdate = substr($sqlUpdate, 0, -2);

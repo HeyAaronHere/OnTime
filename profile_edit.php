@@ -51,12 +51,12 @@ if (!isset($_SESSION['firstName'])) {
                             <h2 class="text-center">Change name</h2>
 
                             <div class="form-group">
-                                <label for="FirstName">First Name:</label>
-                                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required="false" disabled="true" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
+                                <label for="fname" id="fname_lbl">First Name:</label>
+                                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" disabled pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
                             </div>
                             <div class="form-group">
-                                <label for="LastName">Last Name:</label>
-                                <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" required="false" disabled="true" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
+                                <label for="lname" id="lname_lbl">Last Name:</label>
+                                <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" disabled pattern="^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$">
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chkname" name="chkname" value="Yes" >select to change name</label>
@@ -76,8 +76,8 @@ if (!isset($_SESSION['firstName'])) {
                             <h2 class="text-center">Change Handphone No.</h2>
 
                             <div class="form-group">
-                                <label for="handphoneNo">Handphone no.:</label>
-                                <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber"  required="false" disabled="true" pattern="[0-9]{8}" >
+                                <label for="pnumber" id="pnumber_lbl">Handphone no.:</label>
+                                <input type="text" class="form-control" id="pnumber" placeholder="Enter phone no." name="pnumber" disabled pattern="[0-9]{8}" >
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chkpno" name="chkpno" value="Yes" >select to change phone number</label>
@@ -96,8 +96,8 @@ if (!isset($_SESSION['firstName'])) {
                         <div class="panel-body">
                             <h2 class="text-center">Change Email</h2>
                             <div class="form-group">
-                                <label for="email">Email address:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="false" disabled="true" name="email" pattern="/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/">
+                                <label for="email" id="email_lbl">Email address:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" disabled name="email" pattern="/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/">
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chke" name="chke" value="Yes" >select to change email</label>
@@ -116,16 +116,16 @@ if (!isset($_SESSION['firstName'])) {
                         <div class="panel-body">
                             <h2 class="text-center">Change Password</h2>
                             <div class="form-group">
-                                <label for="opwdL">Old Password:</label>
-                                <input type="password" class="form-control" id="opwd" placeholder="Enter password" name="opwd" required="false" disabled="true" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                                <label for="opwd" id="pwd_lbl">Old Password:</label>
+                                <input type="password" class="form-control" id="opwd" placeholder="Enter password" name="opwd" disabled pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             <div class="form-group">
-                                <label for="npwd1L">New Password:</label>
-                                <input type="password" class="form-control" id="npwd1" placeholder="Enter password" name="npwd1" required="false" disabled="true" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                                <label for="npwd1">New Password:</label>
+                                <input type="password" class="form-control" id="npwd1" placeholder="Enter password" name="npwd1" disabled pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             <div class="form-group">
-                                <label for="npwd2L">Confirm New Password:</label>
-                                <input type="password" class="form-control" id="npwd2" placeholder="Enter password" name="npwd2" required="false" disabled="true" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                                <label for="npwd2">Confirm New Password:</label>
+                                <input type="password" class="form-control" id="npwd2" placeholder="Enter password" name="npwd2" disabled pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chkpwd" name="chkpwd" value="Yes" >select to change password</label>
@@ -134,7 +134,7 @@ if (!isset($_SESSION['firstName'])) {
                     </div>
                 </div>
             </div> 
-            <input type="submit" name="submitPPE" value="goto" class="btn btn-default"></input>
+            <input type="submit" name="submitPPE" value="goto" class="btn btn-default">
         </div>
     </form>
         </main>

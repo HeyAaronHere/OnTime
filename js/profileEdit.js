@@ -19,64 +19,66 @@ function checkedFucntion() {
      if(document.getElementById('chkpwd').checked)
      {
         document.getElementById("opwd").disabled = false;
-        document.getElementById("npwd1").disabled = false;
-        document.getElementById("npwd2").disabled = false;
+        
+        document.getElementById("opwd").removeAttribute('disabled');
+        document.getElementById("npwd1").removeAttribute('disabled');
+        document.getElementById("npwd2").removeAttribute('disabled');
 
-        document.getElementById("opwd").required = true;
-        document.getElementById("npwd1").required = true;
-        document.getElementById("npwd2").required = true;
+        document.getElementById("opwd").setAttribute('required', 'required');
+        document.getElementById("npwd1").setAttribute('required', 'required');
+        document.getElementById("npwd2").setAttribute('required', 'required');
      }
      else{
-        document.getElementById("opwd").disabled = true;
-        document.getElementById("npwd1").disabled = true;
-        document.getElementById("npwd2").disabled = true;
+        document.getElementById("opwd").setAttribute('disabled', 'disabled');
+        document.getElementById("npwd1").setAttribute('disabled', 'disabled');
+        document.getElementById("npwd2").setAttribute('disabled', 'disabled');
 
-        document.getElementById("opwd").required = false;
-        document.getElementById("npwd1").required = false;
-        document.getElementById("npwd2").required = false;
+        document.getElementById("opwd").removeAttribute('required');
+        document.getElementById("npwd1").removeAttribute('required');
+        document.getElementById("npwd2").removeAttribute('required');
      }
 
     //checkbox listener for name
      if(document.getElementById('chkname').checked)
      {
-        document.getElementById("fname").disabled = false;
-        document.getElementById("lname").disabled = false;
+        document.getElementById("fname").removeAttribute('disabled');
+        document.getElementById("lname").removeAttribute('disabled');
         
-        document.getElementById("fname").required = true;
-        document.getElementById("lname").required = true;
+        document.getElementById("fname").setAttribute('required', 'required');
+        document.getElementById("lname").setAttribute('required', 'required');
      }
      else{
-        document.getElementById("fname").disabled = true;
-        document.getElementById("lname").disabled = true;
+        document.getElementById("fname").setAttribute('disabled', 'disabled');
+        document.getElementById("lname").setAttribute('disabled', 'disabled');
                 
-        document.getElementById("fname").required = false;
-        document.getElementById("lname").required = false;
+        document.getElementById("fname").removeAttribute('required');
+        document.getElementById("lname").removeAttribute('required');
      }
 
     //checkbox listener for email
     if(document.getElementById('chke').checked)
     {
-        document.getElementById("email").disabled = false;
+        document.getElementById("email").removeAttribute('disabled');
 
-        document.getElementById("email").required = true;
+        document.getElementById("email").setAttribute('required', 'required');
     }
     else{
-        document.getElementById("email").disabled = true;
+        document.getElementById("email").setAttribute('disabled', 'disabled');
         
-        document.getElementById("email").required = false;
+        document.getElementById("email").removeAttribute('required');
     }
 
     //checkbox listener for handphone number
     if(document.getElementById('chkpno').checked)
     {
-        document.getElementById("pnumber").disabled = false;
+        document.getElementById("pnumber").removeAttribute('disabled');
         
-        document.getElementById("pnumber").required = true;
+        document.getElementById("pnumber").setAttribute('required', 'required');
     }
     else{
-        document.getElementById("pnumber").disabled = true;
+        document.getElementById("pnumber").setAttribute('disabled', 'disabled');
         
-        document.getElementById("pnumber").required = false;
+        document.getElementById("pnumber").removeAttribute('required');
     }
 }
 
