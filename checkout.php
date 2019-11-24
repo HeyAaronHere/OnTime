@@ -254,16 +254,12 @@ function saveTransactionToDB(){
       while ($row = $getShoppingCart->fetch_assoc()){
         $productID = $row['product_id']; //$row['product_id']
         $quantity = $row['quantity'];
-        // $insertIntoOrderItem = $conn->prepare("INSERT INTO order_items(order_id, product_id, quantity) VALUES(?, ?, ?)");
-        // $insertIntoOrderItem->bind_param("iii", $orderID, $productID, $quantity);
         $insertIntoOrderItem_query = $insertIntoOrderItem->execute();
         if (!$insertIntoOrderItem_query) {
             $errorMsg .= "<p>Database error 4: " . $conn->error . "</p>";
             $success = false;
         }else{
             //delete shoppingcart
-            // $deleteFromShoppingCart = $conn->prepare("DELETE FROM shoppingcart WHERE user_id = ? AND product_id = ?");
-            // $deleteFromShoppingCart->bind_param("ii", $orderID, $productID);
             $deleteFromShoppingCart_query = $deleteFromShoppingCart->execute();
             if (!$deleteFromShoppingCart_query) {
                 $errorMsg .= "<p>Database error 5: " . $conn->error . "</p>";
@@ -329,14 +325,15 @@ function saveTransactionToDB(){
             if you have any questions.</p>
 
 <?php
+        global $userID, $orderID;
         //execute the query
-        $result = $conn->prepare("SELECT quantity, product_name, product_price, quantity * product_price as 'total' FROM order_items s, p2_7.order o, product p WHERE o.user_id = ? AND o.order_id = s.order_id AND s.product_id = p.product_id");
-        $result->bind_param("i", $userID);
+        $result = $conn->prepare("SELECT quantity, product_name, product_price, quantity * product_price as 'total' FROM order_items s, p2_7.order o, product p WHERE o.user_id = ? AND o.order_id = ? AND o.order_id = s.order_id AND s.product_id = p.product_id");
+        $result->bind_param("ii", $userID, $orderID);
         $checkResult = $result->execute();
         $getResult = $result->get_result();
         $result->close();
-        $res = $conn->prepare("SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = ? AND O.order_id = S.order_id AND P.product_id = S.product_id");
-        $res->bind_param("i", $userID);
+        $res = $conn->prepare("SELECT SUM(P.product_price*S.quantity) AS sum FROM order_items S, product P, p2_7.order O WHERE O.user_id = ? AND O.order_id = ? AND O.order_id = S.order_id AND P.product_id = S.product_id");
+        $res->bind_param("ii", $userID, $orderID);
         $checkRes = $res->execute();
         $getRes = $res->get_result();
         $res->close();
