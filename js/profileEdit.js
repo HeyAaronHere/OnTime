@@ -7,11 +7,13 @@ var checkboxListenerPwd = document.getElementById('chkpwd');
 var checkboxListenerName = document.getElementById('chkname');
 var checkboxListenerEmail = document.getElementById('chke');
 var checkboxListenerPno = document.getElementById('chkpno');
+var peSubmitBtnListener = document.getElementById("peSubmitBtn")
 
 checkboxListenerPwd.addEventListener("change", checkedFucntion);
 checkboxListenerName.addEventListener("change", checkedFucntion);
 checkboxListenerEmail.addEventListener("change", checkedFucntion);
 checkboxListenerPno.addEventListener("change", checkedFucntion);
+peSubmitBtnListener.addEventListener("click", validateProfileEditForm);
 }
 
 function checkedFucntion() {
@@ -83,7 +85,7 @@ function checkedFucntion() {
 }
 
 
-function validateProfileEditForm() {
+function validateProfileEditForm(event1) {
     
     var npwd1 = document.forms["pEditForm"]["npwd1"].value;
     var npwd2 = document.forms["pEditForm"]["npwd2"].value;
@@ -102,6 +104,7 @@ function validateProfileEditForm() {
     if((document.getElementById('chkname').checked === false) && (document.getElementById('chkpno').checked === false) && (document.getElementById('chkpwd').checked === false) && (document.getElementById('chke').checked === false))
     {           
         alert("Must at least select one field to change");
+        event1.preventDefault();
         return false;
     }
 
@@ -109,15 +112,19 @@ function validateProfileEditForm() {
     {
         if(fName === null || fName === "") {
             alert("Fisrt Name cannot be empty");
+            event1.preventDefault();
             return false;
         }else if (nameR.test(fName) === false){
             alert("Fisrt Name must only contain alphabets");
+            event1.preventDefault();
             return false;
         }else if (lName === null || lName === ""){
             alert("Last Name cannot be empty");
+            event1.preventDefault();
             return false;
         }else if (nameR.test(lName) === false){
             alert("Fisrt Name must only contain alphabets");
+            event1.preventDefault();
             return false;
         }
     }
@@ -126,9 +133,11 @@ function validateProfileEditForm() {
     {        
         if(pNo === null || pNo === "") {
             alert("phone number cannot be empty");
+            event1.preventDefault();
             return false;
         }else if(pNoR.test(pNo) === false){
             alert("phone number must only contain numbers");
+            event1.preventDefault();
             return false;
         }
     }
@@ -139,6 +148,7 @@ function validateProfileEditForm() {
         if (emailR.test(email) === false){
             //no need to do anything if valid
             alert("You have entered an invalid email address!");
+            event1.preventDefault();
             return (false);
         }
     }
@@ -149,22 +159,28 @@ function validateProfileEditForm() {
         //for password validation
         if (opwd === null || opwd === "" || opwd.length < 3) {
             alert("Old password cannot be null and must be longer than 3 characters");
+            event1.preventDefault();
             return false;
         }else if (pwdR.test(opwd) === false){
             //no need to do anything if valid
             alert("Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit.!");
+            event1.preventDefault();
             return false;
         }else if (npwd1 === null || npwd1 === "" || npwd1.length < 3 ) {
             alert("New password cannot be null and must be longer than 3 characters");
+            event1.preventDefault();
             return false;
         }else if(pwdR.test(npwd1) === false){
             alert("New password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit.!");
+            event1.preventDefault();
             return false;
         }else if(npwd1 !== npwd2){
             alert("Passwords must match");
+            event1.preventDefault();
             return false;
         }else if(opwd === npwd1){
             alert("New password and old password cannot be the same");
+            event1.preventDefault();
             return false;
         }
     } 
