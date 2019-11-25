@@ -1,17 +1,20 @@
 //js file for aboutUs.php
 $(document).ready(function(){
-  $(".textbox").hide();
-  $("#yeesiang").click(function(){
+  $("#yeesiangstext").hide();
+  $("#aaronstext").hide();
+  $("#danielstext").hide();
+  $("#nikolastext").hide();
+
+  $("#yeesiangs").click(function(){
     $("#yeesiangstext").toggle();
   });
-  $("#aaron").click(function(){
+  $("#aarons").click(function(){
     $("#aaronstext").toggle();
   });
-  $("#daniel").click(function(){
+  $("#daniels").click(function(){
     $("#danielstext").toggle();
   });
-  $("#nikola").click(function(){
+  $("#nikolas").click(function(){
     $("#nikolastext").toggle();
   });
-
 });
