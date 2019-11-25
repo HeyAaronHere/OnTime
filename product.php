@@ -130,7 +130,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
     </section>
 
     <div class="container-fluid">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs styletab">
             <?php
             echo $tab_menu;
             ?>
