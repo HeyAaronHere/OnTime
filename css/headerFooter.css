@@ -38,6 +38,10 @@ nav{
     color: #ffffff;
 }
 
+.footer a:hover {
+    color: #ffffff;
+}
+
 .footer .row .fa
 {
     padding-right: 10px;
