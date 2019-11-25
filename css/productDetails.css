@@ -13,7 +13,8 @@ and open the template in the editor.
     margin-top: 150px;
 }
 
-img {
+.img {
+  margin-top: -30px;  
   max-width: 100%;
   height: auto;
 }
@@ -63,7 +64,7 @@ button[type=submit] {
 
 .productDescription h3
 {
-    margin-top: 30px;
+    margin-top: 50px;
     color: orange;    
 }
 

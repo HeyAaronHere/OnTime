@@ -34,7 +34,7 @@ if (!isset($_SESSION)) {
         
         header("Location: login_first");
         exit;
-    }elseif(isset($_POST['submitPPE']) && $_POST['submitPPE'] == "goto"){
+    }elseif(isset($_POST['submitPPE']) && $_POST['submitPPE'] == "Change"){
         $_SESSION['ppeLoadedBefore'] = false;
     }elseif((isset($_SESSION['ppeLoadedBefore']) && ($_SESSION['ppeLoadedBefore'] == true)) || (isset($_POST['submitPPE']) && $_POST['submitPPE'] == "return")) {
         header("Location: profile_edit");

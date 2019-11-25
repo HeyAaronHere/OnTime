@@ -58,7 +58,8 @@ if (mysqli_num_rows($sql) > 0) {
         <article class="container singleProduct">
             <section class=row>
                 <div class="col-md-5">
-                    <img src="<?php echo $productDetails['product_img'] ?>" alt="<?php echo $productDetails['product_alt'] ?> ">
+                    <img src="<?php echo $productDetails['product_img'] ?>" class="img" alt="<?php echo $productDetails['product_alt'] ?> "> 
+                    <cite><?php echo $productDetails['product_cite']?></cite>
                 </div>
                 <div class="col-md-7">
                     <p class="new-arrival text-center">NEW</p>

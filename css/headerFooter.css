@@ -8,8 +8,9 @@
 }
 
 .navbar-brand img {
+    margin-top:10px;
     width:150px;
-    height:60px;
+    height:40px;
 }
 
 .navbar-right{
@@ -34,6 +35,10 @@ nav{
 
 .footer a
 {
+    color: #ffffff;
+}
+
+.footer a:hover {
     color: #ffffff;
 }
 
