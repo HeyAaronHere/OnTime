@@ -15,6 +15,10 @@ if (isset($_POST['signup-submit'])) {
             $success = false;
         } else {
             $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
+            $fname = mysqli_real_escape_string($conn, $fname);
+            $lname = mysqli_real_escape_string($conn, $lname);
+            $email = mysqli_real_escape_string($conn, $email);
+            $HPnumber = mysqli_real_escape_string($conn, $HPnumber);
             $sql = $conn->prepare("INSERT INTO account (fname, lname, email, HPnumber, password) VALUES (?,?,?,?,?)");
             $sql->bind_param("sssis", $fname, $lname, $email, $HPnumber, $hashed_password);
             $sql->execute();

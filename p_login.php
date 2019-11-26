@@ -37,6 +37,7 @@ if (isset($_POST['login-submit'])) {
                     $errorMsg = "Connection failed: " . $conn->connect_error;
                     $success = false;
                 } else {
+                    $email = mysqli_real_escape_string($conn, $email);
                     $sql = $conn->prepare("SELECT * FROM account WHERE email= ?");
                     $sql->bind_param("s", $email);
                     $sql->execute();
