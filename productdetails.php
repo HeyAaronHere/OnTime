@@ -11,19 +11,16 @@ if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($
 } else {
     $productID = $_POST['product_id'];
 }
-$IDquery = "SELECT * FROM product WHERE product_id = ?;";
-$stmt = mysqli_stmt_init($conn);
-if (!mysqli_stmt_prepare($stmt, $IDquery)) {
-    echo "SQL statement failed";
-} else {
-    //Bind parameters to the placeholder
-    mysqli_stmt_bind_param($stmt, "i", $productID);
-    //Run parameters inside database
-    mysqli_stmt_execute($stmt);
-    $sql = mysqli_stmt_get_result($stmt);
-}
-if (mysqli_num_rows($sql) > 0) {
-    while ($productDetails = mysqli_fetch_assoc($sql)) {
+
+$sql = $conn->prepare("SELECT * FROM product WHERE product_id = ?"); 
+//Bind parameters to the placeholder
+$sql->bind_param("i", $productID);
+ //Run parameters inside database
+$sql->execute();
+$result = $sql->get_result();
+
+if (mysqli_num_rows($result) > 0) {
+    while ($productDetails = mysqli_fetch_assoc($result)) {
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +84,7 @@ if (mysqli_num_rows($sql) > 0) {
             <?php
             }
 
-            $sql->free();
+            $result->free_result();
             $conn->close();
             }
             ?>

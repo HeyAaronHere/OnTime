@@ -43,7 +43,7 @@ include "connection.inc.php";
     <body>
             <?php
             include "header.inc.php";
-            $namepat = "/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/";
+            $namepat = "/^[a-zA-Z\s]+$/";
             $emailpat = "/\S+@\S+\.\S+/";
             if (empty($_POST["email"])) {
                 $errorMsg .= "Email required, please fill up.<br>";

@@ -25,21 +25,18 @@ while ($row = mysqli_fetch_array($tab_result)) {
         $tab_content .= '
             <div id="' . $row['category_id'] . '" class="tab-pane fade">';
     }
-    $product_query = "SELECT * FROM product WHERE category_id = ?;";
     //create prepared statement
+    $product_result = $conn->prepare("SELECT * FROM product WHERE category_id = ?");
     $productId = $row['category_id'];
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $product_query)) {
-        echo "SQL statement failed";
-    } else {
-        //Bind parameters to the placeholder
-        mysqli_stmt_bind_param($stmt, "i", $productId);
-        //Run parameters inside database
-        mysqli_stmt_execute($stmt);
-        $product_result = mysqli_stmt_get_result($stmt);
-
-        while ($sub_row = mysqli_fetch_array($product_result)) {
-            $tab_content .= '
+    //Bind parameters to the placeholder
+    $product_result->bind_param("i", $productId);
+    //Run parameters inside database
+    $checkResult = $product_result->execute();
+    $getResult = $product_result->get_result();
+    
+ 
+    while ($sub_row = mysqli_fetch_array($getResult)) {
+        $tab_content .= '
             <div class="col-md-2 card " >
                 <form method="post" action="productdetails.php">
                     <img src="' . $sub_row['product_img'] . '" alt= "' . $sub_row['product_alt'] . '" class="img-responsive img-thumbnail">
@@ -57,9 +54,11 @@ while ($row = mysqli_fetch_array($tab_result)) {
             </div>
             ';
         }
-    }
+    
     $tab_content .= '<div style="clear:both"></div></div>';
     $i++;
+    $getResult->free_result();
+    $product_result->close();
 }
 ?>
 <!--how to create dynamic tabs with database src -https://www.webslesson.info/2017/03/create-dynamic-tabs-by-using-bootstrap-in-php.html-->

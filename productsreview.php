@@ -4,13 +4,13 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
+//declare variable
 $reviewID = "";
 $errorMsg = "";
 $success = true;
 $result = "";
 
-
+//Database connection
 include "connection.inc.php";
 
 $query = "SELECT MAX(review_id) as MAX_REVIEW FROM review";
@@ -82,7 +82,7 @@ if (!$IDsql) {
                     <div class="col-sm-6 form-group">
                         <label for="name">
                             Your Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" required>
+                        <input type="text" class="form-control" id="name" name="name" pattern="^[a-zA-Z\s]+$" required>
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="email">

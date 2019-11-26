@@ -8,7 +8,7 @@ function EventListeners() {
 
 
 function chkNameSyntax(name) { //this is to check whether syntax of name is correct format or not
-    return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(name);
+    return /^[a-zA-Z\s]+$/.test(name);
 }
 
 function chkEmailSyntax(email) { //this is to check whether syntax of email is correct format or not
