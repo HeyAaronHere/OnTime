@@ -118,11 +118,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                 }
 
 ?>
-  <!-- <a href="product.php">
-    <button type="button" class="btn btn-success btn-lg">
-      <span class="glyphicon glyphicon-arrow-left"> Go on shopping</span>
-    </button>
-  </a> -->
+
   <a href="product" class="btn btn-success btn-lg">Go on shopping</a>
 
 <?php

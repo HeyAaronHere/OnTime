@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorMsg .= "<p>Last name is missing.</p>";
     $success = false;
   }else{
-    $fname = test_input($_POST['lname']);
+    $lname = test_input($_POST['lname']);
     if(preg_match($namepattern, $_POST['fname'])){
       $errorMsg .= "<p>Last name is wrong.</p>";
       $success = false;
@@ -189,6 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(!$success){
          echo $errorMsg;
+         echo '<a href="shoppingcart.php" class="btn btn-warning btn-lg">go back to your shoppingcart</a>';
     }
 }
 
@@ -391,6 +392,7 @@ function saveTransactionToDB(){
 <?php
       }
     }
+    mysqli_close($conn);
 ?>
     </main>
     <?php
