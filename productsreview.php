@@ -12,7 +12,7 @@ $result = "";
 
 //Database connection
 include "connection.inc.php";
-
+//Select the latest response from user
 $query = "SELECT MAX(review_id) as MAX_REVIEW FROM review";
 $sql = mysqli_query($conn, $query);
 if (!$sql) {
@@ -22,7 +22,7 @@ if (!$sql) {
     $row = mysqli_fetch_assoc($sql);
     $reviewID = $row['MAX_REVIEW'];
 }
-
+//Display only the latest response
 $IDquery = "SELECT * FROM review WHERE review_id ='$reviewID'";
 $IDsql = mysqli_query($conn, $IDquery);
 if (!$IDsql) {

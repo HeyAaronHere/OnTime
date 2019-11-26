@@ -82,10 +82,6 @@ include "connection.inc.php";
                 }
             }
             if ($success) {
-                /* echo "<h2 id= 'h2'>Form Submitted successfully!</h2>";
-                  echo "<a id='btnLogin' href='productsreview.php' class='btn btn-default'>Reviews</a>";
-                  echo "<section id='divider'></section>";
-                  echo "<a id='btnHome' href='index.php' class='btn btn-default'>Return to Home</a>"; */
                 $_SESSION['msg'] = "Form Submitted Successfully";
                 header("Location: productsreview");
                 saveMemberToDB();
@@ -121,22 +117,14 @@ include "connection.inc.php";
                     $review = mysqli_real_escape_string($conn, $_POST["review"]);
 
 
-                    $sql = "INSERT INTO review (email, name, review_desc)";
-                    $sql .= " VALUES (?,?,?);";
-                    // Execute the query
-                    $stmt = mysqli_stmt_init($conn);
-                    if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        echo "SQL error";
-                    } else {
-                        mysqli_stmt_bind_param($stmt, "sss", $email, $name, $review);
-                        mysqli_stmt_execute($stmt);
-                    }
-
-
-                   /* if (!$conn->query($sql)) {
+                    $sql = $conn->prepare("INSERT INTO review (email, name, review_desc) VALUES (?,?,?)"); 
+                    $sql->bind_param("sss", $email, $name, $review); 
+                    $sql->execute();
+                    
+                    if (!$conn->query($sql)) {
                         $errorMsg = "Database error: " . $conn->error;
                         $success = false;
-                    }*/
+                    }
                 }
                 $conn->close();
             }

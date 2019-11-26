@@ -11,7 +11,7 @@ if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($
 } else {
     $productID = $_POST['product_id'];
 }
-
+//select and display by product id
 $sql = $conn->prepare("SELECT * FROM product WHERE product_id = ?"); 
 //Bind parameters to the placeholder
 $sql->bind_param("i", $productID);
