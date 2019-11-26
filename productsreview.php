@@ -119,7 +119,7 @@ if (!$IDsql) {
 
             <?php
             }
-            $sql->free();
+            $sql->free_result();
             $conn->close();
             ?>
             </section>
