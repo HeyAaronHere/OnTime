@@ -19,10 +19,10 @@ if (isset($_POST['signup-submit'])) {
             $sql->bind_param("sssis", $fname, $lname, $email, $HPnumber, $hashed_password);
             $sql->execute();
             // Execute the query
-            if (!$conn->query($sql)) {
+            /*if (!$conn->query($sql)) {
                 $errorMsg = "Database error: " . $conn->error;
                 $success = false;
-            }
+            }*/
         }
         $conn->close();
     }

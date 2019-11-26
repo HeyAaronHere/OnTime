@@ -85,9 +85,9 @@ function sendMail() {
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 587;
     $mail->SMTPAuth = true;
-    $mail->Username = "oysoys96@gmail.com";
-    $mail->Password = "Yeesiang9696!";
-    $mail->From = "oysoys96@gmail.com";
+    $mail->Username = "clementoys@gmail.com";
+    $mail->Password = "9617390c";
+    $mail->From = "clementoys@gmail.com";
     $mail->FromName = "ONtime";
     $mail->AddAddress($CIemail);
     $mail->WordWrap = 50;
