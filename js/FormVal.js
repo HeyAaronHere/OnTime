@@ -41,4 +41,4 @@ function validateform() {
   }
 }
 
-$("#submitbutton").on("click", validateform);
+$("#signup-submit").on("click", validateform);

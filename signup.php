@@ -60,7 +60,7 @@ if (isset($_SESSION['firstName'])) {
                                     <label><input type="checkbox" id="TaC" name="TaC" value="" required> Agree to terms and conditions</label>
                                 </section>
                                 <section class="form-group">
-                                    <button type="submit" name="signup-submit" class="btn btn-primary btn-block">Create Account</button>
+                                    <button type="submit" id="signup-submit" name="signup-submit" class="btn btn-primary btn-block">Create Account</button>
                                 </section>
                             </form>
                         </section>
