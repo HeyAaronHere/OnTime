@@ -30,8 +30,8 @@ if (!isset($_SESSION)) {
                 <section class="row">
                     <div class="col-lg-5">
                         <img class="img-responsive" id="holzkern" src="images/Holzkern.png" alt="ONtime">
-                        <cite>Holzkern, 2019: Model 'Manhattan', last retrieved on 09/10/19 from
-                        https://static.escdn.nl/images/resized/975421:1059:705:contain.jpg</cite>
+                        <cite>Holzkern Model 'Manhattan'. (2019). [image] Available at
+                        https://static.escdn.nl/images/resized/975421:1059:705:contain.jpg [Accessed 09/10/19].</cite>
                     </div>
                     <div class="col-lg-7" id="ourmission">
                         <h2 class="aboutus">Our Mission</h2>

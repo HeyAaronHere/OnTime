@@ -3,7 +3,15 @@ if (!isset($_SESSION)) {
     session_start();
 }
 include "connection.inc.php";
-$userID = $_SESSION['userID'];
+
+$userID = "";
+if(!isset($_SESSION['userID'])){
+  header("Location: login_first");
+  exit();
+}else{
+  $userID = $_SESSION['userID']; //only visible when logged in
+}
+
 $success = $fname = $lname = $email = $phone = $street = $appartment ="";
 $countrycode = $postalcode = $city = $errorMsg = "";
 $cardname = $cardnumber = $expdate = $cvv = "";
@@ -209,6 +217,21 @@ function saveTransactionToDB(){
     //for insertion into deliveryAddress table
     global $fname, $lname, $email, $phone, $street, $appartment, $countrycode, $postalcode, $city;
 
+    $userID = mysqli_real_escape_string($conn, $userID);
+    $paymentType = mysqli_real_escape_string($conn, $paymentType);
+    $productID = mysqli_real_escape_string($conn, $productID);
+    $quantity = mysqli_real_escape_string($conn, $quantity);
+    $orderID = mysqli_real_escape_string($conn, $orderID);
+    $fname = mysqli_real_escape_string($conn, $fname);
+    $lname = mysqli_real_escape_string($conn, $lname);
+    $email = mysqli_real_escape_string($conn, $email);
+    $phone = mysqli_real_escape_string($conn, $phone);
+    $street = mysqli_real_escape_string($conn, $street);
+    $appartment = mysqli_real_escape_string($conn, $appartment);
+    $countrycode = mysqli_real_escape_string($conn, $countrycode);
+    $postalcode = mysqli_real_escape_string($conn, $postalcode);
+    $city = mysqli_real_escape_string($conn, $city);
+
     //insertIntoOrder generates order_id which is necessary for the next queries
     $insertIntoOrder = $conn->prepare("INSERT INTO p2_7.order(user_id, purchase_datetime, payment_type) VALUES(?, NOW(), ?)");
     $insertIntoOrder->bind_param("is", $userID, $paymentType);
@@ -253,7 +276,7 @@ function saveTransactionToDB(){
         $success = false;
     }else{
       while ($row = $getShoppingCart->fetch_assoc()){
-        $productID = $row['product_id']; //$row['product_id']
+        $productID = $row['product_id'];
         $quantity = $row['quantity'];
         $insertIntoOrderItem_query = $insertIntoOrderItem->execute();
         if (!$insertIntoOrderItem_query) {
@@ -382,11 +405,7 @@ function saveTransactionToDB(){
               </table>
             </div>
         </section>
-        <!-- <button type="button" class="btn btn-info btn-sm">
-            <a href="index.php">
-                Back to the main page
-            </a>
-        </button> -->
+
         <a href="index" class="btn btn-info btn-sm">Back to the main page</a>
         <br>
 <?php

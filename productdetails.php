@@ -12,7 +12,7 @@ if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($
     $productID = $_POST['product_id'];
 }
 //select and display by product id
-$sql = $conn->prepare("SELECT * FROM product WHERE product_id = ?"); 
+$sql = $conn->prepare("SELECT * FROM product WHERE product_id = ?");
 //Bind parameters to the placeholder
 $sql->bind_param("i", $productID);
  //Run parameters inside database
@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
         <article class="container singleProduct">
             <section class=row>
                 <div class="col-md-5">
-                    <img src="<?php echo $productDetails['product_img'] ?>" class="img" alt="<?php echo $productDetails['product_alt'] ?> "> 
+                    <img src="<?php echo $productDetails['product_img'] ?>" class="img" alt="<?php echo $productDetails['product_alt'] ?> ">
                     <cite><?php echo $productDetails['product_cite']?></cite>
                 </div>
                 <div class="col-md-7">
@@ -69,7 +69,6 @@ if (mysqli_num_rows($result) > 0) {
                     <label for="productinput">Quantity </label>
                     <form id="productdetails" action="process_shoppingcartitem" method="post">
                         <input type="number" id="productinput" min="1" name="productAmount" value="1">
-                        <input type="hidden" name="productPrice" value="<?php echo $productDetails['product_price'] ?>">
                         <input type="hidden" name="productID" value="<?php echo $productDetails['product_id'] ?>">
                         <button type="submit" id="btnSubmit" value="Submit">Add to Cart</button>
                     </form>
