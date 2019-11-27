@@ -93,7 +93,7 @@ if (!isset($_SESSION)) {
                         </section>
                     </section>
                     <section class="row">
-                        <input type="submit" name="CI-submit" value="Submit">
+                        <input type="submit" id="CI-submit" name="CI-submit" value="Submit">
                     </section>
                 </form>
                 <!--Responsive Form CSS - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_responsive_form -->
