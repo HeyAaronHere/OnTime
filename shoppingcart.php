@@ -4,7 +4,14 @@ if (!isset($_SESSION)) {
 }
 include "connection.inc.php";
 $userID = $priceTotal = $errorMsg = "";
-$userID = $_SESSION['userID']; //only visible when logged in, no need to if statement
+
+if(!isset($_SESSION['userID'])){
+  header("Location: login_first");
+  exit();
+}else{
+  $userID = $_SESSION['userID']; //only visible when logged in
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +27,6 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
         <script src="js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/shoppingcart.css">
         <link rel="stylesheet" href="css/headerFooter.css">
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
         <script defer src="js/shoppingcartcheck.js"></script>
@@ -74,7 +77,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                                     <th>Total</th>
                                     <th>
                                       <form method = "POST" action="clearShoppingCart">
-                                        <input type="submit" value="clear shoppingcart">
+                                        <input type="submit" value="Clear Shoppingcart">
                                       </form>
                                     </th>
                                 </tr>
@@ -91,7 +94,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
                         <td>
                           <form method = "POST" action="removeItem">
                             <input type="hidden" name="product" value="<?php echo $row['product_id']?>">
-                            <input type="submit" value="remove item">
+                            <input type="submit" value="Remove Item">
                           </form>
                         </td>
                     </tr>
@@ -125,7 +128,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
       if ($getResult->num_rows > 0){
 ?>
           <section class="well well-sm row">
-            <form id="orderform" method="post" action="checkout"> <!--method="post" action="checkout.php"-->
+            <form id="orderform" method="post" action="checkout">
             <h2>Delivery Address</h2>
 
                 <div class="form-group row">
@@ -204,6 +207,7 @@ $userID = $_SESSION['userID']; //only visible when logged in, no need to if stat
 
 <?php
     }
+    mysqli_close($conn);
  ?>
 
     </section>

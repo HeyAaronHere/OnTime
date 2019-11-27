@@ -6,6 +6,8 @@ include "connection.inc.php";
 $userID = "";
 $userID = $_SESSION['userID'];
 
+$userID = mysqli_real_escape_string($conn, $userID);
+
 $query = $conn->prepare("DELETE FROM shoppingcart WHERE user_id = ? ");
 $query->bind_param("i", $userID);
 $result = $query->execute();
@@ -17,4 +19,5 @@ if (!$result) {
   echo "<script>alert('Shoppingcart was cleared!');window.location.href='shoppingcart.php';</script>";
   header("Location: shoppingcart");
 }
- ?>
+mysqli_close($conn);
+?>
