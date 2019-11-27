@@ -88,3 +88,11 @@ position: relative;
 text-align: center;
 }
 
+.loginLink a
+{
+    color: #000000;
+}
+
+.loginLink a:hover {
+    color: #1f1f1f;
+}

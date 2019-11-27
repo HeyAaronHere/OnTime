@@ -15,7 +15,6 @@ if (!isset($_SESSION)) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" type="text/css" href="css/headerFooter.css" />
-        <script src="js/mainPage.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -31,8 +30,8 @@ if (!isset($_SESSION)) {
             <h1>SORRY :(</h1>
             <div class="container-fluid">
                 <div class="col-md-4"></div>
-                <h2 class="col-md-4">You must Log in first to access this page <a href="login">
-                        <p><i class="loginLink"></i> Login Page</p>
+                <h2 class="loginLink col-md-4">You must Log in first to access this page <a href="login">
+                        <p><span class="loginLinkSpan"></span> Login Page</p>
                     </a>
                 </h2>
                 <div class="col-md-4"></div>
