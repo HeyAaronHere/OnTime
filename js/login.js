@@ -23,4 +23,4 @@ function validateloginform() {
   }
 }
 
-$("#submitbutton").on("click", validateloginform);
+$("#login-submit").on("click", validateloginform);

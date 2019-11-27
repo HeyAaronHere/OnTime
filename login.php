@@ -30,7 +30,7 @@ if (isset($_SESSION['userID'])) {
                     <section class="row">
                         <!-- w3schools, https://www.w3schools.com/js/js_validation.asp -->
                         <section class="login-form">
-                            <form name="LoginForm" action="p_login" method="post">
+                            <form novalidate name="LoginForm" action="p_login" method="post">
                                 <h2 class="text-center">Login</h2>
                                 <p>For new members, please go to the <a href="signup">Sign Up page</a>.</p>
                                 <section class="form-group">
@@ -42,7 +42,7 @@ if (isset($_SESSION['userID'])) {
                                     <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter your password..." title="Must contain at least 1 uppercase, 1 lowercase and 1 number/special character." required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                                 </section>
                                 <section class="form-group">
-                                    <button type="submit" name="login-submit" class="btn btn-primary btn-block">Log in</button>
+                                    <button type="submit" id="login-submit" name="login-submit" class="btn btn-primary btn-block">Log in</button>
                                 </section>
                             </form>
                         </section>

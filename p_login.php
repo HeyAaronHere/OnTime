@@ -1,6 +1,8 @@
 <?php
 if (isset($_POST['login-submit'])) {
     include "connection.inc.php";
+    $errorMsg = "";
+    $success = true;
     ?>
     <!DOCTYPE html>
     <html lang="en">

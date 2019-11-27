@@ -21,4 +21,4 @@ function validateform() {
       return false;
   }
 }
-$("#submitbutton").on("click", validateform);
+$("#CI-submit").on("click", validateform);
