@@ -7,7 +7,7 @@ var checkboxListenerPwd = document.getElementById('chkpwd');
 var checkboxListenerName = document.getElementById('chkname');
 var checkboxListenerEmail = document.getElementById('chke');
 var checkboxListenerPno = document.getElementById('chkpno');
-var peSubmitBtnListener = document.getElementById("peSubmitBtn")
+var peSubmitBtnListener = document.getElementById("peSubmitBtn");
 
 checkboxListenerPwd.addEventListener("change", checkedFucntion);
 checkboxListenerName.addEventListener("change", checkedFucntion);

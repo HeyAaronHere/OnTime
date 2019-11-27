@@ -36,7 +36,7 @@ if (!isset($_SESSION['firstName'])) {
     ?>
 
     <main>
-    <form novalidate name="pEditForm" action="p_profile_edit" method="post" autocomplete="off">
+    <form name="pEditForm" action="p_profile_edit" method="post" autocomplete="off">
         <div class="container">
             <h2>Edit Particulars</h2>
             <div class="panel-group" id="accordion">
@@ -134,7 +134,7 @@ if (!isset($_SESSION['firstName'])) {
                     </div>
                 </div>
             </div> 
-            <input type="submit" id="peSubmitBtn" name="submitPPE" value="Change" class="btn btn-default">
+            <input type="submit" id="peSubmitBtn" name="peSubmitBtn" value="Change" class="btn btn-default">
         </div>
     </form>
         </main>

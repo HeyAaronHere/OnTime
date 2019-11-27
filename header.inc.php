@@ -3,7 +3,7 @@
         <a class="navbar-brand" href="index" title="Link to HomePage" ><img src="images/logo3.png" alt="Ontime logo"></a>
     </div>
     <section class="navbar-header" id="myNavBarLeft">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <button title="expand navbar" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
