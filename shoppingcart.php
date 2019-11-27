@@ -35,7 +35,7 @@ if(!isset($_SESSION['userID'])){
       <?php
           include "header.inc.php";
       ?>
-        <section class="container">
+        <main class="container">
             <header class="page-header">
                 <h1>Your shopping cart at ONtime</h1>
             </header>
@@ -210,7 +210,7 @@ if(!isset($_SESSION['userID'])){
     mysqli_close($conn);
  ?>
 
-    </section>
+</main>
         <?php
         include "footer.inc.php";
         ?>
