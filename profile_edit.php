@@ -36,7 +36,7 @@ if (!isset($_SESSION['firstName'])) {
     ?>
 
     <main>
-    <form name="pEditForm" action="p_profile_edit" method="post" autocomplete="off">
+    <form class = "profileform" name="pEditForm" action="p_profile_edit" method="post" autocomplete="off">
         <div class="container">
             <h2>Edit Particulars</h2>
             <div class="panel-group" id="accordion">

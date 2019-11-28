@@ -34,7 +34,6 @@ if (!isset($_SESSION)) {
                         <p><span class="loginLinkSpan"></span> Login Page</p>
                     </a>
                 </h2>
-                <div class="col-md-4"></div>
             </div>
         </section>
         <?php

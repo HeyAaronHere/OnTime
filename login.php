@@ -22,7 +22,7 @@ if (isset($_SESSION['userID'])) {
             <script src="js/login.js"></script>
         </head>
         <body>
-            <main>
+            <main class="test">
                 <?php
                 include "header.inc.php";
                 ?>
@@ -30,7 +30,7 @@ if (isset($_SESSION['userID'])) {
                     <section class="row">
                         <!-- w3schools, https://www.w3schools.com/js/js_validation.asp -->
                         <section class="login-form">
-                            <form name="LoginForm" action="p_login" method="post">
+                            <form class ="test" name="LoginForm" action="p_login" method="post">
                                 <h2 class="text-center">Login</h2>
                                 <p>For new members, please go to the <a href="signup">Sign Up page</a>.</p>
                                 <section class="form-group">
@@ -52,6 +52,8 @@ if (isset($_SESSION['userID'])) {
             <?php
             include "footer.inc.php";
             ?>
+           
         </body>
+        
     </html>
 <?php } ?>

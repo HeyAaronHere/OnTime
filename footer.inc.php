@@ -1,6 +1,5 @@
 <footer class="container-fluid footer">
-    <nav class="container" aria-label="Footer">
-       
+    <nav class="container">
             <section class="col-md-4">
                 <h2>Company</h2>
                 <a href="aboutus">
