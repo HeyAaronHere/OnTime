@@ -7,5 +7,5 @@ session_unset();
 //destroy the sessions running in the website
 session_destroy();
 //redirect to index.php
-header("Location: index.php")
+header("Location: index.php");
 ?>
