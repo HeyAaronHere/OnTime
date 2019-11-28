@@ -38,7 +38,7 @@ and open the template in the editor.
 
 #price
 {
-  color: orange;
+  color: orangered;
   font-size: 26px;
   font-weight: bold;
  
@@ -65,7 +65,7 @@ button[type=submit] {
 .productDescription h3
 {
     margin-top: 50px;
-    color: orange;    
+    color: orangered;    
 }
 
 .productDescription p

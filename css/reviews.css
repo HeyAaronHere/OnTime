@@ -82,7 +82,7 @@ input[type=submit]:hover {
     text-align: center;
     font-size: 70px;
     font-weight: bold;
-    color: #ff9800;
+    color: orangered;
     padding-bottom: 10px;
     text-transform: uppercase;
 }
@@ -94,7 +94,7 @@ input[type=submit]:hover {
 .review h1::after
 {
     content: '';
-    background: #ff9800;
+    background: orangered;
     display: block;
     height: 3px;
     width: 400px;
@@ -260,7 +260,7 @@ blockquote::after
 {
 
     font-weight: bold;
-    color: #ff9800;
+    color: orangered;
     text-transform: uppercase;
     margin-top: 20px;
     font-size: 30px;

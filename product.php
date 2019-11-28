@@ -33,8 +33,8 @@ while ($row = mysqli_fetch_array($tab_result)) {
     //Run parameters inside database
     $checkResult = $product_result->execute();
     $getResult = $product_result->get_result();
-    
- 
+
+
     while ($sub_row = mysqli_fetch_array($getResult)) {
         $tab_content .= '
             <div class="col-md-2 card " >
@@ -53,8 +53,8 @@ while ($row = mysqli_fetch_array($tab_result)) {
                 </form>
             </div>
             ';
-        }
-    
+    }
+
     $tab_content .= '<div style="clear:both"></div></div>';
     $i++;
     $getResult->free_result();
@@ -139,9 +139,11 @@ while ($row = mysqli_fetch_array($tab_result)) {
             echo $tab_content;
             ?>
             <br>
-            <cite>BERING Classic 10540-567 Blue 40 mm Mens Watch, Retrieved October 10, 2019 from https://cdn.shopify.com/s/files/1/1712/5149/products/10540-567@2x.jpg?v=1571586623</cite>>
+            <cite>BERING Classic 10540-567 Blue 40 mm Mens Watch, Retrieved October 10, 2019
+                from https://cdn.shopify.com/s/files/1/1712/5149/products/10540-567@2x.jpg?v=1571586623</cite>
             <br>
-            <cite>Olivia Burton British Blooms Rose Womens Watch (OB16EG134),  Retrieved October 10, 2019 from https://cdn.shopify.com/s/files/1/1712/5149/products/OB16EG134@2x.jpg?v=1571586947</cite>>
+            <cite>Olivia Burton British Blooms Rose Womens Watch (OB16EG134), Retrieved October 10, 2019
+                from https://cdn.shopify.com/s/files/1/1712/5149/products/OB16EG134@2x.jpg?v=1571586947</cite>
         </div>
     </div>
     <hr>

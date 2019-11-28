@@ -49,9 +49,7 @@ if (mysqli_num_rows($result) > 0) {
         include "header.inc.php";
         ?>
 
-        <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
-        all images source from Cocomi.com URL = https://www.cocomi.com/
-        how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
+        <!--how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
         <article class="container singleProduct">
             <section class=row>
                 <div class="col-md-5">
@@ -88,9 +86,7 @@ if (mysqli_num_rows($result) > 0) {
             }
             ?>
         </article>
-        <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp
-all images source from Cocomi.com URL = https://www.cocomi.com/
-how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
+        <!-- how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
         <?php
         include "footer.inc.php";
         ?>
