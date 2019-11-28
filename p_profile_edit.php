@@ -62,27 +62,78 @@ if (!isset($_SESSION)) {
     }
 
     function saveMemberToDB() {
-        global $fName , $errorMsg, $sqlUpdate, $userID, $conn;
-
-        //prepared statements 
-        
+        global $fName, $lName, $hashedPwd, $hpNo, $email, $errorMsg, $sqlUpdate, $userID, $conn;
 
         // remove comma from last statement
         $sqlUpdate = substr($sqlUpdate, 0, -2);
-        $sqlUpdate .= " WHERE user_id='$userID'";
-        if (!$conn->query($sqlUpdate)){
-            echo'<h2>could not update!</h2>';
-            $errorMsg = "Database error: " . $conn->error;
-            $success = false;
-        }else{
+        $sqlUpdate .= " WHERE user_id= ?";
+        //prepared statements 
+        $stmt = $conn->prepare($sqlUpdate);
+        if($stmt === false) {
+            trigger_error('Wrong SQL: ' . $sqlUpdate . ' Error: ' . $conn->errno . ' ' . $conn->error, E_USER_ERROR);
+        }
+        else{
+            //if only update password
+            if(!isset($_POST['chkname']) && !isset($_POST['chkpno']) && !isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("si",$hashedPwd ,$userID);
+            }//if only update email
+            elseif(!isset($_POST['chkname']) && !isset($_POST['chkpno']) && isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("si",$email ,$userID);
+            }//if only update email and password
+            elseif(!isset($_POST['chkname']) && !isset($_POST['chkpno']) && isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssi",$email ,$hashedPwd ,$userID);
+            } //if only update phone number
+            elseif(!isset($_POST['chkname']) && isset($_POST['chkpno']) && !isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("ii",$hpNo ,$userID);
+            } //if only update phone number and password
+            elseif(!isset($_POST['chkname']) && isset($_POST['chkpno']) && !isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("isi",$hpNo ,$hashedPwd ,$userID);
+            }//if only update phone number and  email
+            elseif(!isset($_POST['chkname']) && isset($_POST['chkpno']) && isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("isi",$hpNo ,$email ,$userID);
+            }//if only update phone number email and password
+            elseif(!isset($_POST['chkname']) && isset($_POST['chkpno']) && isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("issi",$hpNo ,$email ,$hashedPwd ,$userID);
+            } //if only update first name and last name
+            elseif(isset($_POST['chkname']) && !isset($_POST['chkpno']) && !isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssi",$fName ,$lName ,$userID);
+            } //if only update first name and last name and password
+            elseif(isset($_POST['chkname']) && !isset($_POST['chkpno']) && !isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("sssi",$fName ,$lName ,$hashedPwd ,$userID);
+            } //if only update first name and last name and email
+            elseif(isset($_POST['chkname']) && !isset($_POST['chkpno']) && isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("sssi",$fName ,$lName ,$email ,$userID);
+            } //if only update first name and last name and email and password
+            elseif(isset($_POST['chkname']) && !isset($_POST['chkpno']) && isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssssi",$fName ,$lName ,$email ,$hashedPwd ,$userID);
+            } //if only update first name and last name and phone number
+            elseif(isset($_POST['chkname']) && isset($_POST['chkpno']) && !isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssii",$fName ,$lName ,$hpNo ,$userID);
+            } //if only update first name and last name and phone number and password
+            elseif(isset($_POST['chkname']) && isset($_POST['chkpno']) && !isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssisi",$fName ,$lName ,$hpNo ,$hashedPwd ,$userID);
+            } //if only update first name and last name and phone number and email
+            elseif(isset($_POST['chkname']) && isset($_POST['chkpno']) && isset($_POST['chke']) && !isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssisi",$fName ,$lName ,$hpNo ,$email ,$userID);
+            } //if only update first name and last name and phone number and email and password
+            elseif(isset($_POST['chkname']) && isset($_POST['chkpno']) && isset($_POST['chke']) && isset($_POST['chkpwd'])){
+                $stmt->bind_param("ssissi",$fName ,$lName ,$hpNo ,$email ,$hashedPwd ,$userID);
+            }
+
+            $stmt->execute();
+
+
             echo'<h2>profile updated successfully!</h2>';
             //if name was updated, update the session first name for header
             if(isset($_POST['chkname']) && $_POST['chkname'] == 'Yes'){
                 $_SESSION['firstName'] = $fName;
             }
+
         }
         
     }
+
+    
     //vallidate name
     if (isset($_POST['chkname']) && $_POST['chkname'] == 'Yes') 
         {
@@ -106,7 +157,7 @@ if (!isset($_SESSION)) {
                     echo'<p>last name is not a valid format</p>';
                     $success = false;
                 }else{      
-                    $sqlUpdate .= "fname='$fName', lname='$lName', ";
+                    $sqlUpdate .= "fname= ?, lname= ?, ";
                 }
             }
         }
@@ -127,7 +178,7 @@ if (!isset($_SESSION)) {
                     echo'<p>phone number is not in a valid format</p>';
                     $success = false;
                 }else{      
-                    $sqlUpdate .= "HPnumber='$hpNo', ";
+                    $sqlUpdate .= "HPnumber= ?, ";
                 }
             }
         }
@@ -161,7 +212,7 @@ if (!isset($_SESSION)) {
                             echo'<p>email already exists</p>';
                             
                         }else{
-                            $sqlUpdate .= "email='$email', ";
+                            $sqlUpdate .= "email= ?, ";
                         }
                     }
                 }
@@ -218,7 +269,7 @@ if (!isset($_SESSION)) {
                                     $success = false;
                                 }else{     
                                     $hashedPwd = password_hash($nPwd1, PASSWORD_DEFAULT);
-                                    $sqlUpdate .= "password='$hashedPwd', ";
+                                    $sqlUpdate .= "password= ?, ";
                                 }
                                 
                             }

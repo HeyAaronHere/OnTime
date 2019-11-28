@@ -97,7 +97,7 @@ if (!isset($_SESSION['firstName'])) {
                             <h2 class="text-center">Change Email</h2>
                             <div class="form-group">
                                 <label for="email" id="email_lbl">Email address:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" disabled name="email" pattern="/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" disabled name="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$">
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chke" name="chke" value="Yes" >select to change email</label>
