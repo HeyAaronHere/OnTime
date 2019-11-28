@@ -81,73 +81,74 @@ while ($row = mysqli_fetch_array($tab_result)) {
     ?>
 
     <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
-    <section>
-        <div class="container-fluid">
-            <div id="slider" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#slider" data-slide-to="0" class="active"></li>
-                    <li data-target="#slider" data-slide-to="1"></li>
-                </ol>
+    <main>
+        <section>
+            <div class="container-fluid">
+                <div id="slider" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider" data-slide-to="1"></li>
+                    </ol>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner carouselstyle">
-                    <div class="item active">
-                        <img src="img/carousel1.png" alt="Carousel 1" style="width:100%;">
-                        <div class="carousel-caption carouselstyle">
-                            <h2>ONTime</h2>
-                            <p>Your Friendly Watch Shop!</p>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner carouselstyle">
+                        <div class="item active">
+                            <img src="img/carousel1.png" alt="Carousel 1" style="width:100%;">
+                            <div class="carousel-caption carouselstyle">
+                                <h2>ONTime</h2>
+                                <p>Your Friendly Watch Shop!</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="item">
-                        <img src="img/carousel2.png" alt="Carousel 2" style="width:100%;">
-                        <div class="carousel-caption carouselstyle">
-                            <h2>Awesome Watches!</h2>
-                            <p>Check out more about our watches below</p>
+                        <div class="item">
+                            <img src="img/carousel2.png" alt="Carousel 2" style="width:100%;">
+                            <div class="carousel-caption carouselstyle">
+                                <h2>Awesome Watches!</h2>
+                                <p>Check out more about our watches below</p>
+                            </div>
                         </div>
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#slider" data-slide="prev">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            <i class="sr-only">Previous</i>
+                        </a>
+                        <a class="right carousel-control" href="#slider" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+
                     </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#slider" data-slide="prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        <i class="sr-only">Previous</i>
-                    </a>
-                    <a class="right carousel-control" href="#slider" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-
-
                 </div>
+                <cite>Cocomi.com Men Section Jumbotron, Retrieved October 11, 2019
+                    from https://i.shgcdn.com/a1b79457-8515-40bc-85c0-f119583abaa6/-/format/auto/-/preview/3000x3000/-/quality/lighter/</cite>
+                <br>
+                <cite>Cocomi.com Women Section Jumbotron, Retrieved October 11, 2019
+                    from https://i.shgcdn.com/ae0f7351-ae89-4acf-8051-a1b2bc5b60f8/-/format/auto/-/preview/3000x3000/-/quality/lighter/</cite>
             </div>
-            <cite>Cocomi.com Men Section Jumbotron, Retrieved October 11, 2019
-                from https://i.shgcdn.com/a1b79457-8515-40bc-85c0-f119583abaa6/-/format/auto/-/preview/3000x3000/-/quality/lighter/</cite>
-            <br>
-            <cite>Cocomi.com Women Section Jumbotron, Retrieved October 11, 2019
-                from https://i.shgcdn.com/ae0f7351-ae89-4acf-8051-a1b2bc5b60f8/-/format/auto/-/preview/3000x3000/-/quality/lighter/</cite>
-        </div>
-    </section>
+        </section>
 
-    <div class="container-fluid">
-        <ul class="nav nav-tabs styletab">
-            <?php
-            echo $tab_menu;
-            ?>
-        </ul>
-        <div class="tab-content">
-            <?php
-            echo $tab_content;
-            ?>
-            <br>
-            <cite>BERING Classic 10540-567 Blue 40 mm Mens Watch, Retrieved October 10, 2019
-                from https://cdn.shopify.com/s/files/1/1712/5149/products/10540-567@2x.jpg?v=1571586623</cite>
-            <br>
-            <cite>Olivia Burton British Blooms Rose Womens Watch (OB16EG134), Retrieved October 10, 2019
-                from https://cdn.shopify.com/s/files/1/1712/5149/products/OB16EG134@2x.jpg?v=1571586947</cite>
+        <div class="container-fluid">
+            <ul class="nav nav-tabs styletab">
+                <?php
+                echo $tab_menu;
+                ?>
+            </ul>
+            <div class="tab-content">
+                <?php
+                echo $tab_content;
+                ?>
+                <br>
+                <cite>BERING Classic 10540-567 Blue 40 mm Mens Watch, Retrieved October 10, 2019
+                    from https://cdn.shopify.com/s/files/1/1712/5149/products/10540-567@2x.jpg?v=1571586623</cite>
+                <br>
+                <cite>Olivia Burton British Blooms Rose Womens Watch (OB16EG134), Retrieved October 10, 2019
+                    from https://cdn.shopify.com/s/files/1/1712/5149/products/OB16EG134@2x.jpg?v=1571586947</cite>
+            </div>
         </div>
-    </div>
-    <hr>
-
+        <hr>
+    </main>
     <?php
     include "footer.inc.php";
     ?>

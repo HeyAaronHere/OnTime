@@ -50,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
         ?>
 
         <!--how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
-        <article class="container singleProduct">
+        <main class="container singleProduct">
             <section class=row>
                 <div class="col-md-5">
                     <img src="<?php echo $productDetails['product_img'] ?>" class="img" alt="<?php echo $productDetails['product_alt'] ?> ">
@@ -60,7 +60,7 @@ if (mysqli_num_rows($result) > 0) {
                     <p class="new-arrival text-center">NEW</p>
                     <h2><?php echo $productDetails['product_name'] ?></h2>
                     <p><b>Product Code:</b> <?php echo $productDetails['product_code'] ?></p>
-                    <p id="price">$<?php echo $productDetails['product_price'] ?></p>
+                    <h1 id="price">$<?php echo $productDetails['product_price'] ?></h1>
                     <p><b>Availability:</b> <?php echo $productDetails['product_stock'] ?> </p>
                     <p><b>Condition:</b> New </p>
                     <p><b>Brand:</b> <?php echo $productDetails['product_brand'] ?></p>
@@ -73,7 +73,7 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </section>
             <section class="container productDescription">
-                <h3>Product Description</h3>
+                <h2>Product Description</h2>
                 <p><?php echo $productDetails['product_desc'] ?></p>
                 <p><?php echo $productDetails['product_desc'] ?></p>
                 <hr>
@@ -85,7 +85,7 @@ if (mysqli_num_rows($result) > 0) {
             $conn->close();
             }
             ?>
-        </article>
+        </main>
         <!-- how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
         <?php
         include "footer.inc.php";
