@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
   //validate phonenumber: only numbers
-  $phonepattern = "/^\d{8,13}$/";
+  $phonepattern = "/^\d{8}$/";
   if(empty($_POST['phone'])){
     $errorMsg .= "<p>Phone number is missing.</p>";
     $success = false;
