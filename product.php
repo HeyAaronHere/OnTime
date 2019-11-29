@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include "connection.inc.php";
+include "include/connection.inc.php";
 
 $tab_query = "SELECT * FROM category ORDER BY category_id ASC";
 $tab_result = mysqli_query($conn, $tab_query);
@@ -77,7 +77,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
 
 <body>
     <?php
-    include "header.inc.php";
+    include "include/header.inc.php";
     ?>
 
     <!-- Bootstrap Carousel  W3school  URL = https://www.w3schools.com/bootstrap/bootstrap_carousel.asp-->
@@ -150,7 +150,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <hr>
     </main>
     <?php
-    include "footer.inc.php";
+    include "include/footer.inc.php";
     ?>
 
 </body>

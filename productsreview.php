@@ -11,7 +11,7 @@ $success = true;
 $result = "";
 
 //Database connection
-include "connection.inc.php";
+include "include/connection.inc.php";
 //Select the latest response from user
 $query = "SELECT MAX(review_id) as MAX_REVIEW FROM review";
 $sql = mysqli_query($conn, $query);
@@ -55,7 +55,7 @@ if (!$IDsql) {
 
     <body>
         <?php
-            include "header.inc.php";
+            include "include/header.inc.php";
             ?>
         <main class="review container-fluid">
             <?php if (isset($_SESSION['msg'])) : ?>
@@ -217,7 +217,7 @@ if (!$IDsql) {
         </main>
         <!-- review URL = https://www.youtube.com/watch?v=qZno3Yk8QKc&t=500s Author = Easy Tutorials -->
         <?php
-        include "footer.inc.php";
+        include "include/footer.inc.php";
         ?>
     </body>
 

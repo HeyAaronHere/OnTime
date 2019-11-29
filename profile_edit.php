@@ -32,7 +32,7 @@ if (!isset($_SESSION['firstName'])) {
 <body>
 
     <?php
-    include "header.inc.php";
+    include "include/header.inc.php";
     ?>
 
     <main>
@@ -139,7 +139,7 @@ if (!isset($_SESSION['firstName'])) {
     </form>
         </main>
         <?php
-        include "footer.inc.php";
+        include "include/footer.inc.php";
         ?>
     </body>
 </html>

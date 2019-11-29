@@ -33,7 +33,7 @@ if (!isset($_SESSION['userID'])) {
 
 <body>
   <?php
-  include "header.inc.php";
+  include "include/header.inc.php";
   ?>
   <main class="container">
     <header class="page-header">
@@ -210,7 +210,7 @@ if (!isset($_SESSION['userID'])) {
     ?>
   </main>
   <?php
-  include "footer.inc.php";
+  include "include/footer.inc.php";
   ?>
 </body>
 
