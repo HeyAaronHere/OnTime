@@ -44,13 +44,13 @@ button a:hover{
 }
 
 /* For mobile phones: */
-[class*="col-"] {
+/* [class*="col-"] {
     width: 100%;
-}
-  
-@media only screen and (min-width: 600px) {
+} */
+
+/* @media only screen and (min-width: 600px) { */
     /* For tablets: */
-    .col-s-1 {width: 8.33%;}
+    /* .col-s-1 {width: 8.33%;}
     .col-s-2 {width: 16.66%;}
     .col-s-3 {width: 25%;}
     .col-s-4 {width: 33.33%;}
@@ -62,11 +62,11 @@ button a:hover{
     .col-s-10 {width: 83.33%;}
     .col-s-11 {width: 91.66%;}
     .col-s-12 {width: 100%;}
-}
-  
-@media only screen and (min-width: 768px) {
+} */
+
+/* @media only screen and (min-width: 768px) { */
     /* For desktop: */
-    .col-1 {width: 8.33%;}
+    /* .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}
     .col-4 {width: 33.33%;}
@@ -78,4 +78,4 @@ button a:hover{
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-}
+} */
