@@ -14,11 +14,11 @@ if (isset($_POST['CI-submit'])) {
         $CIquestion = mysqli_real_escape_string($conn, $CIquestion);
         $sql = $conn->prepare("INSERT INTO customer_inquiries (CIname, CIemail, CInumber, CIquestion) VALUES (?,?,?,?)");
         $sql->bind_param("ssis", $CIname, $CIemail, $CInumber, $CIquestion);
-        $sql->execute();
+        $sql->execute();/*
         if (!$conn->query($sql)) {
             $errorMsg = "Database error: " . $conn->error;
             $success = false;
-        }
+        }*/
         $conn->close();
     }
     ?>
@@ -88,9 +88,9 @@ function sendMail() {
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 587;
     $mail->SMTPAuth = true;
-    $mail->Username = "oysoys96@gmail.com";
-    $mail->Password = "Yeesiang9696!";
-    $mail->From = "oysoys96@gmail.com";
+    $mail->Username = "DeltaatSIT@gmail.com";
+    $mail->Password = "DeltaSIT1!";
+    $mail->From = "DeltaatSIT@gmail.com";
     $mail->FromName = "ONtime";
     $mail->AddAddress($CIemail);
     $mail->WordWrap = 50;
