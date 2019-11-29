@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-include "connection.inc.php";
+include "include/connection.inc.php";
 $success = $errorMsg = $userID = $productID = $quantity = "";
 $success = true;
 if (isset($_POST["productID"])) {

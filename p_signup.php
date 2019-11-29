@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['signup-submit'])) {
-    include "connection.inc.php";
+    include "include/connection.inc.php";
     $fname = $lname = $email = $pwd = $HPnumber = "";
     $errorMsg = "";
     $success = true;

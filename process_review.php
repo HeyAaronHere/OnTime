@@ -19,7 +19,7 @@ $email = $name = $review = "";
 $errorMsg = "";
 $success = true;
 
-include "connection.inc.php";
+include "include/connection.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@ include "connection.inc.php";
     </head>
     <body>
             <?php
-            include "header.inc.php";
+            include "include/header.inc.php";
             $namepat = "/^[a-zA-Z\s]+$/";
             $emailpat = "/\S+@\S+\.\S+/";
             if (empty($_POST["email"])) {

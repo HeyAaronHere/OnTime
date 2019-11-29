@@ -26,7 +26,7 @@ if (!isset($_SESSION)) {
 
 <body>
     <?php
-    include "header.inc.php";
+    include "include/header.inc.php";
     ?>
     <main class="aftnav">
         <article class="container">
@@ -154,7 +154,7 @@ if (!isset($_SESSION)) {
         </article>
     </main>
     <?php
-    include "footer.inc.php";
+    include "include/footer.inc.php";
     ?>
 </body>
 

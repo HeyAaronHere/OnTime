@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['CI-submit'])) {
-    include "connection.inc.php";
+    include "include/connection.inc.php";
     $CIname = $CIemail = $CInumber = $CIquestion = $sql = $errorMsg = "";
     $success = true;
 

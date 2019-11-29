@@ -24,7 +24,7 @@ if (isset($_SESSION['userID'])) {
         <body>
             <main class="test">
                 <?php
-                include "header.inc.php";
+                include "include/header.inc.php";
                 ?>
                 <section class="container">
                     <section class="row">
@@ -50,7 +50,7 @@ if (isset($_SESSION['userID'])) {
                 </section>
             </main>
             <?php
-            include "footer.inc.php";
+            include "include/footer.inc.php";
             ?>
            
         </body>

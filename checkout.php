@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-include "connection.inc.php";
+include "include/connection.inc.php";
 
 $userID = "";
 if(!isset($_SESSION['userID'])){
@@ -335,7 +335,7 @@ function saveTransactionToDB(){
 <body>
     <main class="container">
         <?php
-          include "header.inc.php";
+          include "include/header.inc.php";
 
           if ($success){
          ?>
@@ -415,7 +415,7 @@ function saveTransactionToDB(){
 ?>
     </main>
     <?php
-      include "footer.inc.php";
+      include "include/footer.inc.php";
     ?>
 
 </body>

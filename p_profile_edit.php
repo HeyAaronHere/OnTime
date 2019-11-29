@@ -41,7 +41,7 @@ if (!isset($_SESSION)) {
         exit;
     }
 
-    include "connection.inc.php";
+    include "include/connection.inc.php";
     
     $success = true;
     

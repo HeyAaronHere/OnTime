@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['login-submit'])) {
-    include "connection.inc.php";
+    include "include/connection.inc.php";
     $errorMsg = "";
     $success = true;
     ?>
