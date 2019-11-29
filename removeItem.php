@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-include "connection.inc.php";
+include "include/connection.inc.php";
 $userID = $productID = "";
 $userID = $_SESSION['userID'];
 $productID  = $_POST['product'];

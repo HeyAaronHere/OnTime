@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 // accessing our DB:
-include "connection.inc.php";
+include "include/connection.inc.php";
 
 if (!isset($_POST['product_id']) || empty($_POST['product_id']) || !is_numeric($_POST['product_id'])) {
     $errors[] = 'You must select a product in order to see its details!';
@@ -46,7 +46,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <body>
         <?php
-        include "header.inc.php";
+        include "include/header.inc.php";
         ?>
 
         <!--how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author- Easy Tutorials-->
@@ -88,7 +88,7 @@ if (mysqli_num_rows($result) > 0) {
         </main>
         <!-- how to make a single product ecommerce URL https://www.youtube.com/watch?v=4zGBRBHsgEY Author= Easy Tutorial (Youtube Channel)-->
         <?php
-        include "footer.inc.php";
+        include "include/footer.inc.php";
         ?>
     </body>
 
